@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="uuid-e7470bf9-ea34-4de6-ae9f-ff2d93e20a45" data-name="Слой 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512">
+  <defs>
+    <style>
+      .uuid-905d4b61-a90e-4d4c-9043-dc2b53e82f56 {
+        fill: #fff;
+      }
+
+      .uuid-905d4b61-a90e-4d4c-9043-dc2b53e82f56, .uuid-e2594ae3-ebbf-4926-9f4c-adb2dc067018 {
+        stroke-width: 0px;
+      }
+
+      .uuid-e2594ae3-ebbf-4926-9f4c-adb2dc067018 {
+        fill: url(#uuid-7d44baac-2abd-48e5-9fe0-a51f7f27f6da);
+      }
+    </style>
+    <linearGradient id="uuid-7d44baac-2abd-48e5-9fe0-a51f7f27f6da" data-name="Безымянный градиент 17" x1="256" y1="0" x2="256" y2="512" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#00c0e7"/>
+      <stop offset=".54" stop-color="#0072c3"/>
+      <stop offset="1" stop-color="#0035a8"/>
+    </linearGradient>
+  </defs>
+  <circle class="uuid-e2594ae3-ebbf-4926-9f4c-adb2dc067018" cx="256" cy="256" r="256"/>
+  <g>
+    <path class="uuid-905d4b61-a90e-4d4c-9043-dc2b53e82f56" d="m52.77,366.26v-220.1h12.21l92.28,176.4h-6.53l91.99-176.4h11.93l.28,220.1h-14.2l-.28-195.89h3.97l-87.17,166.65h-7.1L62.71,170.37h4.26v195.89h-14.2Z"/>
+    <path class="uuid-905d4b61-a90e-4d4c-9043-dc2b53e82f56" d="m303.48,146.16h17.04l59.91,92.76,60.19-92.76h17.32l-68.43,105.96,73.82,114.14h-17.32l-65.59-100.62-65.02,100.62h-17.04l73.25-113.82-68.14-106.28Z"/>
+  </g>
+</svg>
