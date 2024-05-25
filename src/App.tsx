@@ -1,9 +1,15 @@
-import './assets/sass/App.sass';
+import './assets/sass/App.sass'
+import Header from './components/header/Header'
 
-function App() {
+const App: React.FC = (): JSX.Element => {
 	return (
 		<div className="App">
-			test
+			<Header real />
+			<Header />
+
+			<main className="main">
+				
+			</main>
 		</div>
 	);
 }
