@@ -1,0 +1,40 @@
+@import './../../assets/sass/_main'
+
+@include imp-font($font-futura, './../../assets/#{$path-font-futura}', ('book': 400))
+
+.navbar
+	height: 100%
+	display: flex
+	align-items: center
+
+	&.test
+		background-color: #bffa
+
+.menu
+	list-style: none
+	display: flex
+
+	&.test
+		background-color: #f6fa
+
+	&-item
+		margin: 0px 20px
+
+		&:first-child
+			margin-left: 0px
+
+		&:last-child
+			margin-right: 0px
+
+		&.test
+			background-color: #6f6a
+
+	&-link
+		font-family: $font-futura
+		font-weight: 400
+		font-size: 20px
+		text-decoration: none
+		color: $color-text
+
+		&.test
+			background-color: #a6aa

@@ -1,0 +1,22 @@
+@import './../../assets/sass/_main'
+
+@include imp-font($font-futura, './../../assets/#{$path-font-futura}', ('medium': 500))
+
+.logo
+	height: 100%
+	display: flex
+	justify-content: center
+	align-items: center
+
+	&.test
+		background-color: #8f8a
+
+	&-link
+		font-family: $font-futura
+		font-weight: 500
+		font-size: 26px
+		text-decoration: none
+		color: $color-text
+
+		&.test
+			background-color: #88fa
