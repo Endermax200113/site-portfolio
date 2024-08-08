@@ -1,26 +1,85 @@
 @import './../../assets/sass/_main'
 
+@include imp-font($font-raleway, './../../assets/#{$path-font-raleway}', ('Bold': 700, 'ExtraBold': 800))
+
 .header
+	position: relative
 	flex: $flex-rest
-	position: fixed
 	width: 100%
-	height: 50px
-	background-color: $color-background
-	border-bottom: 2px solid $color-accent
-	box-shadow: 0px -20px 50px
-	z-index: 9999
+	height: 1022px
+	background-color: $color-light-gray
+	overflow: hidden
 
-	&.test
-		background-color: #f88a
+	&-container
+		width: 100%
+		height: 100%
+		padding: 0px 270px
 
-	&-false
-		height: 52px
+.wrapper
+	position: absolute
+	width: 100%
+	height: 100%
 
-.wrap
+.detail
+	position: absolute
+	top: -133px
+	right: -100px
+	width: 60vw
+	height: 130%
+	background-color: $color-full-black
+	transform: rotate(9.67deg)
+
+.begin
 	width: 100%
 	height: 100%
 	display: flex
 	justify-content: space-between
+	align-items: center
 
-	&.test
-		background-color: #f8fa
+.welcome
+	margin-top: 120px
+
+%welcome
+	font-family: $font-raleway
+	font-weight: 700
+	color: $color-full-black
+
+.hello
+	@extend %welcome
+	margin-bottom: 54px
+	font-size: 40px
+
+.name
+	@extend %welcome
+	margin-bottom: 2px
+	font-size: 60px
+
+.who
+	@extend %welcome
+	margin-bottom: 137px
+	font-weight: 800
+	font-size: 25px
+	color: $color-gray
+
+.social
+	display: flex
+
+	&-btn
+		width: 61px
+		height: 56px
+		margin-right: 31px
+		border: none
+		outline: none
+		background-color: $color-lighter-gray
+		box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25)
+		cursor: pointer
+		display: flex
+		justify-content: center
+		align-items: center
+
+		&:last-child
+			margin-right: 0px
+
+	&-img
+		width: 35px
+		height: 35px

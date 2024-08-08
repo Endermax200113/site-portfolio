@@ -12,10 +12,12 @@
 
 @mixin imp-font($name, $original-path, $list-weight, $there-italic: false, $name-italic: 'Italic', $type-italic: italic) {
 	@each $weight-name, $weight-value in $list-weight {
-		@include font($name, normal, $weight-value, '#{$original-path}#{$weight-name}.woff2');
-
 		@if $there-italic {
 			@include font($name, $type-italic, $weight-value, '#{$original-path}#{$weight-name}#{$name-italic}.woff2');
+		}
+
+		@else {
+			@include font($name, normal, $weight-value, '#{$original-path}#{$weight-name}.woff2');
 		}
 	}
 }

@@ -1,24 +1,36 @@
 import React from 'react'
 import sass from './Header.module.sass'
-import { transformTestClass } from '../../utils/sassControl'
-import Logo from './Logo'
-import Navbar from './Navbar'
 
-interface PropsHeader {
-	test?: boolean
-}
+interface PropsHeader {}
 
-const Header: React.FC<PropsHeader> = ({ test }): React.JSX.Element => {
-	const classHeader: string = transformTestClass(sass, ['header'], test)
-	const classContainer: string = !test ? 'container' : 'container test'
-	const classWrap: string = transformTestClass(sass, ['wrap'], test)
-
+const Header: React.FC<PropsHeader> = () => {
 	return (
-		<header className={classHeader}>
-			<div className={classContainer}>
-				<div className={classWrap}>
-					<Logo test={test} />
-					<Navbar test={test} />
+		<header className={sass.header}>
+			<div className={sass.wrapper}>
+				<div className={sass.detail}></div>
+			</div>
+
+			<div className={sass['header-container']}>
+				<div className={sass.begin}>
+					<div className={sass.welcome}>
+						<div className={sass.hello}>Привет! Я</div>
+						<div className={sass.name}>Халласаар Максим</div>
+						<div className={sass.who}>Frontend-разработчик</div>
+
+						<div className={sass.social}>
+							<button type='button' className={sass['social-btn']}>
+								<img className={sass['social-img']} src={require('./../../assets/img/social/vk.png')} alt='VK' />
+							</button>
+
+							<button type='button' className={sass['social-btn']}>
+								<img className={sass['social-img']} src={require('./../../assets/img/social/github.png')} alt='GitHub' />
+							</button>
+
+							<button type='button' className={sass['social-btn']}>
+								<img className={sass['social-img']} src={require('./../../assets/img/social/telegram.png')} alt='Telegram' />
+							</button>
+						</div>
+					</div>
 				</div>
 			</div>
 		</header>

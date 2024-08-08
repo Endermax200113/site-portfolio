@@ -7,10 +7,14 @@
 - HTML5;
 - CSS3 (SASS);
 - TypeScript;
-- ReactJS v18.
-- Yarn
+- ReactJS v18;
+- Yarn.
 
 # Версии
+
+## v0.0.2
+
+- . . . добавляется секция `Главная`...
 
 ## v0.0.1
 
