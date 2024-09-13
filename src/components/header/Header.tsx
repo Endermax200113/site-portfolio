@@ -31,6 +31,24 @@ const Header: React.FC<PropsHeader> = () => {
 							</button>
 						</div>
 					</div>
+
+					<div className={sass.performance}>
+						<div className={sass['performance-wrap']}>
+							<img className={sass['performance-img']} src={require('./../../assets/img/header/smartphone.png')} alt='Смартфон' />
+						</div>
+
+						<div className={sass['performance-wrap']}>
+							<img className={sass['performance-img']} src={require('./../../assets/img/header/tablet.png')} alt='Планшет' />
+						</div>
+
+						<div className={sass['performance-wrap']}>
+							<img className={sass['performance-img']} src={require('./../../assets/img/header/pc.png')} alt='Компьютер' />
+						</div>
+
+						<div className={sass['performance-wrap']}>
+							<img className={sass['performance-img']} src={require('./../../assets/img/header/laptop.png')} alt='Ноутбук' />
+						</div>
+					</div>
 				</div>
 			</div>
 		</header>
