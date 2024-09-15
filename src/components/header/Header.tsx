@@ -1,5 +1,6 @@
 import React from 'react'
 import sass from './Header.module.sass'
+import Navbar from '../navbar/Navbar'
 
 interface PropsHeader {}
 
@@ -9,6 +10,8 @@ const Header: React.FC<PropsHeader> = () => {
 			<div className={sass.wrapper}>
 				<div className={sass.detail}></div>
 			</div>
+
+			<Navbar />
 
 			<div className={sass['header-container']}>
 				<div className={sass.begin}>
@@ -51,6 +54,7 @@ const Header: React.FC<PropsHeader> = () => {
 					</div>
 				</div>
 			</div>
+			<div id={sass.test}></div>
 		</header>
 	)
 }

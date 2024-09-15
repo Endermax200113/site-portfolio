@@ -9,7 +9,6 @@ interface PropsTrimSass {
 
 export const trimSass: PropsTrimSass = (sass, arr): string => {
 	const array: string[] = []
-	console.log(sass, arr)
 
 	arr.forEach(str => {
 		array.push(sass[str])
