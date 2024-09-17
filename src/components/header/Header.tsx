@@ -9,6 +9,7 @@ const Header: React.FC<PropsHeader> = () => {
 		<header className={sass.header}>
 			<div className={sass.wrapper}>
 				<div className={sass.detail}></div>
+				<div className={sass['detail-transition']}></div>
 			</div>
 
 			<Navbar />
