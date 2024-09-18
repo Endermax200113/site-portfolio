@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react'
 import sass from './Navbar.module.sass'
 import { trimSass } from '../../utils/sassControl'
 import Logo, { getLogoSass } from '../ui/logo/Logo'
+import MenuLink from '../ui/menuLink/MenuLink'
 
 interface PropsNavbar {}
 
@@ -43,23 +44,9 @@ const Navbar: React.FC<PropsNavbar> = () => {
 				<Logo name={logoImgClass} />
 
 				<ul className={sass.menu}>
-					<li className={sass['menu-item']}>
-						<a href='#about' className={sass['menu-link']}>
-							Обо ме
-						</a>
-					</li>
-
-					<li className={sass['menu-item']}>
-						<a href='#skills' className={sass['menu-link']}>
-							Навыки
-						</a>
-					</li>
-
-					<li className={sass['menu-item']}>
-						<a href='#portfolio' className={sass['menu-link']}>
-							Портфолио
-						</a>
-					</li>
+					<MenuLink link='#about' text='Обо мне' />
+					<MenuLink link='#skills' text='Навыки' />
+					<MenuLink link='#portfolio' text='Портфолио' />
 
 					<li className={sass['menu-item']}>
 						<button type='button' className={sass['menu-btn']}>
