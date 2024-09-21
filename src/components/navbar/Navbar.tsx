@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react'
 import sass from './Navbar.module.sass'
 import { trimSass } from '../../utils/sassControl'
 import Logo, { getLogoSass } from '../ui/logo/Logo'
-import Menu from '../ui/menu/Menu'
+import Menu from './menu/Menu'
 
 interface PropsNavbar {}
 
@@ -17,7 +17,7 @@ const Navbar: React.FC<PropsNavbar> = () => {
 	}
 
 	const onScrolling: EventScroll = useCallback(() => {
-		if (document.documentElement.scrollTop === 0) {
+		if (window.scrollY === 0) {
 			if (navbarFixed) setNavbarFixed(false)
 		} else {
 			if (!navbarFixed) setNavbarFixed(true)
@@ -25,7 +25,7 @@ const Navbar: React.FC<PropsNavbar> = () => {
 	}, [navbarFixed])
 
 	useEffect(() => {
-		if (!document.onscroll) document.addEventListener('scroll', onScrolling)
+		window.addEventListener('scroll', onScrolling)
 
 		if (navbarFixed) {
 			setNavbarClass(trimSass(sass, ['navbar', 'fixed']))
@@ -35,6 +35,10 @@ const Navbar: React.FC<PropsNavbar> = () => {
 			setNavbarClass(sass.navbar)
 			setNavClass(sass.nav)
 			setLogoImgClass(getLogoSass()['logo-img'])
+		}
+
+		return () => {
+			window.removeEventListener('scroll', onScrolling)
 		}
 	}, [navbarFixed, onScrolling])
 
