@@ -1,0 +1,25 @@
+@import '@sass/_main'
+
+@include imp-font($font-raleway, ('Bold': 700, 'ExtraBold': 800))
+
+%welcome
+	font-family: $font-raleway
+	font-weight: 700
+	color: $color-full-black
+
+.hello
+	@extend %welcome
+	margin-bottom: 54px
+	font-size: 40px
+
+.name
+	@extend %welcome
+	margin-bottom: 2px
+	font-size: 60px
+
+.who
+	@extend %welcome
+	margin-bottom: 137px
+	font-weight: 800
+	font-size: 25px
+	color: $color-gray

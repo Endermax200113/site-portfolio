@@ -10,14 +10,14 @@
 	}
 }
 
-@mixin imp-font($name, $original-path, $list-weight, $there-italic: false, $name-italic: 'Italic', $type-italic: italic) {
+@mixin imp-font($name, $list-weight, $there-italic: false, $name-italic: 'Italic', $type-italic: italic) {
 	@each $weight-name, $weight-value in $list-weight {
 		@if $there-italic {
-			@include font($name, $type-italic, $weight-value, '#{$original-path}#{$weight-name}#{$name-italic}.woff2');
+			@include font($name, $type-italic, $weight-value, '#{$path-font}/#{$name}#{$font-space}#{$weight-name}#{$name-italic}.woff2');
 		}
 
 		@else {
-			@include font($name, normal, $weight-value, '#{$original-path}#{$weight-name}.woff2');
+			@include font($name, normal, $weight-value, '#{$path-font}/#{$name}#{$font-space}#{$weight-name}.woff2');
 		}
 	}
 }

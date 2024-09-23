@@ -1,14 +1,16 @@
 import React from 'react'
 import sass from './Info.module.sass'
+import Label from '@ui/text/label/Label'
+import { TypeInfo } from '@helper/typeWelcome'
 
-type PropsInfo = {}
+interface PropsInfo {}
 
 const Info: React.FC<PropsInfo> = () => {
 	return (
 		<div className={sass.welcome}>
-			<div className={sass.hello}>Привет! Я</div>
-			<div className={sass.name}>Халласаар Максим</div>
-			<div className={sass.who}>Frontend-разработчик</div>
+			<Label type={TypeInfo.WELCOME}>Привет! Я</Label>
+			<Label type={TypeInfo.NAME}>Халласаар Максим</Label>
+			<Label type={TypeInfo.PROFESSION}>Frontend-разработчик</Label>
 
 			<div className={sass.social}>
 				<button type='button' className={sass['social-btn']}>

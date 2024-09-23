@@ -11,6 +11,7 @@ export default {
 			'@components': path.resolve(__dirname, 'src/components'),
 			'@ui': path.resolve(__dirname, 'src/components/ui'),
 			'@utils': path.resolve(__dirname, 'src/utils'),
+			'@helper': path.resolve(__dirname, 'src/helper'),
 		},
 	},
 }

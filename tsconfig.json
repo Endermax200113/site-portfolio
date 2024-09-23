@@ -24,7 +24,8 @@
 			"@sass/*": ["./assets/sass/*"],
 			"@components/*": ["./components/*"],
 			"@ui/*": ["./components/ui/*"],
-			"@utils/*": ["./utils/*"]
+			"@utils/*": ["./utils/*"],
+			"@helper/*": ["./helper/*"]
 		}
 	},
 	"include": ["src"]
