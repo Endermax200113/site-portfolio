@@ -13,7 +13,7 @@ const Logo: React.FC<PropsLogo> = ({ name }) => {
 	return (
 		<li className={sass['nav-logo']}>
 			<a href='/' className={sass['logo-link']}>
-				<img className={name} src={require('./../../../assets/img/logo.png')} alt='Логотип' />
+				<img className={name} src={require('@img/logo.png')} alt='Логотип' />
 			</a>
 		</li>
 	)

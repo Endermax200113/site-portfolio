@@ -1,5 +1,6 @@
 {
 	"compilerOptions": {
+		"baseUrl": "./src",
 		"target": "ES5",
 		"lib": ["DOM", "DOM.Iterable", "ESNext"],
 		"allowJs": true,
@@ -14,7 +15,17 @@
 		"resolveJsonModule": true,
 		"isolatedModules": true,
 		"noEmit": true,
-		"jsx": "react-jsx"
+		"jsx": "react-jsx",
+		"paths": {
+			"@/*": ["./*"],
+			"@assets/*": ["./assets/*"],
+			"@fonts/*": ["./assets/fonts/*"],
+			"@img/*": ["./assets/img/*"],
+			"@sass/*": ["./assets/sass/*"],
+			"@components/*": ["./components/*"],
+			"@ui/*": ["./components/ui/*"],
+			"@utils/*": ["./utils/*"]
+		}
 	},
 	"include": ["src"]
 }

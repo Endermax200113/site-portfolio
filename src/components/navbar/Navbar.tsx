@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import sass from './Navbar.module.sass'
-import { trimSass } from '../../utils/sassControl'
-import Logo, { getLogoSass } from '../ui/logo/Logo'
+import { trimSass } from '@utils/sassControl'
+import Logo, { getLogoSass } from '@ui/logo/Logo'
 import Menu from './menu/Menu'
 
 interface PropsNavbar {}

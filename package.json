@@ -1,12 +1,12 @@
 {
 	"name": "my-site-portfolio",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"private": true,
 	"scripts": {
-		"start": "react-scripts start",
-		"build": "react-scripts build",
-		"test": "react-scripts test",
-		"eject": "react-scripts eject",
+		"start": "craco start",
+		"build": "craco build",
+		"test": "craco test",
+		"eject": "craco eject",
 		"ci": "rm -rf node_modules && yarn install --frozen-lockfile"
 	},
 	"eslintConfig": {
@@ -43,6 +43,7 @@
 	},
 	"devDependencies": {
 		"@babel/plugin-proposal-private-property-in-object": "7.21.11",
+		"@craco/craco": "^7.1.0",
 		"typescript": "^5.4.5"
 	}
 }

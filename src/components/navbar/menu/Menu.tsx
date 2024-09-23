@@ -1,7 +1,7 @@
 import React from 'react'
 import sass from './Menu.module.sass'
-import MenuLink from '../../ui/menuLink/MenuLink'
-import MenuButton from '../../ui/menuButton/MenuButton'
+import MenuLink from '@ui/menuLink/MenuLink'
+import MenuButton from '@ui/menuButton/MenuButton'
 
 interface PropsMenu {}
 
