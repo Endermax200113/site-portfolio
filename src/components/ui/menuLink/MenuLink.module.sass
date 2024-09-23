@@ -1,5 +1,7 @@
 @import '@sass/_main'
 
+@include imp-font($font-montserrat, ('Bold': 700))
+
 .menu
 	&-item
 		height: 100%
@@ -15,6 +17,8 @@
 			margin: 0px
 
 	&-link
+		font-family: $font-montserrat
+		font-weight: 700
 		font-size: 17px
 		text-align: center
 		color: $color-full-white

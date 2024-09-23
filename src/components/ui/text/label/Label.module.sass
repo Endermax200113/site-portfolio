@@ -1,6 +1,7 @@
 @import '@sass/_main'
 
 @include imp-font($font-raleway, ('Bold': 700, 'ExtraBold': 800))
+@include imp-font($font-montserrat, ('Regular': 400))
 
 %welcome
 	font-family: $font-raleway
@@ -23,3 +24,11 @@
 	font-weight: 800
 	font-size: 25px
 	color: $color-gray
+
+.usually
+	font-family: $font-montserrat
+	font-weight: 400
+	font-size: 24px
+	letter-spacing: 0.14em
+	text-align: center
+	color: $color-full-black

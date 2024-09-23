@@ -23,6 +23,7 @@ const Label: React.FC<PropsLabel> = ({ type, children }) => {
 				break
 			case TypeInfo.USUALLY:
 			default:
+				setClassLabel(sass.usually)
 				break
 		}
 	}, [classLabel, type])
