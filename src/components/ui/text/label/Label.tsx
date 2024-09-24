@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import sass from './Label.module.sass'
-import { TypeInfo } from '@helper/typeWelcome'
 
 interface PropsLabel {
-	type: TypeInfo
+	type: 'welcome' | 'name' | 'profession' | undefined
 	children: string
 }
 
@@ -12,23 +11,23 @@ const Label: React.FC<PropsLabel> = ({ type, children }) => {
 
 	useEffect(() => {
 		switch (type) {
-			case TypeInfo.WELCOME:
+			case 'welcome':
 				setClassLabel(sass.hello)
 				break
-			case TypeInfo.NAME:
+			case 'name':
 				setClassLabel(sass.name)
 				break
-			case TypeInfo.PROFESSION:
+			case 'profession':
 				setClassLabel(sass.who)
 				break
-			case TypeInfo.USUALLY:
+			case undefined:
 			default:
 				setClassLabel(sass.usually)
 				break
 		}
 	}, [classLabel, type])
 
-	return type === TypeInfo.NAME ? <strong className={classLabel}>{children}</strong> : <div className={classLabel}>{children}</div>
+	return type === 'name' ? <strong className={classLabel}>{children}</strong> : <div className={classLabel}>{children}</div>
 }
 
 export default Label
