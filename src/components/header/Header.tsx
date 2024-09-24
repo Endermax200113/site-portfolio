@@ -38,8 +38,6 @@ const Header: React.FC<PropsHeader> = () => {
 					</div>
 				</div>
 			</div>
-
-			<div id={sass.test}></div>
 		</header>
 	)
 }
