@@ -21,6 +21,7 @@
 			"@fonts/*": ["./assets/fonts/*"],
 			"@img/*": ["./assets/img/*"],
 			"@sass/*": ["./assets/sass/*"],
+			"@svg/*": ["./assets/svg/*"],
 			"@components/*": ["./components/*"],
 			"@ui/*": ["./components/ui/*"],
 			"@utils/*": ["./utils/*"],
