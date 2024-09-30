@@ -17,13 +17,13 @@
 		"noEmit": true,
 		"jsx": "react-jsx",
 		"paths": {
-			"@assets/*": ["./assets/*"],
 			"@fonts/*": ["./assets/fonts/*"],
 			"@img/*": ["./assets/img/*"],
 			"@sass/*": ["./assets/sass/*"],
 			"@svg/*": ["./assets/svg/*"],
-			"@components/*": ["./components/*"],
+			"@assets/*": ["./assets/*"],
 			"@ui/*": ["./components/ui/*"],
+			"@components/*": ["./components/*"],
 			"@utils/*": ["./utils/*"],
 			"@helper/*": ["./helper/*"],
 			"@/*": ["./*"]
