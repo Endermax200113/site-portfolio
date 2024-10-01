@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import sass from './About.module.sass'
 import Quote from '@ui/quote/Quote'
 import Headline from '@ui/text/headline/Headline'
+import Separator from '@ui/separator/Separator'
 
 interface PropsAbout {}
 
@@ -24,9 +25,7 @@ const About: React.FC<PropsAbout> = () => {
 
 			<Quote paragraphs={paragraphs} classes={sass.quote} />
 
-			<div className={sass['separator-wrap']}>
-				<img className={sass['separator-img']} src={require('@svg/separator.svg').default} alt='Делитель' />
-			</div>
+			<Separator classes={sass['separator-wrap']} />
 
 			<div className={sass.activity}>
 				<div className={sass['activity-block']}>

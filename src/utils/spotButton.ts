@@ -13,7 +13,7 @@ export const spotButton = (type: 'social' | 'big' | 'small', content: string, al
 				text: altImg !== undefined ? altImg : '',
 			}
 		case 'big':
-			if (altImg !== undefined) console.warn("В компоненте 'Button' с типом 'big' не имеет смысла вставлять что-то в аргумент 'aliImg'")
+			if (!altImg) console.warn("В компоненте 'Button' с типом 'big' не имеет смысла вставлять что-то в аргумент 'aliImg'")
 
 			return {
 				type: 'big',
@@ -22,7 +22,7 @@ export const spotButton = (type: 'social' | 'big' | 'small', content: string, al
 			}
 		case 'small':
 		default:
-			if (altImg !== undefined) console.warn("В компоненте 'Button' с типом 'small' не имеет смысла вставлять что-то в аргумент 'aliImg'")
+			if (!altImg) console.warn("В компоненте 'Button' с типом 'small' не имеет смысла вставлять что-то в аргумент 'aliImg'")
 
 			return {
 				type: 'small',

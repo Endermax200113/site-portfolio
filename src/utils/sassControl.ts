@@ -41,3 +41,15 @@ export const transformTestClass: PropsElementTest = (sass, arr, isTest): string 
 
 	return res
 }
+
+interface PropsAllClasses {
+	(arr: string[], classes: string): string
+}
+
+export const mergeAllClasses: PropsAllClasses = (arr, classes): string => {
+	arr.push(classes)
+
+	const allClasses: string = arr.join(' ').trimEnd()
+
+	return allClasses
+}

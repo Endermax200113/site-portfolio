@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import sass from './Quote.module.sass'
 import Description from '@ui/text/description/Description'
+import { mergeAllClasses } from '@utils/sassControl'
 
 interface PropsQuote {
 	paragraphs: string[]
@@ -11,16 +12,9 @@ const Quote: React.FC<PropsQuote> = ({ paragraphs, classes }) => {
 	const [allClassesQuote, setAllClassesQuote] = useState<string>(sass.quote)
 
 	useEffect(() => {
-		if (classes === undefined) return
+		if (!classes) return
 
-		const arr: string[] = []
-
-		arr.push(sass.quote)
-		arr.push(classes)
-
-		const allClasses: string = arr.join(' ').trimEnd()
-
-		setAllClassesQuote(allClasses)
+		setAllClassesQuote(mergeAllClasses([sass.quote], classes))
 	}, [classes, setAllClassesQuote])
 
 	return (
