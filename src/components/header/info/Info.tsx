@@ -6,11 +6,23 @@ import Social from './../social/Social'
 interface PropsInfo {}
 
 const Info: React.FC<PropsInfo> = () => {
+	type TypeLabel = 'welcome' | 'name' | 'profession' | undefined
+
+	const arrLabels: [TypeLabel, string][] = []
+
+	arrLabels.push(['welcome', 'Привет! Я'])
+	arrLabels.push(['name', 'Халласаар Максим'])
+	arrLabels.push(['profession', 'Frontend-разработчик'])
+
 	return (
 		<div className={sass.welcome}>
-			<Label type='welcome'>Привет! Я</Label>
-			<Label type='name'>Халласаар Максим</Label>
-			<Label type='profession'>Frontend-разработчик</Label>
+			{arrLabels.map(([type, text], i) => {
+				return (
+					<Label type={type} key={i}>
+						{text}
+					</Label>
+				)
+			})}
 
 			<Social />
 		</div>

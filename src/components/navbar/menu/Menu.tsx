@@ -10,11 +10,18 @@ const Menu: React.FC<PropsMenu> = () => {
 		window.location.hash = 'cv'
 	}
 
+	const arrMenu: [string, string][] = []
+
+	arrMenu.push(['#about', 'Обо мне'])
+	arrMenu.push(['#skills', 'Навыки'])
+	arrMenu.push(['#portfolio', 'Портфолио'])
+
 	return (
 		<ul className={sass.menu}>
-			<MenuLink link='#about' text='Обо мне' />
-			<MenuLink link='#skills' text='Навыки' />
-			<MenuLink link='#portfolio' text='Портфолио' />
+			{arrMenu.map(([link, text], i) => {
+				return <MenuLink link={link} text={text} key={i} />
+			})}
+
 			<MenuButton text='CV-резюме' click={() => enterToCV()} />
 		</ul>
 	)
