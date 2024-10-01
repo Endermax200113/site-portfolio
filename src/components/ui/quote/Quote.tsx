@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import sass from './Quote.module.sass'
+import Description from '@ui/text/description/Description'
 
 interface PropsQuote {
 	paragraphs: string[]
@@ -25,11 +26,7 @@ const Quote: React.FC<PropsQuote> = ({ paragraphs, classes }) => {
 	return (
 		<blockquote className={allClassesQuote}>
 			{paragraphs.map((paragraph: string, i: number) => {
-				return (
-					<p key={i} className={sass.paragraph}>
-						{paragraph}
-					</p>
-				)
+				return <Description key={i}>{paragraph}</Description>
 			})}
 		</blockquote>
 	)
