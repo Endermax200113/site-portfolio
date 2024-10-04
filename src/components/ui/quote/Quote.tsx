@@ -12,7 +12,11 @@ const Quote: React.FC<PropsQuote> = ({ paragraphs, classes }) => {
 	const [allClassesQuote, setAllClassesQuote] = useState<string>(sass.quote)
 
 	useEffect(() => {
-		if (!classes) return
+		if (!classes) {
+			setAllClassesQuote(sass.quote)
+
+			return
+		}
 
 		setAllClassesQuote(mergeAllClasses([sass.quote], classes))
 	}, [classes, setAllClassesQuote])

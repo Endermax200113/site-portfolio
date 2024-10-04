@@ -10,7 +10,11 @@ const Separator: React.FC<PropsSeparator> = ({ classes }) => {
 	const [allClassesWrap, setAllClassesWrap] = useState<string>(sass.wrap)
 
 	useEffect(() => {
-		if (!classes) return
+		if (!classes) {
+			setAllClassesWrap(sass.wrap)
+
+			return
+		}
 
 		setAllClassesWrap(mergeAllClasses([sass.wrap], classes))
 	}, [classes, setAllClassesWrap])
