@@ -22,12 +22,9 @@ const About: React.FC<PropsAbout> = () => {
 
 	return (
 		<section className={sass.about} id='about'>
-			<Headline text='Обо мне' />
-
+			<Headline text='Обо мне' classes={sass.headline} />
 			<Quote paragraphs={paragraphs} classes={sass.quote} />
-
 			<Separator classes={sass['separator-wrap']} />
-
 			<Activity classes={sass.activity} />
 		</section>
 	)
