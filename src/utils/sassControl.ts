@@ -43,13 +43,13 @@ export const transformTestClass: PropsElementTest = (sass, arr, isTest): string 
 }
 
 interface PropsAllClasses {
-	(arr: string[], classes: string): string
+	(arr: string[], classes?: string): string
 }
 
 export const mergeAllClasses: PropsAllClasses = (arr, classes): string => {
-	arr.push(classes)
+	if (classes) {
+		arr.push(classes)
+	}
 
-	const allClasses: string = arr.join(' ').trimEnd()
-
-	return allClasses
+	return arr.join(' ').trimEnd()
 }

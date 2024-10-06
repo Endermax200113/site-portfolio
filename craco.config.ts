@@ -12,6 +12,7 @@ export default {
 			'@components': path.resolve(__dirname, 'src/components'),
 			'@utils': path.resolve(__dirname, 'src/utils'),
 			'@helper': path.resolve(__dirname, 'src/helper'),
+			'@modules': path.resolve(__dirname, 'src/modules'),
 			'@': path.resolve(__dirname, 'src'),
 		},
 	},

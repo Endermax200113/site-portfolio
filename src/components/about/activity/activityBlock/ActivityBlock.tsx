@@ -1,5 +1,6 @@
 import React from 'react'
 import sass from './ActivityBlock.module.sass'
+import Image from '@ui/image/Image'
 
 interface PropsActivityBlock {
 	urlImage: string
@@ -10,9 +11,7 @@ interface PropsActivityBlock {
 const ActivityBlock: React.FC<PropsActivityBlock> = ({ urlImage, title, children }) => {
 	return (
 		<div className={sass.block}>
-			<div className={sass.wrap}>
-				<img src={urlImage} alt={title} className={sass.icon} />
-			</div>
+			<Image url={urlImage} alt={title} classesWrap={sass.wrap} classesImage={sass.icon} />
 
 			<h2 className={sass.title}>{title}</h2>
 			<p className={sass.description}>{children}</p>
