@@ -52,10 +52,12 @@ const Image: React.FC<PropsImage> = ({ url, alt, objectFit, classesWrap, classes
 		}
 	}, [classesWrap, classesImage, objectFit, setClassWrap, setAllClassesImage])
 
-	return (
+	return classesWrap ? (
 		<div className={classWrap}>
 			<img src={typeof url === 'string' ? url : url.default} alt={alt ?? ''} className={allClassesImage} />
 		</div>
+	) : (
+		<img src={typeof url === 'string' ? url : url.default} alt={alt ?? ''} className={allClassesImage} />
 	)
 }
 

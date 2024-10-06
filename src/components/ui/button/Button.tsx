@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import sass from './Button.module.sass'
-import { ButtonContent } from '@utils/spotButton'
+import { ButtonContent, Content } from '@utils/spotButton'
+import Image from '@ui/image/Image'
 
 interface PropsButton {
 	content: ButtonContent
@@ -8,7 +9,7 @@ interface PropsButton {
 
 const Button: React.FC<PropsButton> = ({ content }) => {
 	const [classButton, setClassButton] = useState<string>(sass.social)
-	const [imgButton, setImgButton] = useState<string>('')
+	const [imgButton, setImgButton] = useState<Content>('')
 	const [imgAltButton, setImgAltButton] = useState<string>('')
 
 	useEffect(() => {
@@ -27,7 +28,7 @@ const Button: React.FC<PropsButton> = ({ content }) => {
 
 	return (
 		<button type='button' className={classButton}>
-			<img className={sass.image} src={imgButton} alt={imgAltButton} />
+			<Image url={imgButton} alt={imgAltButton} classesImage={sass.image} />
 		</button>
 	)
 }

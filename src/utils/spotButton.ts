@@ -1,33 +1,40 @@
+import SVGImage from 'SVGImage'
+
+type TypeImage = 'social' | 'big' | 'small'
+export type Content = string | SVGImage
+
 export interface ButtonContent {
-	type: 'social' | 'big' | 'small'
-	img: string
+	type: TypeImage
+	img: Content
 	text: string
 }
 
-export const spotButton = (type: 'social' | 'big' | 'small', content: string, altImg?: string): ButtonContent => {
-	switch (type) {
-		case 'social':
-			return {
-				type: 'social',
-				img: content,
-				text: altImg ?? '',
-			}
-		case 'big':
-			if (!altImg) console.warn("В компоненте 'Button' с типом 'big' не имеет смысла вставлять что-то в аргумент 'aliImg'")
+export const spotButton = (type: TypeImage, content: Content, altImg?: string): ButtonContent => {
+	if (type === 'social') {
+		return {
+			type: 'social',
+			img: content,
+			text: altImg ?? '',
+		}
+	} else {
+		if (!altImg) {
+			console.warn(`В компоненте 'Button' с типом '${type}' не имеет смысла вставлять что-то в аргумент 'aliImg'`)
+		}
+
+		if (typeof content !== 'string') {
+			console.error(`В компоненте 'Button' с типом '${type}' невозможно поставить в аргумент 'content' как векторное изображение 'SVGImage'`)
 
 			return {
-				type: 'big',
+				type,
 				img: '',
-				text: content,
+				text: '',
 			}
-		case 'small':
-		default:
-			if (!altImg) console.warn("В компоненте 'Button' с типом 'small' не имеет смысла вставлять что-то в аргумент 'aliImg'")
+		}
 
-			return {
-				type: 'small',
-				img: '',
-				text: content,
-			}
+		return {
+			type,
+			img: '',
+			text: content,
+		}
 	}
 }
