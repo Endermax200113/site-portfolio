@@ -1,5 +1,6 @@
 import React from 'react'
 import sass from './Logo.module.sass'
+import Image from '@ui/image/Image'
 
 interface PropsLogo {
 	name: string
@@ -13,7 +14,7 @@ const Logo: React.FC<PropsLogo> = ({ name }) => {
 	return (
 		<li className={sass['nav-logo']}>
 			<a href='/' className={sass['logo-link']}>
-				<img className={name} src={require('@img/logo.png')} alt='Логотип' />
+				<Image url={require('@img/logo.png')} classesImage={name} alt='Логотип' />
 			</a>
 		</li>
 	)
