@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import sass from './BlocksSkills.module.sass'
 import { BlockSkills, AllSkills, FourSkills, Skill } from '@helper/skills'
+import Label from '@ui/text/label/Label'
+import Image from '@ui/image/Image'
 
 interface PropsBlocksSkills {}
 
