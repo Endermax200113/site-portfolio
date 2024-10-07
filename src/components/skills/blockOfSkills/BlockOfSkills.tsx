@@ -1,8 +1,7 @@
 import React from 'react'
 import sass from './BlockOfSkills.module.sass'
 import { FourSkills } from '@helper/skills'
-import Label from '@ui/text/label/Label'
-import Image from '@ui/image/Image'
+import RowSkills from './../rowSkills/RowSkills'
 
 interface PropsBlockOfSkills {
 	name: string
@@ -16,18 +15,7 @@ const BlockOfSkills: React.FC<PropsBlockOfSkills> = ({ name, arrFourSkills }) =>
 
 			<div className={sass['skills-block']}>
 				{arrFourSkills.map((fourSkills, i) => {
-					return (
-						<div className={sass['skills-row']} key={i}>
-							{fourSkills.map(([url, name], i) => {
-								return (
-									<div className={sass.skill} key={i}>
-										<Image url={url} classesWrap={sass.wrap} alt={name} />
-										<Label classes={sass.name}>{name}</Label>
-									</div>
-								)
-							})}
-						</div>
-					)
+					return <RowSkills rowSkills={fourSkills} key={i} />
 				})}
 			</div>
 		</div>
