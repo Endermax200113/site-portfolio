@@ -6,16 +6,58 @@
 	align-items: center
 	justify-content: flex-start
 
+	&-block
+		width: 1000px
+		margin-top: 95px //TODO Перенести это свойство на другой компонент
+		margin-left: -70px
+		display: flex
+		flex-direction: column
+
+	&-row
+		width: 100%
+		margin-top: 55px
+		display: flex
+
+		&:first-child
+			margin-top: 0px
+
+.skill
+	width: 250px
+	display: flex
+	flex-direction: column
+	align-items: center
+
 .headline
 	margin-top: 75px
 
 .blocks
-	margin-top: 105px //TODO Перенести это свойство на другой компонент
-	width: 1000px
+	margin-top: 95px //TODO Перенести это свойство на другой компонент
+	margin-bottom: 160px
+	width: 860px
+
+.block
+	margin-top: 100px
+
+	&:first-child
+		margin-top: 0px
 
 .title
 	font-family: $font-montserrat
 	font-weight: 700
 	font-size: 30px
+	text-transform: uppercase
 	letter-spacing: 0.19em
 	color: $color-full-black
+
+.wrap
+	width: max(150px, 100px)
+	height: 100px
+
+.name
+	height: 50px
+	margin-top: 20px
+	text-transform: uppercase
+	text-align: center
+	display: flex
+	justify-content: center
+	align-items: center
