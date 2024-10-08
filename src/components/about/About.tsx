@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import sass from './About.module.sass'
 import Quote from '@ui/quote/Quote'
-import Headline from '@ui/text/headline/Headline'
+import Heading from '@ui/text/heading/Heading'
 import Separator from '@ui/separator/Separator'
 import Activity from './activity/Activity'
 
@@ -22,7 +22,7 @@ const About: React.FC<PropsAbout> = () => {
 
 	return (
 		<section className={sass.about} id='about'>
-			<Headline text='Обо мне' classes={sass.headline} />
+			<Heading text='Обо мне' classes={sass.heading} />
 			<Quote paragraphs={paragraphs} classes={sass.quote} />
 			<Separator classes={sass['separator-wrap']} />
 			<Activity classes={sass.activity} />
