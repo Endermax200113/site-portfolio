@@ -1,7 +1,7 @@
 declare module 'SVGImage' {
-	import React = require('react')
+	import * as React from ('react')
 
-	const ReactComponent: React.FunctionComponent<React.SVGProps<SVGSVGElement>>
+	const ReactComponent: React.FunctionComponent<React.SVGProps<SVGSVGElement> & {title?: string}>
 	const src: string
 	type SVG = {
 		ReactComponent

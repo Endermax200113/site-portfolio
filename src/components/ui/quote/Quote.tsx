@@ -24,7 +24,11 @@ const Quote: React.FC<PropsQuote> = ({ paragraphs, classes }) => {
 	return (
 		<blockquote className={allClassesQuote}>
 			{paragraphs.map((paragraph: string, i: number) => {
-				return <Description key={i}>{paragraph}</Description>
+				return (
+					<Description classes={sass.description} key={i}>
+						{paragraph}
+					</Description>
+				)
 			})}
 		</blockquote>
 	)
