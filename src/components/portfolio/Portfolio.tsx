@@ -33,6 +33,8 @@ const Portfolio: React.FC<PropsPortfolio> = () => {
 		text: 'К сайту',
 	}
 
+	const test = HTMLDivElement
+
 	useEffect(() => {
 		const arr: Projects = []
 
@@ -51,6 +53,8 @@ const Portfolio: React.FC<PropsPortfolio> = () => {
 			site: 'https://www.example.com/index.php',
 		})
 
+		arr.reverse()
+
 		setArrProjects(arr)
 	}, [setArrProjects])
 
@@ -66,7 +70,7 @@ const Portfolio: React.FC<PropsPortfolio> = () => {
 				{arrProjects.map((project: Project, i: number) => {
 					return (
 						<div className={sass.project} key={i}>
-							<Image url={project.urlImage} objectFit='cover' alt={project.name} classesWrap={sass['project-image-wrap']} />
+							<Image url={project.urlImage} objectFit='cover' alt={project.name} classesWrap={sass['project-image-wrap']} classesImage={sass['project-image']} />
 
 							<div className={sass.info}>
 								<h2 className={sass.title}>{project.name}</h2>
@@ -81,6 +85,13 @@ const Portfolio: React.FC<PropsPortfolio> = () => {
 					)
 				})}
 			</div>
+			{arrProjects.length > 6 && (
+				<div className={sass.more}>
+					<a href='#more' className={sass.link}>
+						Показать все проекты
+					</a>
+				</div>
+			)}
 		</section>
 	)
 }
