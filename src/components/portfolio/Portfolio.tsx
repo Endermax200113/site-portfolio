@@ -10,6 +10,8 @@ interface PropsPortfolio {}
 const Portfolio: React.FC<PropsPortfolio> = () => {
 	const [arrProjects, setArrProjects] = useState<AllProjects>([])
 
+	//TODO Заполнить все проекты
+
 	useEffect(() => {
 		const arr: AllProjects = []
 

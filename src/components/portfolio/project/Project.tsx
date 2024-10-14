@@ -5,6 +5,7 @@ import { ButtonContent } from '@utils/spotButton'
 import Image from '@ui/image/Image'
 import Description from '@ui/text/description/Description'
 import Button from '@ui/button/Button'
+import Heading from '@ui/text/heading/Heading'
 
 interface PropsProject {
 	project: OneProject
@@ -28,7 +29,7 @@ const Project: React.FC<PropsProject> = ({ project }) => {
 			<Image url={project.urlImage} objectFit='cover' alt={project.name} classesWrap={sass['project-image-wrap']} classesImage={sass['project-image']} />
 
 			<div className={sass.info}>
-				<h2 className={sass.title}>{project.name}</h2>
+				<Heading level='2' classes={sass.title} text={project.name} />
 				<Description classes={sass.description}>{project.description}</Description>
 
 				<div className={sass.buttons}>
