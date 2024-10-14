@@ -1,4 +1,4 @@
-export type Project = {
+export type OneProject = {
 	urlImage: string
 	name: string
 	description: string
@@ -6,4 +6,4 @@ export type Project = {
 	site?: string
 }
 
-export type AllProjects = Project[]
+export type AllProjects = OneProject[]
