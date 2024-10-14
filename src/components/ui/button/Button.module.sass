@@ -2,14 +2,21 @@
 
 @include imp-font($font-montserrat, ('SemiBold': 600))
 
-.social
-	width: 61px
-	height: 56px
+%button
 	border: none
 	outline: none
+	background-color: transparent
+	font-family: $font-montserrat
+	text-align: center
+	text-transform: uppercase
+	cursor: pointer
+
+.social
+	@extend %button
+	width: 61px
+	height: 56px
 	background-color: $color-lighter-gray
 	box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25)
-	cursor: pointer
 	display: flex
 	justify-content: center
 	align-items: center
@@ -22,18 +29,22 @@
 	height: 35px
 
 .small
+	@extend %button
 	width: 115px
 	height: 25px
-	background-color: transparent
-	border: none
-	outline: none
 	border-left: 2px solid $color-full-white
 	border-right: 2px solid $color-full-white
-	font-family: $font-montserrat
 	font-weight: 600
 	font-size: 12px
 	letter-spacing: 0.1em
-	text-align: center
-	text-transform: uppercase
 	color: $color-full-white
-	cursor: pointer
+
+.big
+	@extend %button
+	width: 200px
+	height: 45px
+	border-left: 3px solid $color-full-black
+	border-right: 3px solid $color-full-black
+	font-weight: 700
+	font-size: 16px
+	color: $color-full-black

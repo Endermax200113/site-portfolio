@@ -13,7 +13,7 @@ const Info: React.FC<PropsInfo> = () => {
 	useEffect(() => {
 		const arr: [TypeLabel, string][] = []
 
-		arr.push(['welcome', 'Привет! Я'])
+		arr.push(['welcome', 'Здравствуйте! Я'])
 		arr.push(['name', 'Халласаар Максим'])
 		arr.push(['profession', 'Frontend-разработчик'])
 

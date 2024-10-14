@@ -23,6 +23,7 @@ const Button: React.FC<PropsButton> = ({ content, classes }) => {
 					setImgAltButton(content.text)
 					break
 				case 'big':
+					setClassButton(mergeAllClasses([sass.big], classes))
 					break
 				case 'small':
 					setClassButton(mergeAllClasses([sass.small], classes))
