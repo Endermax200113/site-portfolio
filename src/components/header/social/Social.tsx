@@ -1,25 +1,31 @@
 import React, { useEffect, useState } from 'react'
-import sass from './Social.module.sass'
-import { ButtonContent, spotButton } from '@utils/spotButton'
 import Button from '@ui/button/Button'
+import Image from '@ui/image/Image'
+import sass from './Social.module.sass'
+
+type SocialImage = [url: string, altImage: string]
 
 const Social: React.FC = () => {
-	const [arrButtons, setArrButtons] = useState<ButtonContent[]>([])
+	const [arrButtons, setArrButtons] = useState<SocialImage[]>([])
 
 	useEffect(() => {
-		const arr: ButtonContent[] = []
+		const arr: SocialImage[] = []
 
-		arr.push(spotButton('social', require('@img/social/vk.png'), 'VK'))
-		arr.push(spotButton('social', require('@img/social/github.png'), 'GitHub'))
-		arr.push(spotButton('social', require('@img/social/telegram.png'), 'Telegram'))
+		arr.push([require('@img/social/vk.png'), 'VK'])
+		arr.push([require('@img/social/github.png'), 'GitHub'])
+		arr.push([require('@img/social/telegram.png'), 'Telegram'])
 
 		setArrButtons(arr)
 	}, [setArrButtons])
 
 	return (
 		<div className={sass.social}>
-			{arrButtons.map((btnContent, i) => {
-				return <Button content={btnContent} classes={sass.button} key={i} />
+			{arrButtons.map(([url, altImage], i) => {
+				return (
+					<Button classes={sass.button} key={i}>
+						<Image url={url} alt={altImage} classesWrap={sass.wrap} />
+					</Button>
+				)
 			})}
 		</div>
 	)

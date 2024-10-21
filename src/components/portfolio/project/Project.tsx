@@ -1,7 +1,6 @@
 import React from 'react'
 import sass from './Project.module.sass'
 import { OneProject } from '@helper/portfolio'
-import { ButtonContent } from '@utils/spotButton'
 import Image from '@ui/image/Image'
 import Description from '@ui/text/description/Description'
 import Button from '@ui/button/Button'
@@ -12,18 +11,6 @@ interface PropsProject {
 }
 
 const Project: React.FC<PropsProject> = ({ project }) => {
-	const btnContentMore: ButtonContent = {
-		type: 'small',
-		img: '',
-		text: 'Подробнее',
-	}
-
-	const btnContentSite: ButtonContent = {
-		type: 'small',
-		img: '',
-		text: 'К сайту',
-	}
-
 	return (
 		<div className={sass.project}>
 			<Image url={project.urlImage} objectFit='cover' alt={project.name} classesWrap={sass['project-image-wrap']} classesImage={sass['project-image']} />
@@ -33,8 +20,15 @@ const Project: React.FC<PropsProject> = ({ project }) => {
 				<Description classes={sass.description}>{project.description}</Description>
 
 				<div className={sass.buttons}>
-					{project.site !== undefined && <Button content={btnContentSite} classes={sass.button} />}
-					<Button content={btnContentMore} classes={sass.button} />
+					{project.site && (
+						<Button type='small' classes={sass.button}>
+							К сайту
+						</Button>
+					)}
+
+					<Button type='small' classes={sass.button}>
+						Подробнее
+					</Button>
 				</div>
 			</div>
 		</div>

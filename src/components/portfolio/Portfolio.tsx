@@ -4,11 +4,13 @@ import Image from '@ui/image/Image'
 import Heading from '@ui/text/heading/Heading'
 import { AllProjects } from '@helper/portfolio'
 import Projects from './projects/Projects'
+import Link from '@ui/link/Link'
 
 interface PropsPortfolio {}
 
 const Portfolio: React.FC<PropsPortfolio> = () => {
 	const [arrProjects, setArrProjects] = useState<AllProjects>([])
+	const [showMore, setShowMore] = useState<boolean>(false)
 
 	//TODO Заполнить все проекты
 
@@ -29,11 +31,62 @@ const Portfolio: React.FC<PropsPortfolio> = () => {
 			details: 'url',
 			site: 'https://www.example.com/index.php',
 		})
+		arr.push({
+			urlImage: require('@img/portfolio/heading.jpg'),
+			name: 'Test 1',
+			description: 'Тестовый проект',
+			details: 'url',
+		})
+
+		arr.push({
+			urlImage: require('@img/portfolio/heading.jpg'),
+			name: 'Test 1',
+			description: 'Тестовый проект',
+			details: 'url',
+			site: 'https://www.example.com/index.php',
+		})
+		arr.push({
+			urlImage: require('@img/portfolio/heading.jpg'),
+			name: 'Test 1',
+			description: 'Тестовый проект',
+			details: 'url',
+		})
+
+		arr.push({
+			urlImage: require('@img/portfolio/heading.jpg'),
+			name: 'Test 1',
+			description: 'Тестовый проект',
+			details: 'url',
+			site: 'https://www.example.com/index.php',
+		})
+		arr.push({
+			urlImage: require('@img/portfolio/heading.jpg'),
+			name: 'Test 1',
+			description: 'Тестовый проект',
+			details: 'url',
+		})
+
+		arr.push({
+			urlImage: require('@img/portfolio/heading.jpg'),
+			name: 'Test 1',
+			description: 'Тестовый проект',
+			details: 'url',
+			site: 'https://www.example.com/index.php',
+		})
 
 		arr.reverse()
 
-		setArrProjects(arr)
-	}, [setArrProjects])
+		const newArr: AllProjects = []
+
+		for (let i = 0; i < 6; i++) {
+			newArr.push(arr[i])
+		}
+
+		setArrProjects(newArr)
+
+		if (arr.length > 6) setShowMore(true)
+		else setShowMore(false)
+	}, [setArrProjects, setShowMore])
 
 	return (
 		<section id='portfolio' className={sass.portfolio}>
@@ -45,11 +98,9 @@ const Portfolio: React.FC<PropsPortfolio> = () => {
 
 			<Projects projects={arrProjects} />
 
-			{arrProjects.length > 6 && (
+			{showMore && (
 				<div className={sass.more}>
-					<a href='#more' className={sass.link}>
-						Показать все проекты
-					</a>
+					<Link link='#more' text='Показать все проекты' classes={sass.link} />
 				</div>
 			)}
 		</section>

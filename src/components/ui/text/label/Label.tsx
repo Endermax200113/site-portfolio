@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { ReactNode, useEffect, useState } from 'react'
 import sass from './Label.module.sass'
 import { mergeAllClasses } from '@utils/sassControl'
 
 interface PropsLabel {
-	children: string
+	children: ReactNode
 	type?: 'welcome' | 'name' | 'profession'
 	classes?: string
 }

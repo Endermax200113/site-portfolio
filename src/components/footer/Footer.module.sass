@@ -1,0 +1,64 @@
+@import '@sass/_main'
+
+@include imp-font($font-nunito, ('Bold': 700))
+@include imp-font($font-roboto, ('Regular': 400))
+
+.footer
+	flex: $flex-rest
+	width: 100%
+	height: 325px
+	background-color: $color-light-black
+	display: flex
+	flex-direction: column
+	align-items: center
+	justify-content: center
+
+.back
+	border: none
+	outline: none
+	background-color: transparent
+	font-family: $font-montserrat
+	font-weight: 700
+	font-size: 15px
+	text-transform: uppercase
+	color: $color-full-white
+	display: flex
+	flex-direction: column
+	align-items: center
+	cursor: pointer
+
+.wrap
+	width: 15px
+	height: 15px
+	margin-bottom: 10px
+
+.social
+	margin-top: 50px
+	display: flex
+
+	&-wrap
+		width: 30px
+		aspect-ratio: 1
+		display: flex
+		justify-content: center
+		align-items: center
+
+	&-button
+		margin-right: 30px
+
+		&:last-child
+			margin-right: 0px
+
+.copyright
+	margin-top: 45px
+	font-size: 18px
+	letter-spacing: normal
+	color: $color-full-white
+
+	&-bold
+		font-family: $font-nunito
+		font-weight: 700
+
+	&-normal
+		font-family: $font-roboto
+		font-weight: 400

@@ -1,46 +1,40 @@
-import React, { useEffect, useState } from 'react'
+import React, { MouseEvent, ReactNode, useEffect, useState } from 'react'
 import sass from './Button.module.sass'
-import { ButtonContent, Content } from '@utils/spotButton'
-import Image from '@ui/image/Image'
 import { mergeAllClasses } from '@utils/sassControl'
 
 interface PropsButton {
-	content: ButtonContent
+	children: ReactNode
+	type?: 'big' | 'small' | 'custom'
+	click?: (e?: MouseEvent) => void
 	classes?: string
 }
 
-const Button: React.FC<PropsButton> = ({ content, classes }) => {
-	const [classButton, setClassButton] = useState<string>(sass.social)
-	const [imgButton, setImgButton] = useState<Content>('')
-	const [imgAltButton, setImgAltButton] = useState<string>('')
+const Button: React.FC<PropsButton> = ({ type, children, click, classes }) => {
+	const [allClassesButton, setAllClassesButton] = useState<string>(sass.big)
 
 	useEffect(() => {
-		const spotTypeButton = (classes?: string): void => {
-			switch (content.type) {
-				case 'social':
-					setClassButton(mergeAllClasses([sass.social], classes))
-					setImgButton(content.img)
-					setImgAltButton(content.text)
+		const spotTypeButton = (classButton?: string): void => {
+			switch (type) {
+				case 'small':
+					setAllClassesButton(mergeAllClasses([sass.small], classButton))
 					break
 				case 'big':
-					setClassButton(mergeAllClasses([sass.big], classes))
+					setAllClassesButton(mergeAllClasses([sass.big], classButton))
 					break
-				case 'small':
-					setClassButton(mergeAllClasses([sass.small], classes))
-					break
+				case 'custom':
 				default:
-					console.error(new Error('Систематическая ошибка! В компоненте "Button" отсутствует аргумент тип кнопки.'), content.type)
+					setAllClassesButton(mergeAllClasses([sass.custom], classButton))
 					break
 			}
 		}
 
 		if (classes) spotTypeButton(classes)
 		else spotTypeButton()
-	}, [content, classes, setClassButton, setImgButton, setImgAltButton])
+	}, [type, classes, setAllClassesButton])
 
 	return (
-		<button type='button' className={classButton}>
-			{content.img !== '' ? <Image url={imgButton} alt={imgAltButton} classesImage={sass.image} /> : <span>{content.text}</span>}
+		<button type='button' className={allClassesButton} onClick={e => click && click(e)}>
+			{children}
 		</button>
 	)
 }

@@ -6,12 +6,13 @@ import Social from './../social/Social'
 interface PropsInfo {}
 
 type TypeLabel = 'welcome' | 'name' | 'profession' | undefined
+type Labels = [TypeLabel, string]
 
 const Info: React.FC<PropsInfo> = () => {
-	const [arrLabels, setArrLabels] = useState<[TypeLabel, string][]>([])
+	const [arrLabels, setArrLabels] = useState<Labels[]>([])
 
 	useEffect(() => {
-		const arr: [TypeLabel, string][] = []
+		const arr: Labels[] = []
 
 		arr.push(['welcome', 'Здравствуйте! Я'])
 		arr.push(['name', 'Халласаар Максим'])

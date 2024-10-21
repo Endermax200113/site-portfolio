@@ -7,9 +7,11 @@ interface PropsActivity {
 	classes?: string
 }
 
+type ArrDescriptions = [urlImage: string, title: string, description: string]
+
 const Activity: React.FC<PropsActivity> = ({ classes }) => {
 	const [allClassesActivity, setAllClassesActivity] = useState<string>(sass.activity)
-	const [arrDescriptions, setArrDescriptions] = useState<[urlImage: string, title: string, description: string][]>([])
+	const [arrDescriptions, setArrDescriptions] = useState<ArrDescriptions[]>([])
 
 	useEffect(() => {
 		if (!classes) {
@@ -18,7 +20,7 @@ const Activity: React.FC<PropsActivity> = ({ classes }) => {
 			return
 		}
 
-		const arrDescs: [urlImage: string, title: string, description: string][] = []
+		const arrDescs: ArrDescriptions[] = []
 
 		arrDescs.push([require('@img/about/frontend.png'), 'Frontend-разработка', 'Уже как 5 лет я занимаюсь вёрсткой разных кросс-браузерных и семантических сайтов различных сложностей, которые соответствуют строго по макету.'])
 

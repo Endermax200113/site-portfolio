@@ -5,17 +5,10 @@ import Description from '@ui/text/description/Description'
 import Separator from '@ui/separator/Separator'
 import Image from '@ui/image/Image'
 import Button from '@ui/button/Button'
-import { ButtonContent } from '@utils/spotButton'
 
 interface PropsResume {}
 
 const Resume: React.FC<PropsResume> = () => {
-	const btnDownload: ButtonContent = {
-		type: 'big',
-		img: '',
-		text: 'Скачать файл',
-	}
-
 	return (
 		<section id='cv' className={sass.resume}>
 			<div className={sass.gradient}>
@@ -27,7 +20,9 @@ const Resume: React.FC<PropsResume> = () => {
 
 				<Image url={require('@img/resume/preview.png')} classesWrap={sass.wrap} classesImage={sass.image} />
 
-				<Button content={btnDownload} classes={sass.button} />
+				<Button type='big' classes={sass.button}>
+					Скачать файл
+				</Button>
 			</div>
 		</section>
 	)
