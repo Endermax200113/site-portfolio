@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import sass from './Quote.module.sass'
 import Description from '@ui/text/description/Description'
-import { mergeAllClasses } from '@utils/sassControl'
+import useClass from '@hooks/useClass'
 
 interface PropsQuote {
 	paragraphs: string[]
@@ -9,17 +9,7 @@ interface PropsQuote {
 }
 
 const Quote: React.FC<PropsQuote> = ({ paragraphs, classes }) => {
-	const [allClassesQuote, setAllClassesQuote] = useState<string>(sass.quote)
-
-	useEffect(() => {
-		if (!classes) {
-			setAllClassesQuote(sass.quote)
-
-			return
-		}
-
-		setAllClassesQuote(mergeAllClasses([sass.quote], classes))
-	}, [classes, setAllClassesQuote])
+	const allClassesQuote: string = useClass(sass.quote, classes)
 
 	return (
 		<blockquote className={allClassesQuote}>

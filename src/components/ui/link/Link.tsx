@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import sass from './Link.module.sass'
-import { mergeAllClasses } from '@utils/sassControl'
+import useClass from '@hooks/useClass'
 
 interface PropsLink {
 	link: string
@@ -9,16 +9,7 @@ interface PropsLink {
 }
 
 const Link: React.FC<PropsLink> = ({ link, text, classes }) => {
-	const [allClassesLink, setAllClassesLink] = useState<string>(sass.link)
-
-	useEffect(() => {
-		if (!classes) {
-			setAllClassesLink(sass.link)
-			return
-		}
-
-		setAllClassesLink(mergeAllClasses([sass.link], classes))
-	}, [classes, setAllClassesLink])
+	const allClassesLink: string = useClass(sass.link, classes)
 
 	return (
 		<a href={link} className={allClassesLink}>

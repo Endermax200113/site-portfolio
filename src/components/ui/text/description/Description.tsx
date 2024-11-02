@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import sass from './Description.module.sass'
-import { mergeAllClasses } from '@utils/sassControl'
+import useClass from '@hooks/useClass'
 
 interface PropsDescription {
 	children: string
@@ -8,16 +8,7 @@ interface PropsDescription {
 }
 
 const Description: React.FC<PropsDescription> = ({ children, classes }) => {
-	const [allClassesDescription, setAllClassesDescription] = useState<string>(sass.description)
-
-	useEffect(() => {
-		if (!classes) {
-			setAllClassesDescription(sass.description)
-			return
-		}
-
-		setAllClassesDescription(mergeAllClasses([sass.description], classes))
-	}, [classes, setAllClassesDescription])
+	const allClassesDescription: string = useClass(sass.description, classes)
 
 	return <p className={allClassesDescription}>{children}</p>
 }

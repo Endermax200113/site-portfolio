@@ -27,6 +27,7 @@
 			"@utils/*": ["./utils/*"],
 			"@helper/*": ["./helper/*"],
 			"@modules/*": ["./modules/*"],
+			"@hooks/*": ["./hooks/*"],
 			"@/*": ["./*"]
 		}
 	},

@@ -1,24 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import sass from './Separator.module.sass'
-import { mergeAllClasses } from '@utils/sassControl'
 import Image from '@ui/image/Image'
+import useClass from '@hooks/useClass'
 
 interface PropsSeparator {
 	classes?: string
 }
 
 const Separator: React.FC<PropsSeparator> = ({ classes }) => {
-	const [allClassesWrap, setAllClassesWrap] = useState<string>(sass.wrap)
-
-	useEffect(() => {
-		if (!classes) {
-			setAllClassesWrap(sass.wrap)
-
-			return
-		}
-
-		setAllClassesWrap(mergeAllClasses([sass.wrap], classes))
-	}, [classes, setAllClassesWrap])
+	const allClassesWrap: string = useClass(sass.wrap, classes)
 
 	return <Image url={require('@svg/separator.svg')} classesWrap={allClassesWrap} alt='Разделитель' />
 }

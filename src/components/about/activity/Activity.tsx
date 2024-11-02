@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import sass from './Activity.module.sass'
-import { mergeAllClasses } from '@utils/sassControl'
 import ActivityBlock from './activityBlock/ActivityBlock'
+import useClass from '@hooks/useClass'
 
 interface PropsActivity {
 	classes?: string
@@ -10,16 +10,10 @@ interface PropsActivity {
 type ArrDescriptions = [urlImage: string, title: string, description: string]
 
 const Activity: React.FC<PropsActivity> = ({ classes }) => {
-	const [allClassesActivity, setAllClassesActivity] = useState<string>(sass.activity)
 	const [arrDescriptions, setArrDescriptions] = useState<ArrDescriptions[]>([])
+	const allClassesActivity: string = useClass(sass.activity, classes)
 
 	useEffect(() => {
-		if (!classes) {
-			setAllClassesActivity(sass.activity)
-
-			return
-		}
-
 		const arrDescs: ArrDescriptions[] = []
 
 		arrDescs.push([require('@img/about/frontend.png'), 'Frontend-разработка', 'Уже как 5 лет я занимаюсь вёрсткой разных кросс-браузерных и семантических сайтов различных сложностей, которые соответствуют строго по макету.'])
@@ -28,9 +22,8 @@ const Activity: React.FC<PropsActivity> = ({ classes }) => {
 
 		arrDescs.push([require('@img/about/english.png'), 'Английский язык', 'Т.к. английский язык является международным языком, естественно, в начальной школе я выбрал именно его. Сейчас я изучаю английский язык в разговорном плане.'])
 
-		setAllClassesActivity(mergeAllClasses([sass.activity], classes))
 		setArrDescriptions(arrDescs)
-	}, [classes, setAllClassesActivity, setArrDescriptions])
+	}, [setArrDescriptions])
 
 	return (
 		<div className={allClassesActivity}>

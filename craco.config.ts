@@ -13,6 +13,7 @@ export default {
 			'@utils': path.resolve(__dirname, 'src/utils'),
 			'@helper': path.resolve(__dirname, 'src/helper'),
 			'@modules': path.resolve(__dirname, 'src/modules'),
+			'@hooks': path.resolve(__dirname, 'src/hooks'),
 			'@': path.resolve(__dirname, 'src'),
 		},
 	},
