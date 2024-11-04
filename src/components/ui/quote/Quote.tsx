@@ -1,7 +1,7 @@
 import React from 'react'
 import sass from './Quote.module.sass'
 import Description from '@ui/text/description/Description'
-import useClass from '@hooks/useClass'
+import { useClass } from '@hooks/useClass'
 
 interface PropsQuote {
 	paragraphs: string[]

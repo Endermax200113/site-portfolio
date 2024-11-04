@@ -1,6 +1,6 @@
 import React from 'react'
 import sass from './Link.module.sass'
-import useClass from '@hooks/useClass'
+import { useClass } from '@hooks/useClass'
 
 interface PropsLink {
 	link: string

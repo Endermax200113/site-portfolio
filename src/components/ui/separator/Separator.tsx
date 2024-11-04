@@ -1,7 +1,7 @@
 import React from 'react'
 import sass from './Separator.module.sass'
 import Image from '@ui/image/Image'
-import useClass from '@hooks/useClass'
+import { useClass } from '@hooks/useClass'
 
 interface PropsSeparator {
 	classes?: string

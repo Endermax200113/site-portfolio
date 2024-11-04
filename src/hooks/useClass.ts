@@ -1,8 +1,9 @@
 import { mergeAllClasses } from '@utils/sassControl'
-import { useEffect, useState } from 'react'
+import { useDebugValue, useEffect, useState } from 'react'
 
-const useClass = (defaultClass: string, classes?: string): string => {
+export const useClass = (defaultClass: string, classes?: string): string => {
 	const [allClasses, setAllClasses] = useState<string>(defaultClass)
+	useDebugValue(allClasses)
 
 	useEffect(() => {
 		if (!classes) {
@@ -15,5 +16,3 @@ const useClass = (defaultClass: string, classes?: string): string => {
 
 	return allClasses
 }
-
-export default useClass

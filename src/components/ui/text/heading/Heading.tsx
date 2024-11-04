@@ -1,6 +1,6 @@
 import React, { createElement } from 'react'
 import sass from './Heading.module.sass'
-import useClass from '@hooks/useClass'
+import { useClass } from '@hooks/useClass'
 
 interface PropsHeading {
 	text: string
