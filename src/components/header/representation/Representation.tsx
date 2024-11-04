@@ -1,24 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import sass from './Representation.module.sass'
 import Image from '@ui/image/Image'
+import { dataRepresentation, DataRepresentation } from '@/data/representation'
+import { useArray } from '@hooks/useArray'
 
 interface PropsRepresentation {}
 
-type ForArrImages = [url: string, alt: string]
-
 const Representation: React.FC<PropsRepresentation> = () => {
-	const [arrImages, setArrImages] = useState<ForArrImages[]>([])
-
-	useEffect(() => {
-		const arr: ForArrImages[] = []
-
-		arr.push([require('@img/header/smartphone.png'), 'Смартфон'])
-		arr.push([require('@img/header/tablet.png'), 'Планшет'])
-		arr.push([require('@img/header/pc.png'), 'Компьютер'])
-		arr.push([require('@img/header/laptop.png'), 'Ноутбук'])
-
-		setArrImages(arr)
-	}, [setArrImages])
+	const arrImages: DataRepresentation[] = useArray<DataRepresentation>(() => dataRepresentation)
 
 	return (
 		<div className={sass.representation}>

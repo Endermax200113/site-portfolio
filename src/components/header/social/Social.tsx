@@ -1,40 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import Button from '@ui/button/Button'
 import Image from '@ui/image/Image'
 import sass from './Social.module.sass'
-
-type SocialImage = {
-	link: string
-	urlImage: string
-	altImage: string
-}
+import { dataHeaderSocialImage, DataHeaderSocialImage } from '@/data/headerSocial'
+import { useArray } from '@hooks/useArray'
 
 const Social: React.FC = () => {
-	const [arrButtons, setArrButtons] = useState<SocialImage[]>([])
-
-	useEffect(() => {
-		const arr: SocialImage[] = []
-
-		arr.push({
-			link: 'https://vk.com/maks_hallasaar',
-			urlImage: require('@img/social/vk.png'),
-			altImage: 'VK',
-		})
-
-		arr.push({
-			link: 'https://github.com/Endermax200113',
-			urlImage: require('@img/social/github.png'),
-			altImage: 'GitHub',
-		})
-
-		arr.push({
-			link: 'https://t.me/justmax2001',
-			urlImage: require('@img/social/telegram.png'),
-			altImage: 'Telegram',
-		})
-
-		setArrButtons(arr)
-	}, [setArrButtons])
+	const arrButtons: DataHeaderSocialImage[] = useArray<DataHeaderSocialImage>(() => dataHeaderSocialImage)
 
 	return (
 		<div className={sass.social}>

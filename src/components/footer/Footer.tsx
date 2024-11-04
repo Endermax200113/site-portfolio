@@ -1,55 +1,21 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import sass from './Footer.module.sass'
 import Image from '@ui/image/Image'
 import Button from '@ui/button/Button'
 import Label from '@ui/text/label/Label'
+import { useArray } from '@hooks/useArray'
+import { DataImagesSocial, dataImagesSocial } from '@/data/footer'
 
 interface PropsFooter {}
 
-type ArrImagesSocial = {
-	urlImage: string
-	altImage: string
-	link: string
-}
-
 const Footer: React.FC<PropsFooter> = () => {
-	const [arrImages, setArrImages] = useState<ArrImagesSocial[]>([])
+	const arrImages: DataImagesSocial[] = useArray<DataImagesSocial>(() => dataImagesSocial)
 
 	const clickBackToTop = (): void => {
 		window.scrollTo({
 			top: 0,
 		})
 	}
-
-	useEffect(() => {
-		const arr: ArrImagesSocial[] = []
-
-		arr.push({
-			urlImage: require('@svg/footer/vk.svg'),
-			altImage: 'VK',
-			link: 'https://vk.com/maks_hallasaar',
-		})
-
-		arr.push({
-			urlImage: require('@svg/footer/telegram.svg'),
-			altImage: 'Telegram',
-			link: 'https://t.me/justmax2001',
-		})
-
-		arr.push({
-			urlImage: require('@svg/footer/github.svg'),
-			altImage: 'GitHub',
-			link: 'https://github.com/endermax200113',
-		})
-
-		arr.push({
-			urlImage: require('@svg/footer/mail.svg'),
-			altImage: 'Электронная почта',
-			link: 'mailto:endermax200113@mail.ru',
-		})
-
-		setArrImages(arr)
-	}, [setArrImages])
 
 	return (
 		<footer className={sass.footer}>

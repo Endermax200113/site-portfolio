@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import sass from './BlocksSkills.module.sass'
 import { BlockSkills, AllSkills, FourSkills, Skill } from '@helper/skills'
 import BlockOfSkills from './../blockOfSkills/BlockOfSkills'
+import { dataSkillsBlock } from '@/data/skillsBlock'
+import { useArray } from '@hooks/useArray'
 
 interface PropsBlocksSkills {}
 
 const BlocksSkills: React.FC<PropsBlocksSkills> = () => {
-	const [arrBlocksSkills, setArrBlocksSkills] = useState<BlockSkills[]>([])
-
-	useEffect(() => {
+	const arrBlocksSkills: BlockSkills[] = useArray<BlockSkills>(() => {
 		const arrBlocks: BlockSkills[] = []
 		let arrSkills: AllSkills = []
 		let arrFourSkills: FourSkills = []
@@ -32,39 +32,17 @@ const BlocksSkills: React.FC<PropsBlocksSkills> = () => {
 			arrFourSkills = []
 		}
 
-		arrSkills.push([require('@svg/skills/html.svg'), 'HTML5'])
-		arrSkills.push([require('@svg/skills/pug.svg'), 'Pug'])
-		arrSkills.push([require('@svg/skills/css.svg'), 'CSS3'])
-		arrSkills.push([require('@svg/skills/sass.svg'), 'SASS'])
-
-		arrSkills.push([require('@svg/skills/js.svg'), 'JavaScript'])
-		arrSkills.push([require('@svg/skills/ts.svg'), 'TypeScript'])
-		arrSkills.push([require('@svg/skills/gulp.svg'), 'Gulp'])
-		arrSkills.push([require('@svg/skills/react.svg'), 'React'])
-
-		arrSkills.push([require('@svg/skills/git.svg'), 'Git'])
-		arrSkills.push([require('@svg/skills/figma.svg'), 'Figma'])
-		arrSkills.push([require('@svg/skills/photoshop.svg'), 'Photoshop'])
-		arrSkills.push([require('@svg/skills/illustrator.svg'), 'Illustrator'])
-
+		dataSkillsBlock.use.forEach(arr => arrSkills.push(arr))
 		distributeSkills('Использую:')
 
-		arrSkills.push([require('@svg/skills/vue.svg'), 'Vue'])
-		arrSkills.push([require('@svg/skills/redux.svg'), 'Redux'])
-		arrSkills.push([require('@svg/skills/webpack.svg'), 'Webpack'])
-		arrSkills.push([require('@svg/skills/english.svg'), 'Английский язык A1'])
-
+		dataSkillsBlock.study.forEach(arr => arrSkills.push(arr))
 		distributeSkills('Изучаю:')
 
-		arrSkills.push([require('@svg/skills/java.svg'), 'Java'])
-		arrSkills.push([require('@svg/skills/android.svg'), 'Android'])
-		arrSkills.push([require('@svg/skills/csharp.svg'), 'C#'])
-		arrSkills.push([require('@svg/skills/mysql.svg'), 'MySQL'])
-
+		dataSkillsBlock.other.forEach(arr => arrSkills.push(arr))
 		distributeSkills('Другие навыки:')
 
-		setArrBlocksSkills(arrBlocks)
-	}, [setArrBlocksSkills])
+		return arrBlocks
+	})
 
 	return (
 		<div className={sass.blocks}>

@@ -5,88 +5,28 @@ import Heading from '@ui/text/heading/Heading'
 import { AllProjects } from '@helper/portfolio'
 import Projects from './projects/Projects'
 import Link from '@ui/link/Link'
+import { dataPortfolio, DataPortfolio } from '@/data/portfolio'
+import { useArray } from '@hooks/useArray'
 
 interface PropsPortfolio {}
 
 const Portfolio: React.FC<PropsPortfolio> = () => {
+	const projects: DataPortfolio[] = useArray<DataPortfolio>(() => dataPortfolio)
 	const [arrProjects, setArrProjects] = useState<AllProjects>([])
 	const [showMore, setShowMore] = useState<boolean>(false)
 
-	//TODO Заполнить все проекты
-
 	useEffect(() => {
-		const arr: AllProjects = []
-
-		arr.push({
-			urlImage: require('@img/portfolio/heading.jpg'),
-			name: 'Test 1',
-			description: 'Тестовый проект',
-			details: 'url',
-		})
-
-		arr.push({
-			urlImage: require('@img/portfolio/heading.jpg'),
-			name: 'Test 1',
-			description: 'Тестовый проект',
-			details: 'url',
-			site: 'https://www.example.com/index.php',
-		})
-		arr.push({
-			urlImage: require('@img/portfolio/heading.jpg'),
-			name: 'Test 1',
-			description: 'Тестовый проект',
-			details: 'url',
-		})
-
-		arr.push({
-			urlImage: require('@img/portfolio/heading.jpg'),
-			name: 'Test 1',
-			description: 'Тестовый проект',
-			details: 'url',
-			site: 'https://www.example.com/index.php',
-		})
-		arr.push({
-			urlImage: require('@img/portfolio/heading.jpg'),
-			name: 'Test 1',
-			description: 'Тестовый проект',
-			details: 'url',
-		})
-
-		arr.push({
-			urlImage: require('@img/portfolio/heading.jpg'),
-			name: 'Test 1',
-			description: 'Тестовый проект',
-			details: 'url',
-			site: 'https://www.example.com/index.php',
-		})
-		arr.push({
-			urlImage: require('@img/portfolio/heading.jpg'),
-			name: 'Test 1',
-			description: 'Тестовый проект',
-			details: 'url',
-		})
-
-		arr.push({
-			urlImage: require('@img/portfolio/heading.jpg'),
-			name: 'Test 1',
-			description: 'Тестовый проект',
-			details: 'url',
-			site: 'https://www.example.com/index.php',
-		})
-
-		arr.reverse()
-
 		const newArr: AllProjects = []
 
-		for (let i = 0; i < 6; i++) {
-			newArr.push(arr[i])
+		for (let i = 0; i < (projects.length >= 6 ? 6 : projects.length); i++) {
+			newArr.push(projects[i])
 		}
 
 		setArrProjects(newArr)
 
-		if (arr.length > 6) setShowMore(true)
+		if (projects.length > 6) setShowMore(true)
 		else setShowMore(false)
-	}, [setArrProjects, setShowMore])
+	}, [projects, setShowMore, setArrProjects])
 
 	return (
 		<section id='portfolio' className={sass.portfolio}>
