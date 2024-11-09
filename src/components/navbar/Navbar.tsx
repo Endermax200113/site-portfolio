@@ -4,9 +4,11 @@ import { trimSass } from '@utils/sassControl'
 import Logo, { getLogoSass } from '@ui/logo/Logo'
 import Menu from './menu/Menu'
 
-interface PropsNavbar {}
+interface PropsNavbar {
+	isMain?: boolean
+}
 
-const Navbar: React.FC<PropsNavbar> = () => {
+const Navbar: React.FC<PropsNavbar> = ({ isMain }) => {
 	const [navbarFixed, setNavbarFixed] = useState<boolean>(false)
 	const [navbarClass, setNavbarClass] = useState<string>(sass.navbar)
 	const [logoImgClass, setLogoImgClass] = useState<string>(getLogoSass()['logo-img'])
@@ -25,22 +27,28 @@ const Navbar: React.FC<PropsNavbar> = () => {
 	}, [navbarFixed])
 
 	useEffect(() => {
-		window.addEventListener('scroll', onScrolling)
+		if (isMain) {
+			window.addEventListener('scroll', onScrolling)
 
-		if (navbarFixed) {
-			setNavbarClass(trimSass(sass, ['navbar', 'fixed']))
-			setNavClass(trimSass(sass, ['nav', 'fixed']))
-			setLogoImgClass(trimSass(getLogoSass(), ['logo-img', 'fixed']))
+			if (navbarFixed) {
+				setNavbarClass(trimSass(sass, ['navbar', 'fixed']))
+				setNavClass(trimSass(sass, ['nav', 'fixed']))
+				setLogoImgClass(trimSass(getLogoSass(), ['logo-img', 'fixed']))
+			} else {
+				setNavbarClass(sass.navbar)
+				setNavClass(sass.nav)
+				setLogoImgClass(getLogoSass()['logo-img'])
+			}
 		} else {
-			setNavbarClass(sass.navbar)
-			setNavClass(sass.nav)
-			setLogoImgClass(getLogoSass()['logo-img'])
+			setNavbarClass(trimSass(sass, ['navbar', 'fixed', 'rest']))
+			setNavClass(trimSass(sass, ['nav', 'fixed', 'rest']))
+			setLogoImgClass(trimSass(getLogoSass(), ['logo-img', 'fixed', 'rest']))
 		}
 
 		return () => {
-			window.removeEventListener('scroll', onScrolling)
+			if (isMain) window.removeEventListener('scroll', onScrolling)
 		}
-	}, [navbarFixed, onScrolling])
+	}, [navbarFixed, isMain, onScrolling])
 
 	return (
 		<nav className={navbarClass}>

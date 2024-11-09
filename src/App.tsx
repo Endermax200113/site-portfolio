@@ -1,14 +1,15 @@
-import React from 'react'
+import { FC } from 'react'
 import '@sass/App.sass'
-import Header from '@components/header/Header'
-import Main from '@components/main/Main'
 import Footer from '@components/footer/Footer'
+import { RouterProvider } from 'react-router-dom'
+import { router } from './routes/router'
+import Header from '@components/header/Header'
 
-const App: React.FC = () => {
+const App: FC = () => {
 	return (
 		<div className='app'>
 			<Header />
-			<Main />
+			<RouterProvider router={router} />
 			<Footer />
 		</div>
 	)
