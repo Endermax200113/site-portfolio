@@ -1,13 +1,13 @@
 import React from 'react'
 import sass from './Project.module.sass'
-import { OneProject } from '@helper/portfolio'
+import { PreviewProject } from '@helper/portfolio'
 import Image from '@ui/image/Image'
 import Description from '@ui/text/description/Description'
 import Button from '@ui/button/Button'
 import Heading from '@ui/text/heading/Heading'
 
 interface PropsProject {
-	project: OneProject
+	project: PreviewProject
 }
 
 const Project: React.FC<PropsProject> = ({ project }) => {
@@ -17,7 +17,7 @@ const Project: React.FC<PropsProject> = ({ project }) => {
 
 			<div className={sass.info}>
 				<Heading level='2' classes={sass.title} text={project.name} />
-				<Description classes={sass.description}>{project.description}</Description>
+				<Description classes={sass.description}>{project.briefDescription}</Description>
 
 				<div className={sass.buttons}>
 					{project.site && (

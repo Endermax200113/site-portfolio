@@ -2,3 +2,57 @@
 
 .project
 	flex: $flex-main
+	background: $color-transition-white radial-gradient(50% 50% at 50% 50%, rgba($color-gradient-main-begin, 0%) 0%, rgba($color-gradient-main-end, 16%) 100%)
+	display: flex
+	flex-direction: column
+	align-items: center
+
+	&-name
+		width: max-content !important
+		margin: 0 auto
+		padding: 0px 15px 0px 20px
+
+.details
+	width: 1000px
+	margin: 50px 0px
+	display: flex
+	flex-direction: column
+
+.img-wrap
+	width: 100%
+	height: 500px
+	margin-top: 50px
+
+.description
+	margin-top: 25px
+
+.btn
+	&-site
+		margin: 25px auto 0
+
+.separator
+	margin: 50px auto 0
+
+.info
+	margin-top: 50px
+
+	&-title
+		@extend %title-level-two
+
+.resources
+	&-list
+		margin-top: 25px
+		list-style: none
+
+.resource
+	&-item
+		margin-top: 10px
+
+		&:first-child
+			margin-top: 0px
+
+	&-link
+		color: $color-full-black !important
+
+.stack
+	margin-top: 25px

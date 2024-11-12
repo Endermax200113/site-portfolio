@@ -1,6 +1,6 @@
 import React from 'react'
 import sass from './Projects.module.sass'
-import { AllProjects, OneProject } from '@helper/portfolio'
+import { AllProjects, PreviewProject } from '@helper/portfolio'
 import Project from '../project/Project'
 
 interface PropsProjects {
@@ -10,7 +10,7 @@ interface PropsProjects {
 const Projects: React.FC<PropsProjects> = ({ projects }) => {
 	return (
 		<div className={sass.projects}>
-			{projects.map((project: OneProject, i: number) => (
+			{projects.map((project: PreviewProject, i: number) => (
 				<Project project={project} key={i} />
 			))}
 		</div>

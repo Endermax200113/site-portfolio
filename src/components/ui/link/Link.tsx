@@ -8,7 +8,7 @@ interface PropsLink {
 	classes?: string
 }
 
-const Link: React.FC<PropsLink> = ({ link, text, classes }) => {
+const LinkComponent: React.FC<PropsLink> = ({ link, text, classes }) => {
 	const allClassesLink: string = useClass(sass.link, classes)
 
 	return (
@@ -18,4 +18,4 @@ const Link: React.FC<PropsLink> = ({ link, text, classes }) => {
 	)
 }
 
-export default Link
+export default LinkComponent
