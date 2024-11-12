@@ -11,13 +11,11 @@ export const router = createBrowserRouter([
 			{
 				path: '/',
 				element: <Main />,
-				children: [
-					{
-						path: '/projects/:projectId',
-						element: <Project />,
-						loader: ({ params }) => loadProject(params),
-					},
-				],
+			},
+			{
+				path: '/projects/:projectId',
+				element: <Project />,
+				loader: ({ params }) => loadProject(params),
 			},
 		],
 	},
