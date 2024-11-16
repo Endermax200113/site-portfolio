@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { forwardRef, useEffect, useState } from 'react'
 import sass from './Portfolio.module.sass'
 import Image from '@ui/image/Image'
 import Heading from '@ui/text/heading/Heading'
@@ -8,9 +8,11 @@ import Link from '@ui/link/Link'
 import { dataPortfolio, DataPortfolio } from '@/data/portfolio'
 import { useArray } from '@hooks/useArray'
 
-interface PropsPortfolio {}
+interface PropsPortfolio {
+	[props: string]: any
+}
 
-const Portfolio: React.FC<PropsPortfolio> = () => {
+const Portfolio: React.FC<PropsPortfolio> = forwardRef<HTMLElement>(({ ...props }, forwardedRef) => {
 	const projects: DataPortfolio[] = useArray<DataPortfolio>(() => dataPortfolio)
 	const [arrProjects, setArrProjects] = useState<AllProjects>([])
 	const [showMore, setShowMore] = useState<boolean>(false)
@@ -29,7 +31,7 @@ const Portfolio: React.FC<PropsPortfolio> = () => {
 	}, [projects, setShowMore, setArrProjects])
 
 	return (
-		<section id='portfolio' className={sass.portfolio}>
+		<section className={sass.portfolio} {...props} ref={forwardedRef}>
 			<div className={sass['image-heading']}>
 				<Image url={require('@img/portfolio/heading.jpg')} objectFit='cover' classesWrap={sass['image-wrap']} classesImage={sass.image} />
 
@@ -45,6 +47,6 @@ const Portfolio: React.FC<PropsPortfolio> = () => {
 			)}
 		</section>
 	)
-}
+})
 
 export default Portfolio

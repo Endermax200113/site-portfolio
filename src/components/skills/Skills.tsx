@@ -1,17 +1,19 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import sass from './Skills.module.sass'
 import Heading from '@ui/text/heading/Heading'
 import BlocksSkills from './blocksSkills/BlocksSkills'
 
-interface PropsSkills {}
+interface PropsSkills {
+	[props: string]: any
+}
 
-const Skills: React.FC<PropsSkills> = () => {
+const Skills: React.FC<PropsSkills> = forwardRef<HTMLElement>(({ ...props }, forwardedRef) => {
 	return (
-		<section id='skills' className={sass.skills}>
+		<section className={sass.skills} {...props} ref={forwardedRef}>
 			<Heading text='Навыки' classes={sass.heading} />
 			<BlocksSkills />
 		</section>
 	)
-}
+})
 
 export default Skills

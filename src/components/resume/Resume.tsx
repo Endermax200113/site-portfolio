@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import sass from './Resume.module.sass'
 import Heading from '@ui/text/heading/Heading'
 import Description from '@ui/text/description/Description'
@@ -6,11 +6,13 @@ import Separator from '@ui/separator/Separator'
 import Image from '@ui/image/Image'
 import Button from '@ui/button/Button'
 
-interface PropsResume {}
+interface PropsResume {
+	[props: string]: any
+}
 
-const Resume: React.FC<PropsResume> = () => {
+const Resume: React.FC<PropsResume> = forwardRef<HTMLElement>(({ ...props }, forwardedRef) => {
 	return (
-		<section id='cv' className={sass.resume}>
+		<section className={sass.resume} {...props} ref={forwardedRef}>
 			<div className={sass.gradient}>
 				<Heading text='CV-Резюме' classes={sass.title} />
 
@@ -26,6 +28,6 @@ const Resume: React.FC<PropsResume> = () => {
 			</div>
 		</section>
 	)
-}
+})
 
 export default Resume

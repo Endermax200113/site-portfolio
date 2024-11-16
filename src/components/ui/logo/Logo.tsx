@@ -1,6 +1,7 @@
 import React from 'react'
 import sass from './Logo.module.sass'
 import Image from '@ui/image/Image'
+import { Link } from 'react-router-dom'
 
 interface PropsLogo {
 	name: string
@@ -13,9 +14,9 @@ type PropsSass = {
 const Logo: React.FC<PropsLogo> = ({ name }) => {
 	return (
 		<li className={sass['nav-logo']}>
-			<a href='/' className={sass['logo-link']}>
+			<Link to='/' className={sass['logo-link']}>
 				<Image url={require('@img/logo.png')} classesImage={name} alt='Логотип' />
-			</a>
+			</Link>
 		</li>
 	)
 }

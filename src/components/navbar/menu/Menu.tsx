@@ -4,15 +4,16 @@ import Button from '@ui/button/Button'
 import Link from '@ui/link/Link'
 import { DataMenu, dataMenu } from '@/data/menu'
 import { useArray } from '@hooks/useArray'
+import { NavigateFunction, NavLink, useNavigate } from 'react-router-dom'
 
 interface PropsMenu {}
 
 const Menu: React.FC<PropsMenu> = () => {
+	const navigate: NavigateFunction = useNavigate()
 	const arrMenu: DataMenu[] = useArray<DataMenu>(() => dataMenu)
 
 	const enterToCV = (): void => {
-		window.location.hash = ''
-		window.location.hash = 'cv'
+		navigate('cv')
 	}
 
 	return (
@@ -20,13 +21,15 @@ const Menu: React.FC<PropsMenu> = () => {
 			{arrMenu.map(([link, text], i) => {
 				return (
 					<li className={sass['menu-item']} key={i}>
-						<Link link={link} text={text} />
+						<NavLink to={link} className={sass.link}>
+							{text}
+						</NavLink>
 					</li>
 				)
 			})}
 
 			<li>
-				<Button classes={sass.button} click={() => enterToCV()}>
+				<Button classes={sass.button} click={enterToCV}>
 					CV-резюме
 				</Button>
 			</li>

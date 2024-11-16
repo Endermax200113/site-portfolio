@@ -3,6 +3,7 @@ import { AllSkills } from './skills'
 type Resource = [text: string, url: string]
 
 export type PreviewProject = {
+	id: number
 	urlImage: string
 	name: string
 	briefDescription: string
@@ -10,7 +11,6 @@ export type PreviewProject = {
 }
 
 export type DetailsProject = {
-	id: number
 	stack: AllSkills
 	description: string
 	resources?: Resource[]

@@ -5,12 +5,23 @@ import Image from '@ui/image/Image'
 import Description from '@ui/text/description/Description'
 import Button from '@ui/button/Button'
 import Heading from '@ui/text/heading/Heading'
+import { NavigateFunction, useNavigate } from 'react-router-dom'
 
 interface PropsProject {
 	project: PreviewProject
 }
 
 const Project: React.FC<PropsProject> = ({ project }) => {
+	const navigate: NavigateFunction = useNavigate()
+
+	const onClickSite = (): void => {
+		if (!project.site) return
+
+		window.open(project.site, '_blank')
+	}
+
+	const onClickMore = (): void => navigate(`/projects/${project.id}`)
+
 	return (
 		<div className={sass.project}>
 			<Image url={project.urlImage} objectFit='cover' alt={project.name} classesWrap={sass['project-image-wrap']} classesImage={sass['project-image']} />
@@ -21,12 +32,12 @@ const Project: React.FC<PropsProject> = ({ project }) => {
 
 				<div className={sass.buttons}>
 					{project.site && (
-						<Button type='small' classes={sass.button}>
+						<Button type='small' classes={sass.button} click={onClickSite}>
 							К сайту
 						</Button>
 					)}
 
-					<Button type='small' classes={sass.button}>
+					<Button type='small' classes={sass.button} click={onClickMore}>
 						Подробнее
 					</Button>
 				</div>

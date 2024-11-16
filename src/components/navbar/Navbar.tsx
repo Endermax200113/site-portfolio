@@ -9,6 +9,7 @@ interface PropsNavbar {
 }
 
 const Navbar: React.FC<PropsNavbar> = ({ isMain }) => {
+	const [isLoaded, setIsLoaded] = useState<boolean>(false)
 	const [navbarFixed, setNavbarFixed] = useState<boolean>(false)
 	const [navbarClass, setNavbarClass] = useState<string>(sass.navbar)
 	const [logoImgClass, setLogoImgClass] = useState<string>(getLogoSass()['logo-img'])
@@ -28,6 +29,11 @@ const Navbar: React.FC<PropsNavbar> = ({ isMain }) => {
 
 	useEffect(() => {
 		if (isMain) {
+			if (!isLoaded) {
+				setNavbarFixed(window.scrollY !== 0)
+				setIsLoaded(true)
+			}
+
 			window.addEventListener('scroll', onScrolling)
 
 			if (navbarFixed) {
@@ -48,7 +54,7 @@ const Navbar: React.FC<PropsNavbar> = ({ isMain }) => {
 		return () => {
 			if (isMain) window.removeEventListener('scroll', onScrolling)
 		}
-	}, [navbarFixed, isMain, onScrolling])
+	}, [navbarFixed, isLoaded, isMain, onScrolling])
 
 	return (
 		<nav className={navbarClass}>

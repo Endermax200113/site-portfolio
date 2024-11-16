@@ -19,7 +19,7 @@ const Footer: React.FC<PropsFooter> = () => {
 
 	return (
 		<footer className={sass.footer}>
-			<Button type='custom' classes={sass.back} click={() => clickBackToTop()}>
+			<Button type='custom' classes={sass.back} click={clickBackToTop}>
 				<Image url={require('@svg/footer/back.svg')} classesWrap={sass.wrap} />
 				<span>Вернуться наверх</span>
 			</Button>
