@@ -24,7 +24,7 @@ const Project: React.FC<PropsProject> = ({ project }) => {
 
 	return (
 		<div className={sass.project}>
-			<Image url={project.urlImage} objectFit='cover' alt={project.name} classesWrap={sass['project-image-wrap']} classesImage={sass['project-image']} />
+			<Image url={project.urlImage} alt={project.name} classesWrap={sass['project-image-wrap']} classesImage={sass['project-image']} />
 
 			<div className={sass.info}>
 				<Heading level='2' classes={sass.title} text={project.name} />
@@ -32,12 +32,12 @@ const Project: React.FC<PropsProject> = ({ project }) => {
 
 				<div className={sass.buttons}>
 					{project.site && (
-						<Button type='small' classes={sass.button} click={onClickSite}>
+						<Button classes={sass.button} click={onClickSite}>
 							К сайту
 						</Button>
 					)}
 
-					<Button type='small' classes={sass.button} click={onClickMore}>
+					<Button classes={sass.button} click={onClickMore}>
 						Подробнее
 					</Button>
 				</div>

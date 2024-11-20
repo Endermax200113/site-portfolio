@@ -36,15 +36,11 @@ const Project: React.FC<PropsProject> = () => {
 			<section className={sass.details}>
 				<Heading text={projectName} classes={sass['project-name']} />
 
-				<Image url={urlImage} alt='Превью-картинка' classesWrap={sass['img-wrap']} objectFit='cover' />
+				<Image url={urlImage} alt='Превью-картинка' classesWrap={sass['img-wrap']} classesImage={sass['img']} />
 
 				<Description classes={sass.description}>{description}</Description>
 
-				{site && (
-					<Button type='big' classes={sass['btn-site']}>
-						К сайту
-					</Button>
-				)}
+				{site && <Button classes={sass['btn-site']}>К сайту</Button>}
 
 				<Separator classes={sass.separator} />
 

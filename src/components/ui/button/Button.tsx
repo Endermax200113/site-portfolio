@@ -1,36 +1,15 @@
-import React, { MouseEvent, ReactNode, useEffect, useState } from 'react'
+import React, { MouseEvent, ReactNode } from 'react'
 import sass from './Button.module.sass'
-import { mergeAllClasses } from '@utils/sassControl'
+import { useClass } from '@hooks/useClass'
 
 interface PropsButton {
 	children: ReactNode
-	type?: 'big' | 'small' | 'custom'
 	click?: (e?: MouseEvent) => void
 	classes?: string
 }
 
-const Button: React.FC<PropsButton> = ({ type, children, click, classes }) => {
-	const [allClassesButton, setAllClassesButton] = useState<string>(sass.big)
-
-	useEffect(() => {
-		const spotTypeButton = (classButton?: string): void => {
-			switch (type) {
-				case 'small':
-					setAllClassesButton(mergeAllClasses([sass.small], classButton))
-					break
-				case 'big':
-					setAllClassesButton(mergeAllClasses([sass.big], classButton))
-					break
-				case 'custom':
-				default:
-					setAllClassesButton(mergeAllClasses([sass.custom], classButton))
-					break
-			}
-		}
-
-		if (classes) spotTypeButton(classes)
-		else spotTypeButton()
-	}, [type, classes, setAllClassesButton])
+const Button: React.FC<PropsButton> = ({ children, click, classes }) => {
+	const allClassesButton: string = useClass(!classes ? sass.default : '', classes)
 
 	return (
 		<button type='button' className={allClassesButton} onClick={e => click && click(e)}>

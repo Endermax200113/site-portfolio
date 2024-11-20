@@ -8,3 +8,38 @@
 	line-height: unset !important
 	text-align: unset !important
 	display: block !important
+
+%button
+	border: none
+	outline: none
+	background-color: transparent
+	font-family: $font-montserrat
+	text-align: center
+	text-transform: uppercase
+	cursor: pointer
+
+%btn-small
+	@extend %button
+	width: 115px
+	height: 25px
+	border-left: 2px solid $color-full-white
+	border-right: 2px solid $color-full-white
+	font-weight: 600
+	font-size: 12px
+	letter-spacing: 0.1em
+	color: $color-full-white
+
+%btn-big
+	@extend %button
+	width: 200px
+	height: 45px
+	border-left: 3px solid $color-full-black
+	border-right: 3px solid $color-full-black
+	font-weight: 700
+	font-size: 16px
+	color: $color-full-black
+
+%welcome
+	font-family: $font-raleway
+	font-weight: 700
+	color: $color-full-black

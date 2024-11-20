@@ -22,9 +22,7 @@ const Resume: React.FC<PropsResume> = forwardRef<HTMLElement>(({ ...props }, for
 
 				<Image url={require('@img/resume/preview.png')} classesWrap={sass.wrap} classesImage={sass.image} />
 
-				<Button type='big' classes={sass.button}>
-					Скачать файл
-				</Button>
+				<Button classes={sass.button}>Скачать файл</Button>
 			</div>
 		</section>
 	)

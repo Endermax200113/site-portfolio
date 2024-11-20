@@ -14,7 +14,7 @@ const Info: React.FC<PropsInfo> = () => {
 		<div className={sass.welcome}>
 			{arrLabels.map(({ typeLabel, text }, i) => {
 				return (
-					<Label type={typeLabel} key={i}>
+					<Label classes={sass[`welcome-${typeLabel}`]} key={i}>
 						{text}
 					</Label>
 				)

@@ -1,7 +1,6 @@
 import React from 'react'
 import sass from './Menu.module.sass'
 import Button from '@ui/button/Button'
-import Link from '@ui/link/Link'
 import { DataMenu, dataMenu } from '@/data/menu'
 import { useArray } from '@hooks/useArray'
 import { NavigateFunction, NavLink, useNavigate } from 'react-router-dom'

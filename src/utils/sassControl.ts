@@ -51,5 +51,5 @@ export const mergeAllClasses: PropsAllClasses = (arr, classes): string => {
 		arr.push(classes)
 	}
 
-	return arr.join(' ').trimEnd()
+	return arr.join(' ').trim()
 }

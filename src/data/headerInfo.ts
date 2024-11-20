@@ -1,11 +1,11 @@
 export type DataHeaderLabels = {
-	typeLabel: 'welcome' | 'name' | 'profession' | undefined
+	typeLabel: 'hello' | 'name' | 'profession' | undefined
 	text: string
 }
 
 export const dataHeaderLabels: DataHeaderLabels[] = [
 	{
-		typeLabel: 'welcome',
+		typeLabel: 'hello',
 		text: 'Здравствуйте! Я',
 	},
 	{

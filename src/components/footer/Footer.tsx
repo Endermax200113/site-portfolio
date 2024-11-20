@@ -19,7 +19,7 @@ const Footer: React.FC<PropsFooter> = () => {
 
 	return (
 		<footer className={sass.footer}>
-			<Button type='custom' classes={sass.back} click={clickBackToTop}>
+			<Button classes={sass.back} click={clickBackToTop}>
 				<Image url={require('@svg/footer/back.svg')} classesWrap={sass.wrap} />
 				<span>Вернуться наверх</span>
 			</Button>
@@ -27,7 +27,7 @@ const Footer: React.FC<PropsFooter> = () => {
 			<div className={sass.social}>
 				{arrImages.map(({ urlImage, altImage, link }, i) => {
 					return (
-						<Button type='custom' click={() => window.open(link)} classes={sass['social-button']} key={i}>
+						<Button click={() => window.open(link)} classes={sass['social-button']} key={i}>
 							<Image url={urlImage} alt={altImage} classesWrap={sass['social-wrap']} classesImage={sass['social-image']} />
 						</Button>
 					)

@@ -11,18 +11,13 @@
 	justify-content: center
 
 .back
-	border: none
-	outline: none
-	background-color: transparent
-	font-family: $font-montserrat
+	@extend %button
 	font-weight: 700
 	font-size: 15px
-	text-transform: uppercase
 	color: $color-full-white
 	display: flex
 	flex-direction: column
 	align-items: center
-	cursor: pointer
 
 .wrap
 	width: 15px
@@ -41,6 +36,7 @@
 		align-items: center
 
 	&-button
+		@extend %button
 		margin-right: 30px
 
 		&:last-child

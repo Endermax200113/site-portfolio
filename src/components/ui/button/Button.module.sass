@@ -1,38 +1,4 @@
 @import '@sass/_main'
 
-%button
-	border: none
-	outline: none
-	background-color: transparent
-	font-family: $font-montserrat
-	text-align: center
-	text-transform: uppercase
-	cursor: pointer
-
-.custom
+.default
 	@extend %button
-
-.image
-	width: 35px
-	height: 35px
-
-.small
-	@extend %button
-	width: 115px
-	height: 25px
-	border-left: 2px solid $color-full-white
-	border-right: 2px solid $color-full-white
-	font-weight: 600
-	font-size: 12px
-	letter-spacing: 0.1em
-	color: $color-full-white
-
-.big
-	@extend %button
-	width: 200px
-	height: 45px
-	border-left: 3px solid $color-full-black
-	border-right: 3px solid $color-full-black
-	font-weight: 700
-	font-size: 16px
-	color: $color-full-black
