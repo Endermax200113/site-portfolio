@@ -1,5 +1,4 @@
 import React from 'react'
-import sass from './Preloader.module.sass'
 
 interface PropsPreloader {}
 

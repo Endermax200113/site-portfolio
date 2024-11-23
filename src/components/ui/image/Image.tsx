@@ -14,12 +14,14 @@ const Image: React.FC<PropsImage> = ({ url, alt, classesWrap, classesImage }) =>
 	const classWrap: string = useClass('', classesWrap)
 	const allClassesImage: string = useClass(sass.image, classesImage)
 
+	const URL: string = typeof url === 'string' ? url : url.default
+
 	return classesWrap ? (
 		<div className={classWrap}>
-			<img src={typeof url === 'string' ? url : url.default} alt={alt ?? ''} className={allClassesImage} />
+			<img src={URL} alt={alt ?? ''} className={allClassesImage} />
 		</div>
 	) : (
-		<img src={typeof url === 'string' ? url : url.default} alt={alt ?? ''} className={allClassesImage} />
+		<img src={URL} alt={alt ?? ''} className={allClassesImage} />
 	)
 }
 

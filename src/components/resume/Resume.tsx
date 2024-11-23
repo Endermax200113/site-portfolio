@@ -11,6 +11,19 @@ interface PropsResume {
 }
 
 const Resume: React.FC<PropsResume> = forwardRef<HTMLElement>(({ ...props }, forwardedRef) => {
+	const showResume = (): void => {
+		window.open(require('@assets/download/resume.pdf') as string)
+	}
+
+	const downloadResume = (): void => {
+		const helper: HTMLAnchorElement = document.createElement('a')
+
+		helper.href = require('@assets/download/resume.pdf') as string
+		helper.download = 'resume.pdf'
+		helper.click()
+		helper.remove()
+	}
+
 	return (
 		<section className={sass.resume} {...props} ref={forwardedRef}>
 			<div className={sass.gradient}>
@@ -22,7 +35,15 @@ const Resume: React.FC<PropsResume> = forwardRef<HTMLElement>(({ ...props }, for
 
 				<Image url={require('@img/resume/preview.png')} classesWrap={sass.wrap} classesImage={sass.image} />
 
-				<Button classes={sass.button}>Скачать файл</Button>
+				<div className={sass.buttons}>
+					<Button classes={sass.button} click={showResume}>
+						Посмотреть
+					</Button>
+
+					<Button classes={sass.button} click={downloadResume}>
+						Скачать файл
+					</Button>
+				</div>
 			</div>
 		</section>
 	)
