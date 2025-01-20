@@ -11,9 +11,9 @@ const ErrorBoundary: React.FC<PropsErrorBoundary> = () => {
 	return (
 		<main className={sass.error}>
 			<section className={sass.info}>
-				<strong className={sass.code}>{err.status ?? 'Неизвестная ошибка'}</strong>
+				<strong className={sass.code}>{err.status ?? '400'}</strong>
 
-				<b className={sass.reason}>{err.data || 'Произошла ошибка по неизвестной причине!'}</b>
+				<b className={sass.reason}>{err.data || 'Неправильный или некорректный запрос!'}</b>
 			</section>
 		</main>
 	)

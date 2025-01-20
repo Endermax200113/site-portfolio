@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { HTMLAttributes, ImgHTMLAttributes } from 'react'
 import sass from './Image.module.sass'
 import SVGImage from 'SVGImage'
 import { useClass } from '@hooks/useClass'

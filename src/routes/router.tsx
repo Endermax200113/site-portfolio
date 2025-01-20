@@ -5,6 +5,8 @@ import ErrorBoundary from './errorBoundary/ErrorBoundary'
 import { loadProject } from './project/ProjectLoader'
 import LayoutRoute from './layoutRoute/LayoutRoute'
 import { loadMain } from './main/MainLoader'
+import Projects from './projects/Projects'
+import { loadProjects } from './projects/ProjectsLoader'
 
 export const router = createBrowserRouter([
 	{
@@ -18,8 +20,14 @@ export const router = createBrowserRouter([
 				loader: ({ params }) => loadMain(params),
 			},
 			{
+				path: '/projects',
+				element: <Projects />,
+				loader: () => loadProjects(),
+			},
+			{
 				path: '/projects/:projectId',
 				element: <Project />,
+				errorElement: <ErrorBoundary />,
 				loader: ({ params }) => loadProject(params),
 			},
 		],

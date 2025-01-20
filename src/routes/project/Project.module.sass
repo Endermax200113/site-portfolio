@@ -14,7 +14,7 @@
 
 .details
 	width: 1000px
-	margin: 50px 0px
+	margin-block: 50px
 	display: flex
 	flex-direction: column
 
@@ -27,25 +27,28 @@
 		margin-top: 50px
 
 .description
-	margin-top: 25px
+	@extend %project-info
 
-.btn
-	&-site
-		@extend %btn-big
-		margin: 25px auto 0
+.button
+	@extend %btn-big
+	margin-top: 25px
+	align-self: center
 
 .separator
 	margin: 50px auto 0
 
 .info
 	margin-top: 50px
+	display: flex
+	flex-direction: column
+	align-items: flex-start
 
 	&-title
 		@extend %title-level-two
 
 .resources
 	&-list
-		margin-top: 25px
+		@extend %project-info
 		list-style: none
 
 .resource
@@ -59,4 +62,17 @@
 		color: $color-full-black !important
 
 .stack
-	margin-top: 25px
+	@extend %project-info
+
+$width-image: 315px
+$gap-image: calc((1000px - ($width-image * 3)) / 2)
+
+.gallery
+	@extend %project-info
+	width: 100%
+	display: grid
+	grid-template-columns: 1fr 1fr 1fr
+	gap: $gap-image
+
+	&-image
+		width: $width-image !important

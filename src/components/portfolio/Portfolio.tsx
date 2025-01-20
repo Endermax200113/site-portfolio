@@ -42,7 +42,7 @@ const Portfolio: React.FC<PropsPortfolio> = forwardRef<HTMLElement>(({ ...props 
 
 			{showMore && (
 				<div className={sass.more}>
-					<Link link='#more' text='Показать все проекты' classes={sass.link} />
+					<Link link='/projects' text='Показать все проекты' classes={sass.link} />
 				</div>
 			)}
 		</section>

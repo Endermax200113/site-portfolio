@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import sass from './Project.module.sass'
 import Heading from '@ui/text/heading/Heading'
 import Image from '@ui/image/Image'
@@ -12,13 +12,17 @@ import { distributeSkills } from '@utils/arrayControl'
 import RowSkills from '@components/skills/rowSkills/RowSkills'
 import { useLoaderData } from 'react-router-dom'
 import { DataPortfolio } from '@/data/portfolio'
+import Gallery from '@components/gallery/Gallery'
+import DialogGallery from '@components/gallery/dialogGallery/DialogGallery'
 
 interface PropsProject {}
 
 const Project: React.FC<PropsProject> = () => {
 	const data = useLoaderData() as DataPortfolio
+	const [dialogGalleryId, setDialogGalleryId] = useState<number>(0)
+	const [dialogGalleryIsOpened, setDialogGalleryIsOpened] = useState<boolean>(false)
 
-	const { site, urlImage, name: projectName, description, stack, resources } = data
+	const { site, urlImage, name: projectName, description, stack, gallery, resources } = data
 
 	const arrStack: AllSkills[] = useArray<AllSkills>(() => {
 		const blockStack: BlockSkills[] = distributeSkills([
@@ -31,6 +35,11 @@ const Project: React.FC<PropsProject> = () => {
 		return blockStack[0][1]
 	})
 
+	const onOpen = (id: number = 0): void => {
+		setDialogGalleryId(id)
+		setDialogGalleryIsOpened(true)
+	}
+
 	return (
 		<main className={sass.project}>
 			<section className={sass.details}>
@@ -40,14 +49,30 @@ const Project: React.FC<PropsProject> = () => {
 
 				<Description classes={sass.description}>{description}</Description>
 
-				{site && <Button classes={sass['btn-site']}>К сайту</Button>}
+				{site && <Button classes={sass.button}>К сайту</Button>}
 
 				<Separator classes={sass.separator} />
+
+				{gallery && (
+					<div className={sass.info}>
+						<Heading level='2' text='Галерея:' classes={sass['info-title']} />
+
+						<div className={sass.gallery}>
+							{gallery.map((image, i) => {
+								return <Gallery name={image.title} urlImage={image.urlImage} classes={sass['gallery-image']} clickButton={() => onOpen(image.id)} key={i} />
+							})}
+						</div>
+
+						<Button classes={sass.button} click={() => onOpen(0)}>
+							Посмотреть всё
+						</Button>
+					</div>
+				)}
 
 				<div className={sass.info}>
 					<Heading level='2' text='Стек:' classes={sass['info-title']} />
 
-					<div className={sass['stack']}>
+					<div className={sass.stack}>
 						{arrStack.map((fourStack, i) => {
 							return <RowSkills rowSkills={fourStack} key={i} />
 						})}
@@ -70,6 +95,8 @@ const Project: React.FC<PropsProject> = () => {
 					</div>
 				)}
 			</section>
+
+			{gallery && <DialogGallery gallery={gallery} stateIdGallery={[dialogGalleryId, setDialogGalleryId]} stateIsOpened={[dialogGalleryIsOpened, setDialogGalleryIsOpened]} />}
 		</main>
 	)
 }
