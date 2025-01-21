@@ -5,6 +5,7 @@ import ImageComp from '@ui/image/Image'
 import { Gallery } from '@helper/portfolio'
 import { trimSass } from '@utils/sassControl'
 import Description from '@ui/text/description/Description'
+import { useEventListener } from '@hooks/useEventListener'
 
 type StateDialogIsOpened = [isOpened: boolean, setIsOpened: React.Dispatch<React.SetStateAction<boolean>>]
 type StateDialogId = [idGallery: number, setIdGallery: React.Dispatch<React.SetStateAction<number>>]
@@ -56,18 +57,17 @@ const DialogGallery: React.FC<PropsDialogGallery> = ({ gallery, stateIdGallery, 
 		setIdGallery(idGallery + 1)
 	}, [idGallery, gallery, setIdGallery])
 
-	const onKeyDownLeftOrRight = useCallback(
-		(e: KeyboardEvent): void => {
-			if (e.code !== 'ArrowLeft' && e.code !== 'ArrowRight') return
+	const onKeyDownLeftOrRight = (e: KeyboardEvent): void => {
+		if (e.code !== 'ArrowLeft' && e.code !== 'ArrowRight') return
 
-			if (e.code === 'ArrowLeft') {
-				onClickLeft()
-			} else {
-				onClickRight()
-			}
-		},
-		[onClickLeft, onClickRight]
-	)
+		if (e.code === 'ArrowLeft') {
+			onClickLeft()
+		} else {
+			onClickRight()
+		}
+	}
+
+	useEventListener('keydown', onKeyDownLeftOrRight, isOpened)
 
 	const onMoveImage = (e: MouseEvent): void => {
 		if (isMovingImage) {
@@ -143,6 +143,12 @@ const DialogGallery: React.FC<PropsDialogGallery> = ({ gallery, stateIdGallery, 
 		setIsHiddenUIElements('')
 		setIsMovingImage(false)
 	}
+
+	const onScrollImage = (e: Event): void => {
+		console.log('!!!', e)
+	}
+
+	useEventListener('wheel', onScrollImage, isOpened)
 
 	const computePlaceImage = useCallback((): void => {
 		//#region short vars
@@ -265,7 +271,6 @@ const DialogGallery: React.FC<PropsDialogGallery> = ({ gallery, stateIdGallery, 
 
 		const close = (): void => {
 			body.classList.remove('no-scroll')
-			window.removeEventListener('keydown', onKeyDownLeftOrRight)
 		}
 
 		if (isOpened) {
@@ -275,13 +280,12 @@ const DialogGallery: React.FC<PropsDialogGallery> = ({ gallery, stateIdGallery, 
 			setYWrap(0)
 
 			body.classList.add('no-scroll')
-			window.addEventListener('keydown', onKeyDownLeftOrRight)
 		} else {
 			close()
 		}
 
 		return close
-	}, [isOpened, onKeyDownLeftOrRight])
+	}, [isOpened])
 
 	return (
 		<dialog className={sass.gallery} open={isOpened}>
