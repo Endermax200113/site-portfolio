@@ -10,11 +10,11 @@ import { useEventListener } from '@hooks/useEventListener'
 type StateDialogIsOpened = [isOpened: boolean, setIsOpened: React.Dispatch<React.SetStateAction<boolean>>]
 type StateDialogId = [idGallery: number, setIdGallery: React.Dispatch<React.SetStateAction<number>>]
 
-type PlaceImage = {
-	startXImage: number
-	endXImage: number
-	startYImage: number
-	endYImage: number
+type FullPlace = {
+	startX: number
+	endX: number
+	startY: number
+	endY: number
 }
 
 interface PropsDialogGallery extends DialogHTMLAttributes<HTMLDialogElement> {
@@ -29,19 +29,19 @@ const DialogGallery: React.FC<PropsDialogGallery> = ({ gallery, stateIdGallery, 
 	const [isOpened, setIsOpened]: StateDialogIsOpened = [stateIsOpened[0], stateIsOpened[1]]
 	const [isMovingImage, setIsMovingImage] = useState<boolean>(false)
 	const [isHiddenUIElements, setIsHiddenUIElements] = useState<string>('')
-	const [startX, setStartX] = useState<number>(0)
-	const [startY, setStartY] = useState<number>(0)
-	const [xWrap, setXWrap] = useState<number>(0)
-	const [yWrap, setYWrap] = useState<number>(0)
-	const [originalWidthImage, setOriginalWidthImage] = useState<number>(0)
-	const [originalHeightImage, setOriginalHeightImage] = useState<number>(0)
-	const [widthWrap, setWidthWrap] = useState<number>(0)
-	const [heightWrap, setHeightWrap] = useState<number>(0)
-	const [placeImage, setPlaceImage] = useState<PlaceImage>({
-		startXImage: 0,
-		endXImage: 0,
-		startYImage: 0,
-		endYImage: 0,
+	const [startPlaceCursorX, setStartPlaceCursorX] = useState<number>(0)
+	const [startPlaceCursorY, setStartPlaceCursorY] = useState<number>(0)
+	const [placeWrapX, setPlaceWrapX] = useState<number>(0)
+	const [placeWrapY, setPlaceWrapY] = useState<number>(0)
+	const [originalSizeImageWidth, setOriginalSizeImageWidth] = useState<number>(0)
+	const [originalSizeImageHeight, setOriginalSizeImageHeight] = useState<number>(0)
+	const [sizeWrapWidth, setSizeWrapWidth] = useState<number>(0)
+	const [sizeWrapHeight, setSizeWrapHeight] = useState<number>(0)
+	const [placeImage, setPlaceImage] = useState<FullPlace>({
+		startX: 0,
+		endX: 0,
+		startY: 0,
+		endY: 0,
 	})
 	//#endregion
 
@@ -71,18 +71,18 @@ const DialogGallery: React.FC<PropsDialogGallery> = ({ gallery, stateIdGallery, 
 
 	const onMoveImage = (e: MouseEvent): void => {
 		if (isMovingImage) {
-			const widthImage = placeImage.endXImage - placeImage.startXImage
-			const heightImage = placeImage.endYImage - placeImage.startYImage
+			const widthImage = placeImage.endX - placeImage.startX
+			const heightImage = placeImage.endY - placeImage.startY
 
 			const nowX: number = e.clientX
 			const nowY: number = e.clientY
-			const resX: number = nowX - startX
-			const resY: number = nowY - startY
+			const resX: number = nowX - startPlaceCursorX
+			const resY: number = nowY - startPlaceCursorY
 
-			const allowStartX: boolean = placeImage.startXImage + resX <= widthWrap
-			const allowEndX: boolean = placeImage.endXImage + resX >= 0
-			const allowStartY: boolean = placeImage.startYImage + resY <= heightWrap
-			const allowEndY: boolean = placeImage.endYImage + resY >= 0
+			const allowStartX: boolean = placeImage.startX + resX <= sizeWrapWidth
+			const allowEndX: boolean = placeImage.endX + resX >= 0
+			const allowStartY: boolean = placeImage.startY + resY <= sizeWrapHeight
+			const allowEndY: boolean = placeImage.endY + resY >= 0
 
 			let resStartX: number = 0
 			let resEndX: number = 0
@@ -92,51 +92,51 @@ const DialogGallery: React.FC<PropsDialogGallery> = ({ gallery, stateIdGallery, 
 			let resWrapY: number = 0
 
 			if (allowStartX && allowEndX) {
-				resStartX = placeImage.startXImage + resX
-				resEndX = placeImage.endXImage + resX
-				resWrapX = xWrap + resX
+				resStartX = placeImage.startX + resX
+				resEndX = placeImage.endX + resX
+				resWrapX = placeWrapX + resX
 			} else if (!allowStartX) {
-				resStartX = widthWrap
-				resEndX = widthWrap + widthImage
-				resWrapX = widthWrap - (widthWrap - widthImage) / 2
+				resStartX = sizeWrapWidth
+				resEndX = sizeWrapWidth + widthImage
+				resWrapX = sizeWrapWidth - (sizeWrapWidth - widthImage) / 2
 			} else if (!allowEndX) {
 				resStartX = -widthImage
 				resEndX = 0
-				resWrapX = (widthWrap - widthImage) / 2 - widthWrap
+				resWrapX = (sizeWrapWidth - widthImage) / 2 - sizeWrapWidth
 			}
 
 			if (allowStartY && allowEndY) {
-				resStartY = placeImage.startYImage + resY
-				resEndY = placeImage.endYImage + resY
-				resWrapY = yWrap + resY
+				resStartY = placeImage.startY + resY
+				resEndY = placeImage.endY + resY
+				resWrapY = placeWrapY + resY
 			} else if (!allowStartY) {
-				resStartY = heightWrap
-				resEndY = heightWrap + heightImage
-				resWrapY = heightWrap - (heightWrap - heightImage) / 2
+				resStartY = sizeWrapHeight
+				resEndY = sizeWrapHeight + heightImage
+				resWrapY = sizeWrapHeight - (sizeWrapHeight - heightImage) / 2
 			} else if (!allowEndY) {
 				resStartY = -heightImage
 				resEndY = 0
-				resWrapY = (heightWrap - heightImage) / 2 - heightWrap
+				resWrapY = (sizeWrapHeight - heightImage) / 2 - sizeWrapHeight
 			}
 
-			setXWrap(resWrapX)
-			setYWrap(resWrapY)
+			setPlaceWrapX(resWrapX)
+			setPlaceWrapY(resWrapY)
 			setPlaceImage({
-				startXImage: resStartX,
-				endXImage: resEndX,
-				startYImage: resStartY,
-				endYImage: resEndY,
+				startX: resStartX,
+				endX: resEndX,
+				startY: resStartY,
+				endY: resEndY,
 			})
-			setStartX(nowX)
-			setStartY(nowY)
+			setStartPlaceCursorX(nowX)
+			setStartPlaceCursorY(nowY)
 		}
 	}
 
 	const onStartMoveImage = (e: MouseEvent): void => {
 		setIsHiddenUIElements('hidden')
 		setIsMovingImage(true)
-		setStartX(e.clientX)
-		setStartY(e.clientY)
+		setStartPlaceCursorX(e.clientX)
+		setStartPlaceCursorY(e.clientY)
 	}
 
 	const onEndMoveImage = (): void => {
@@ -144,30 +144,24 @@ const DialogGallery: React.FC<PropsDialogGallery> = ({ gallery, stateIdGallery, 
 		setIsMovingImage(false)
 	}
 
-	const onScrollImage = (e: Event): void => {
-		console.log('!!!', e)
-	}
-
-	useEventListener('wheel', onScrollImage, isOpened)
-
 	const computePlaceImage = useCallback((): void => {
 		//#region short vars
-		const oWI: number = originalWidthImage
-		const oHI: number = originalHeightImage
-		const wW: number = widthWrap
-		const hW: number = heightWrap
-		const halfWidthWrap: number = widthWrap / 2
-		const halfHeightWrap: number = heightWrap / 2
+		const oWI: number = originalSizeImageWidth
+		const oHI: number = originalSizeImageHeight
+		const wW: number = sizeWrapWidth
+		const hW: number = sizeWrapHeight
+		const halfWidthWrap: number = sizeWrapWidth / 2
+		const halfHeightWrap: number = sizeWrapHeight / 2
 		const bHI: number = (hW * 100) / ((wW * 100) / oWI) // * borderHeightImage
 		//#endregion
 
 		//#region functions
 		const setPlace = (startX: number, endX: number, startY: number, endY: number): void => {
 			setPlaceImage({
-				startXImage: startX,
-				endXImage: endX,
-				startYImage: startY,
-				endYImage: endY,
+				startX: startX,
+				endX: endX,
+				startY: startY,
+				endY: endY,
 			})
 		}
 
@@ -210,17 +204,17 @@ const DialogGallery: React.FC<PropsDialogGallery> = ({ gallery, stateIdGallery, 
 		}
 
 		const callOptimizeOriginalHeight = (): void => {
-			const halfOriginalHeight: number = originalHeightImage / 2
+			const halfOriginalHeight: number = getHalf(oHI)
 			const startYImage: number = halfHeightWrap - halfOriginalHeight
-			const endYImage: number = startYImage + originalHeightImage
+			const endYImage: number = startYImage + oHI
 
 			setPlace(0, wW, startYImage, endYImage)
 		}
 
 		const callOptimizeOriginalWidth = (): void => {
-			const halfOriginalWidth: number = getHalf(originalWidthImage)
+			const halfOriginalWidth: number = getHalf(oWI)
 			const startXImage: number = halfWidthWrap - halfOriginalWidth
-			const endXImage: number = startXImage + originalWidthImage
+			const endXImage: number = startXImage + oWI
 
 			setPlace(startXImage, endXImage, 0, hW)
 		}
@@ -252,17 +246,17 @@ const DialogGallery: React.FC<PropsDialogGallery> = ({ gallery, stateIdGallery, 
 			callOptWidthOHIWithoutPer()
 		}
 		//#endregion
-	}, [originalHeightImage, heightWrap, originalWidthImage, widthWrap])
+	}, [originalSizeImageWidth, originalSizeImageHeight, sizeWrapWidth, sizeWrapHeight])
 
 	useEffect(() => {
 		const image: HTMLImageElement = document.querySelector(`.${sass.image}`) as HTMLImageElement
 		const tempImage: HTMLImageElement = new Image()
 		tempImage.src = image.src
 
-		setOriginalWidthImage(tempImage.width)
-		setOriginalHeightImage(tempImage.height)
-		setWidthWrap(window.outerWidth)
-		setHeightWrap(image.height)
+		setOriginalSizeImageWidth(tempImage.width)
+		setOriginalSizeImageHeight(tempImage.height)
+		setSizeWrapWidth(window.outerWidth)
+		setSizeWrapHeight(image.height)
 		computePlaceImage()
 	}, [idGallery, computePlaceImage])
 
@@ -274,10 +268,10 @@ const DialogGallery: React.FC<PropsDialogGallery> = ({ gallery, stateIdGallery, 
 		}
 
 		if (isOpened) {
-			setStartX(0)
-			setStartY(0)
-			setXWrap(0)
-			setYWrap(0)
+			setStartPlaceCursorX(0)
+			setStartPlaceCursorY(0)
+			setPlaceWrapX(0)
+			setPlaceWrapY(0)
 
 			body.classList.add('no-scroll')
 		} else {
@@ -293,10 +287,10 @@ const DialogGallery: React.FC<PropsDialogGallery> = ({ gallery, stateIdGallery, 
 				<div
 					className={sass['image-wrap']}
 					style={{
-						left: xWrap,
-						right: -xWrap,
-						top: yWrap,
-						bottom: -yWrap,
+						left: placeWrapX,
+						right: -placeWrapX,
+						top: placeWrapY,
+						bottom: -placeWrapY,
 					}}
 				>
 					<img src={gallery[idGallery].urlImage} alt={gallery[idGallery].title} className={sass.image} />
@@ -304,10 +298,10 @@ const DialogGallery: React.FC<PropsDialogGallery> = ({ gallery, stateIdGallery, 
 			</div>
 
 			<div className={sass['test-image']}>
-				<div className={sass['test-image-sx']} style={{ left: placeImage.startXImage }}></div>
-				<div className={sass['test-image-ex']} style={{ left: placeImage.endXImage }}></div>
-				<div className={sass['test-image-sy']} style={{ top: placeImage.startYImage }}></div>
-				<div className={sass['test-image-ey']} style={{ top: placeImage.endYImage }}></div>
+				<div className={sass['test-image-sx']} style={{ left: placeImage.startX }}></div>
+				<div className={sass['test-image-ex']} style={{ left: placeImage.endX }}></div>
+				<div className={sass['test-image-sy']} style={{ top: placeImage.startY }}></div>
+				<div className={sass['test-image-ey']} style={{ top: placeImage.endY }}></div>
 			</div>
 
 			<Button classes={trimSass(sass, ['button', isHiddenUIElements])} click={() => setIsOpened(false)}>
