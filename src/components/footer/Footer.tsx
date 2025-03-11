@@ -35,7 +35,7 @@ const Footer: React.FC<PropsFooter> = () => {
 			</div>
 
 			<Label classes={sass.copyright}>
-				<b className={sass['copyright-bold']}>&copy; М.С. Халласаар, 2024</b>
+				<b className={sass['copyright-bold']}>&copy; М.С. Халласаар, 2025</b>
 			</Label>
 		</footer>
 	)

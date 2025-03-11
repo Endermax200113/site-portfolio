@@ -297,12 +297,12 @@ const DialogGallery: React.FC<PropsDialogGallery> = ({ gallery, stateIdGallery, 
 				</div>
 			</div>
 
-			<div className={sass['test-image']}>
+			{/* <div className={sass['test-image']}>
 				<div className={sass['test-image-sx']} style={{ left: placeImage.startX }}></div>
 				<div className={sass['test-image-ex']} style={{ left: placeImage.endX }}></div>
 				<div className={sass['test-image-sy']} style={{ top: placeImage.startY }}></div>
 				<div className={sass['test-image-ey']} style={{ top: placeImage.endY }}></div>
-			</div>
+			</div> */}
 
 			<Button classes={trimSass(sass, ['button', isHiddenUIElements])} click={() => setIsOpened(false)}>
 				<ImageComp url={require('@svg/cross.svg')} alt='Закрыть' />

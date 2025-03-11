@@ -14,6 +14,7 @@ import { useLoaderData } from 'react-router-dom'
 import { DataPortfolio } from '@/data/portfolio'
 import Gallery from '@components/gallery/Gallery'
 import DialogGallery from '@components/gallery/dialogGallery/DialogGallery'
+import { Gallery as GalleryData } from '@helper/portfolio'
 
 interface PropsProject {}
 
@@ -24,7 +25,7 @@ const Project: React.FC<PropsProject> = () => {
 
 	const { site, urlImage, name: projectName, description, stack, gallery, resources } = data
 
-	const arrStack: AllSkills[] = useArray<AllSkills>(() => {
+	const arrStack: AllSkills[] = useArray(() => {
 		const blockStack: BlockSkills[] = distributeSkills([
 			{
 				title: 'Стек:',
@@ -33,6 +34,20 @@ const Project: React.FC<PropsProject> = () => {
 		])
 
 		return blockStack[0][1]
+	})
+
+	const arrMaxSixGallery: GalleryData[] = useArray(() => {
+		if (!gallery) return []
+
+		const arr: GalleryData[] = []
+
+		for (let i = 0; i < 6; i++) {
+			if (!gallery[i]) break
+
+			arr.push(gallery[i])
+		}
+
+		return arr
 	})
 
 	const onOpen = (id: number = 0): void => {
@@ -58,14 +73,16 @@ const Project: React.FC<PropsProject> = () => {
 						<Heading level='2' text='Галерея:' classes={sass['info-title']} />
 
 						<div className={sass.gallery}>
-							{gallery.map((image, i) => {
+							{arrMaxSixGallery.map((image, i) => {
 								return <Gallery name={image.title} urlImage={image.urlImage} classes={sass['gallery-image']} clickButton={() => onOpen(image.id)} key={i} />
 							})}
 						</div>
 
-						<Button classes={sass.button} click={() => onOpen(0)}>
-							Посмотреть всё
-						</Button>
+						{gallery.length > 6 && (
+							<Button classes={sass.button} click={() => onOpen(0)}>
+								Посмотреть всё
+							</Button>
+						)}
 					</div>
 				)}
 

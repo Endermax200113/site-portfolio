@@ -6,7 +6,7 @@ interface PropsErrorBoundary {}
 
 const ErrorBoundary: React.FC<PropsErrorBoundary> = () => {
 	const err = useRouteError() as ErrorResponse
-	console.error(err ? `${err.status} -> ${err.statusText}` : 'Страница не найдена, т.к. задан неверный URL!')
+	console.error(err.status ? `${err.status} -> ${err.statusText}` : 'Неправильный или некорректный запрос!')
 
 	return (
 		<main className={sass.error}>

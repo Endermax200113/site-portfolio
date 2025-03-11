@@ -22,6 +22,7 @@ export const router = createBrowserRouter([
 			{
 				path: '/projects',
 				element: <Projects />,
+				errorElement: <ErrorBoundary />,
 				loader: () => loadProjects(),
 			},
 			{
