@@ -1,4 +1,4 @@
-import React, { MouseEvent, useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
+import React, { MouseEvent, useEffect, useState } from 'react'
 import sass from './Projects.module.sass'
 import { NavigateFunction, useLoaderData, useNavigate, useSearchParams } from 'react-router-dom'
 import { DataPortfolio } from '@/data/portfolio'
@@ -7,6 +7,7 @@ import Button from '@ui/button/Button'
 import Heading from '@ui/text/heading/Heading'
 import Description from '@ui/text/description/Description'
 import { trimSass } from '@utils/sassControl'
+import Pagination from '@components/pagination/Pagination'
 
 interface PropsProjects {}
 
@@ -28,7 +29,9 @@ const Projects: React.FC<PropsProjects> = () => {
 	const onClickMore = (id: number): void => navigate(`/projects/${id}`)
 
 	const setCurrentPage = (page: number, e?: MouseEvent): void => {
-		if (e) e.preventDefault()
+		if (e) {
+			e.preventDefault()
+		}
 
 		setSearchParams(params => {
 			params.set('page', `${page}`)
@@ -36,12 +39,6 @@ const Projects: React.FC<PropsProjects> = () => {
 		})
 		setPage(page)
 	}
-
-	const onClickPrev = (e?: MouseEvent): void => setCurrentPage(page - 1, e)
-
-	const onClickPage = (page: number, e?: MouseEvent): void => setCurrentPage(page, e)
-
-	const onClickNext = (e?: MouseEvent): void => setCurrentPage(page + 1, e)
 
 	useEffect(() => {
 		const jsonData: string | null = localStorage.getItem('projects')
@@ -126,35 +123,7 @@ const Projects: React.FC<PropsProjects> = () => {
 				)}
 			</section>
 
-			{arrPagesData.length !== 0 && (
-				<div className={sass.pages}>
-					{page !== 1 && (
-						<Button classes={sass.page} click={e => onClickPrev(e)}>
-							&lt;
-						</Button>
-					)}
-					{arrPagesData.map((data, i) => {
-						let clazz: string
-
-						if (i + 1 !== page) {
-							clazz = trimSass(sass, ['page'])
-						} else {
-							clazz = trimSass(sass, ['page', 'here'])
-						}
-
-						return (
-							<Button key={i} classes={clazz} click={e => onClickPage(i + 1, e)}>
-								{i + 1}
-							</Button>
-						)
-					})}
-					{page !== arrPagesData.length && (
-						<Button classes={sass.page} click={e => onClickNext(e)}>
-							&gt;
-						</Button>
-					)}
-				</div>
-			)}
+			{arrPagesData.length !== 0 && <Pagination pages={arrPagesData.length} page={page} setPage={setCurrentPage} />}
 		</main>
 	)
 }

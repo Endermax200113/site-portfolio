@@ -9,7 +9,7 @@ interface PropsMenu {}
 
 const Menu: React.FC<PropsMenu> = () => {
 	const navigate: NavigateFunction = useNavigate()
-	const arrMenu: DataMenu[] = useArray<DataMenu>(() => dataMenu)
+	const arrMenu: DataMenu[] = useArray(() => dataMenu)
 
 	const enterToCV = (): void => {
 		navigate('cv')

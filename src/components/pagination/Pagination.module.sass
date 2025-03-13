@@ -1,0 +1,30 @@
+@import '@sass/_main'
+
+.pages
+	margin-bottom: 50px
+	display: flex
+
+.page
+	@extend %button
+	width: 45px
+	aspect-ratio: 1 / 1
+	border: 3px solid $color-light-black
+	margin-inline: 10px
+	font-size: 16px
+	font-weight: 600
+	display: grid
+	place-content: center
+
+	&:first-child
+		margin-left: 0px
+
+	&:last-child
+		margin-right: 0px
+
+	&.here
+		border: 3px solid $color-gray
+		color: $color-gray
+		pointer-events: none
+
+	&[hidden]
+		display: none
