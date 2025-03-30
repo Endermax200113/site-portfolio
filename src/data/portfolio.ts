@@ -2,7 +2,7 @@ import { DetailsProject, PreviewProject } from '@helper/portfolio'
 
 export type DataPortfolio = PreviewProject & DetailsProject
 
-// TODO Заполнить все проекты
+// DONE Проекты заполнены
 // [x] PsyLab Cinema
 // [x] TECH-WORLD
 // [x] Сайт программиста

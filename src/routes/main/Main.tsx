@@ -5,6 +5,7 @@ import Skills from '@components/skills/Skills'
 import Portfolio from '@components/portfolio/Portfolio'
 import Resume from '@components/resume/Resume'
 import { Params, useParams } from 'react-router-dom'
+import RootMain from '@components/main/Main'
 
 interface PropsMain {}
 
@@ -44,7 +45,7 @@ const Main: React.FC<PropsMain> = () => {
 	}, [scrollToBlock, params])
 
 	return (
-		<main className={sass.main}>
+		<RootMain classes={sass.main} withoutMargin>
 			<div className={sass.gradient}>
 				<About ref={links.about} />
 				<Skills ref={links.skills} />
@@ -52,7 +53,7 @@ const Main: React.FC<PropsMain> = () => {
 
 			<Portfolio ref={links.portfolio} />
 			<Resume ref={links.cv} />
-		</main>
+		</RootMain>
 	)
 }
 

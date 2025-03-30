@@ -1,4 +1,4 @@
-type Sass = {
+export type Sass = {
 	readonly [key: string]: string
 }
 

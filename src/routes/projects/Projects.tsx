@@ -8,6 +8,7 @@ import Heading from '@ui/text/heading/Heading'
 import Description from '@ui/text/description/Description'
 import { trimSass } from '@utils/sassControl'
 import Pagination from '@components/pagination/Pagination'
+import RootMain from '@components/main/Main'
 
 interface PropsProjects {}
 
@@ -79,7 +80,7 @@ const Projects: React.FC<PropsProjects> = () => {
 	}, [data, jsonData])
 
 	return (
-		<main className={sass.main}>
+		<RootMain classes={sass.main}>
 			<section className={sass.projects}>
 				{arrPagesData && arrPagesData.length > 0 ? (
 					arrPagesData[page - 1].map((project, i) => {
@@ -116,7 +117,7 @@ const Projects: React.FC<PropsProjects> = () => {
 			</section>
 
 			{arrPagesData.length > 1 && <Pagination pages={arrPagesData.length} page={page} setPage={setCurrentPage} />}
-		</main>
+		</RootMain>
 	)
 }
 

@@ -1,38 +1,18 @@
 import React from 'react'
-import sass from './Menu.module.sass'
-import Button from '@ui/button/Button'
-import { DataMenu, dataMenu } from '@/data/menu'
-import { useArray } from '@hooks/useArray'
-import { NavigateFunction, NavLink, useNavigate } from 'react-router-dom'
+import { dataMenu, DataMenu } from '@/data/menu'
+import MenuItem from './menuItem/MenuItem'
 
 interface PropsMenu {}
 
 const Menu: React.FC<PropsMenu> = () => {
-	const navigate: NavigateFunction = useNavigate()
-	const arrMenu: DataMenu[] = useArray(() => dataMenu)
-
-	const enterToCV = (): void => {
-		navigate('cv')
-	}
+	const arrMenu: DataMenu[] = dataMenu
 
 	return (
-		<ul className={sass.menu}>
+		<>
 			{arrMenu.map(([link, text], i) => {
-				return (
-					<li className={sass['menu-item']} key={i}>
-						<NavLink to={link} className={sass.link}>
-							{text}
-						</NavLink>
-					</li>
-				)
+				return <MenuItem link={link} text={text} key={`nav-menu-item-${i}`} />
 			})}
-
-			<li>
-				<Button classes={sass.button} click={enterToCV}>
-					CV-резюме
-				</Button>
-			</li>
-		</ul>
+		</>
 	)
 }
 

@@ -15,6 +15,7 @@ import { DataPortfolio } from '@/data/portfolio'
 import Gallery from '@components/gallery/Gallery'
 import DialogGallery from '@components/gallery/dialogGallery/DialogGallery'
 import { Gallery as GalleryData } from '@helper/portfolio'
+import RootMain from '@components/main/Main'
 
 interface PropsProject {}
 
@@ -56,7 +57,7 @@ const Project: React.FC<PropsProject> = () => {
 	}
 
 	return (
-		<main className={sass.project}>
+		<RootMain classes={sass.project}>
 			<section className={sass.details}>
 				<Heading text={projectName} classes={sass['project-name']} />
 
@@ -114,7 +115,7 @@ const Project: React.FC<PropsProject> = () => {
 			</section>
 
 			{gallery && <DialogGallery gallery={gallery} stateIdGallery={[dialogGalleryId, setDialogGalleryId]} stateIsOpened={[dialogGalleryIsOpened, setDialogGalleryIsOpened]} />}
-		</main>
+		</RootMain>
 	)
 }
 

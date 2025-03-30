@@ -1,64 +1,51 @@
-import React, { MutableRefObject, useCallback, useEffect, useRef, useState } from 'react'
+import React, { MutableRefObject, useCallback, useDebugValue, useEffect, useRef, useState } from 'react'
 import sass from './Header.module.sass'
-import Info from './info/Info'
-import Representation from './representation/Representation'
-import Navbar from '@components/navbar/Navbar'
 import { trimSass } from '@utils/sassControl'
-import { Location, Params, useLocation, useParams } from 'react-router-dom'
+import { useScrolling } from '@hooks/useScrolling'
+import Navbar from '@components/navbar/Navbar'
+import { spotClass } from '@utils/headerControl'
 
 interface PropsHeader {}
 
 const Header: React.FC<PropsHeader> = () => {
-	const location: Location = useLocation()
-	const params: Params = useParams()
-	const [isMain, setIsMain] = useState<boolean>(true)
-
 	const thisHeader: MutableRefObject<any> = useRef(null)
 
-	const scrollToTop = useCallback(() => {
+	const [headerFixed, setHeaderFixed] = useState<boolean>(false)
+	const [isMain, setIsMain] = useState<boolean>(true)
+
+	const headerClass: string = spotClass(sass, 'header', isMain, headerFixed)
+
+	// TODO Дописать функционал
+
+	const onScrolling = (): void => {
+		if (isMain) {
+			if (window.scrollY === 0) {
+				if (headerFixed) {
+					setHeaderFixed(false)
+				}
+			} else {
+				if (!headerFixed) {
+					setHeaderFixed(true)
+				}
+			}
+		}
+	}
+
+	useScrolling(onScrolling, headerFixed)
+
+	const scrollToTop = (): void => {
 		thisHeader.current.scrollIntoView({
 			behavior: 'smooth',
 		})
-	}, [thisHeader])
+	}
 
-	useEffect(() => {
-		const mainLinks: string[] = ['/', '/about', '/skills', '/portfolio', '/cv']
-
-		const inMainLinks = (): boolean => {
-			for (let i = 0; i < mainLinks.length; i++) {
-				const link: string = mainLinks[i]
-
-				if (location.pathname === link) return true
-				else continue
-			}
-
-			return false
-		}
-
-		setIsMain(inMainLinks())
-
+	const handleLoad = (): void => {
 		scrollToTop()
-	}, [setIsMain, location, params, scrollToTop])
+	}
 
 	return (
-		<header className={isMain ? sass.header : trimSass(sass, ['header', 'rest'])} ref={thisHeader}>
-			{isMain && (
-				<div className={sass.wrapper}>
-					<div className={sass.detail}></div>
-					<div className={sass['detail-transition']}></div>
-				</div>
-			)}
-
-			<Navbar isMain={isMain} />
-
-			{isMain && (
-				<div className={sass['header-container']}>
-					<div className={sass.begin}>
-						<Info />
-						<Representation />
-					</div>
-				</div>
-			)}
+		<header className={headerClass} ref={thisHeader} onLoad={handleLoad}>
+			<Navbar isMain={isMain} headerFixed={headerFixed} />
 		</header>
 	)
 }
