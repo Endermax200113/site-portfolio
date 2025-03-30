@@ -55,25 +55,17 @@ const Projects: React.FC<PropsProjects> = () => {
 
 	useEffect(() => {
 		if (JSON.stringify(data) !== jsonData) {
-			const arrData: DataPortfolio[] = []
-			const count: number = 32
-
-			for (let i = 0; i < count; i++) {
-				data.forEach(thisData => arrData.push(thisData))
-			}
-
-			const countProjects: number = arrData.length
+			const countProjects: number = data.length
 			const pages: number = countProjects / 10 + (countProjects % 10 !== 0 ? 1 : 0)
-
 			const arrPages: DataPortfolio[][] = []
 
 			i: for (let i = 0; i < pages; i++) {
 				arrPages.push([])
 
 				for (let j = i * 10; j < i * 10 + 10; j++) {
-					if (!arrData[j]) break i
+					if (!data[j]) break i
 
-					arrPages[i].push(arrData[j])
+					arrPages[i].push(data[j])
 				}
 			}
 
@@ -123,7 +115,7 @@ const Projects: React.FC<PropsProjects> = () => {
 				)}
 			</section>
 
-			{arrPagesData.length !== 0 && <Pagination pages={arrPagesData.length} page={page} setPage={setCurrentPage} />}
+			{arrPagesData.length > 1 && <Pagination pages={arrPagesData.length} page={page} setPage={setCurrentPage} />}
 		</main>
 	)
 }

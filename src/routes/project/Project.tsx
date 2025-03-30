@@ -96,7 +96,7 @@ const Project: React.FC<PropsProject> = () => {
 					</div>
 				</div>
 
-				{resources && (
+				{resources && resources.length > 0 && (
 					<div className={sass.info}>
 						<Heading level='2' text='Ресурсы:' classes={sass['info-title']} />
 
@@ -104,7 +104,7 @@ const Project: React.FC<PropsProject> = () => {
 							{resources.map(([text, url], i) => {
 								return (
 									<li className={sass['resource-item']} key={i}>
-										<Link link={url} text={text} classes={sass['resource-link']} />
+										<Link link={url} text={text} target='_blank' classes={sass['resource-link']} />
 									</li>
 								)
 							})}

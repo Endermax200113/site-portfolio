@@ -1,10 +1,9 @@
+type Sass = {
+	readonly [key: string]: string
+}
+
 interface PropsTrimSass {
-	(
-		sass: {
-			readonly [key: string]: string
-		},
-		arr: string[]
-	): string
+	(sass: Sass, arr: string[]): string
 }
 
 export const trimSass: PropsTrimSass = (sass, arr): string => {
@@ -20,13 +19,7 @@ export const trimSass: PropsTrimSass = (sass, arr): string => {
 }
 
 interface PropsElementTest {
-	(
-		sass: {
-			readonly [key: string]: string
-		},
-		arr: string[],
-		isTest?: boolean
-	): string
+	(sass: Sass, arr: string[], isTest?: boolean): string
 }
 
 export const transformTestClass: PropsElementTest = (sass, arr, isTest): string => {
