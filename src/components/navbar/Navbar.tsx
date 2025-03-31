@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Dispatch, SetStateAction } from 'react'
 import sass from './Navbar.module.sass'
 import { spotClass } from '@utils/headerControl'
 import Logo from './logo/Logo'

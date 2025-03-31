@@ -14,10 +14,6 @@ const LinkComponent: React.FC<PropsLink> = ({ link, text, classes, target }) => 
 	const allClassesLink: string = useClass(sass.link, classes)
 
 	return (
-		// <a href={link} className={allClassesLink}>
-		// 	{text}
-		// </a>
-
 		<Link to={link} target={target} className={allClassesLink}>
 			{text}
 		</Link>

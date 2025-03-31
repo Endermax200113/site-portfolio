@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Dispatch, SetStateAction } from 'react'
 import sass from './MenuItem.module.sass'
 import { NavLink } from 'react-router-dom'
 
