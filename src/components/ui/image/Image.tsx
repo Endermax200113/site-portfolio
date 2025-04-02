@@ -1,9 +1,9 @@
-import React, { HTMLAttributes, ImgHTMLAttributes } from 'react'
+import React, { ImgHTMLAttributes } from 'react'
 import sass from './Image.module.sass'
 import SVGImage from 'SVGImage'
 import { useClass } from '@hooks/useClass'
 
-interface PropsImage {
+interface PropsImage extends ImgHTMLAttributes<HTMLImageElement> {
 	url: string | SVGImage
 	alt?: string
 	classesWrap?: string

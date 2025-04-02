@@ -15,6 +15,7 @@ type LinksOnMain = {
 
 const Main: React.FC<PropsMain> = () => {
 	const params: Readonly<Params<string>> = useParams()
+	// TODO Добавить ссылку representation
 	const about: MutableRefObject<any> = useRef(null)
 	const skills: MutableRefObject<any> = useRef(null)
 	const portfolio: MutableRefObject<any> = useRef(null)
