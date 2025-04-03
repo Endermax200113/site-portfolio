@@ -10,10 +10,14 @@ interface PropsSkill {
 }
 
 const Skill: React.FC<PropsSkill> = ({ url, name }) => {
+	// TODO Переделать семантическую вёрстку:
+	// [ ] skill -> figure
+	// [ ] name -> figcaption
+
 	return (
 		<div className={sass.skill}>
-			<Image url={url} classesWrap={sass.wrap} alt={name} />
-			<Label classes={sass.name}>{name}</Label>
+			<Image url={url} classWrap={sass.wrap} alt={name} />
+			<Label className={sass.name}>{name}</Label>
 		</div>
 	)
 }

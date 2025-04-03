@@ -1,27 +1,23 @@
 import React, { ImgHTMLAttributes } from 'react'
 import sass from './Image.module.sass'
 import SVGImage from 'SVGImage'
-import { useClass } from '@hooks/useClass'
+import { mergeAllClasses } from '@utils/sassControl'
 
 interface PropsImage extends ImgHTMLAttributes<HTMLImageElement> {
 	url: string | SVGImage
-	alt?: string
-	classesWrap?: string
-	classesImage?: string
+	classWrap?: string
 }
 
-const Image: React.FC<PropsImage> = ({ url, alt, classesWrap, classesImage }) => {
-	const classWrap: string = useClass('', classesWrap)
-	const allClassesImage: string = useClass(sass.image, classesImage)
-
+const Image: React.FC<PropsImage> = ({ url, alt, classWrap, className, ...props }) => {
 	const URL: string = typeof url === 'string' ? url : url.default
+	const classImage: string = mergeAllClasses([sass.image], className)
 
-	return classesWrap ? (
+	return classWrap ? (
 		<div className={classWrap}>
-			<img src={URL} alt={alt ?? ''} className={allClassesImage} />
+			<img src={URL} alt={alt ?? ''} className={classImage} {...props} />
 		</div>
 	) : (
-		<img src={URL} alt={alt ?? ''} className={allClassesImage} />
+		<img src={URL} alt={alt ?? ''} className={classImage} {...props} />
 	)
 }
 

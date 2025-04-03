@@ -61,11 +61,11 @@ const Project: React.FC<PropsProject> = () => {
 			<section className={sass.details}>
 				<Heading text={projectName} classes={sass['project-name']} />
 
-				<Image url={urlImage} alt='Превью-картинка' classesWrap={sass['img-wrap']} classesImage={sass['img']} />
+				<Image url={urlImage} alt='Превью-картинка' classWrap={sass['img-wrap']} className={sass['img']} />
 
 				<Description classes={sass.description}>{description}</Description>
 
-				{site && <Button classes={sass.button}>К сайту</Button>}
+				{site && <Button className={sass.button}>К сайту</Button>}
 
 				<Separator classes={sass.separator} />
 
@@ -80,7 +80,7 @@ const Project: React.FC<PropsProject> = () => {
 						</div>
 
 						{gallery.length > 6 && (
-							<Button classes={sass.button} click={() => onOpen(0)}>
+							<Button className={sass.button} onClick={() => onOpen(0)}>
 								Посмотреть всё
 							</Button>
 						)}

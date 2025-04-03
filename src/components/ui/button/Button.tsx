@@ -1,18 +1,11 @@
-import React, { ButtonHTMLAttributes, MouseEvent, ReactNode } from 'react'
+import React, { ButtonHTMLAttributes } from 'react'
 import sass from './Button.module.sass'
-import { useClass } from '@hooks/useClass'
 
-interface PropsButton extends ButtonHTMLAttributes<HTMLButtonElement> {
-	children: ReactNode
-	click?: (e?: MouseEvent) => void
-	classes?: string
-}
+export interface PropsButton extends ButtonHTMLAttributes<HTMLButtonElement> {}
 
-const Button: React.FC<PropsButton> = ({ children, click, classes, ...props }) => {
-	const allClassesButton: string = useClass(!classes ? sass.default : '', classes)
-
+const Button: React.FC<PropsButton> = ({ type, className, children, ...props }) => {
 	return (
-		<button type='button' className={allClassesButton} onClick={e => click && click(e)} {...props}>
+		<button type={type ?? 'button'} className={className ?? sass.default} {...props}>
 			{children}
 		</button>
 	)

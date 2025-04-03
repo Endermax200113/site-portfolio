@@ -19,22 +19,22 @@ const Footer: React.FC<PropsFooter> = () => {
 
 	return (
 		<footer className={sass.footer}>
-			<Button classes={sass.back} click={clickBackToTop}>
-				<Image url={require('@svg/footer/back.svg')} classesWrap={sass.wrap} />
+			<Button className={sass.back} onClick={clickBackToTop}>
+				<Image url={require('@svg/footer/back.svg')} classWrap={sass.wrap} />
 				<span>Вернуться наверх</span>
 			</Button>
 
 			<div className={sass.social}>
 				{arrImages.map(({ urlImage, altImage, link }, i) => {
 					return (
-						<Button click={() => window.open(link)} classes={sass['social-button']} key={i}>
-							<Image url={urlImage} alt={altImage} classesWrap={sass['social-wrap']} classesImage={sass['social-image']} />
+						<Button onClick={() => window.open(link)} className={sass['social-button']} key={i}>
+							<Image url={urlImage} alt={altImage} classWrap={sass['social-wrap']} className={sass['social-image']} />
 						</Button>
 					)
 				})}
 			</div>
 
-			<Label classes={sass.copyright}>
+			<Label className={sass.copyright}>
 				<b className={sass['copyright-bold']}>&copy; М.С. Халласаар, 2025</b>
 			</Label>
 		</footer>

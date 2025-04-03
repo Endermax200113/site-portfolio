@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { LiHTMLAttributes } from 'react'
 import sass from './Logo.module.sass'
 import { Link } from 'react-router-dom'
 import Image from '@ui/image/Image'
 import { spotClass } from '@utils/headerControl'
 
-interface PropsLogo {
+interface PropsLogo extends LiHTMLAttributes<HTMLLIElement> {
 	isMain: boolean
 	headerFixed: boolean
 }
@@ -23,7 +23,7 @@ const Logo: React.FC<PropsLogo> = ({ isMain, headerFixed }) => {
 	return (
 		<li className={sass['logo']}>
 			<Link to='/' className={sass['logo-link']} onClick={handleClickItem}>
-				<Image url={require('@img/logo.png')} classesImage={logoClass} alt='Логотип' />
+				<Image url={require('@img/logo.png')} className={logoClass} alt='Логотип' />
 			</Link>
 		</li>
 	)

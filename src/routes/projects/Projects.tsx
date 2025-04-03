@@ -86,7 +86,7 @@ const Projects: React.FC<PropsProjects> = () => {
 					arrPagesData[page - 1].map((project, i) => {
 						return (
 							<div key={i} className={sass.project}>
-								<Image url={project.urlImage} classesWrap={sass['project-img-wrap']} classesImage={sass['project-img']} />
+								<Image url={project.urlImage} classWrap={sass['project-img-wrap']} className={sass['project-img']} />
 
 								<div className={sass.info}>
 									<div className={sass.details}>
@@ -96,12 +96,12 @@ const Projects: React.FC<PropsProjects> = () => {
 
 									<div className={sass.buttons}>
 										{project.site && (
-											<Button classes={sass.button} click={() => onClickToSite(project.site)}>
+											<Button className={sass.button} onClick={() => onClickToSite(project.site)}>
 												К сайту
 											</Button>
 										)}
 
-										<Button classes={sass.button} click={() => onClickMore(project.id)}>
+										<Button className={sass.button} onClick={() => onClickMore(project.id)}>
 											Подробнее
 										</Button>
 									</div>

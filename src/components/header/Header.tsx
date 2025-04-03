@@ -1,11 +1,11 @@
-import React, { RefObject, useRef, useState } from 'react'
+import React, { HTMLAttributes, RefObject, useRef, useState } from 'react'
 import sass from './Header.module.sass'
 import { useScrolling } from '@hooks/useScrolling'
 import Navbar from '@components/navbar/Navbar'
 import { spotClass } from '@utils/headerControl'
 import { useLocation } from 'react-router-dom'
 
-interface PropsHeader {}
+interface PropsHeader extends HTMLAttributes<HTMLElement> {}
 
 const Header: React.FC<PropsHeader> = () => {
 	const thisHeader: RefObject<HTMLElement> = useRef<HTMLElement>(null)
@@ -28,7 +28,6 @@ const Header: React.FC<PropsHeader> = () => {
 		return false
 	}
 
-	//Замена useLayoutEffect
 	const [prevPathname, setPrevPathname] = useState<string>(pathname)
 	if (pathname !== prevPathname) {
 		setPrevPathname(pathname)
@@ -66,7 +65,7 @@ const Header: React.FC<PropsHeader> = () => {
 		}
 	}
 
-	useScrolling(onScrolling, headerFixed, isMain, setIsMain)
+	useScrolling(onScrolling, headerFixed, isMain)
 
 	return (
 		<header className={headerClass} ref={thisHeader}>

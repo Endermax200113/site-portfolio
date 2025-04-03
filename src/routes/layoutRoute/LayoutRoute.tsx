@@ -14,9 +14,9 @@ import { Outlet } from 'react-router-dom'
 // [x] Добавить компонент MenuItem, который должен быть внутри Menu
 
 // * Representation
-// [ ] Убрать лишние компоненты Representation
-// [ ] Изменить высоту Representation как у бывшего размера Header'а
-// [ ] Добавить компонент Demonstration внутри Representation
+// [x] Убрать лишние компоненты Representation
+// [x] Изменить высоту Representation как у бывшего размера Header'а
+// [x] Добавить компонент Demonstration внутри Representation
 // [ ] Удалить компонент Info и добавить компонент Information внутри Demonstration
 // [ ] Добавить компонент InformationText внутри Information
 // [ ] Добавить компонент LabelHello в папке @ui/text/label/<...> внутри InformationText

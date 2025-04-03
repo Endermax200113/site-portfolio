@@ -1,8 +1,8 @@
-import React, { Dispatch, SetStateAction } from 'react'
+import React, { LiHTMLAttributes } from 'react'
 import sass from './MenuItem.module.sass'
 import { NavLink } from 'react-router-dom'
 
-interface PropsMenuItem {
+interface PropsMenuItem extends LiHTMLAttributes<HTMLLIElement> {
 	text: string
 	link: string
 }

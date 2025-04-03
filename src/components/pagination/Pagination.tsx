@@ -41,7 +41,7 @@ const Pagination: React.FC<PropsPagination> = ({ pages, page, setPage }) => {
 		for (let i = startPage; i <= endPage; i++) {
 			if (i === startPage && startPage > 1) {
 				pageNumbers.push(
-					<Button classes={sass.page} key={1} onClick={e => onClickPage(1, e)}>
+					<Button className={sass.page} key={1} onClick={e => onClickPage(1, e)}>
 						1
 					</Button>
 				)
@@ -60,7 +60,7 @@ const Pagination: React.FC<PropsPagination> = ({ pages, page, setPage }) => {
 			}
 
 			pageNumbers.push(
-				<Button classes={clazz} key={i} onClick={e => onClickPage(i, e)}>
+				<Button className={clazz} key={i} onClick={e => onClickPage(i, e)}>
 					{i}
 				</Button>
 			)
@@ -71,7 +71,7 @@ const Pagination: React.FC<PropsPagination> = ({ pages, page, setPage }) => {
 				}
 
 				pageNumbers.push(
-					<Button classes={sass.page} key={pages} onClick={e => onClickPage(pages, e)}>
+					<Button className={sass.page} key={pages} onClick={e => onClickPage(pages, e)}>
 						{pages}
 					</Button>
 				)
@@ -83,11 +83,11 @@ const Pagination: React.FC<PropsPagination> = ({ pages, page, setPage }) => {
 
 	return (
 		<div className={sass.pages}>
-			<Button classes={sass.page} click={e => onClickPrev(e)} hidden={page === 1}>
+			<Button className={sass.page} onClick={e => onClickPrev(e)} hidden={page === 1}>
 				&lt;
 			</Button>
 			{renderPageNumbers()}
-			<Button classes={sass.page} click={e => onClickNext(e)} hidden={page === pages}>
+			<Button className={sass.page} onClick={e => onClickNext(e)} hidden={page === pages}>
 				&gt;
 			</Button>
 		</div>

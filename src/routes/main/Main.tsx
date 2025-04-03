@@ -6,6 +6,7 @@ import Portfolio from '@components/portfolio/Portfolio'
 import Resume from '@components/resume/Resume'
 import { Params, useParams } from 'react-router-dom'
 import RootMain from '@components/main/Main'
+import Representation from '@components/representation/Representation'
 
 interface PropsMain {}
 
@@ -15,7 +16,7 @@ type LinksOnMain = {
 
 const Main: React.FC<PropsMain> = () => {
 	const params: Readonly<Params<string>> = useParams()
-	// TODO Добавить ссылку representation
+	const representation: MutableRefObject<any> = useRef(null)
 	const about: MutableRefObject<any> = useRef(null)
 	const skills: MutableRefObject<any> = useRef(null)
 	const portfolio: MutableRefObject<any> = useRef(null)
@@ -23,6 +24,7 @@ const Main: React.FC<PropsMain> = () => {
 
 	const links: LinksOnMain = useMemo(() => {
 		return {
+			representation,
 			about,
 			skills,
 			portfolio,
@@ -47,6 +49,8 @@ const Main: React.FC<PropsMain> = () => {
 
 	return (
 		<RootMain classes={sass.main} withoutMargin>
+			<Representation ref={links.representation} />
+
 			<div className={sass.gradient}>
 				<About ref={links.about} />
 				<Skills ref={links.skills} />

@@ -10,7 +10,7 @@ interface PropsSeparator {
 const Separator: React.FC<PropsSeparator> = ({ classes }) => {
 	const allClassesWrap: string = useClass(sass.wrap, classes)
 
-	return <Image url={require('@svg/separator.svg')} classesWrap={allClassesWrap} alt='Разделитель' />
+	return <Image url={require('@svg/separator.svg')} classWrap={allClassesWrap} alt='Разделитель' />
 }
 
 export default Separator

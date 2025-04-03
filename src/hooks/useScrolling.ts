@@ -1,18 +1,8 @@
-import { Dispatch, SetStateAction, useSyncExternalStore } from 'react'
-import { Location, useLocation } from 'react-router-dom'
+import { useSyncExternalStore } from 'react'
 
 type CallbackFunction = <K extends keyof WindowEventMap>(this: Window, ev: WindowEventMap[K]) => any
-type TypeMain = Dispatch<SetStateAction<boolean>>
 
 let enabled: boolean = false
-
-// const toggleMain = (setIsMain: TypeMain, location: Location): (() => void) => {
-// 	const isMain: boolean = inMainLinks(location)
-
-// 	setIsMain(isMain)
-
-// 	return () => {}
-// }
 
 const toggleScroll = (callback: CallbackFunction, isMain: boolean): (() => void) => {
 	if (isMain) {
@@ -32,16 +22,9 @@ const toggleScroll = (callback: CallbackFunction, isMain: boolean): (() => void)
 	}
 }
 
-export const useScrolling = (listener: CallbackFunction, toggle: boolean, isMain: boolean, setIsMain: TypeMain): void => {
-	const location: Location = useLocation()
-
+export const useScrolling = (listener: CallbackFunction, toggle: boolean, isMain: boolean): void => {
 	useSyncExternalStore(
 		() => toggleScroll(listener, isMain),
 		() => toggle
 	)
-
-	// useSyncExternalStore(
-	// 	() => toggleMain(setIsMain, location),
-	// 	() => location.pathname
-	// )
 }

@@ -33,14 +33,14 @@ const Resume: React.FC<PropsResume> = forwardRef<HTMLElement>(({ ...props }, for
 
 				<Separator classes={sass.separator} />
 
-				<Image url={require('@img/resume/preview.png')} classesWrap={sass.wrap} classesImage={sass.image} />
+				<Image url={require('@img/resume/preview.png')} classWrap={sass.wrap} className={sass.image} />
 
 				<div className={sass.buttons}>
-					<Button classes={sass.button} click={showResume}>
+					<Button className={sass.button} onClick={showResume}>
 						Посмотреть
 					</Button>
 
-					<Button classes={sass.button} click={downloadResume}>
+					<Button className={sass.button} onClick={downloadResume}>
 						Скачать файл
 					</Button>
 				</div>

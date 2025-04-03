@@ -304,7 +304,7 @@ const DialogGallery: React.FC<PropsDialogGallery> = ({ gallery, stateIdGallery, 
 				<div className={sass['test-image-ey']} style={{ top: placeImage.endY }}></div>
 			</div> */}
 
-			<Button classes={trimSass(sass, ['button', isHiddenUIElements])} click={() => setIsOpened(false)}>
+			<Button className={trimSass(sass, ['button', isHiddenUIElements])} onClick={() => setIsOpened(false)}>
 				<ImageComp url={require('@svg/cross.svg')} alt='Закрыть' />
 			</Button>
 
@@ -313,7 +313,7 @@ const DialogGallery: React.FC<PropsDialogGallery> = ({ gallery, stateIdGallery, 
 			<div className={sass.management}>
 				<div className={trimSass(sass, ['management-buttons', isHiddenUIElements])}>
 					{idGallery !== 0 && (
-						<Button classes={trimSass(sass, ['management-button', 'left'])} click={onClickLeft}>
+						<Button className={trimSass(sass, ['management-button', 'left'])} onClick={onClickLeft}>
 							<ImageComp url={require('@svg/arrow-left.svg')} />
 						</Button>
 					)}
@@ -323,7 +323,7 @@ const DialogGallery: React.FC<PropsDialogGallery> = ({ gallery, stateIdGallery, 
 					</span>
 
 					{idGallery + 1 !== gallery.length && (
-						<Button classes={trimSass(sass, ['management-button', 'right'])} click={onClickRight}>
+						<Button className={trimSass(sass, ['management-button', 'right'])} onClick={onClickRight}>
 							<ImageComp url={require('@svg/arrow-right.svg')} />
 						</Button>
 					)}

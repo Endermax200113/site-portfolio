@@ -33,7 +33,7 @@ const Portfolio: React.FC<PropsPortfolio> = forwardRef<HTMLElement>(({ ...props 
 	return (
 		<section className={sass.portfolio} {...props} ref={forwardedRef}>
 			<div className={sass['image-heading']}>
-				<Image url={require('@img/portfolio/heading.jpg')} classesWrap={sass['image-wrap']} classesImage={sass.image} />
+				<Image url={require('@img/portfolio/heading.jpg')} classWrap={sass['image-wrap']} className={sass.image} />
 
 				<Heading text='Портфолио' classes={sass.heading} />
 			</div>

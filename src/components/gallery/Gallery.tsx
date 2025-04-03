@@ -17,11 +17,11 @@ const Gallery: React.FC<PropsGallery> = ({ name, urlImage, classes, clickButton 
 
 	return (
 		<div className={allClassesGallery}>
-			<Image url={urlImage} classesWrap={sass['img-wrap']} classesImage={sass.img} />
+			<Image url={urlImage} classWrap={sass['img-wrap']} className={sass.img} />
 
 			<Heading level='3' text={name} classes={sass.name} />
 
-			<Button classes={sass.show} click={clickButton}>
+			<Button className={sass.show} onClick={clickButton}>
 				Посмотреть
 			</Button>
 		</div>

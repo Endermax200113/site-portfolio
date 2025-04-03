@@ -1,10 +1,10 @@
-import React, { Dispatch, SetStateAction } from 'react'
+import React, { HTMLAttributes } from 'react'
 import sass from './Navbar.module.sass'
 import { spotClass } from '@utils/headerControl'
 import Logo from './logo/Logo'
 import Menu from './menu/Menu'
 
-interface PropsNavbar {
+interface PropsNavbar extends HTMLAttributes<HTMLElement> {
 	isMain: boolean
 	headerFixed: boolean
 }

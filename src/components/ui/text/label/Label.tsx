@@ -1,16 +1,14 @@
-import React, { ReactNode } from 'react'
+import React, { HTMLAttributes } from 'react'
 import sass from './Label.module.sass'
-import { useClass } from '@hooks/useClass'
 
-interface PropsLabel {
-	children: ReactNode
-	classes?: string
-}
+export interface PropsLabel extends HTMLAttributes<HTMLDivElement> {}
 
-const Label: React.FC<PropsLabel> = ({ children, classes }) => {
-	const allClassesLabel = useClass(!classes ? sass.label : '', classes)
-
-	return <div className={allClassesLabel}>{children}</div>
+const Label: React.FC<PropsLabel> = ({ ...props }) => {
+	return (
+		<div className={props.className ?? sass.label} {...props}>
+			{props.children}
+		</div>
+	)
 }
 
 export default Label

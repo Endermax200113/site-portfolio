@@ -13,7 +13,7 @@ interface PropsActivityBlock {
 const ActivityBlock: React.FC<PropsActivityBlock> = ({ urlImage, title, children }) => {
 	return (
 		<div className={sass.block}>
-			<Image url={urlImage} alt={title} classesWrap={sass.wrap} classesImage={sass.icon} />
+			<Image url={urlImage} alt={title} classWrap={sass.wrap} className={sass.icon} />
 			<Heading level='2' classes={sass.title} text={title} />
 			<Description classes={sass.description}>{children}</Description>
 		</div>
