@@ -1,21 +1,18 @@
-import React from 'react'
+import React, { HTMLAttributes } from 'react'
 import sass from './ActivityBlock.module.sass'
 import Image from '@ui/image/Image'
-import Description from '@ui/text/description/Description'
-import Heading from '@ui/text/heading/Heading'
+import ActivityText from './activityText/ActivityText'
 
-interface PropsActivityBlock {
+interface PropsActivityBlock extends HTMLAttributes<HTMLDivElement> {
 	urlImage: string
-	title: string
-	children: string
+	heading: string
 }
 
-const ActivityBlock: React.FC<PropsActivityBlock> = ({ urlImage, title, children }) => {
+const ActivityBlock: React.FC<PropsActivityBlock> = ({ urlImage, heading, children, ...props }) => {
 	return (
-		<div className={sass.block}>
-			<Image url={urlImage} alt={title} classWrap={sass.wrap} className={sass.icon} />
-			<Heading level='2' className={sass.title} children={title} />
-			<Description className={sass.description}>{children}</Description>
+		<div className={sass.block} {...props}>
+			<Image url={urlImage} alt={heading} classWrap={sass.wrap} className={sass.icon} />
+			<ActivityText children={children} heading={heading} />
 		</div>
 	)
 }

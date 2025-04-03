@@ -4,8 +4,7 @@ import Quote from '@ui/quote/Quote'
 import Heading from '@ui/text/heading/Heading'
 import Separator from '@ui/separator/Separator'
 import Activity from './activity/Activity'
-import { DataAbout, dataAbout } from '@/data/about'
-import Description from '@ui/text/description/Description'
+import { dataAbout } from '@/data/about'
 import DescriptionAbout from '@ui/text/description/descriptionAbout/DescriptionAbout'
 
 interface PropsAbout extends RefAttributes<HTMLElement> {
@@ -24,7 +23,7 @@ const About: React.FC<PropsAbout> = forwardRef<HTMLElement>(({ ...props }, forwa
 			</Quote>
 
 			<Separator classWrap={sass['separator-wrap']} />
-			<Activity classes={sass.activity} />
+			<Activity className={sass.activity} />
 		</section>
 	)
 })

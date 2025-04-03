@@ -2,7 +2,7 @@ import React, { createElement, HTMLAttributes } from 'react'
 import sass from './Heading.module.sass'
 import { mergeAllClasses } from '@utils/sassControl'
 
-interface PropsHeading extends HTMLAttributes<HTMLHeadingElement> {
+export interface PropsHeading extends HTMLAttributes<HTMLHeadingElement> {
 	mergeClass?: boolean
 	level?: '1' | '2' | '3' | '4' | '5' | '6'
 }
