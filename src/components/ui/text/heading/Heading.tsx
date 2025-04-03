@@ -8,8 +8,6 @@ interface PropsHeading extends HTMLAttributes<HTMLHeadingElement> {
 }
 
 const Heading: React.FC<PropsHeading> = ({ mergeClass, children, level, className, ...props }) => {
-	console.log(mergeClass, sass.heading, mergeClass ? sass.heading : '')
-
 	const classHeading: string = mergeAllClasses([mergeClass ? sass.heading : ''], className)
 
 	return createElement(!level ? 'h1' : `h${level}`, { ...props, className: classHeading || null }, children)

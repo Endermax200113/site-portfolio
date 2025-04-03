@@ -91,7 +91,7 @@ const Projects: React.FC<PropsProjects> = () => {
 								<div className={sass.info}>
 									<div className={sass.details}>
 										<Heading children={project.name} className={sass.title} />
-										<Description classes={sass.description}>{project.briefDescription}</Description>
+										<Description className={sass.description}>{project.briefDescription}</Description>
 									</div>
 
 									<div className={sass.buttons}>

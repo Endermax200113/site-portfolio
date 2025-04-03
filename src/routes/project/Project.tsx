@@ -63,7 +63,7 @@ const Project: React.FC<PropsProject> = () => {
 
 				<Image url={urlImage} alt='Превью-картинка' classWrap={sass['img-wrap']} className={sass['img']} />
 
-				<Description classes={sass.description}>{description}</Description>
+				<Description className={sass.description}>{description}</Description>
 
 				{site && <Button className={sass.button}>К сайту</Button>}
 

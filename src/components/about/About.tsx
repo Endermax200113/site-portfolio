@@ -5,18 +5,24 @@ import Heading from '@ui/text/heading/Heading'
 import Separator from '@ui/separator/Separator'
 import Activity from './activity/Activity'
 import { DataAbout, dataAbout } from '@/data/about'
+import Description from '@ui/text/description/Description'
+import DescriptionAbout from '@ui/text/description/descriptionAbout/DescriptionAbout'
 
 interface PropsAbout extends RefAttributes<HTMLElement> {
 	[props: string]: any
 }
 
 const About: React.FC<PropsAbout> = forwardRef<HTMLElement>(({ ...props }, forwardedRef) => {
-	const paragraphs: DataAbout[] = dataAbout
-
 	return (
 		<section className={sass.about} {...props} ref={forwardedRef}>
 			<Heading children='Обо мне' className={sass.heading} mergeClass />
-			<Quote paragraphs={paragraphs} classes={sass.quote} />
+
+			<Quote className={sass.quote}>
+				{dataAbout.map((paragraph, i) => {
+					return <DescriptionAbout key={`description-about-${i}`}>{paragraph}</DescriptionAbout>
+				})}
+			</Quote>
+
 			<Separator classes={sass['separator-wrap']} />
 			<Activity classes={sass.activity} />
 		</section>

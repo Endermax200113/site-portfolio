@@ -329,7 +329,7 @@ const DialogGallery: React.FC<PropsDialogGallery> = ({ gallery, stateIdGallery, 
 					)}
 				</div>
 
-				<Description classes={trimSass(sass, ['management-description', isHiddenUIElements])}>{gallery[idGallery].description}</Description>
+				<Description className={trimSass(sass, ['management-description', isHiddenUIElements])}>{gallery[idGallery].description}</Description>
 			</div>
 		</dialog>
 	)

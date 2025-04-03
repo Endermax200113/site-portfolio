@@ -1,25 +1,15 @@
-import React from 'react'
+import React, { BlockquoteHTMLAttributes } from 'react'
 import sass from './Quote.module.sass'
-import Description from '@ui/text/description/Description'
-import { useClass } from '@hooks/useClass'
+import { mergeAllClasses } from '@utils/sassControl'
 
-interface PropsQuote {
-	paragraphs: string[]
-	classes?: string
-}
+interface PropsQuote extends BlockquoteHTMLAttributes<HTMLQuoteElement> {}
 
-const Quote: React.FC<PropsQuote> = ({ paragraphs, classes }) => {
-	const allClassesQuote: string = useClass(sass.quote, classes)
+const Quote: React.FC<PropsQuote> = ({ children, className, ...props }) => {
+	const classQuote: string = mergeAllClasses([sass.quote], className)
 
 	return (
-		<blockquote className={allClassesQuote}>
-			{paragraphs.map((paragraph: string, i: number) => {
-				return (
-					<Description classes={sass.description} key={i}>
-						{paragraph}
-					</Description>
-				)
-			})}
+		<blockquote className={classQuote} {...props}>
+			{children}
 		</blockquote>
 	)
 }
