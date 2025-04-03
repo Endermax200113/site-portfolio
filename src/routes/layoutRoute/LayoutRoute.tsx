@@ -17,13 +17,13 @@ import { Outlet } from 'react-router-dom'
 // [x] Убрать лишние компоненты Representation
 // [x] Изменить высоту Representation как у бывшего размера Header'а
 // [x] Добавить компонент Demonstration внутри Representation
-// [ ] Удалить компонент Info и добавить компонент Information внутри Demonstration
-// [ ] Добавить компонент InformationText внутри Information
-// [ ] Добавить компонент LabelHello в папке @ui/text/label/<...> внутри InformationText
-// [ ] Добавить компонент LabelWho в этой же папке и внутри InformationText
-// [ ] Добавить компонент LabelProfession в той же папке и внутри InformationText
-// [ ] Компонент Social перенести по следующему пути: @components/representation/demonstration/information
-// [ ] Добавить компонент ButtonSocial в папке @ui/button/<...> и заменить обычные кнопки в Social на эти
+// [x] Удалить компонент Info и добавить компонент Information внутри Demonstration
+// [x] Добавить компонент InformationText внутри Information
+// [x] Добавить компонент LabelHello в папке @ui/text/label/<...> внутри InformationText
+// [x] Добавить компонент LabelWho в этой же папке и внутри InformationText
+// [x] Добавить компонент LabelProfession в той же папке и внутри InformationText
+// [x] Компонент Social перенести по следующему пути: @components/representation/demonstration/information
+// [x] Добавить компонент ButtonSocial в папке @ui/button/<...> и заменить обычные кнопки в Social на эти
 // [ ] Перед добавлением компонента открыть Photoshop и 4 картинки объединить воедино
 // [ ] Добавить компонент Images внутри Demonstration, который имеет изображение с 4 устройствами
 
