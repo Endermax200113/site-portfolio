@@ -1,17 +1,18 @@
-import React, { createElement } from 'react'
+import React, { createElement, HTMLAttributes } from 'react'
 import sass from './Heading.module.sass'
-import { useClass } from '@hooks/useClass'
+import { mergeAllClasses } from '@utils/sassControl'
 
-interface PropsHeading {
-	text: string
+interface PropsHeading extends HTMLAttributes<HTMLHeadingElement> {
+	mergeClass?: boolean
 	level?: '1' | '2' | '3' | '4' | '5' | '6'
-	classes?: string
 }
 
-const Heading: React.FC<PropsHeading> = ({ text, level, classes }) => {
-	const allClassesHeading: string = useClass(sass.heading, classes)
+const Heading: React.FC<PropsHeading> = ({ mergeClass, children, level, className, ...props }) => {
+	console.log(mergeClass, sass.heading, mergeClass ? sass.heading : '')
 
-	return createElement(!level ? 'h1' : `h${level}`, { className: allClassesHeading }, text)
+	const classHeading: string = mergeAllClasses([mergeClass ? sass.heading : ''], className)
+
+	return createElement(!level ? 'h1' : `h${level}`, { ...props, className: classHeading || null }, children)
 }
 
 export default Heading

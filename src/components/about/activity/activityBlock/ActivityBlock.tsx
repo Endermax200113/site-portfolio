@@ -14,7 +14,7 @@ const ActivityBlock: React.FC<PropsActivityBlock> = ({ urlImage, title, children
 	return (
 		<div className={sass.block}>
 			<Image url={urlImage} alt={title} classWrap={sass.wrap} className={sass.icon} />
-			<Heading level='2' classes={sass.title} text={title} />
+			<Heading level='2' className={sass.title} children={title} />
 			<Description classes={sass.description}>{children}</Description>
 		</div>
 	)

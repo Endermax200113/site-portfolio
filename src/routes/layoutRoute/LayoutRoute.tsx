@@ -3,7 +3,7 @@ import Header from '@components/header/Header'
 import React from 'react'
 import { Outlet } from 'react-router-dom'
 
-// TODO Хедер вместе Representation переделываются
+// DONE Хедер вместе Representation переделаны
 
 // * Header
 // [x] Убрать полностью лишние компоненты
@@ -24,8 +24,8 @@ import { Outlet } from 'react-router-dom'
 // [x] Добавить компонент LabelProfession в той же папке и внутри InformationText
 // [x] Компонент Social перенести по следующему пути: @components/representation/demonstration/information
 // [x] Добавить компонент ButtonSocial в папке @ui/button/<...> и заменить обычные кнопки в Social на эти
-// [ ] Перед добавлением компонента открыть Photoshop и 4 картинки объединить воедино
-// [ ] Добавить компонент Images внутри Demonstration, который имеет изображение с 4 устройствами
+// [x] Перед добавлением компонента открыть Photoshop и 4 картинки объединить воедино
+// [x] Добавить компонент Images внутри Demonstration, который имеет изображение с 4 устройствами
 
 interface PropsLayoutRoute {}
 

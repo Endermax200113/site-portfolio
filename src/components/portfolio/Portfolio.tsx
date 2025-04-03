@@ -35,7 +35,7 @@ const Portfolio: React.FC<PropsPortfolio> = forwardRef<HTMLElement>(({ ...props 
 			<div className={sass['image-heading']}>
 				<Image url={require('@img/portfolio/heading.jpg')} classWrap={sass['image-wrap']} className={sass.image} />
 
-				<Heading text='Портфолио' classes={sass.heading} />
+				<Heading children='Портфолио' className={sass.heading} />
 			</div>
 
 			<Projects projects={arrProjects} />

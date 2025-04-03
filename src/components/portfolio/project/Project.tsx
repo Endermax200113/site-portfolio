@@ -27,7 +27,7 @@ const Project: React.FC<PropsProject> = ({ project }) => {
 			<Image url={project.urlImage} alt={project.name} classWrap={sass['project-image-wrap']} className={sass['project-image']} />
 
 			<div className={sass.info}>
-				<Heading level='2' classes={sass.title} text={project.name} />
+				<Heading level='2' className={sass.title} children={project.name} />
 				<Description classes={sass.description}>{project.briefDescription}</Description>
 
 				<div className={sass.buttons}>

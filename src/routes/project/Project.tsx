@@ -59,7 +59,7 @@ const Project: React.FC<PropsProject> = () => {
 	return (
 		<RootMain classes={sass.project}>
 			<section className={sass.details}>
-				<Heading text={projectName} classes={sass['project-name']} />
+				<Heading children={projectName} className={sass['project-name']} />
 
 				<Image url={urlImage} alt='Превью-картинка' classWrap={sass['img-wrap']} className={sass['img']} />
 
@@ -71,7 +71,7 @@ const Project: React.FC<PropsProject> = () => {
 
 				{gallery && (
 					<div className={sass.info}>
-						<Heading level='2' text='Галерея:' classes={sass['info-title']} />
+						<Heading level='2' children='Галерея:' className={sass['info-title']} />
 
 						<div className={sass.gallery}>
 							{arrMaxSixGallery.map((image, i) => {
@@ -88,7 +88,7 @@ const Project: React.FC<PropsProject> = () => {
 				)}
 
 				<div className={sass.info}>
-					<Heading level='2' text='Стек:' classes={sass['info-title']} />
+					<Heading level='2' children='Стек:' className={sass['info-title']} />
 
 					<div className={sass.stack}>
 						{arrStack.map((fourStack, i) => {
@@ -99,7 +99,7 @@ const Project: React.FC<PropsProject> = () => {
 
 				{resources && resources.length > 0 && (
 					<div className={sass.info}>
-						<Heading level='2' text='Ресурсы:' classes={sass['info-title']} />
+						<Heading level='2' children='Ресурсы:' className={sass['info-title']} />
 
 						<ul className={sass['resources-list']}>
 							{resources.map(([text, url], i) => {

@@ -27,7 +27,7 @@ const Resume: React.FC<PropsResume> = forwardRef<HTMLElement>(({ ...props }, for
 	return (
 		<section className={sass.resume} {...props} ref={forwardedRef}>
 			<div className={sass.gradient}>
-				<Heading text='CV-Резюме' classes={sass.title} />
+				<Heading children='CV-Резюме' className={sass.title} />
 
 				<Description classes={sass.description}>В этом CV-резюме составлены вся информация про меня, в котором входят все навыки, образования, контактные данные и личные данные. Вы можете посмотреть как с сайта, так и при необходимости скачать PDF-файл.</Description>
 

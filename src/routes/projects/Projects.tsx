@@ -90,7 +90,7 @@ const Projects: React.FC<PropsProjects> = () => {
 
 								<div className={sass.info}>
 									<div className={sass.details}>
-										<Heading text={project.name} classes={sass.title} />
+										<Heading children={project.name} className={sass.title} />
 										<Description classes={sass.description}>{project.briefDescription}</Description>
 									</div>
 
@@ -111,7 +111,7 @@ const Projects: React.FC<PropsProjects> = () => {
 					})
 				) : (
 					<div className={sass['no-projects']}>
-						<Heading text='Нет проектов' classes={trimSass(sass, ['no-projects', 'title'])} />
+						<Heading children='Нет проектов' className={trimSass(sass, ['no-projects', 'title'])} />
 					</div>
 				)}
 			</section>

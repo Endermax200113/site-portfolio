@@ -19,7 +19,7 @@ const Gallery: React.FC<PropsGallery> = ({ name, urlImage, classes, clickButton 
 		<div className={allClassesGallery}>
 			<Image url={urlImage} classWrap={sass['img-wrap']} className={sass.img} />
 
-			<Heading level='3' text={name} classes={sass.name} />
+			<Heading level='3' children={name} className={sass.name} />
 
 			<Button className={sass.show} onClick={clickButton}>
 				Посмотреть

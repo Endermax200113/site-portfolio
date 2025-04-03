@@ -12,7 +12,7 @@ interface PropsBlockOfSkills {
 const BlockOfSkills: React.FC<PropsBlockOfSkills> = ({ name, arrFourSkills }) => {
 	return (
 		<div className={sass.block}>
-			<Heading level='2' classes={sass.title} text={name} />
+			<Heading level='2' className={sass.title} children={name} />
 
 			<div className={sass['skills-block']}>
 				{arrFourSkills.map((fourSkills, i) => {

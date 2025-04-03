@@ -10,7 +10,7 @@ interface PropsSkills {
 const Skills: React.FC<PropsSkills> = forwardRef<HTMLElement>(({ ...props }, forwardedRef) => {
 	return (
 		<section className={sass.skills} {...props} ref={forwardedRef}>
-			<Heading text='Навыки' classes={sass.heading} />
+			<Heading children='Навыки' className={sass.heading} />
 			<BlocksSkills />
 		</section>
 	)
