@@ -1,16 +1,14 @@
 import React from 'react'
 import sass from './Separator.module.sass'
-import Image from '@ui/image/Image'
-import { useClass } from '@hooks/useClass'
+import Image, { PropsImage } from '@ui/image/Image'
+import { mergeAllClasses } from '@utils/sassControl'
 
-interface PropsSeparator {
-	classes?: string
-}
+interface PropsSeparator extends PropsImage {}
 
-const Separator: React.FC<PropsSeparator> = ({ classes }) => {
-	const allClassesWrap: string = useClass(sass.wrap, classes)
+const Separator: React.FC<PropsSeparator> = ({ classWrap, ...props }) => {
+	const allClassesWrap: string = mergeAllClasses([sass.wrap], classWrap)
 
-	return <Image url={require('@svg/separator.svg')} classWrap={allClassesWrap} alt='Разделитель' />
+	return <Image url={require('@svg/separator.svg')} classWrap={allClassesWrap} alt='Разделитель' role='separator' {...props} />
 }
 
 export default Separator

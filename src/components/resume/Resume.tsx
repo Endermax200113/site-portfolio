@@ -31,7 +31,7 @@ const Resume: React.FC<PropsResume> = forwardRef<HTMLElement>(({ ...props }, for
 
 				<Description className={sass.description}>В этом CV-резюме составлены вся информация про меня, в котором входят все навыки, образования, контактные данные и личные данные. Вы можете посмотреть как с сайта, так и при необходимости скачать PDF-файл.</Description>
 
-				<Separator classes={sass.separator} />
+				<Separator className={sass.separator} />
 
 				<Image url={require('@img/resume/preview.png')} classWrap={sass.wrap} className={sass.image} />
 

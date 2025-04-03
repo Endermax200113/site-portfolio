@@ -23,7 +23,7 @@ const About: React.FC<PropsAbout> = forwardRef<HTMLElement>(({ ...props }, forwa
 				})}
 			</Quote>
 
-			<Separator classes={sass['separator-wrap']} />
+			<Separator classWrap={sass['separator-wrap']} />
 			<Activity classes={sass.activity} />
 		</section>
 	)

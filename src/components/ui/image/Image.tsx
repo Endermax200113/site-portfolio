@@ -3,13 +3,13 @@ import sass from './Image.module.sass'
 import SVGImage from 'SVGImage'
 import { mergeAllClasses } from '@utils/sassControl'
 
-interface PropsImage extends ImgHTMLAttributes<HTMLImageElement> {
-	url: string | SVGImage
+export interface PropsImage extends ImgHTMLAttributes<HTMLImageElement> {
+	url?: string | SVGImage
 	classWrap?: string
 }
 
 const Image: React.FC<PropsImage> = ({ url, alt, classWrap, className, ...props }) => {
-	const URL: string = typeof url === 'string' ? url : url.default
+	const URL: string = typeof url === 'string' ? url : typeof url !== 'undefined' && url.default
 	const classImage: string = mergeAllClasses([sass.image], className)
 
 	return classWrap ? (

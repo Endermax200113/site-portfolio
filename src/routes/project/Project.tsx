@@ -67,7 +67,7 @@ const Project: React.FC<PropsProject> = () => {
 
 				{site && <Button className={sass.button}>К сайту</Button>}
 
-				<Separator classes={sass.separator} />
+				<Separator className={sass.separator} />
 
 				{gallery && (
 					<div className={sass.info}>
