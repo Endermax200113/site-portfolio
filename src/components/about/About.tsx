@@ -14,7 +14,7 @@ interface PropsAbout extends RefAttributes<HTMLElement> {
 const About: React.FC<PropsAbout> = forwardRef<HTMLElement>(({ ...props }, forwardedRef) => {
 	return (
 		<section className={sass.about} {...props} ref={forwardedRef}>
-			<Heading children='Обо мне' className={sass.heading} mergeClass />
+			<Heading children='Обо мне' />
 
 			<Quote className={sass.quote}>
 				{dataAbout.map((paragraph, i) => {
