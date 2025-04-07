@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction } from 'react'
+import React from 'react'
 import { dataMenu, DataMenu } from '@/data/menu'
 import MenuItem from './menuItem/MenuItem'
 

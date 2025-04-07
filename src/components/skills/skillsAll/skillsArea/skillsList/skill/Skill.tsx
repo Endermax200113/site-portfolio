@@ -1,8 +1,8 @@
 import React from 'react'
 import sass from './Skill.module.sass'
-import Label from '@ui/text/label/Label'
 import Image from '@ui/image/Image'
 import SVGImage from 'SVGImage'
+import LabelSkill from '@ui/text/label/labelSkill/LabelSkill'
 
 interface PropsSkill {
 	url: string | SVGImage
@@ -17,7 +17,7 @@ const Skill: React.FC<PropsSkill> = ({ url, name }) => {
 	return (
 		<div className={sass.skill}>
 			<Image url={url} classWrap={sass.wrap} alt={name} />
-			<Label className={sass.name}>{name}</Label>
+			<LabelSkill children={name} />
 		</div>
 	)
 }

@@ -1,7 +1,7 @@
 import React from 'react'
 import sass from './RowSkills.module.sass'
 import { AllSkills } from '@helper/skills'
-import Skill from './../skill/Skill'
+import Skill from './../skillsAll/skillsArea/skillsList/skill/Skill'
 
 interface PropsRowSkills {
 	rowSkills: AllSkills
