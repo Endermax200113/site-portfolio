@@ -1,7 +1,5 @@
 import React, { forwardRef, RefAttributes, useState } from 'react'
 import sass from './Portfolio.module.sass'
-import Image from '@ui/image/Image'
-import Heading from '@ui/text/heading/Heading'
 import { AllProjects } from '@helper/portfolio'
 import Projects from './projects/Projects'
 import Link from '@ui/link/Link'
@@ -32,7 +30,6 @@ const Portfolio: React.FC<PropsPortfolio> = forwardRef<HTMLElement>(({ ...props 
 	return (
 		<section className={sass.portfolio} {...props} ref={forwardedRef}>
 			<Background />
-
 			<Projects projects={arrProjects} />
 
 			{showMore && (
