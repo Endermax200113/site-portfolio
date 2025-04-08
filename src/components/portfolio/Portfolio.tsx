@@ -1,13 +1,14 @@
-import React, { forwardRef, RefAttributes, useEffect, useState } from 'react'
+import React, { forwardRef, RefAttributes, useState } from 'react'
 import sass from './Portfolio.module.sass'
 import Image from '@ui/image/Image'
 import Heading from '@ui/text/heading/Heading'
 import { AllProjects } from '@helper/portfolio'
 import Projects from './projects/Projects'
 import Link from '@ui/link/Link'
-import { dataPortfolio, DataPortfolio } from '@/data/portfolio'
+import { dataPortfolio } from '@/data/portfolio'
 import { useArray } from '@hooks/useArray'
 import { useRenderEffect } from '@hooks/useRenderEffect'
+import Background from './background/Background'
 
 interface PropsPortfolio extends RefAttributes<HTMLElement> {
 	[props: string]: any
@@ -26,28 +27,11 @@ const Portfolio: React.FC<PropsPortfolio> = forwardRef<HTMLElement>(({ ...props 
 		return arr
 	})
 
-	useRenderEffect(() => {
-		setShowMore(dataPortfolio.length > 6)
-	}, [dataPortfolio.length])
-
-	// const [prevProjectsCount, setPrevProjectsCount] = useState<number>(dataPortfolio.length)
-	// if (prevProjectsCount !== dataPortfolio.length) {
-	// 	setPrevProjectsCount(dataPortfolio.length)
-	// 	setShowMore(dataPortfolio.length > 6)
-	// }
-
-	// useEffect(() => {
-	// 	if (projects.length > 6) setShowMore(true)
-	// 	else setShowMore(false)
-	// }, [projects, setShowMore])
+	useRenderEffect(() => setShowMore(dataPortfolio.length > 6), [dataPortfolio.length])
 
 	return (
 		<section className={sass.portfolio} {...props} ref={forwardedRef}>
-			<div className={sass['image-heading']}>
-				<Image url={require('@img/portfolio/heading.jpg')} classWrap={sass['image-wrap']} className={sass.image} />
-
-				<Heading children='Портфолио' className={sass.heading} />
-			</div>
+			<Background />
 
 			<Projects projects={arrProjects} />
 
