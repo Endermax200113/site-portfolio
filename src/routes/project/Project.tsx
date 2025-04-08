@@ -7,9 +7,6 @@ import Button from '@ui/button/Button'
 import Separator from '@ui/separator/Separator'
 import Link from '@ui/link/Link'
 import { useArray } from '@hooks/useArray'
-import { AllSkills, BlockSkills } from '@helper/skills'
-import { distributeSkills } from '@utils/arrayControl'
-import RowSkills from '@components/skills/rowSkills/RowSkills'
 import { useLoaderData } from 'react-router-dom'
 import { DataPortfolio } from '@/data/portfolio'
 import Gallery from '@components/gallery/Gallery'
@@ -24,18 +21,18 @@ const Project: React.FC<PropsProject> = () => {
 	const [dialogGalleryId, setDialogGalleryId] = useState<number>(0)
 	const [dialogGalleryIsOpened, setDialogGalleryIsOpened] = useState<boolean>(false)
 
-	const { site, urlImage, name: projectName, description, stack, gallery, resources } = data
+	const { site, urlImage, name: projectName, description, gallery, resources } = data
 
-	const arrStack: AllSkills[] = useArray(() => {
-		const blockStack: BlockSkills[] = distributeSkills([
-			{
-				title: 'Стек:',
-				skills: stack,
-			},
-		])
+	// const arrStack: AllSkills[] = useArray(() => {
+	// 	const blockStack: BlockSkills[] = distributeSkills([
+	// 		{
+	// 			title: 'Стек:',
+	// 			skills: stack,
+	// 		},
+	// 	])
 
-		return blockStack[0][1]
-	})
+	// 	return blockStack[0][1]
+	// })
 
 	const arrMaxSixGallery: GalleryData[] = useArray(() => {
 		if (!gallery) return []
@@ -91,9 +88,11 @@ const Project: React.FC<PropsProject> = () => {
 					<Heading level='2' children='Стек:' className={sass['info-title']} />
 
 					<div className={sass.stack}>
-						{arrStack.map((fourStack, i) => {
+						Тут должен быть стек
+						{/* TODO Переделать стек */}
+						{/* {arrStack.map((fourStack, i) => {
 							return <RowSkills rowSkills={fourStack} key={i} />
-						})}
+						})} */}
 					</div>
 				</div>
 
@@ -105,7 +104,7 @@ const Project: React.FC<PropsProject> = () => {
 							{resources.map(([text, url], i) => {
 								return (
 									<li className={sass['resource-item']} key={i}>
-										<Link link={url} text={text} target='_blank' classes={sass['resource-link']} />
+										<Link to={url} children={text} target='_blank' className={sass['resource-link']} />
 									</li>
 								)
 							})}
