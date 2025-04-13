@@ -1,7 +1,7 @@
 import React, { HTMLAttributes } from 'react'
 import sass from './Buttons.module.sass'
 import { NavigateFunction, useNavigate } from 'react-router-dom'
-import ButtonProject from '@ui/button/ButtonProject/ButtonProject'
+import ButtonProject from '@ui/button/buttonProject/ButtonProject'
 
 interface PropsButtons extends HTMLAttributes<HTMLDivElement> {
 	idProject: number
