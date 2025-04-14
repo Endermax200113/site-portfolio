@@ -10,7 +10,7 @@ const ErrorBoundary: React.FC<PropsErrorBoundary> = () => {
 	console.error(err.status ? `${err.status} -> ${err.statusText}` : 'Неправильный или некорректный запрос!')
 
 	return (
-		<RootMain classes={sass.error}>
+		<RootMain className={sass.error}>
 			<section className={sass.info}>
 				<strong className={sass.code}>{err.status ?? '400'}</strong>
 

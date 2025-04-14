@@ -1,20 +1,20 @@
-import React, { ReactNode } from 'react'
+import React, { HTMLAttributes } from 'react'
 import sass from './Main.module.sass'
 import { trimSass } from '@utils/sassControl'
 
-// TODO Исправить код
-
-interface PropsRootMain {
-	classes: string
-	children: ReactNode
+interface PropsRootMain extends HTMLAttributes<HTMLElement> {
 	withoutMargin?: boolean
 }
 
-const RootMain: React.FC<PropsRootMain> = ({ classes, withoutMargin, children }) => {
+const RootMain: React.FC<PropsRootMain> = ({ className, withoutMargin, children, ...props }) => {
 	const mainClass: string = !withoutMargin ? sass.main : trimSass(sass, ['main', 'without-margin'])
-	const togetherClasses: string = `${mainClass} ${classes}`
+	const togetherClasses: string = `${mainClass} ${className}`.trim()
 
-	return <main className={togetherClasses}>{children}</main>
+	return (
+		<main className={togetherClasses} {...props}>
+			{children}
+		</main>
+	)
 }
 
 export default RootMain

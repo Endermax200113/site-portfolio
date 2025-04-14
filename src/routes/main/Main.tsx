@@ -48,7 +48,7 @@ const Main: React.FC<PropsMain> = () => {
 	}, [scrollToBlock, params])
 
 	return (
-		<RootMain classes={sass.main} withoutMargin>
+		<RootMain className={sass.main} withoutMargin>
 			<Representation ref={links.representation} />
 
 			<div className={sass.gradient}>

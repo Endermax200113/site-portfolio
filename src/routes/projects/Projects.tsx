@@ -80,7 +80,7 @@ const Projects: React.FC<PropsProjects> = () => {
 	}, [data, jsonData])
 
 	return (
-		<RootMain classes={sass.main}>
+		<RootMain className={sass.main}>
 			<section className={sass.projects}>
 				{arrPagesData && arrPagesData.length > 0 ? (
 					arrPagesData[page - 1].map((project, i) => {

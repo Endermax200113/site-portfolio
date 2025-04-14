@@ -54,7 +54,7 @@ const Project: React.FC<PropsProject> = () => {
 	}
 
 	return (
-		<RootMain classes={sass.project}>
+		<RootMain className={sass.project}>
 			<section className={sass.details}>
 				<Heading children={projectName} className={sass['project-name']} />
 
