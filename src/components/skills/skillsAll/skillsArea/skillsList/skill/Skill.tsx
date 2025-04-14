@@ -1,8 +1,7 @@
 import React from 'react'
 import sass from './Skill.module.sass'
-import Image from '@ui/image/Image'
 import SVGImage from 'SVGImage'
-import LabelSkill from '@ui/text/label/labelSkill/LabelSkill'
+import Illustration from '@ui/illustration/Illustration'
 
 interface PropsSkill {
 	url: string | SVGImage
@@ -10,16 +9,11 @@ interface PropsSkill {
 }
 
 const Skill: React.FC<PropsSkill> = ({ url, name }) => {
-	// TODO Переделать семантическую вёрстку:
-	// [ ] skill -> figure
-	// [ ] name -> figcaption
+	// DONE Переделать семантическую вёрстку:
+	// [x] skill -> figure
+	// [x] name -> figcaption
 
-	return (
-		<div className={sass.skill}>
-			<Image url={url} classWrap={sass.wrap} alt={name} />
-			<LabelSkill children={name} />
-		</div>
-	)
+	return <Illustration className={sass.skill} image={url} classImage={sass.image} children={name} />
 }
 
 export default Skill

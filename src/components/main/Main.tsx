@@ -2,6 +2,8 @@ import React, { ReactNode } from 'react'
 import sass from './Main.module.sass'
 import { trimSass } from '@utils/sassControl'
 
+// TODO Исправить код
+
 interface PropsRootMain {
 	classes: string
 	children: ReactNode
