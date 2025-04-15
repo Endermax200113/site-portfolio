@@ -1,26 +1,26 @@
-import React, { MutableRefObject, useCallback, useEffect, useMemo, useRef } from 'react'
+import React, { MutableRefObject, useCallback, useLayoutEffect, useMemo, useRef } from 'react'
 import sass from './Main.module.sass'
 import About from '@components/about/About'
 import Skills from '@components/skills/Skills'
 import Portfolio from '@components/portfolio/Portfolio'
 import Resume from '@components/resume/Resume'
 import { Params, useParams } from 'react-router-dom'
-import RootMain from '@components/main/Main'
+import RootMain, { PropsRootMain } from '@components/main/Main'
 import Representation from '@components/representation/Representation'
 
-interface PropsMain {}
+interface PropsMain extends PropsRootMain {}
 
 type LinksOnMain = {
 	[link: string]: MutableRefObject<any>
 }
 
-const Main: React.FC<PropsMain> = () => {
+const Main: React.FC<PropsMain> = ({ ...props }) => {
 	const params: Readonly<Params<string>> = useParams()
-	const representation: MutableRefObject<any> = useRef(null)
-	const about: MutableRefObject<any> = useRef(null)
-	const skills: MutableRefObject<any> = useRef(null)
-	const portfolio: MutableRefObject<any> = useRef(null)
-	const cv: MutableRefObject<any> = useRef(null)
+	const representation: MutableRefObject<any> = useRef(<Representation />)
+	const about: MutableRefObject<any> = useRef(<About />)
+	const skills: MutableRefObject<any> = useRef(<Skills />)
+	const portfolio: MutableRefObject<any> = useRef(<Portfolio />)
+	const cv: MutableRefObject<any> = useRef(<Resume />)
 
 	const links: LinksOnMain = useMemo(() => {
 		return {
@@ -43,12 +43,11 @@ const Main: React.FC<PropsMain> = () => {
 		[links]
 	)
 
-	useEffect(() => {
-		scrollToBlock(params.block)
-	}, [scrollToBlock, params])
+	// Есть сомнение на использования хука
+	useLayoutEffect(() => scrollToBlock(params.block), [scrollToBlock, params])
 
 	return (
-		<RootMain className={sass.main} withoutMargin>
+		<RootMain className={sass.main} withoutMargin {...props}>
 			<Representation ref={links.representation} />
 
 			<div className={sass.gradient}>

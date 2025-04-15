@@ -12,11 +12,11 @@ import { DataPortfolio } from '@/data/portfolio'
 import Gallery from '@components/gallery/Gallery'
 import DialogGallery from '@components/gallery/dialogGallery/DialogGallery'
 import { Gallery as GalleryData } from '@helper/portfolio'
-import RootMain from '@components/main/Main'
+import RootMain, { PropsRootMain } from '@components/main/Main'
 
-interface PropsProject {}
+interface PropsProject extends PropsRootMain {}
 
-const Project: React.FC<PropsProject> = () => {
+const Project: React.FC<PropsProject> = ({ ...props }) => {
 	const data = useLoaderData() as DataPortfolio
 	const [dialogGalleryId, setDialogGalleryId] = useState<number>(0)
 	const [dialogGalleryIsOpened, setDialogGalleryIsOpened] = useState<boolean>(false)
@@ -54,7 +54,7 @@ const Project: React.FC<PropsProject> = () => {
 	}
 
 	return (
-		<RootMain className={sass.project}>
+		<RootMain className={sass.project} {...props}>
 			<section className={sass.details}>
 				<Heading children={projectName} className={sass['project-name']} />
 
