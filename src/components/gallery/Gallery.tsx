@@ -1,30 +1,25 @@
-import React, { MouseEvent } from 'react'
+import React, { HTMLAttributes, MouseEvent } from 'react'
 import sass from './Gallery.module.sass'
 import { useClass } from '@hooks/useClass'
 import Image from '@ui/image/Image'
 import Button from '@ui/button/Button'
 import Heading from '@ui/text/heading/Heading'
 
-interface PropsGallery {
+interface PropsGallery extends HTMLAttributes<HTMLElement> {
 	name: string
 	urlImage: string
-	classes?: string
 	clickButton: (e?: MouseEvent) => void
 }
 
-const Gallery: React.FC<PropsGallery> = ({ name, urlImage, classes, clickButton }) => {
-	const allClassesGallery: string = useClass(sass.gallery, classes)
+const Gallery: React.FC<PropsGallery> = ({ name, urlImage, className, clickButton, ...props }) => {
+	const allClassesGallery: string = useClass(sass.gallery, className)
 
 	return (
-		<div className={allClassesGallery}>
+		<article className={allClassesGallery} {...props}>
 			<Image url={urlImage} classWrap={sass['img-wrap']} className={sass.img} />
-
-			<Heading level='3' children={name} className={sass.name} />
-
-			<Button className={sass.show} onClick={clickButton}>
-				Посмотреть
-			</Button>
-		</div>
+			<Heading level='2' children={name} className={sass.name} mergeClass />
+			<Button className={sass.show} onClick={clickButton} children='Посмотреть' />
+		</article>
 	)
 }
 

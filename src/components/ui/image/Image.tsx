@@ -9,7 +9,7 @@ export interface PropsImage extends ImgHTMLAttributes<HTMLImageElement> {
 }
 
 const Image: React.FC<PropsImage> = ({ url, alt, classWrap, className, ...props }) => {
-	const URL: string = typeof url === 'string' ? url : typeof url !== 'undefined' && url.default
+	const URL: string = typeof url === 'string' ? url : typeof url !== 'undefined' ? url.default : 'no-found'
 	const classImage: string = mergeAllClasses([sass.image], className)
 
 	return classWrap ? (

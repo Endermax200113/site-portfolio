@@ -1,6 +1,7 @@
 @import '@sass/_main'
 
 .project
+	width: 100%
 	background: $color-transition-white radial-gradient(50% 50% at 50% 50%, rgba($color-gradient-main-begin, 0%) 0%, rgba($color-gradient-main-end, 16%) 100%)
 	display: flex
 	flex-direction: column
@@ -8,15 +9,14 @@
 	justify-content: unset
 
 	&-name
-		width: max-content !important
-		margin: 0 auto
-		padding: 0px 15px 0px 20px
+		margin-inline: auto
 
 .details
-	width: 1000px
-	margin-block: 50px
+	width: 1000px !important
+	margin-top: 50px
 	display: flex
 	flex-direction: column
+	align-items: unset !important
 
 .img
 	object-fit: cover !important
@@ -27,7 +27,7 @@
 		margin-top: 50px
 
 .description
-	@extend %project-info
+	margin-top: 25px
 
 .button
 	@extend %btn-big
@@ -38,38 +38,58 @@
 	margin: 50px auto 0
 
 .info
-	margin-top: 50px
+	width: 1000px !important
+	margin-top: 75px
 	display: flex
 	flex-direction: column
-	align-items: flex-start
 
 	&-title
-		@extend %title-level-two
+		margin-inline: auto
+
+	&:last-of-type
+		margin-bottom: 75px
 
 .resources
 	&-list
-		@extend %project-info
+		width: 100%
+		margin-top: 75px
 		list-style: none
+		display: flex
+		justify-content: space-between
+		flex-wrap: wrap
+		gap: 20px
 
 .resource
 	&-item
-		margin-top: 10px
-
-		&:first-child
-			margin-top: 0px
+		&:last-child
+			margin-right: auto
 
 	&-link
+		@extend %button
+		background-color: $color-lighter-gray
+		box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25)
+		padding: 5px 15px
 		color: $color-full-black !important
+		display: flex
+		align-items: center
+
+	&-image
+		width: 40px
+		aspect-ratio: 1 / 1
+
+	&-text
+		margin-left: 15px
 
 .stack
-	@extend %project-info
+	margin-top: 75px
+	grid-template-columns: 150px 150px 150px 150px
+	column-gap: calc(400px / 3)
 
 $width-image: 315px
 $gap-image: calc((1000px - ($width-image * 3)) / 2)
 
 .gallery
-	@extend %project-info
-	width: 100%
+	margin-top: 75px
 	display: grid
 	grid-template-columns: 1fr 1fr 1fr
 	gap: $gap-image
