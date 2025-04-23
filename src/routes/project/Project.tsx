@@ -37,7 +37,7 @@ const Project: React.FC<PropsProject> = ({ ...props }) => {
 		return arr
 	})
 
-	const onOpen = (id: number = 0): void => {
+	const handleOpenClick = (id: number = 0): void => {
 		setDialogGalleryId(id)
 		setDialogGalleryIsOpened(true)
 	}
@@ -64,12 +64,12 @@ const Project: React.FC<PropsProject> = ({ ...props }) => {
 
 					<div className={sass.gallery}>
 						{arrMaxSixGallery.map((image, i) => {
-							return <Gallery name={image.title} urlImage={image.urlImage} className={sass['gallery-image']} clickButton={() => onOpen(image.id)} key={i} />
+							return <Gallery name={image.title} urlImage={image.urlImage} className={sass['gallery-image']} clickButton={() => handleOpenClick(image.id)} key={i} />
 						})}
 					</div>
 
 					{gallery.length > 6 && (
-						<Button className={sass.button} onClick={() => onOpen()}>
+						<Button className={sass.button} onClick={() => handleOpenClick()}>
 							Посмотреть всё
 						</Button>
 					)}
@@ -85,15 +85,12 @@ const Project: React.FC<PropsProject> = ({ ...props }) => {
 				<Section className={sass.info}>
 					<Heading children='Ссылки' className={sass['info-title']} mergeClass />
 
-					{
-						// TODO Поставить динамические изображения
-					}
 					<ul className={sass['resources-list']}>
-						{resources.map(([text, url], i) => {
+						{resources.map(({ image, text, url }, i) => {
 							return (
 								<li className={sass['resource-item']} key={i}>
 									<Button onClick={() => handleOpenLinkClick(url)} className={sass['resource-link']}>
-										<Image src={require('@img/social/github.png')} alt='Иконка' className={sass['resource-image']} />
+										<Image src={image} alt='Иконка' className={sass['resource-image']} />
 										<span className={sass['resource-text']}>{text}</span>
 									</Button>
 								</li>

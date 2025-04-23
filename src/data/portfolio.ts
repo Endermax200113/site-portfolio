@@ -67,7 +67,13 @@ export const dataPortfolio: DataPortfolio[] = [
 				description: 'В этом футуре отображаются следующее: слева кратко описано, что они делают; правее - навигационное меню, услуги и компания. Ниже написан копирайт.',
 			},
 		],
-		resources: [['Перейти на GitHub', 'https://github.com/Endermax200113/markethink']],
+		resources: [
+			{
+				image: require('@img/social/github.png'),
+				text: 'Перейти на GitHub',
+				url: 'https://github.com/Endermax200113/markethink',
+			},
+		],
 	},
 	{
 		id: 3,
@@ -138,7 +144,13 @@ export const dataPortfolio: DataPortfolio[] = [
 				description: 'Это модальное окно в мобильной версии для бронирования столика. Здесь просто нажимаются на картинки.',
 			},
 		],
-		resources: [['Перейти на GitHub', 'https://github.com/Endermax200113/coffeegoat.ru']],
+		resources: [
+			{
+				image: require('@img/social/github.png'),
+				text: 'Перейти на GitHub',
+				url: 'https://github.com/Endermax200113/coffeegoat.ru',
+			},
+		],
 	},
 	{
 		id: 2,
@@ -216,7 +228,13 @@ export const dataPortfolio: DataPortfolio[] = [
 				description: 'Здесь отображён сайдбар под мобильной версии.',
 			},
 		],
-		resources: [['Перейти на GitHub', 'https://github.com/Endermax200113/website-of-programmers']],
+		resources: [
+			{
+				image: require('@img/social/github.png'),
+				text: 'Перейти на GitHub',
+				url: 'https://github.com/Endermax200113/website-of-programmers',
+			},
+		],
 	},
 	{
 		id: 1,
@@ -294,7 +312,13 @@ export const dataPortfolio: DataPortfolio[] = [
 				description: 'Включена 5-ая тема сайта.',
 			},
 		],
-		resources: [['Перейти на GitHub', 'https://github.com/Endermax200113/tech-world']],
+		resources: [
+			{
+				image: require('@img/social/github.png'),
+				text: 'Перейти на GitHub',
+				url: 'https://github.com/Endermax200113/tech-world',
+			},
+		],
 	},
 	{
 		id: 0,
@@ -330,6 +354,12 @@ export const dataPortfolio: DataPortfolio[] = [
 				description: 'На странице "Портфолио" отображены личности, которые выступали (не спрашиваете, почему так).',
 			},
 		],
-		resources: [['Перейти на GitHub (использовался как хостинг)', 'https://github.com/Endermax200113/psylabcinema']],
+		resources: [
+			{
+				image: require('@img/social/github.png'),
+				text: 'Перейти на GitHub (использовался как хостинг)',
+				url: 'https://github.com/Endermax200113/psylabcinema',
+			},
+		],
 	},
 ]

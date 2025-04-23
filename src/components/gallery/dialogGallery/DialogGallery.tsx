@@ -7,6 +7,15 @@ import { trimSass } from '@utils/sassControl'
 import Description from '@ui/text/description/Description'
 import { useEventListener } from '@hooks/useEventListener'
 
+//
+// ! Проблемы:
+//
+// [x] Исправить хук useEventListener, который использует хук useEffect
+// [ ] Разобраться с передачей аргументов в этот компонент
+// [ ] Убрать useEffect с компонента
+// [ ] При необходимости исправить дизайн
+//
+
 type StateDialogIsOpened = [isOpened: boolean, setIsOpened: React.Dispatch<React.SetStateAction<boolean>>]
 type StateDialogId = [idGallery: number, setIdGallery: React.Dispatch<React.SetStateAction<number>>]
 
@@ -23,7 +32,7 @@ interface PropsDialogGallery extends DialogHTMLAttributes<HTMLDialogElement> {
 	stateIsOpened: StateDialogIsOpened
 }
 
-const DialogGallery: React.FC<PropsDialogGallery> = ({ gallery, stateIdGallery, stateIsOpened }) => {
+const DialogGallery: React.FC<PropsDialogGallery> = ({ gallery, stateIdGallery, stateIsOpened, ...props }) => {
 	//#region states
 	const [idGallery, setIdGallery]: StateDialogId = [stateIdGallery[0], stateIdGallery[1]]
 	const [isOpened, setIsOpened]: StateDialogIsOpened = [stateIsOpened[0], stateIsOpened[1]]
@@ -282,7 +291,7 @@ const DialogGallery: React.FC<PropsDialogGallery> = ({ gallery, stateIdGallery, 
 	}, [isOpened])
 
 	return (
-		<dialog className={sass.gallery} open={isOpened}>
+		<dialog className={sass.gallery} open={isOpened} {...props}>
 			<div className={sass['image-container']} onMouseDown={onStartMoveImage} onMouseMove={onMoveImage} onMouseUp={onEndMoveImage}>
 				<div
 					className={sass['image-wrap']}

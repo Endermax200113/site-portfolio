@@ -1,6 +1,10 @@
 import { AllSkills } from './skills'
 
-type Resource = [text: string, url: string]
+type Resource = {
+	image: string
+	text: string
+	url: string
+}
 
 export type Gallery = {
 	id: number

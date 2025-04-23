@@ -4,7 +4,15 @@ type CallbackFunction = <K extends keyof WindowEventMap>(this: Window, ev: Windo
 
 let enabled: boolean = false
 
-const toggleScroll = (callback: CallbackFunction, isMain: boolean): (() => void) => {
+interface SubscribeToggleScroll {
+	(callback: CallbackFunction, isMain: boolean): () => void
+}
+
+interface HookScrolling {
+	(listener: CallbackFunction, toggle: boolean, isMain: boolean): void
+}
+
+const toggleScroll: SubscribeToggleScroll = (callback, isMain) => {
 	if (isMain) {
 		window.addEventListener('scroll', callback)
 
@@ -22,7 +30,7 @@ const toggleScroll = (callback: CallbackFunction, isMain: boolean): (() => void)
 	}
 }
 
-export const useScrolling = (listener: CallbackFunction, toggle: boolean, isMain: boolean): void => {
+export const useScrolling: HookScrolling = (listener, toggle, isMain) => {
 	useSyncExternalStore(
 		() => toggleScroll(listener, isMain),
 		() => toggle

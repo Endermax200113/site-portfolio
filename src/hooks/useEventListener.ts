@@ -1,22 +1,35 @@
-import { useDebugValue, useEffect } from 'react'
+import { useDebugValue, useSyncExternalStore } from 'react'
 
-/**
- * @deprecated Функцию не использовать, поскольку содержит <c>useEffect</c>
- */
-export const useEventListener = <K extends keyof WindowEventMap>(name: K, listener: (this: Window, e: WindowEventMap[K]) => void, dependency: boolean, options?: boolean | AddEventListenerOptions) => {
-	useDebugValue(name)
+type CallbackFunction<K extends keyof WindowEventMap> = (this: Window, e: WindowEventMap[K]) => void
+type EventOptions = boolean | AddEventListenerOptions
 
-	useEffect(() => {
-		const remove = (): void => {
-			window.removeEventListener(name, listener, options)
-		}
+interface HookEventListener {
+	<K extends keyof WindowEventMap>(name: K, callback: CallbackFunction<K>, toggle: boolean, options?: EventOptions): void
+}
 
-		if (dependency) {
-			window.addEventListener(name, listener, options)
-		} else {
-			remove()
-		}
+interface SubscribeEventListener {
+	<K extends keyof WindowEventMap>(name: K, callback: CallbackFunction<K>, toggle: boolean, options?: EventOptions): () => void
+}
 
-		return remove
-	}, [dependency, listener, name, options])
+const subscribe: SubscribeEventListener = (name, callback, toggle, options) => {
+	const remove = (): void => {
+		window.removeEventListener(name, callback, options)
+	}
+
+	if (toggle) {
+		window.addEventListener(name, callback, options)
+	} else {
+		remove()
+	}
+
+	return remove
+}
+
+export const useEventListener: HookEventListener = (name, callback, toggle, options) => {
+	useSyncExternalStore(
+		() => subscribe(name, callback, toggle, options),
+		() => toggle
+	)
+
+	useDebugValue(`${name} -> ${toggle}`)
 }
