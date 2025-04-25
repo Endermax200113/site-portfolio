@@ -16,17 +16,21 @@ import SkillsList from '@components/skills/skillsAll/skillsArea/skillsList/Skill
 
 interface PropsProject extends PropsRootMain {}
 
+type StateDialogGallery = {
+	id: number
+	isOpened: boolean
+}
+
 const Project: React.FC<PropsProject> = ({ ...props }) => {
 	const data = useLoaderData() as DataPortfolio
-	const [dialogGalleryId, setDialogGalleryId] = useState<number>(0)
-	const [dialogGalleryIsOpened, setDialogGalleryIsOpened] = useState<boolean>(false)
+	const dialogGalleryState = useState<StateDialogGallery>({
+		id: 0,
+		isOpened: false,
+	})
+
+	const setDialogGalleryData = dialogGalleryState[1]
 
 	const { site, urlImage, name: projectName, description, gallery, resources, stack } = data
-
-	const states = {
-		stateIdGallery: [dialogGalleryId, setDialogGalleryId],
-		stateIsOpened: [dialogGalleryIsOpened, setDialogGalleryIsOpened],
-	}
 
 	const arrMaxSixGallery: GalleryData[] = useArray(() => {
 		if (!gallery) return []
@@ -43,8 +47,10 @@ const Project: React.FC<PropsProject> = ({ ...props }) => {
 	})
 
 	const handleOpenClick = (id: number = 0): void => {
-		setDialogGalleryId(id)
-		setDialogGalleryIsOpened(true)
+		setDialogGalleryData({
+			id,
+			isOpened: true,
+		})
 	}
 
 	const handleOpenLinkClick = (link: string): void => {
@@ -105,7 +111,7 @@ const Project: React.FC<PropsProject> = ({ ...props }) => {
 				</Section>
 			)}
 
-			{gallery && <DialogGallery gallery={gallery} stateIdGallery={[dialogGalleryId, setDialogGalleryId]} stateIsOpened={[dialogGalleryIsOpened, setDialogGalleryIsOpened]} />}
+			{gallery && <DialogGallery gallery={gallery} state={dialogGalleryState} />}
 		</RootMain>
 	)
 }

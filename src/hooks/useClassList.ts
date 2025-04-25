@@ -1,20 +1,34 @@
 import { useDebugValue, useSyncExternalStore } from 'react'
 
+let enabled = false
+
 interface FunctionSubscribe {
 	<E extends HTMLElement>(element: E, className: string, toggle: boolean, callback?: (toggle?: boolean) => void): () => void
 }
 
 const subscribe: FunctionSubscribe = (element, className, toggle, callback) => {
 	const remove = (): void => {
-		element.classList.remove(className)
+		if (enabled && !toggle) {
+			element.classList.remove(className)
 
-		if (!!callback) callback(toggle)
+			if (!!callback) {
+				callback(toggle)
+			}
+
+			enabled = false
+		}
 	}
 
-	if (toggle) {
+	if (toggle && !enabled) {
+		console.log(1)
+
 		element.classList.add(className)
 
-		if (!!callback) callback(toggle)
+		if (!!callback) {
+			callback(toggle)
+		}
+
+		enabled = true
 	} else {
 		remove()
 	}

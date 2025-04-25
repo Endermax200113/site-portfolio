@@ -1,4 +1,4 @@
-import React, { DialogHTMLAttributes, MouseEvent, useCallback, useLayoutEffect, useState } from 'react'
+import React, { DialogHTMLAttributes, Dispatch, MouseEvent, SetStateAction, useCallback, useLayoutEffect, useState } from 'react'
 import sass from './DialogGallery.module.sass'
 import Button from '@ui/button/Button'
 import ImageComp from '@ui/image/Image'
@@ -13,13 +13,10 @@ import { useClassList } from '@hooks/useClassList'
 // ! Проблемы:
 //
 // [x] Исправить хук useEventListener, который использует хук useEffect
-// [ ] Разобраться с передачей аргументов в этот компонент
+// [x] Разобраться с передачей аргументов в этот компонент
 // [x] Убрать useEffect с компонента
 // [ ] При необходимости исправить дизайн
 //
-
-type StateDialogIsOpened = [isOpened: boolean, setIsOpened: React.Dispatch<React.SetStateAction<boolean>>]
-type StateDialogId = [idGallery: number, setIdGallery: React.Dispatch<React.SetStateAction<number>>]
 
 type FullPlace = {
 	startX: number
@@ -33,16 +30,21 @@ type Image = {
 	tempImage: HTMLImageElement
 }
 
-interface PropsDialogGallery extends DialogHTMLAttributes<HTMLDialogElement> {
-	gallery: Gallery[]
-	stateIdGallery: StateDialogId
-	stateIsOpened: StateDialogIsOpened
+type StateDialogGallery = {
+	id: number
+	isOpened: boolean
 }
 
-const DialogGallery: React.FC<PropsDialogGallery> = ({ gallery, stateIdGallery, stateIsOpened, ...props }) => {
+type ShortState = [data: StateDialogGallery, setData: Dispatch<SetStateAction<StateDialogGallery>>]
+
+interface PropsDialogGallery extends DialogHTMLAttributes<HTMLDialogElement> {
+	gallery: Gallery[]
+	state: ShortState
+}
+
+const DialogGallery: React.FC<PropsDialogGallery> = ({ gallery, state, ...props }) => {
 	//#region states
-	const [idGallery, setIdGallery]: StateDialogId = [stateIdGallery[0], stateIdGallery[1]]
-	const [isOpened, setIsOpened]: StateDialogIsOpened = [stateIsOpened[0], stateIsOpened[1]]
+	const [dialogGalleryData, setDialogGalleryData] = state
 
 	const [isMovingImage, setIsMovingImage] = useState<boolean>(false)
 	const [isHiddenUIElements, setIsHiddenUIElements] = useState<string>('')
@@ -67,15 +69,21 @@ const DialogGallery: React.FC<PropsDialogGallery> = ({ gallery, stateIdGallery, 
 	//#endregion
 
 	const onClickLeft = (): void => {
-		if (idGallery + 1 === 1) return
+		if (dialogGalleryData.id + 1 === 1) return
 
-		setIdGallery(idGallery - 1)
+		setDialogGalleryData({
+			...dialogGalleryData,
+			id: dialogGalleryData.id - 1,
+		})
 	}
 
 	const onClickRight = (): void => {
-		if (idGallery + 1 === gallery.length) return
+		if (dialogGalleryData.id + 1 === gallery.length) return
 
-		setIdGallery(idGallery + 1)
+		setDialogGalleryData({
+			...dialogGalleryData,
+			id: dialogGalleryData.id + 1,
+		})
 	}
 
 	const onKeyDownLeftOrRight = (e: Event): void => {
@@ -90,7 +98,7 @@ const DialogGallery: React.FC<PropsDialogGallery> = ({ gallery, stateIdGallery, 
 		}
 	}
 
-	useEventListener('keydown', onKeyDownLeftOrRight, isOpened)
+	useEventListener('keydown', onKeyDownLeftOrRight, dialogGalleryData.isOpened)
 
 	const onMoveImage = (e: MouseEvent): void => {
 		if (isMovingImage) {
@@ -294,10 +302,10 @@ const DialogGallery: React.FC<PropsDialogGallery> = ({ gallery, stateIdGallery, 
 		setPlaceWrapY(0)
 	}
 
-	useClassList(body, 'no-scroll', isOpened)
+	useClassList(body, 'no-scroll', dialogGalleryData.isOpened)
 
 	useRenderEffect(() => {
-		if (!isOpened) {
+		if (!dialogGalleryData.isOpened) {
 			setTimeout(() => {
 				startPosition()
 			}, 300)
@@ -309,10 +317,17 @@ const DialogGallery: React.FC<PropsDialogGallery> = ({ gallery, stateIdGallery, 
 			setSizeWrapWidth(window.outerWidth)
 			setSizeWrapHeight(images.img.height)
 		}
-	}, [idGallery, isOpened])
+	}, [dialogGalleryData.id, dialogGalleryData.isOpened])
+
+	const setVisible = (visibility: boolean): void => {
+		setDialogGalleryData({
+			...dialogGalleryData,
+			isOpened: visibility,
+		})
+	}
 
 	return (
-		<dialog className={sass.gallery} open={isOpened} {...props}>
+		<dialog className={sass.gallery} open={dialogGalleryData.isOpened} {...props}>
 			<div className={sass['image-container']} onMouseDown={onStartMoveImage} onMouseMove={onMoveImage} onMouseUp={onEndMoveImage}>
 				<div
 					className={sass['image-wrap']}
@@ -323,7 +338,7 @@ const DialogGallery: React.FC<PropsDialogGallery> = ({ gallery, stateIdGallery, 
 						bottom: -placeWrapY,
 					}}
 				>
-					<img src={gallery[idGallery].urlImage} alt={gallery[idGallery].title} className={sass.image} />
+					<img src={gallery[dialogGalleryData.id].urlImage} alt={gallery[dialogGalleryData.id].title} className={sass.image} />
 				</div>
 			</div>
 
@@ -334,32 +349,32 @@ const DialogGallery: React.FC<PropsDialogGallery> = ({ gallery, stateIdGallery, 
 				<div className={sass['test-image-ey']} style={{ top: placeImage.endY }}></div>
 			</div> */}
 
-			<Button className={trimSass(sass, ['button', !isOpened ? 'hidden' : isHiddenUIElements])} onClick={() => setIsOpened(false)}>
+			<Button className={trimSass(sass, ['button', !dialogGalleryData.isOpened ? 'hidden' : isHiddenUIElements])} onClick={() => setVisible(false)}>
 				<ImageComp url={require('@svg/cross.svg')} alt='Закрыть' />
 			</Button>
 
-			<div className={trimSass(sass, ['gradient', !isOpened ? 'hidden' : isHiddenUIElements])}></div>
+			<div className={trimSass(sass, ['gradient', !dialogGalleryData.isOpened ? 'hidden' : isHiddenUIElements])}></div>
 
 			<div className={sass.management}>
-				<div className={trimSass(sass, ['management-buttons', !isOpened ? 'hidden' : isHiddenUIElements])}>
-					{idGallery !== 0 && (
+				<div className={trimSass(sass, ['management-buttons', !dialogGalleryData.isOpened ? 'hidden' : isHiddenUIElements])}>
+					{dialogGalleryData.id !== 0 && (
 						<Button className={trimSass(sass, ['management-button', 'left'])} onClick={onClickLeft}>
 							<ImageComp url={require('@svg/arrow-left.svg')} />
 						</Button>
 					)}
 
 					<span className={sass['management-count']}>
-						{idGallery + 1} из {gallery.length}
+						{dialogGalleryData.id + 1} из {gallery.length}
 					</span>
 
-					{idGallery + 1 !== gallery.length && (
+					{dialogGalleryData.id + 1 !== gallery.length && (
 						<Button className={trimSass(sass, ['management-button', 'right'])} onClick={onClickRight}>
 							<ImageComp url={require('@svg/arrow-right.svg')} />
 						</Button>
 					)}
 				</div>
 
-				<Description className={trimSass(sass, ['management-description', !isOpened ? 'hidden' : isHiddenUIElements])}>{gallery[idGallery].description}</Description>
+				<Description className={trimSass(sass, ['management-description', !dialogGalleryData.isOpened ? 'hidden' : isHiddenUIElements])}>{gallery[dialogGalleryData.id].description}</Description>
 			</div>
 		</dialog>
 	)
