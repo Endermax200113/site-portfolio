@@ -19,7 +19,7 @@ type HTMLElementCallbackFunction<E extends HTMLElement, K extends KeysHTMLElemen
 type ConditionalCallbackFunction<E extends ElementOrWindow> = E extends FullWindow ? WindowCallbackFunction<KeysWindow> : HTMLElementCallbackFunction<E extends HTMLElement ? E : HTMLElement, KeysHTMLElement>
 
 interface FunctionSubscribe {
-	<E extends ElementOrWindow>(name: ConditionalKeys<E>, callback: ConditionalCallbackFunction<E>, toggle: boolean, from?: E | null, options?: EventOptions): () => void
+	<E extends ElementOrWindow = FullWindow>(name: ConditionalKeys<E>, callback: ConditionalCallbackFunction<E>, toggle: boolean, from?: E | null, options?: EventOptions): () => void
 }
 
 const subscribe: FunctionSubscribe = (name, callback, toggle, from, options) => {

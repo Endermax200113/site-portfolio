@@ -20,8 +20,6 @@ const subscribe: FunctionSubscribe = (element, className, toggle, callback) => {
 	}
 
 	if (toggle && !enabled) {
-		console.log(1)
-
 		element.classList.add(className)
 
 		if (!!callback) {

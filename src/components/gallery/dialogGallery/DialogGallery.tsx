@@ -8,14 +8,15 @@ import Description from '@ui/text/description/Description'
 import { useEventListener } from '@hooks/useEventListener'
 import { useRenderEffect } from '@hooks/useRenderEffect'
 import { useClassList } from '@hooks/useClassList'
+import ImageGallery from '@ui/image/imageGallery/ImageGallery'
 
 //
-// ! Проблемы:
+// DONE Решить проблемы с компонентом:
 //
 // [x] Исправить хук useEventListener, который использует хук useEffect
 // [x] Разобраться с передачей аргументов в этот компонент
 // [x] Убрать useEffect с компонента
-// [ ] При необходимости исправить дизайн
+// [x] При необходимости исправить дизайн
 //
 
 type FullPlace = {
@@ -67,6 +68,8 @@ const DialogGallery: React.FC<PropsDialogGallery> = ({ gallery, state, ...props 
 		endY: 0,
 	})
 	//#endregion
+
+	const testImage = false
 
 	const onClickLeft = (): void => {
 		if (dialogGalleryData.id + 1 === 1) return
@@ -175,6 +178,7 @@ const DialogGallery: React.FC<PropsDialogGallery> = ({ gallery, state, ...props 
 		setIsMovingImage(false)
 	}
 
+	// $ Используется useCallback для работы с хуком useLayoutEffect
 	const computePlaceImage = useCallback((): void => {
 		//#region short vars
 		const oWI: number = originalSizeImageWidth
@@ -281,7 +285,7 @@ const DialogGallery: React.FC<PropsDialogGallery> = ({ gallery, state, ...props 
 
 	// $ Используется useLayoutEffect для корректировки ориентации изображения
 	useLayoutEffect(() => {
-		const image: HTMLImageElement = document.querySelector(`.${sass.image}`) as HTMLImageElement
+		const image: HTMLImageElement = document.getElementById('image-gallery-main') as HTMLImageElement
 		const tmp: HTMLImageElement = new Image()
 
 		tmp.src = image.src
@@ -316,6 +320,7 @@ const DialogGallery: React.FC<PropsDialogGallery> = ({ gallery, state, ...props 
 			setOriginalSizeImageHeight(images.tempImage.height)
 			setSizeWrapWidth(window.outerWidth)
 			setSizeWrapHeight(images.img.height)
+			computePlaceImage()
 		}
 	}, [dialogGalleryData.id, dialogGalleryData.isOpened])
 
@@ -329,25 +334,27 @@ const DialogGallery: React.FC<PropsDialogGallery> = ({ gallery, state, ...props 
 	return (
 		<dialog className={sass.gallery} open={dialogGalleryData.isOpened} {...props}>
 			<div className={sass['image-container']} onMouseDown={onStartMoveImage} onMouseMove={onMoveImage} onMouseUp={onEndMoveImage}>
-				<div
-					className={sass['image-wrap']}
+				<ImageGallery
+					url={gallery[dialogGalleryData.id].urlImage}
+					alt={gallery[dialogGalleryData.id].title}
+					id='image-gallery'
 					style={{
 						left: placeWrapX,
 						right: -placeWrapX,
 						top: placeWrapY,
 						bottom: -placeWrapY,
 					}}
-				>
-					<img src={gallery[dialogGalleryData.id].urlImage} alt={gallery[dialogGalleryData.id].title} className={sass.image} />
-				</div>
+				/>
 			</div>
 
-			{/* <div className={sass['test-image']}>
-				<div className={sass['test-image-sx']} style={{ left: placeImage.startX }}></div>
-				<div className={sass['test-image-ex']} style={{ left: placeImage.endX }}></div>
-				<div className={sass['test-image-sy']} style={{ top: placeImage.startY }}></div>
-				<div className={sass['test-image-ey']} style={{ top: placeImage.endY }}></div>
-			</div> */}
+			{testImage && (
+				<div className={sass['test-image']}>
+					<div className={sass['test-image-sx']} style={{ left: placeImage.startX }}></div>
+					<div className={sass['test-image-ex']} style={{ left: placeImage.endX }}></div>
+					<div className={sass['test-image-sy']} style={{ top: placeImage.startY }}></div>
+					<div className={sass['test-image-ey']} style={{ top: placeImage.endY }}></div>
+				</div>
+			)}
 
 			<Button className={trimSass(sass, ['button', !dialogGalleryData.isOpened ? 'hidden' : isHiddenUIElements])} onClick={() => setVisible(false)}>
 				<ImageComp url={require('@svg/cross.svg')} alt='Закрыть' />
