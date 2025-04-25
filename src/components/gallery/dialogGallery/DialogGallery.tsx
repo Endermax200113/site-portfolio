@@ -1,4 +1,4 @@
-import React, { DialogHTMLAttributes, MouseEvent, useCallback, useEffect, useState } from 'react'
+import React, { DialogHTMLAttributes, MouseEvent, useCallback, useLayoutEffect, useState } from 'react'
 import sass from './DialogGallery.module.sass'
 import Button from '@ui/button/Button'
 import ImageComp from '@ui/image/Image'
@@ -6,13 +6,15 @@ import { Gallery } from '@helper/portfolio'
 import { trimSass } from '@utils/sassControl'
 import Description from '@ui/text/description/Description'
 import { useEventListener } from '@hooks/useEventListener'
+import { useRenderEffect } from '@hooks/useRenderEffect'
+import { useClassList } from '@hooks/useClassList'
 
 //
 // ! Проблемы:
 //
 // [x] Исправить хук useEventListener, который использует хук useEffect
 // [ ] Разобраться с передачей аргументов в этот компонент
-// [ ] Убрать useEffect с компонента
+// [x] Убрать useEffect с компонента
 // [ ] При необходимости исправить дизайн
 //
 
@@ -26,6 +28,11 @@ type FullPlace = {
 	endY: number
 }
 
+type Image = {
+	img: HTMLImageElement
+	tempImage: HTMLImageElement
+}
+
 interface PropsDialogGallery extends DialogHTMLAttributes<HTMLDialogElement> {
 	gallery: Gallery[]
 	stateIdGallery: StateDialogId
@@ -36,6 +43,7 @@ const DialogGallery: React.FC<PropsDialogGallery> = ({ gallery, stateIdGallery, 
 	//#region states
 	const [idGallery, setIdGallery]: StateDialogId = [stateIdGallery[0], stateIdGallery[1]]
 	const [isOpened, setIsOpened]: StateDialogIsOpened = [stateIsOpened[0], stateIsOpened[1]]
+
 	const [isMovingImage, setIsMovingImage] = useState<boolean>(false)
 	const [isHiddenUIElements, setIsHiddenUIElements] = useState<string>('')
 	const [startPlaceCursorX, setStartPlaceCursorX] = useState<number>(0)
@@ -46,6 +54,10 @@ const DialogGallery: React.FC<PropsDialogGallery> = ({ gallery, stateIdGallery, 
 	const [originalSizeImageHeight, setOriginalSizeImageHeight] = useState<number>(0)
 	const [sizeWrapWidth, setSizeWrapWidth] = useState<number>(0)
 	const [sizeWrapHeight, setSizeWrapHeight] = useState<number>(0)
+	const [images, setImages] = useState<Image>({
+		img: new Image(),
+		tempImage: new Image(),
+	})
 	const [placeImage, setPlaceImage] = useState<FullPlace>({
 		startX: 0,
 		endX: 0,
@@ -54,25 +66,27 @@ const DialogGallery: React.FC<PropsDialogGallery> = ({ gallery, stateIdGallery, 
 	})
 	//#endregion
 
-	const onClickLeft = useCallback((): void => {
+	const onClickLeft = (): void => {
 		if (idGallery + 1 === 1) return
 
 		setIdGallery(idGallery - 1)
-	}, [idGallery, setIdGallery])
+	}
 
-	const onClickRight = useCallback((): void => {
+	const onClickRight = (): void => {
 		if (idGallery + 1 === gallery.length) return
 
 		setIdGallery(idGallery + 1)
-	}, [idGallery, gallery, setIdGallery])
+	}
 
-	const onKeyDownLeftOrRight = (e: KeyboardEvent): void => {
-		if (e.code !== 'ArrowLeft' && e.code !== 'ArrowRight') return
+	const onKeyDownLeftOrRight = (e: Event): void => {
+		if (e instanceof KeyboardEvent) {
+			if (e.code !== 'ArrowLeft' && e.code !== 'ArrowRight') return
 
-		if (e.code === 'ArrowLeft') {
-			onClickLeft()
-		} else {
-			onClickRight()
+			if (e.code === 'ArrowLeft') {
+				onClickLeft()
+			} else {
+				onClickRight()
+			}
 		}
 	}
 
@@ -257,38 +271,45 @@ const DialogGallery: React.FC<PropsDialogGallery> = ({ gallery, stateIdGallery, 
 		//#endregion
 	}, [originalSizeImageWidth, originalSizeImageHeight, sizeWrapWidth, sizeWrapHeight])
 
-	useEffect(() => {
+	// $ Используется useLayoutEffect для корректировки ориентации изображения
+	useLayoutEffect(() => {
 		const image: HTMLImageElement = document.querySelector(`.${sass.image}`) as HTMLImageElement
-		const tempImage: HTMLImageElement = new Image()
-		tempImage.src = image.src
+		const tmp: HTMLImageElement = new Image()
 
-		setOriginalSizeImageWidth(tempImage.width)
-		setOriginalSizeImageHeight(tempImage.height)
-		setSizeWrapWidth(window.outerWidth)
-		setSizeWrapHeight(image.height)
+		tmp.src = image.src
+
+		setImages({
+			img: image,
+			tempImage: tmp,
+		})
 		computePlaceImage()
-	}, [idGallery, computePlaceImage])
+	}, [computePlaceImage])
 
-	useEffect(() => {
-		const body: HTMLBodyElement = document.querySelector('.body') as HTMLBodyElement
+	const body: HTMLBodyElement = document.querySelector('.body') as HTMLBodyElement
 
-		const close = (): void => {
-			body.classList.remove('no-scroll')
-		}
+	const startPosition = (): void => {
+		setStartPlaceCursorX(0)
+		setStartPlaceCursorY(0)
+		setPlaceWrapX(0)
+		setPlaceWrapY(0)
+	}
 
-		if (isOpened) {
-			setStartPlaceCursorX(0)
-			setStartPlaceCursorY(0)
-			setPlaceWrapX(0)
-			setPlaceWrapY(0)
+	useClassList(body, 'no-scroll', isOpened)
 
-			body.classList.add('no-scroll')
+	useRenderEffect(() => {
+		if (!isOpened) {
+			setTimeout(() => {
+				startPosition()
+			}, 300)
 		} else {
-			close()
-		}
+			startPosition()
 
-		return close
-	}, [isOpened])
+			setOriginalSizeImageWidth(images.tempImage.width)
+			setOriginalSizeImageHeight(images.tempImage.height)
+			setSizeWrapWidth(window.outerWidth)
+			setSizeWrapHeight(images.img.height)
+		}
+	}, [idGallery, isOpened])
 
 	return (
 		<dialog className={sass.gallery} open={isOpened} {...props}>
@@ -313,14 +334,14 @@ const DialogGallery: React.FC<PropsDialogGallery> = ({ gallery, stateIdGallery, 
 				<div className={sass['test-image-ey']} style={{ top: placeImage.endY }}></div>
 			</div> */}
 
-			<Button className={trimSass(sass, ['button', isHiddenUIElements])} onClick={() => setIsOpened(false)}>
+			<Button className={trimSass(sass, ['button', !isOpened ? 'hidden' : isHiddenUIElements])} onClick={() => setIsOpened(false)}>
 				<ImageComp url={require('@svg/cross.svg')} alt='Закрыть' />
 			</Button>
 
-			<div className={trimSass(sass, ['gradient', isHiddenUIElements])}></div>
+			<div className={trimSass(sass, ['gradient', !isOpened ? 'hidden' : isHiddenUIElements])}></div>
 
 			<div className={sass.management}>
-				<div className={trimSass(sass, ['management-buttons', isHiddenUIElements])}>
+				<div className={trimSass(sass, ['management-buttons', !isOpened ? 'hidden' : isHiddenUIElements])}>
 					{idGallery !== 0 && (
 						<Button className={trimSass(sass, ['management-button', 'left'])} onClick={onClickLeft}>
 							<ImageComp url={require('@svg/arrow-left.svg')} />
@@ -338,7 +359,7 @@ const DialogGallery: React.FC<PropsDialogGallery> = ({ gallery, stateIdGallery, 
 					)}
 				</div>
 
-				<Description className={trimSass(sass, ['management-description', isHiddenUIElements])}>{gallery[idGallery].description}</Description>
+				<Description className={trimSass(sass, ['management-description', !isOpened ? 'hidden' : isHiddenUIElements])}>{gallery[idGallery].description}</Description>
 			</div>
 		</dialog>
 	)

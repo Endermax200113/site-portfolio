@@ -1,9 +1,9 @@
 import React, { HTMLAttributes, MouseEvent } from 'react'
 import sass from './Gallery.module.sass'
-import { useClass } from '@hooks/useClass'
 import Image from '@ui/image/Image'
 import Button from '@ui/button/Button'
 import Heading from '@ui/text/heading/Heading'
+import { mergeAllClasses } from '@utils/sassControl'
 
 interface PropsGallery extends HTMLAttributes<HTMLElement> {
 	name: string
@@ -12,7 +12,7 @@ interface PropsGallery extends HTMLAttributes<HTMLElement> {
 }
 
 const Gallery: React.FC<PropsGallery> = ({ name, urlImage, className, clickButton, ...props }) => {
-	const allClassesGallery: string = useClass(sass.gallery, className)
+	const allClassesGallery: string = mergeAllClasses([sass.gallery], className)
 
 	return (
 		<article className={allClassesGallery} {...props}>

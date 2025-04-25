@@ -23,6 +23,11 @@ const Project: React.FC<PropsProject> = ({ ...props }) => {
 
 	const { site, urlImage, name: projectName, description, gallery, resources, stack } = data
 
+	const states = {
+		stateIdGallery: [dialogGalleryId, setDialogGalleryId],
+		stateIsOpened: [dialogGalleryIsOpened, setDialogGalleryIsOpened],
+	}
+
 	const arrMaxSixGallery: GalleryData[] = useArray(() => {
 		if (!gallery) return []
 
