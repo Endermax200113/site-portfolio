@@ -1,7 +1,7 @@
 import React, { MouseEvent, useEffect, useState } from 'react'
 import sass from './Projects.module.sass'
 import { NavigateFunction, useLoaderData, useNavigate, useSearchParams } from 'react-router-dom'
-import { DataPortfolio } from '@/data/portfolio'
+import { dataPortfolio, DataPortfolio } from '@/data/portfolio'
 import Image from '@ui/image/Image'
 import Button from '@ui/button/Button'
 import Heading from '@ui/text/heading/Heading'
@@ -9,25 +9,40 @@ import Description from '@ui/text/description/Description'
 import { trimSass } from '@utils/sassControl'
 import Pagination from '@components/pagination/Pagination'
 import RootMain from '@components/main/Main'
+import { useRenderEffect } from '@hooks/useRenderEffect'
+import { copyObject } from '@utils/objectControl'
+
+//
+// TODO Исправить код в этом компоненте:
+//
+// [x] Удалить JSON с localStorage
+// [x] Убрать useEffect или достичь до минимума
+// [ ] Исправить дизайн
+//
+
+type Data = {
+	pages: number
+	page: number
+	projects: DataPortfolio[][]
+}
 
 interface PropsProjects {}
 
 const Projects: React.FC<PropsProjects> = () => {
-	const data = useLoaderData() as DataPortfolio[]
+	const data = useLoaderData() as Data
 	const navigate: NavigateFunction = useNavigate()
-	const [searchParams, setSearchParams] = useSearchParams()
+	const [, setSearchParams] = useSearchParams()
 
 	const [arrPagesData, setArrPagesData] = useState<DataPortfolio[][]>([])
-	const [page, setPage] = useState<number>(Number(searchParams.get('page') || 1))
-	const [jsonData, setJsonData] = useState<string>()
+	const [page, setPage] = useState<number>(data.page)
 
-	const onClickToSite = (site?: string): void => {
+	const handleToSiteClick = (site?: string): void => {
 		if (!site) return
 
 		window.open(site, '_blank')
 	}
 
-	const onClickMore = (id: number): void => navigate(`/projects/${id}`)
+	const handleMoreClick = (id: number): void => navigate(`/projects/${id}`)
 
 	const setCurrentPage = (page: number, e?: MouseEvent): void => {
 		if (e) {
@@ -41,43 +56,14 @@ const Projects: React.FC<PropsProjects> = () => {
 		setPage(page)
 	}
 
-	useEffect(() => {
-		const jsonData: string | null = localStorage.getItem('projects')
-
-		if (jsonData) {
-			const strJsonData: string = JSON.stringify(data)
-
-			if (jsonData !== strJsonData) {
-				setJsonData(strJsonData)
-				localStorage.setItem('projects', strJsonData)
-			}
-		}
-	}, [data])
-
-	useEffect(() => {
-		if (JSON.stringify(data) !== jsonData) {
-			const countProjects: number = data.length
-			const pages: number = countProjects / 10 + (countProjects % 10 !== 0 ? 1 : 0)
-			const arrPages: DataPortfolio[][] = []
-
-			i: for (let i = 0; i < pages; i++) {
-				arrPages.push([])
-
-				for (let j = i * 10; j < i * 10 + 10; j++) {
-					if (!data[j]) break i
-
-					arrPages[i].push(data[j])
-				}
-			}
-
-			const strJsonData: string = JSON.stringify(data)
-
-			localStorage.setItem('projects', strJsonData)
-
-			setJsonData(strJsonData)
-			setArrPagesData(arrPages)
-		}
-	}, [data, jsonData])
+	useRenderEffect(
+		() => {
+			setPage(data.page)
+			setArrPagesData(data.projects)
+		},
+		[],
+		true
+	)
 
 	return (
 		<RootMain className={sass.main}>
@@ -96,12 +82,12 @@ const Projects: React.FC<PropsProjects> = () => {
 
 									<div className={sass.buttons}>
 										{project.site && (
-											<Button className={sass.button} onClick={() => onClickToSite(project.site)}>
+											<Button className={sass.button} onClick={() => handleToSiteClick(project.site)}>
 												К сайту
 											</Button>
 										)}
 
-										<Button className={sass.button} onClick={() => onClickMore(project.id)}>
+										<Button className={sass.button} onClick={() => handleMoreClick(project.id)}>
 											Подробнее
 										</Button>
 									</div>
