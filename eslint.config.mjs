@@ -48,7 +48,8 @@ export default tseslint.config(
 			'max-params': ['error', 3],
 			'prettier/prettier': ['error', { endOfLine: 'auto' }],
 			'@typescript-eslint/no-unused-vars': 'warn',
-			'@typescript-eslint/no-empty-object-type': 'off'
+			'@typescript-eslint/no-empty-object-type': 'off',
+			'react/jsx-key': 'warn'
 		}
 	}
 )

@@ -1,5 +1,5 @@
 import { FC, lazy, LazyExoticComponent, Suspense } from 'react'
-import '@sass/App.sass'
+import '@sass/App.scss'
 import { router } from './routes/router'
 import { RouterProviderProps } from 'react-router-dom'
 import Preloader from '@components/preloader/Preloader'
