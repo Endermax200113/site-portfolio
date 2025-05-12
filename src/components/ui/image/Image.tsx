@@ -1,5 +1,5 @@
 import React, { ImgHTMLAttributes } from 'react'
-import sass from './Image.module.sass'
+import scss from './Image.module.scss'
 import SVGImage from 'SVGImage'
 import { mergeAllClasses } from '@utils/sassControl'
 
@@ -10,14 +10,24 @@ export interface PropsImage extends ImgHTMLAttributes<HTMLImageElement> {
 
 const Image: React.FC<PropsImage> = ({ url, alt, classWrap, className, ...props }) => {
 	const URL: string = typeof url === 'string' ? url : typeof url !== 'undefined' ? url.default : 'no-found'
-	const classImage: string = mergeAllClasses([sass.image], className)
+	const classImage: string = mergeAllClasses([scss.image], className)
 
 	return classWrap ? (
 		<div className={classWrap}>
-			<img src={URL} alt={alt ?? ''} className={classImage} {...props} />
+			<img
+				src={URL}
+				alt={alt ?? ''}
+				className={classImage}
+				{...props}
+			/>
 		</div>
 	) : (
-		<img src={URL} alt={alt ?? ''} className={classImage} {...props} />
+		<img
+			src={URL}
+			alt={alt ?? ''}
+			className={classImage}
+			{...props}
+		/>
 	)
 }
 
