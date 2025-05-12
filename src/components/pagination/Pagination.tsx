@@ -1,5 +1,5 @@
 import React, { MouseEvent, ReactNode } from 'react'
-import sass from './Pagination.module.sass'
+import scss from './Pagination.module.scss'
 import Button from '@ui/button/Button'
 import Label from '@ui/text/label/Label'
 import { trimSass } from '@utils/sassControl'
@@ -11,9 +11,9 @@ interface PropsPagination {
 }
 
 const Pagination: React.FC<PropsPagination> = ({ pages, page, setPage }) => {
-	const onClickPrev = (e?: MouseEvent): void => setPage(page - 1, e)
-	const onClickPage = (page: number, e?: MouseEvent): void => setPage(page, e)
-	const onClickNext = (e?: MouseEvent): void => setPage(page + 1, e)
+	const handleToPrevClick = (e?: MouseEvent): void => setPage(page - 1, e)
+	const handleToPageClick = (page: number, e?: MouseEvent): void => setPage(page, e)
+	const handleToNextClick = (e?: MouseEvent): void => setPage(page + 1, e)
 
 	const renderPageNumbers = (): ReactNode[] => {
 		const pageNumbers: ReactNode[] = []
@@ -41,7 +41,10 @@ const Pagination: React.FC<PropsPagination> = ({ pages, page, setPage }) => {
 		for (let i = startPage; i <= endPage; i++) {
 			if (i === startPage && startPage > 1) {
 				pageNumbers.push(
-					<Button className={sass.page} key={1} onClick={e => onClickPage(1, e)}>
+					<Button
+						className={scss.page}
+						key={1}
+						onClick={e => handleToPageClick(1, e)}>
 						1
 					</Button>
 				)
@@ -54,13 +57,16 @@ const Pagination: React.FC<PropsPagination> = ({ pages, page, setPage }) => {
 			let clazz: string
 
 			if (i !== page) {
-				clazz = trimSass(sass, ['page'])
+				clazz = trimSass(scss, ['page'])
 			} else {
-				clazz = trimSass(sass, ['page', 'here'])
+				clazz = trimSass(scss, ['page', 'here'])
 			}
 
 			pageNumbers.push(
-				<Button className={clazz} key={i} onClick={e => onClickPage(i, e)}>
+				<Button
+					className={clazz}
+					key={i}
+					onClick={e => handleToPageClick(i, e)}>
 					{i}
 				</Button>
 			)
@@ -71,7 +77,10 @@ const Pagination: React.FC<PropsPagination> = ({ pages, page, setPage }) => {
 				}
 
 				pageNumbers.push(
-					<Button className={sass.page} key={pages} onClick={e => onClickPage(pages, e)}>
+					<Button
+						className={scss.page}
+						key={pages}
+						onClick={e => handleToPageClick(pages, e)}>
 						{pages}
 					</Button>
 				)
@@ -82,12 +91,18 @@ const Pagination: React.FC<PropsPagination> = ({ pages, page, setPage }) => {
 	}
 
 	return (
-		<div className={sass.pages}>
-			<Button className={sass.page} onClick={e => onClickPrev(e)} hidden={page === 1}>
+		<div className={scss.pages}>
+			<Button
+				className={scss.page}
+				onClick={e => handleToPrevClick(e)}
+				hidden={page === 1}>
 				&lt;
 			</Button>
 			{renderPageNumbers()}
-			<Button className={sass.page} onClick={e => onClickNext(e)} hidden={page === pages}>
+			<Button
+				className={scss.page}
+				onClick={e => handleToNextClick(e)}
+				hidden={page === pages}>
 				&gt;
 			</Button>
 		</div>
