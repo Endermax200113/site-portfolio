@@ -1,5 +1,5 @@
 import React from 'react'
-import sass from './Skill.module.sass'
+import scss from './Skill.module.scss'
 import SVGImage from 'SVGImage'
 import Illustration from '@ui/illustration/Illustration'
 
@@ -13,7 +13,14 @@ const Skill: React.FC<PropsSkill> = ({ url, name }) => {
 	// [x] skill -> figure
 	// [x] name -> figcaption
 
-	return <Illustration className={sass.skill} image={url} classImage={sass.image} children={name} />
+	return (
+		<Illustration
+			className={scss.skill}
+			image={url}
+			classImage={scss.image}
+			children={name}
+		/>
+	)
 }
 
 export default Skill

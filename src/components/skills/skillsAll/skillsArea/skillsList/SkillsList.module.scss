@@ -1,0 +1,8 @@
+@use '@sass/main' as *;
+
+.skills {
+	margin-top: 95px;
+	display: grid;
+	grid-template-columns: 100px 150px 150px 100px;
+	gap: 65px 120px;
+}

@@ -1,0 +1,17 @@
+@use '@sass/main' as *;
+
+.skills-block {
+	width: 1000px;
+	margin-top: 95px;
+	margin-left: -70px;
+	display: flex;
+	flex-direction: column;
+}
+
+.block {
+	margin-top: 100px;
+
+	&:first-child {
+		margin-top: 0;
+	}
+}

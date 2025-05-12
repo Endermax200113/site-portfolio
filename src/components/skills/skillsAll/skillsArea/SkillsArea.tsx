@@ -1,5 +1,5 @@
 import React, { HTMLAttributes } from 'react'
-import sass from './SkillsArea.module.sass'
+import scss from './SkillsArea.module.scss'
 import { AllSkills } from '@helper/skills'
 import HeadingSkills from '@ui/text/heading/headingSkills/HeadingSkills'
 import SkillsList from './skillsList/SkillsList'
@@ -11,7 +11,9 @@ interface PropsSkillsArea extends HTMLAttributes<HTMLDivElement> {
 
 const SkillsArea: React.FC<PropsSkillsArea> = ({ name, skills, ...props }) => {
 	return (
-		<div className={sass.block} {...props}>
+		<div
+			className={scss.block}
+			{...props}>
 			<HeadingSkills children={name} />
 			<SkillsList skills={skills} />
 		</div>
