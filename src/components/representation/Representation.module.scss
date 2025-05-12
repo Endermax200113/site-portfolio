@@ -1,0 +1,8 @@
+@use '@sass/main' as *;
+
+.representation {
+	position: relative;
+	width: 100%;
+	height: 1022px;
+	background-color: $color-light-gray;
+}

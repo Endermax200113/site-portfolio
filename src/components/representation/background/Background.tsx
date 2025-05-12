@@ -1,13 +1,13 @@
 import React, { HTMLAttributes } from 'react'
-import sass from './Background.module.sass'
+import scss from './Background.module.scss'
 
 interface PropsBackground extends HTMLAttributes<HTMLDivElement> {}
 
 const Background: React.FC<PropsBackground> = () => {
 	return (
-		<div className={sass.background}>
-			<div className={sass.detail}></div>
-			<div className={sass['detail-transition']}></div>
+		<div className={scss.background}>
+			<div className={scss.detail} />
+			<div className={scss['detail-transition']} />
 		</div>
 	)
 }

@@ -1,15 +1,16 @@
 import React, { forwardRef, RefAttributes } from 'react'
-import sass from './Representation.module.sass'
+import scss from './Representation.module.scss'
 import Background from './background/Background'
 import Demonstration from './demonstration/Demonstration'
 
-interface PropsRepresentation extends RefAttributes<HTMLElement> {
-	[props: string]: any
-}
+interface PropsRepresentation extends RefAttributes<HTMLElement> {}
 
 const Representation: React.FC<PropsRepresentation> = forwardRef<HTMLElement>(({ ...props }, forwardedRef) => {
 	return (
-		<section className={sass.representation} {...props} ref={forwardedRef}>
+		<section
+			className={scss.representation}
+			{...props}
+			ref={forwardedRef}>
 			<Background />
 			<Demonstration />
 		</section>
