@@ -6,7 +6,9 @@ interface PropsButtonProject extends PropsButton {}
 
 const ButtonProject: React.FC<PropsButtonProject> = ({ children, ...props }) => {
 	return (
-		<Button className={sass.button} {...props}>
+		<Button
+			className={sass.button}
+			{...props}>
 			{children}
 		</Button>
 	)
