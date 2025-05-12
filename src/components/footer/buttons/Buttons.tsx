@@ -1,5 +1,5 @@
 import React, { HTMLAttributes } from 'react'
-import sass from './Buttons.module.sass'
+import scss from './Buttons.module.scss'
 import { dataImagesSocial } from '@/data/footer'
 import ButtonFooterSocial from '@ui/button/buttonFooterSocial/ButtonFooterSocial'
 import Image from '@ui/image/Image'
@@ -12,11 +12,20 @@ const Buttons: React.FC<PropsButtons> = ({ ...props }) => {
 	}
 
 	return (
-		<div className={sass.buttons} {...props}>
+		<div
+			className={scss.buttons}
+			{...props}>
 			{dataImagesSocial.map(({ urlImage, altImage, link }, i) => {
 				return (
-					<ButtonFooterSocial onClick={() => handleClickOpenLink(link)} key={`button-footer-social-${i}`}>
-						<Image url={urlImage} alt={altImage} classWrap={sass['image-wrap']} className={sass.image} />
+					<ButtonFooterSocial
+						onClick={() => handleClickOpenLink(link)}
+						key={`button-footer-social-${i}`}>
+						<Image
+							url={urlImage}
+							alt={altImage}
+							classWrap={scss['image-wrap']}
+							className={scss.image}
+						/>
 					</ButtonFooterSocial>
 				)
 			})}
