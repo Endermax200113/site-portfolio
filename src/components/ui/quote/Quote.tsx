@@ -1,14 +1,16 @@
 import React, { BlockquoteHTMLAttributes } from 'react'
-import sass from './Quote.module.sass'
+import scss from './Quote.module.scss'
 import { mergeAllClasses } from '@utils/sassControl'
 
 interface PropsQuote extends BlockquoteHTMLAttributes<HTMLQuoteElement> {}
 
 const Quote: React.FC<PropsQuote> = ({ children, className, ...props }) => {
-	const classQuote: string = mergeAllClasses([sass.quote], className)
+	const classQuote: string = mergeAllClasses([scss.quote], className)
 
 	return (
-		<blockquote className={classQuote} {...props}>
+		<blockquote
+			className={classQuote}
+			{...props}>
 			{children}
 		</blockquote>
 	)
