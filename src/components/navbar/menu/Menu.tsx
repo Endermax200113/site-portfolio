@@ -10,7 +10,13 @@ const Menu: React.FC<PropsMenu> = () => {
 	return (
 		<>
 			{arrMenu.map(([link, text], i) => {
-				return <MenuItem link={link} text={text} key={`nav-menu-item-${i}`} />
+				return (
+					<MenuItem
+						link={link}
+						text={text}
+						key={`nav-menu-item-${i}`}
+					/>
+				)
 			})}
 		</>
 	)

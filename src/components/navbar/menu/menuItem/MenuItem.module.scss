@@ -1,0 +1,31 @@
+@use '@sass/main' as *;
+
+.menu {
+	&-item {
+		height: 100%;
+		margin-inline: 50px;
+		display: grid;
+		place-content: center;
+
+		&:nth-child(2) {
+			margin-left: 0;
+		}
+
+		&:last-child {
+			margin-right: 0;
+		}
+	}
+
+	&-link {
+		font-family: $font-montserrat;
+		font-weight: 700;
+		font-size: 17px;
+		text-align: center;
+		color: $color-full-white;
+		text-decoration: none;
+
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+}

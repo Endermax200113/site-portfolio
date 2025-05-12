@@ -1,5 +1,5 @@
 import React, { HTMLAttributes } from 'react'
-import sass from './Navbar.module.sass'
+import scss from './Navbar.module.scss'
 import { spotClass } from '@utils/headerControl'
 import Logo from './logo/Logo'
 import Menu from './menu/Menu'
@@ -10,12 +10,15 @@ interface PropsNavbar extends HTMLAttributes<HTMLElement> {
 }
 
 const Navbar: React.FC<PropsNavbar> = ({ isMain, headerFixed }) => {
-	const navbarClass: string = spotClass(sass, 'navbar', isMain, headerFixed)
+	const navbarClass: string = spotClass(scss, 'navbar', isMain, headerFixed)
 
 	return (
 		<nav className={navbarClass}>
-			<ul className={sass.menu}>
-				<Logo isMain={isMain} headerFixed={headerFixed} />
+			<ul className={scss.menu}>
+				<Logo
+					isMain={isMain}
+					headerFixed={headerFixed}
+				/>
 				<Menu />
 			</ul>
 		</nav>

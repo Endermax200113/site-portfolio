@@ -1,5 +1,5 @@
 import React, { LiHTMLAttributes } from 'react'
-import sass from './Logo.module.sass'
+import scss from './Logo.module.scss'
 import { Link } from 'react-router-dom'
 import Image from '@ui/image/Image'
 import { spotClass } from '@utils/headerControl'
@@ -12,9 +12,9 @@ interface PropsLogo extends LiHTMLAttributes<HTMLLIElement> {
 }
 
 const Logo: React.FC<PropsLogo> = ({ isMain, headerFixed }) => {
-	const logoClass: string = spotClass(sass, 'logo-img', isMain, headerFixed)
+	const logoClass: string = spotClass(scss, 'logo-img', isMain, headerFixed)
 
-	const handleClickItem = (): void => {
+	const handleItemClick = (): void => {
 		setTimeout(() => {
 			window.scrollTo({
 				top: 0,
@@ -23,11 +23,11 @@ const Logo: React.FC<PropsLogo> = ({ isMain, headerFixed }) => {
 	}
 
 	return (
-		<li className={sass['logo']}>
+		<li className={scss['logo']}>
 			<Link
 				to='/'
-				className={sass['logo-link']}
-				onClick={handleClickItem}>
+				className={scss['logo-link']}
+				onClick={handleItemClick}>
 				<Image
 					url={imgLogo}
 					className={logoClass}
