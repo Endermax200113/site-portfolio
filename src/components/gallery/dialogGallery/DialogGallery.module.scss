@@ -1,0 +1,212 @@
+@use '@sass/main' as *;
+
+%hidden {
+	opacity: 0;
+	visibility: hidden;
+	pointer-events: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.gallery {
+	position: fixed;
+	width: 100%;
+	height: calc(100% - 65px);
+	border: none;
+	outline: none;
+	background-color: rgba($color-full-black, 50%);
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity $transition-animation, .3s visibility;
+	display: block;
+	z-index: 10000;
+}
+
+.gallery[open] {
+	opacity: 1;
+	visibility: visible;
+}
+
+.button {
+	@extend %button;
+
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	width: 30px;
+	aspect-ratio: 1 / 1;
+	transition: opacity $transition-animation, .3s visibility;
+	z-index: 10;
+
+	&.hidden {
+		@extend %hidden;
+	}
+}
+
+.image {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	-o-object-fit: contain;
+	object-fit: contain;
+	display: block;
+	pointer-events: none;
+	z-index: 2;
+
+	&-container {
+		position: relative;
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+		cursor: -webkit-grab;
+		cursor: grab;
+		z-index: 1;
+
+		&:active {
+			cursor: -webkit-grabbing;
+			cursor: grabbing;
+		}
+	}
+
+	&-wrap {
+		position: absolute;
+		inset: 0;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+	}
+}
+
+.gradient {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 200px;
+	background-image: linear-gradient(transparent, rgba($color-full-black, .75));
+	transition: opacity $transition-animation, .3s visibility;
+	z-index: 2;
+	pointer-events: none;
+
+	&.hidden {
+		@extend %hidden;
+	}
+}
+
+.management {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	z-index: 4;
+
+	&-buttons {
+		position: absolute;
+		bottom: 30px;
+		transition: opacity $transition-animation, .3s visibility;
+		display: flex;
+		justify-content: center;
+
+		&.hidden {
+			@extend %hidden;
+		}
+	}
+
+	&-button {
+		@extend %button;
+
+		position: absolute;
+		width: 40px;
+		aspect-ratio: 1 / 1;
+		transform: translateY(-25%);
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+		z-index: 10;
+
+		&.left {
+			left: -50px;
+		}
+
+		&.right {
+			right: -50px;
+		}
+	}
+
+	&-count {
+		-webkit-text-stroke: 0.1px $color-full-black;
+		color: $color-full-white;
+		display: grid;
+		place-content: center;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+		pointer-events: none;
+		z-index: 10;
+	}
+
+	&-description {
+		position: absolute;
+		bottom: 75px;
+		max-width: 1000px;
+		padding: 20px;
+		background-color: rgba($color-full-black, .5);
+		transition: opacity $transition-animation, .3s visibility;
+		color: $color-full-white;
+
+		&.hidden {
+			@extend %hidden;
+		}
+	}
+}
+
+.test-image {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 100;
+	pointer-events: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+
+	&-sx {
+		position: absolute;
+		left: 0;
+		height: 100%;
+		width: 1px;
+		background-color: #f08;
+	}
+
+	&-ex {
+		position: absolute;
+		left: 0;
+		height: 100%;
+		width: 1px;
+		background-color: #08f
+	}
+
+	&-sy {
+		position: absolute;
+		top: 0;
+		width: 100%;
+		height: 1px;
+		background-color: #8f8;
+	}
+
+	&-ey {
+		position: absolute;
+		top: 0;
+		width: 100%;
+		height: 1px;
+		background-color: #f80;
+	}
+}

@@ -1,5 +1,5 @@
 import React, { DialogHTMLAttributes, Dispatch, MouseEvent, SetStateAction, useCallback, useLayoutEffect, useState } from 'react'
-import sass from './DialogGallery.module.sass'
+import scss from './DialogGallery.module.scss'
 import Button from '@ui/button/Button'
 import ImageComp from '@ui/image/Image'
 import { Gallery } from '@helper/portfolio'
@@ -75,7 +75,7 @@ const DialogGallery: React.FC<PropsDialogGallery> = ({ gallery, state, ...props 
 
 	const testImage = false
 
-	const onClickLeft = (): void => {
+	const handlerToLeftClick = (): void => {
 		if (dialogGalleryData.id + 1 === 1) return
 
 		setDialogGalleryData({
@@ -84,7 +84,7 @@ const DialogGallery: React.FC<PropsDialogGallery> = ({ gallery, state, ...props 
 		})
 	}
 
-	const onClickRight = (): void => {
+	const handleToRightClick = (): void => {
 		if (dialogGalleryData.id + 1 === gallery.length) return
 
 		setDialogGalleryData({
@@ -93,21 +93,21 @@ const DialogGallery: React.FC<PropsDialogGallery> = ({ gallery, state, ...props 
 		})
 	}
 
-	const onKeyDownLeftOrRight = (e: Event): void => {
+	const handleToLeftOrRightKeydown = (e: Event): void => {
 		if (e instanceof KeyboardEvent) {
 			if (e.code !== 'ArrowLeft' && e.code !== 'ArrowRight') return
 
 			if (e.code === 'ArrowLeft') {
-				onClickLeft()
+				handlerToLeftClick()
 			} else {
-				onClickRight()
+				handleToRightClick()
 			}
 		}
 	}
 
-	useEventListener('keydown', onKeyDownLeftOrRight, dialogGalleryData.isOpened)
+	useEventListener('keydown', handleToLeftOrRightKeydown, dialogGalleryData.isOpened)
 
-	const onMoveImage = (e: MouseEvent): void => {
+	const handleImageMove = (e: MouseEvent): void => {
 		if (isMovingImage) {
 			const widthImage = placeImage.endX - placeImage.startX
 			const heightImage = placeImage.endY - placeImage.startY
@@ -170,14 +170,14 @@ const DialogGallery: React.FC<PropsDialogGallery> = ({ gallery, state, ...props 
 		}
 	}
 
-	const onStartMoveImage = (e: MouseEvent): void => {
+	const handleImageMoveDown = (e: MouseEvent): void => {
 		setIsHiddenUIElements('hidden')
 		setIsMovingImage(true)
 		setStartPlaceCursorX(e.clientX)
 		setStartPlaceCursorY(e.clientY)
 	}
 
-	const onEndMoveImage = (): void => {
+	const handleImageMoveUp = (): void => {
 		setIsHiddenUIElements('')
 		setIsMovingImage(false)
 	}
@@ -337,14 +337,14 @@ const DialogGallery: React.FC<PropsDialogGallery> = ({ gallery, state, ...props 
 
 	return (
 		<dialog
-			className={sass.gallery}
+			className={scss.gallery}
 			open={dialogGalleryData.isOpened}
 			{...props}>
 			<div
-				className={sass['image-container']}
-				onMouseDown={onStartMoveImage}
-				onMouseMove={onMoveImage}
-				onMouseUp={onEndMoveImage}>
+				className={scss['image-container']}
+				onMouseUp={handleImageMoveUp}
+				onMouseMove={handleImageMove}
+				onMouseDown={handleImageMoveDown}>
 				<ImageGallery
 					url={gallery[dialogGalleryData.id].urlImage}
 					alt={gallery[dialogGalleryData.id].title}
@@ -359,24 +359,28 @@ const DialogGallery: React.FC<PropsDialogGallery> = ({ gallery, state, ...props 
 			</div>
 
 			{testImage && (
-				<div className={sass['test-image']}>
+				<div className={scss['test-image']}>
 					<div
-						className={sass['test-image-sx']}
-						style={{ left: placeImage.startX }}></div>
+						className={scss['test-image-sx']}
+						style={{ left: placeImage.startX }}
+					/>
 					<div
-						className={sass['test-image-ex']}
-						style={{ left: placeImage.endX }}></div>
+						className={scss['test-image-ex']}
+						style={{ left: placeImage.endX }}
+					/>
 					<div
-						className={sass['test-image-sy']}
-						style={{ top: placeImage.startY }}></div>
+						className={scss['test-image-sy']}
+						style={{ top: placeImage.startY }}
+					/>
 					<div
-						className={sass['test-image-ey']}
-						style={{ top: placeImage.endY }}></div>
+						className={scss['test-image-ey']}
+						style={{ top: placeImage.endY }}
+					/>
 				</div>
 			)}
 
 			<Button
-				className={trimSass(sass, ['button', !dialogGalleryData.isOpened ? 'hidden' : isHiddenUIElements])}
+				className={trimSass(scss, ['button', !dialogGalleryData.isOpened ? 'hidden' : isHiddenUIElements])}
 				onClick={() => setVisible(false)}>
 				<ImageComp
 					url={imgCross}
@@ -384,32 +388,32 @@ const DialogGallery: React.FC<PropsDialogGallery> = ({ gallery, state, ...props 
 				/>
 			</Button>
 
-			<div className={trimSass(sass, ['gradient', !dialogGalleryData.isOpened ? 'hidden' : isHiddenUIElements])}></div>
+			<div className={trimSass(scss, ['gradient', !dialogGalleryData.isOpened ? 'hidden' : isHiddenUIElements])} />
 
-			<div className={sass.management}>
-				<div className={trimSass(sass, ['management-buttons', !dialogGalleryData.isOpened ? 'hidden' : isHiddenUIElements])}>
+			<div className={scss.management}>
+				<div className={trimSass(scss, ['management-buttons', !dialogGalleryData.isOpened ? 'hidden' : isHiddenUIElements])}>
 					{dialogGalleryData.id !== 0 && (
 						<Button
-							className={trimSass(sass, ['management-button', 'left'])}
-							onClick={onClickLeft}>
+							className={trimSass(scss, ['management-button', 'left'])}
+							onClick={handlerToLeftClick}>
 							<ImageComp url={imgArrowLeft} />
 						</Button>
 					)}
 
-					<span className={sass['management-count']}>
+					<span className={scss['management-count']}>
 						{dialogGalleryData.id + 1} из {gallery.length}
 					</span>
 
 					{dialogGalleryData.id + 1 !== gallery.length && (
 						<Button
-							className={trimSass(sass, ['management-button', 'right'])}
-							onClick={onClickRight}>
+							className={trimSass(scss, ['management-button', 'right'])}
+							onClick={handleToRightClick}>
 							<ImageComp url={imgArrowRight} />
 						</Button>
 					)}
 				</div>
 
-				<Description className={trimSass(sass, ['management-description', !dialogGalleryData.isOpened ? 'hidden' : isHiddenUIElements])}>{gallery[dialogGalleryData.id].description}</Description>
+				<Description className={trimSass(scss, ['management-description', !dialogGalleryData.isOpened ? 'hidden' : isHiddenUIElements])}>{gallery[dialogGalleryData.id].description}</Description>
 			</div>
 		</dialog>
 	)

@@ -1,5 +1,5 @@
 import React, { HTMLAttributes, MouseEvent } from 'react'
-import sass from './Gallery.module.sass'
+import scss from './Gallery.module.scss'
 import Image from '@ui/image/Image'
 import Button from '@ui/button/Button'
 import Heading from '@ui/text/heading/Heading'
@@ -12,13 +12,28 @@ interface PropsGallery extends HTMLAttributes<HTMLElement> {
 }
 
 const Gallery: React.FC<PropsGallery> = ({ name, urlImage, className, clickButton, ...props }) => {
-	const allClassesGallery: string = mergeAllClasses([sass.gallery], className)
+	const allClassesGallery: string = mergeAllClasses([scss.gallery], className)
 
 	return (
-		<article className={allClassesGallery} {...props}>
-			<Image url={urlImage} classWrap={sass['img-wrap']} className={sass.img} />
-			<Heading level='2' children={name} className={sass.name} mergeClass />
-			<Button className={sass.show} onClick={clickButton} children='Посмотреть' />
+		<article
+			className={allClassesGallery}
+			{...props}>
+			<Image
+				url={urlImage}
+				classWrap={scss['img-wrap']}
+				className={scss.img}
+			/>
+			<Heading
+				level='2'
+				children={name}
+				className={scss.name}
+				mergeClass
+			/>
+			<Button
+				className={scss.show}
+				onClick={clickButton}
+				children='Посмотреть'
+			/>
 		</article>
 	)
 }

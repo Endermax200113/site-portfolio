@@ -7,6 +7,9 @@
 			"message": "ID not be added.",
 			"severity": "error"
 		}],
-		"scss/dollar-variable-empty-line-before": null
+		"scss/dollar-variable-empty-line-before": null,
+		"scss/double-slash-comment-empty-line-before": null,
+		"property-no-vendor-prefix": null,
+		"value-no-vendor-prefix": null
 	}
 }
