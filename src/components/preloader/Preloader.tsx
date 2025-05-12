@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { HTMLAttributes } from 'react'
+import scss from './Preloader.module.scss'
 
-interface PropsPreloader {}
+interface PropsPreloader extends HTMLAttributes<HTMLDivElement> {}
 
 const Preloader: React.FC<PropsPreloader> = () => {
-	return <div>Preloader</div>
+	return <div className={scss.preload}>Preloader</div>
 }
 
 export default Preloader
