@@ -1,5 +1,5 @@
 import React, { MutableRefObject, useCallback, useLayoutEffect, useMemo, useRef } from 'react'
-import sass from './Main.module.sass'
+import scss from './Main.module.scss'
 import About from '@components/about/About'
 import Skills from '@components/skills/Skills'
 import Portfolio from '@components/portfolio/Portfolio'
@@ -11,16 +11,16 @@ import Representation from '@components/representation/Representation'
 interface PropsMain extends PropsRootMain {}
 
 type LinksOnMain = {
-	[link: string]: MutableRefObject<any>
+	[link: string]: MutableRefObject<null | HTMLElement>
 }
 
 const Main: React.FC<PropsMain> = ({ ...props }) => {
 	const params: Readonly<Params<string>> = useParams()
-	const representation: MutableRefObject<any> = useRef(null)
-	const about: MutableRefObject<any> = useRef(null)
-	const skills: MutableRefObject<any> = useRef(null)
-	const portfolio: MutableRefObject<any> = useRef(null)
-	const cv: MutableRefObject<any> = useRef(null)
+	const representation: MutableRefObject<null | HTMLElement> = useRef(null)
+	const about: MutableRefObject<null | HTMLElement> = useRef(null)
+	const skills: MutableRefObject<null | HTMLElement> = useRef(null)
+	const portfolio: MutableRefObject<null | HTMLElement> = useRef(null)
+	const cv: MutableRefObject<null | HTMLElement> = useRef(null)
 
 	const links: LinksOnMain = useMemo(() => {
 		return {
@@ -35,7 +35,7 @@ const Main: React.FC<PropsMain> = ({ ...props }) => {
 	const scrollToBlock = useCallback(
 		(block: string = '') => {
 			if (block in links) {
-				links[block].current.scrollIntoView({
+				links[block].current?.scrollIntoView({
 					behavior: 'smooth',
 				})
 			}
@@ -74,10 +74,13 @@ const Main: React.FC<PropsMain> = ({ ...props }) => {
 	useLayoutEffect(() => scrollToBlock(params.block), [scrollToBlock, params])
 
 	return (
-		<RootMain className={sass.main} withoutMargin {...props}>
+		<RootMain
+			className={scss.main}
+			withoutMargin
+			{...props}>
 			<Representation ref={links.representation} />
 
-			<div className={sass.gradient}>
+			<div className={scss.gradient}>
 				<About ref={links.about} />
 				<Skills ref={links.skills} />
 			</div>

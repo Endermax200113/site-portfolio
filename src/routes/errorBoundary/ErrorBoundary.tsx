@@ -1,5 +1,5 @@
 import React from 'react'
-import sass from './ErrorBoundary.module.sass'
+import scss from './ErrorBoundary.module.scss'
 import { ErrorResponse, useRouteError } from 'react-router-dom'
 import RootMain, { PropsRootMain } from '@components/main/Main'
 import Section from '@components/section/Section'
@@ -13,10 +13,18 @@ const ErrorBoundary: React.FC<PropsErrorBoundary> = ({ ...props }) => {
 	console.error(err.status ? `${err.status} -> ${err.statusText}` : 'Некорректный запрос!')
 
 	return (
-		<RootMain className={sass.error} {...props}>
-			<Section className={sass.info}>
-				<Heading className={sass.code} children={err.status ?? '400'} />
-				<Description className={sass.reason} children={err.data || 'Некорректный запрос!'} />
+		<RootMain
+			className={scss.error}
+			{...props}>
+			<Section className={scss.info}>
+				<Heading
+					className={scss.code}
+					children={err.status ?? '400'}
+				/>
+				<Description
+					className={scss.reason}
+					children={err.data || 'Некорректный запрос!'}
+				/>
 			</Section>
 		</RootMain>
 	)

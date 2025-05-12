@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import sass from './Project.module.sass'
+import scss from './Project.module.scss'
 import Heading from '@ui/text/heading/Heading'
 import Image from '@ui/image/Image'
 import Description from '@ui/text/description/Description'
@@ -58,51 +58,96 @@ const Project: React.FC<PropsProject> = ({ ...props }) => {
 	}
 
 	return (
-		<RootMain className={sass.project} {...props}>
-			<Section className={sass.details}>
-				<Heading children={projectName} className={sass['project-name']} mergeClass />
+		<RootMain
+			className={scss.project}
+			{...props}>
+			<Section className={scss.details}>
+				<Heading
+					children={projectName}
+					className={scss['project-name']}
+					mergeClass
+				/>
 
-				<Image url={urlImage} alt='Превью-картинка' classWrap={sass['img-wrap']} className={sass['img']} />
+				<Image
+					url={urlImage}
+					alt='Превью-картинка'
+					classWrap={scss['img-wrap']}
+					className={scss['img']}
+				/>
 
-				<Description className={sass.description}>{description}</Description>
+				<Description className={scss.description}>{description}</Description>
 
-				{site && <Button className={sass.button}>К сайту</Button>}
+				{site && <Button className={scss.button}>К сайту</Button>}
 			</Section>
 
 			{gallery && (
-				<Section className={sass.info}>
-					<Heading children='Галерея' className={sass['info-title']} mergeClass />
+				<Section className={scss.info}>
+					<Heading
+						children='Галерея'
+						className={scss['info-title']}
+						mergeClass
+					/>
 
-					<div className={sass.gallery}>
+					<div className={scss.gallery}>
 						{arrMaxSixGallery.map((image, i) => {
-							return <Gallery name={image.title} urlImage={image.urlImage} className={sass['gallery-image']} clickButton={() => handleOpenClick(image.id)} key={i} />
+							return (
+								<Gallery
+									name={image.title}
+									urlImage={image.urlImage}
+									className={scss['gallery-image']}
+									clickButton={() => handleOpenClick(image.id)}
+									key={i}
+								/>
+							)
 						})}
 					</div>
 
 					{gallery.length > 6 && (
-						<Button className={sass.button} onClick={() => handleOpenClick()}>
+						<Button
+							className={scss.button}
+							onClick={() => handleOpenClick()}>
 							Посмотреть всё
 						</Button>
 					)}
 				</Section>
 			)}
 
-			<Section className={sass.info}>
-				<Heading children='Стек' className={sass['info-title']} mergeClass />
-				<SkillsList skills={stack} className={sass.stack} mergeClass />
+			<Section className={scss.info}>
+				<Heading
+					children='Стек'
+					className={scss['info-title']}
+					mergeClass
+				/>
+				<SkillsList
+					skills={stack}
+					className={scss.stack}
+					mergeClass
+				/>
 			</Section>
 
 			{resources && resources.length > 0 && (
-				<Section className={sass.info}>
-					<Heading children='Ссылки' className={sass['info-title']} mergeClass />
+				<Section className={scss.info}>
+					<Heading
+						children='Ссылки'
+						className={scss['info-title']}
+						mergeClass
+					/>
 
-					<ul className={sass['resources-list']}>
+					<ul className={scss['resources-list']}>
 						{resources.map(({ image, text, url }, i) => {
 							return (
-								<li className={sass['resource-item']} key={i}>
-									<Button onClick={() => handleOpenLinkClick(url)} className={sass['resource-link']}>
-										<Image src={image} alt='Иконка' className={sass['resource-image']} />
-										<span className={sass['resource-text']}>{text}</span>
+								<li
+									className={scss['resource-item']}
+									key={i}>
+									<Button
+										onClick={() => handleOpenLinkClick(url)}
+										className={scss['resource-link']}>
+										<Image
+											src={image}
+											alt='Иконка'
+											className={scss['resource-image']}
+										/>
+										<span className={scss['resource-text']}>{text}</span>
 									</Button>
 								</li>
 							)
@@ -111,7 +156,12 @@ const Project: React.FC<PropsProject> = ({ ...props }) => {
 				</Section>
 			)}
 
-			{gallery && <DialogGallery gallery={gallery} state={dialogGalleryState} />}
+			{gallery && (
+				<DialogGallery
+					gallery={gallery}
+					state={dialogGalleryState}
+				/>
+			)}
 		</RootMain>
 	)
 }

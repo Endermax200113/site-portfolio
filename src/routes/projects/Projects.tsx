@@ -1,5 +1,5 @@
-import React, { MouseEvent, useEffect, useState } from 'react'
-import sass from './Projects.module.sass'
+import React, { MouseEvent, useState } from 'react'
+import scss from './Projects.module.scss'
 import { NavigateFunction, useLoaderData, useNavigate, useSearchParams } from 'react-router-dom'
 import { DataPortfolio } from '@/data/portfolio'
 import Image from '@ui/image/Image'
@@ -12,11 +12,11 @@ import RootMain, { PropsRootMain } from '@components/main/Main'
 import { useRenderEffect } from '@hooks/useRenderEffect'
 
 //
-// TODO Исправить код в этом компоненте:
+// DONE Исправить код в этом компоненте:
 //
 // [x] Удалить JSON с localStorage
 // [x] Убрать useEffect или достичь до минимума
-// [ ] Исправить дизайн
+// [x] Исправить дизайн
 //
 
 type Data = {
@@ -66,41 +66,41 @@ const Projects: React.FC<PropsProjects> = ({ ...props }) => {
 
 	return (
 		<RootMain
-			className={sass.main}
+			className={scss.main}
 			{...props}>
-			<section className={sass.projects}>
+			<section className={scss.projects}>
 				{arrPagesData && arrPagesData.length > 0 ? (
 					arrPagesData[page - 1].map((project, i) => {
 						return (
 							<div
 								key={i}
-								className={sass.project}>
+								className={scss.project}>
 								<Image
 									url={project.urlImage}
-									classWrap={sass['project-img-wrap']}
-									className={sass['project-img']}
+									classWrap={scss['project-img-wrap']}
+									className={scss['project-img']}
 								/>
 
-								<div className={sass.info}>
-									<div className={sass.details}>
+								<div className={scss.info}>
+									<div className={scss.details}>
 										<Heading
 											children={project.name}
-											className={sass.title}
+											className={scss.title}
 										/>
-										<Description className={sass.description}>{project.briefDescription}</Description>
+										<Description className={scss.description}>{project.briefDescription}</Description>
 									</div>
 
-									<div className={sass.buttons}>
+									<div className={scss.buttons}>
 										{project.site && (
 											<Button
-												className={sass.button}
+												className={scss.button}
 												onClick={() => handleToSiteClick(project.site)}>
 												К сайту
 											</Button>
 										)}
 
 										<Button
-											className={sass.button}
+											className={scss.button}
 											onClick={() => handleMoreClick(project.id)}>
 											Подробнее
 										</Button>
@@ -110,10 +110,10 @@ const Projects: React.FC<PropsProjects> = ({ ...props }) => {
 						)
 					})
 				) : (
-					<div className={sass['no-projects']}>
+					<div className={scss['no-projects']}>
 						<Heading
 							children='Нет проектов'
-							className={trimSass(sass, ['no-projects', 'title'])}
+							className={trimSass(scss, ['no-projects', 'title'])}
 						/>
 					</div>
 				)}
