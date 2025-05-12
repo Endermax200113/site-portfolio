@@ -1,0 +1,16 @@
+@use '@sass/main' as *;
+
+.description {
+	font-family: $font-opensans;
+	font-weight: 400;
+	font-size: 15px;
+	line-height: 139%;
+	-webkit-hyphens: auto;
+	-ms-hyphens: auto;
+	hyphens: auto;
+	word-wrap: break-word;
+	text-align: justify;
+	-moz-text-align-last: center;
+	text-align-last: center;
+	color: $color-full-black;
+}

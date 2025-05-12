@@ -1,5 +1,5 @@
 import React, { HTMLAttributes } from 'react'
-import sass from './Description.module.sass'
+import scss from './Description.module.scss'
 import { mergeAllClasses } from '@utils/sassControl'
 
 export interface PropsDescription extends HTMLAttributes<HTMLParagraphElement> {
@@ -7,10 +7,12 @@ export interface PropsDescription extends HTMLAttributes<HTMLParagraphElement> {
 }
 
 const Description: React.FC<PropsDescription> = ({ children, className, ...props }) => {
-	const classDescription: string = mergeAllClasses([sass.description], className)
+	const classDescription: string = mergeAllClasses([scss.description], className)
 
 	return (
-		<p className={classDescription} {...props}>
+		<p
+			className={classDescription}
+			{...props}>
 			{children}
 		</p>
 	)

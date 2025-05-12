@@ -1,12 +1,14 @@
 import React from 'react'
-import sass from './DescriptionAboutActivity.module.sass'
-import Description, { PropsDescription } from '../Description'
+import scss from './DescriptionAboutActivity.module.scss'
+import Description, { PropsDescription } from './../Description'
 
 interface PropsDescriptionAboutActivity extends PropsDescription {}
 
 const DescriptionAboutActivity: React.FC<PropsDescriptionAboutActivity> = ({ children, ...props }) => {
 	return (
-		<Description className={sass.description} {...props}>
+		<Description
+			className={scss.description}
+			{...props}>
 			{children}
 		</Description>
 	)
