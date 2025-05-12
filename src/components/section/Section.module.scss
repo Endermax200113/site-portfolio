@@ -1,0 +1,8 @@
+@use '@sass/main' as *;
+
+.section {
+	width: inherit;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
