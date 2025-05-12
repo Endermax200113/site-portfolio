@@ -1,7 +1,7 @@
 {
 	"compilerOptions": {
 		"baseUrl": "./src",
-		"target": "ES5",
+		"target": "ES2017",
 		"lib": ["DOM", "DOM.Iterable", "ESNext"],
 		"allowJs": true,
 		"skipLibCheck": true,
@@ -16,6 +16,7 @@
 		"isolatedModules": true,
 		"noEmit": true,
 		"jsx": "react-jsx",
+		"types": ["vite/client"],
 		"paths": {
 			"@fonts/*": ["./assets/fonts/*"],
 			"@img/*": ["./assets/img/*"],
@@ -28,8 +29,9 @@
 			"@helper/*": ["./helper/*"],
 			"@modules/*": ["./modules/*"],
 			"@hooks/*": ["./hooks/*"],
-			"@/*": ["./*"]
+			"@/*": ["./*"],
 		}
 	},
-	"include": ["src", "src/modules/**/*.d.ts"]
+	"include": ["src", "src/modules/**/*.d.ts"],
+	"exclude": ["node_modules"]
 }

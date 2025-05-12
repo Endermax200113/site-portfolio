@@ -8,29 +8,36 @@ import { loadMain } from './main/MainLoader'
 import Projects from './projects/Projects'
 import { loadProjects } from './projects/ProjectsLoader'
 
-export const router = createBrowserRouter([
+export const router = createBrowserRouter(
+	[
+		{
+			errorElement: <ErrorBoundary />,
+			element: <LayoutRoute />,
+			children: [
+				{
+					path: '/:block?',
+					element: <Main />,
+					errorElement: <ErrorBoundary />,
+					loader: ({ params }) => loadMain(params),
+				},
+				{
+					path: '/projects',
+					element: <Projects />,
+					errorElement: <ErrorBoundary />,
+					loader: ({ request }) => loadProjects(request),
+				},
+				{
+					path: '/projects/:projectId',
+					element: <Project />,
+					errorElement: <ErrorBoundary />,
+					loader: ({ params }) => loadProject(params),
+				},
+			],
+		},
+	],
 	{
-		errorElement: <ErrorBoundary />,
-		element: <LayoutRoute />,
-		children: [
-			{
-				path: '/:block?',
-				element: <Main />,
-				errorElement: <ErrorBoundary />,
-				loader: ({ params }) => loadMain(params),
-			},
-			{
-				path: '/projects',
-				element: <Projects />,
-				errorElement: <ErrorBoundary />,
-				loader: ({ request }) => loadProjects(request),
-			},
-			{
-				path: '/projects/:projectId',
-				element: <Project />,
-				errorElement: <ErrorBoundary />,
-				loader: ({ params }) => loadProject(params),
-			},
-		],
-	},
-])
+		future: {
+			v7_relativeSplatPath: true,
+		},
+	}
+)

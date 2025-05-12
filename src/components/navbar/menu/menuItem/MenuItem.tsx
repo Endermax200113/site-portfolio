@@ -10,7 +10,10 @@ interface PropsMenuItem extends LiHTMLAttributes<HTMLLIElement> {
 const MenuItem: React.FC<PropsMenuItem> = ({ text, link }) => {
 	return (
 		<li className={sass['menu-item']}>
-			<NavLink to={link} className={sass['menu-link']}>
+			<NavLink
+				end
+				to={link}
+				className={sass['menu-link']}>
 				{text}
 			</NavLink>
 		</li>

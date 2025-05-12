@@ -20,7 +20,10 @@ const App: FC = () => {
 	return (
 		<div className='app'>
 			<Suspense fallback={<Preloader />}>
-				<RouterProvider router={router} />
+				<RouterProvider
+					router={router}
+					future={{ v7_startTransition: true }}
+				/>
 			</Suspense>
 		</div>
 	)

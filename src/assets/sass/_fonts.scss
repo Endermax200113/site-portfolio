@@ -1,4 +1,4 @@
-@import '@sass/_classes';
+@use '@sass/vars' as *;
 
 @mixin font($name, $style, $weight, $path) {
 	@font-face {

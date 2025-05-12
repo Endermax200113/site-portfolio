@@ -10,6 +10,10 @@ import { useRenderEffect } from '@hooks/useRenderEffect'
 import { useClassList } from '@hooks/useClassList'
 import ImageGallery from '@ui/image/imageGallery/ImageGallery'
 
+const imgCross: string = (await import('@svg/cross.svg')).default
+const imgArrowLeft: string = (await import('@svg/arrow-left.svg')).default
+const imgArrowRight: string = (await import('@svg/arrow-right.svg')).default
+
 //
 // DONE Решить проблемы с компонентом:
 //
@@ -332,8 +336,15 @@ const DialogGallery: React.FC<PropsDialogGallery> = ({ gallery, state, ...props 
 	}
 
 	return (
-		<dialog className={sass.gallery} open={dialogGalleryData.isOpened} {...props}>
-			<div className={sass['image-container']} onMouseDown={onStartMoveImage} onMouseMove={onMoveImage} onMouseUp={onEndMoveImage}>
+		<dialog
+			className={sass.gallery}
+			open={dialogGalleryData.isOpened}
+			{...props}>
+			<div
+				className={sass['image-container']}
+				onMouseDown={onStartMoveImage}
+				onMouseMove={onMoveImage}
+				onMouseUp={onEndMoveImage}>
 				<ImageGallery
 					url={gallery[dialogGalleryData.id].urlImage}
 					alt={gallery[dialogGalleryData.id].title}
@@ -349,15 +360,28 @@ const DialogGallery: React.FC<PropsDialogGallery> = ({ gallery, state, ...props 
 
 			{testImage && (
 				<div className={sass['test-image']}>
-					<div className={sass['test-image-sx']} style={{ left: placeImage.startX }}></div>
-					<div className={sass['test-image-ex']} style={{ left: placeImage.endX }}></div>
-					<div className={sass['test-image-sy']} style={{ top: placeImage.startY }}></div>
-					<div className={sass['test-image-ey']} style={{ top: placeImage.endY }}></div>
+					<div
+						className={sass['test-image-sx']}
+						style={{ left: placeImage.startX }}></div>
+					<div
+						className={sass['test-image-ex']}
+						style={{ left: placeImage.endX }}></div>
+					<div
+						className={sass['test-image-sy']}
+						style={{ top: placeImage.startY }}></div>
+					<div
+						className={sass['test-image-ey']}
+						style={{ top: placeImage.endY }}></div>
 				</div>
 			)}
 
-			<Button className={trimSass(sass, ['button', !dialogGalleryData.isOpened ? 'hidden' : isHiddenUIElements])} onClick={() => setVisible(false)}>
-				<ImageComp url={require('@svg/cross.svg')} alt='Закрыть' />
+			<Button
+				className={trimSass(sass, ['button', !dialogGalleryData.isOpened ? 'hidden' : isHiddenUIElements])}
+				onClick={() => setVisible(false)}>
+				<ImageComp
+					url={imgCross}
+					alt='Закрыть'
+				/>
 			</Button>
 
 			<div className={trimSass(sass, ['gradient', !dialogGalleryData.isOpened ? 'hidden' : isHiddenUIElements])}></div>
@@ -365,8 +389,10 @@ const DialogGallery: React.FC<PropsDialogGallery> = ({ gallery, state, ...props 
 			<div className={sass.management}>
 				<div className={trimSass(sass, ['management-buttons', !dialogGalleryData.isOpened ? 'hidden' : isHiddenUIElements])}>
 					{dialogGalleryData.id !== 0 && (
-						<Button className={trimSass(sass, ['management-button', 'left'])} onClick={onClickLeft}>
-							<ImageComp url={require('@svg/arrow-left.svg')} />
+						<Button
+							className={trimSass(sass, ['management-button', 'left'])}
+							onClick={onClickLeft}>
+							<ImageComp url={imgArrowLeft} />
 						</Button>
 					)}
 
@@ -375,8 +401,10 @@ const DialogGallery: React.FC<PropsDialogGallery> = ({ gallery, state, ...props 
 					</span>
 
 					{dialogGalleryData.id + 1 !== gallery.length && (
-						<Button className={trimSass(sass, ['management-button', 'right'])} onClick={onClickRight}>
-							<ImageComp url={require('@svg/arrow-right.svg')} />
+						<Button
+							className={trimSass(sass, ['management-button', 'right'])}
+							onClick={onClickRight}>
+							<ImageComp url={imgArrowRight} />
 						</Button>
 					)}
 				</div>

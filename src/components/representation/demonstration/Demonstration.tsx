@@ -3,6 +3,8 @@ import sass from './Demonstration.module.sass'
 import Information from './information/Information'
 import Image from '@ui/image/Image'
 
+const imgDevices: string = (await import('@img/representation/devices.png')).default
+
 interface PropsDemonstration extends HTMLAttributes<HTMLDivElement> {}
 
 const Demonstration: React.FC<PropsDemonstration> = () => {
@@ -10,7 +12,11 @@ const Demonstration: React.FC<PropsDemonstration> = () => {
 		<div className={sass.demonstration}>
 			<Information />
 
-			<Image url={require('@img/representation/devices.png')} alt='Устройства' classWrap={sass.images} />
+			<Image
+				url={imgDevices}
+				alt='Устройства'
+				classWrap={sass.images}
+			/>
 		</div>
 	)
 }

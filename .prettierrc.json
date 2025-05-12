@@ -1,0 +1,13 @@
+{
+	"trailingComma": "es5",
+	"tabWidth": 4,
+	"semi": false,
+	"singleQuote": true,
+	"arrowParens": "avoid",
+	"jsxSingleQuote": true,
+	"printWidth": 999,
+	"useTabs": true,
+	"bracketSameLine": true,
+	"parser": "babel-ts",
+	"singleAttributePerLine": true
+}

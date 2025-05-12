@@ -6,22 +6,22 @@ export type DataImagesSocial = {
 
 export const dataImagesSocial: DataImagesSocial[] = [
 	{
-		urlImage: require('@svg/footer/vk.svg'),
+		urlImage: (await import('@svg/footer/vk.svg')).default,
 		altImage: 'VK',
 		link: 'https://vk.com/maks_hallasaar',
 	},
 	{
-		urlImage: require('@svg/footer/telegram.svg'),
+		urlImage: (await import('@svg/footer/telegram.svg')).default,
 		altImage: 'Telegram',
 		link: 'https://t.me/justmax2001',
 	},
 	{
-		urlImage: require('@svg/footer/github.svg'),
+		urlImage: (await import('@svg/footer/github.svg')).default,
 		altImage: 'GitHub',
 		link: 'https://github.com/endermax200113',
 	},
 	{
-		urlImage: require('@svg/footer/mail.svg'),
+		urlImage: (await import('@svg/footer/mail.svg')).default,
 		altImage: 'Электронная почта',
 		link: 'mailto:endermax200113@mail.ru',
 	},

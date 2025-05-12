@@ -1,16 +1,15 @@
 import React, { MouseEvent, useEffect, useState } from 'react'
 import sass from './Projects.module.sass'
 import { NavigateFunction, useLoaderData, useNavigate, useSearchParams } from 'react-router-dom'
-import { dataPortfolio, DataPortfolio } from '@/data/portfolio'
+import { DataPortfolio } from '@/data/portfolio'
 import Image from '@ui/image/Image'
 import Button from '@ui/button/Button'
 import Heading from '@ui/text/heading/Heading'
 import Description from '@ui/text/description/Description'
 import { trimSass } from '@utils/sassControl'
 import Pagination from '@components/pagination/Pagination'
-import RootMain from '@components/main/Main'
+import RootMain, { PropsRootMain } from '@components/main/Main'
 import { useRenderEffect } from '@hooks/useRenderEffect'
-import { copyObject } from '@utils/objectControl'
 
 //
 // TODO Исправить код в этом компоненте:
@@ -26,9 +25,9 @@ type Data = {
 	projects: DataPortfolio[][]
 }
 
-interface PropsProjects {}
+interface PropsProjects extends PropsRootMain {}
 
-const Projects: React.FC<PropsProjects> = () => {
+const Projects: React.FC<PropsProjects> = ({ ...props }) => {
 	const data = useLoaderData() as Data
 	const navigate: NavigateFunction = useNavigate()
 	const [, setSearchParams] = useSearchParams()
@@ -66,28 +65,43 @@ const Projects: React.FC<PropsProjects> = () => {
 	)
 
 	return (
-		<RootMain className={sass.main}>
+		<RootMain
+			className={sass.main}
+			{...props}>
 			<section className={sass.projects}>
 				{arrPagesData && arrPagesData.length > 0 ? (
 					arrPagesData[page - 1].map((project, i) => {
 						return (
-							<div key={i} className={sass.project}>
-								<Image url={project.urlImage} classWrap={sass['project-img-wrap']} className={sass['project-img']} />
+							<div
+								key={i}
+								className={sass.project}>
+								<Image
+									url={project.urlImage}
+									classWrap={sass['project-img-wrap']}
+									className={sass['project-img']}
+								/>
 
 								<div className={sass.info}>
 									<div className={sass.details}>
-										<Heading children={project.name} className={sass.title} />
+										<Heading
+											children={project.name}
+											className={sass.title}
+										/>
 										<Description className={sass.description}>{project.briefDescription}</Description>
 									</div>
 
 									<div className={sass.buttons}>
 										{project.site && (
-											<Button className={sass.button} onClick={() => handleToSiteClick(project.site)}>
+											<Button
+												className={sass.button}
+												onClick={() => handleToSiteClick(project.site)}>
 												К сайту
 											</Button>
 										)}
 
-										<Button className={sass.button} onClick={() => handleMoreClick(project.id)}>
+										<Button
+											className={sass.button}
+											onClick={() => handleMoreClick(project.id)}>
 											Подробнее
 										</Button>
 									</div>
@@ -97,12 +111,21 @@ const Projects: React.FC<PropsProjects> = () => {
 					})
 				) : (
 					<div className={sass['no-projects']}>
-						<Heading children='Нет проектов' className={trimSass(sass, ['no-projects', 'title'])} />
+						<Heading
+							children='Нет проектов'
+							className={trimSass(sass, ['no-projects', 'title'])}
+						/>
 					</div>
 				)}
 			</section>
 
-			{arrPagesData.length > 1 && <Pagination pages={arrPagesData.length} page={page} setPage={setCurrentPage} />}
+			{arrPagesData.length > 1 && (
+				<Pagination
+					pages={arrPagesData.length}
+					page={page}
+					setPage={setCurrentPage}
+				/>
+			)}
 		</RootMain>
 	)
 }

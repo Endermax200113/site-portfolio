@@ -7,17 +7,17 @@ export type DataHeaderSocialImage = {
 export const dataHeaderSocialImage: DataHeaderSocialImage[] = [
 	{
 		link: 'https://vk.com/maks_hallasaar',
-		urlImage: require('@img/social/vk.png'),
+		urlImage: (await import('@img/social/vk.png')).default,
 		altImage: 'VK',
 	},
 	{
 		link: 'https://github.com/Endermax200113',
-		urlImage: require('@img/social/github.png'),
+		urlImage: (await import('@img/social/github.png')).default,
 		altImage: 'GitHub',
 	},
 	{
 		link: 'https://t.me/justmax2001',
-		urlImage: require('@img/social/telegram.png'),
+		urlImage: (await import('@img/social/telegram.png')).default,
 		altImage: 'Telegram',
 	},
 ]

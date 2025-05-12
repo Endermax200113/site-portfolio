@@ -4,6 +4,8 @@ import Button, { PropsButton } from '../Button'
 import Image from '@ui/image/Image'
 import Label from '@ui/text/label/Label'
 
+const imgBack: string = (await import('@svg/footer/back.svg')).default
+
 interface PropsButtonFooter extends PropsButton {}
 
 const ButtonFooter: React.FC<PropsButtonFooter> = ({ ...props }) => {
@@ -14,10 +16,18 @@ const ButtonFooter: React.FC<PropsButtonFooter> = ({ ...props }) => {
 	}
 
 	return (
-		<Button className={sass.button} onClick={handleClickToTop} {...props}>
-			<Image url={require('@svg/footer/back.svg')} classWrap={sass.wrap} />
+		<Button
+			className={sass.button}
+			onClick={handleClickToTop}
+			{...props}>
+			<Image
+				url={imgBack}
+				classWrap={sass.wrap}
+			/>
 
-			<Label type='span' className={sass.label}>
+			<Label
+				type='span'
+				className={sass.label}>
 				Вернуться наверх
 			</Label>
 		</Button>
