@@ -1,5 +1,5 @@
 import React from 'react'
-import sass from './ButtonFooter.module.sass'
+import scss from './ButtonFooter.module.scss'
 import Button, { PropsButton } from '../Button'
 import Image from '@ui/image/Image'
 import Label from '@ui/text/label/Label'
@@ -17,17 +17,17 @@ const ButtonFooter: React.FC<PropsButtonFooter> = ({ ...props }) => {
 
 	return (
 		<Button
-			className={sass.button}
+			className={scss.button}
 			onClick={handleClickToTop}
 			{...props}>
 			<Image
 				url={imgBack}
-				classWrap={sass.wrap}
+				classWrap={scss.wrap}
 			/>
 
 			<Label
 				type='span'
-				className={sass.label}>
+				className={scss.label}>
 				Вернуться наверх
 			</Label>
 		</Button>

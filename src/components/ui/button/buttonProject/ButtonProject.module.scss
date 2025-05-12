@@ -1,0 +1,11 @@
+@use '@sass/main' as *;
+
+.button {
+	@extend %btn-small;
+
+	margin-left: 15px;
+
+	&:first-child {
+		margin-left: 0
+	}
+}

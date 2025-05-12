@@ -1,5 +1,5 @@
 import React from 'react'
-import sass from './ButtonProject.module.sass'
+import scss from './ButtonProject.module.scss'
 import Button, { PropsButton } from '../Button'
 
 interface PropsButtonProject extends PropsButton {}
@@ -7,7 +7,7 @@ interface PropsButtonProject extends PropsButton {}
 const ButtonProject: React.FC<PropsButtonProject> = ({ children, ...props }) => {
 	return (
 		<Button
-			className={sass.button}
+			className={scss.button}
 			{...props}>
 			{children}
 		</Button>

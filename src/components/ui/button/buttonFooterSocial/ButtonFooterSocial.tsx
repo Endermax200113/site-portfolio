@@ -1,12 +1,14 @@
 import React from 'react'
-import sass from './ButtonFooterSocial.module.sass'
+import scss from './ButtonFooterSocial.module.scss'
 import Button, { PropsButton } from '../Button'
 
 interface PropsButtonFooterSocial extends PropsButton {}
 
 const ButtonFooterSocial: React.FC<PropsButtonFooterSocial> = ({ children, ...props }) => {
 	return (
-		<Button className={sass.button} {...props}>
+		<Button
+			className={scss.button}
+			{...props}>
 			{children}
 		</Button>
 	)
