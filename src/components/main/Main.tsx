@@ -1,5 +1,5 @@
 import React, { HTMLAttributes } from 'react'
-import sass from './Main.module.sass'
+import scss from './Main.module.scss'
 import { trimSass } from '@utils/sassControl'
 
 export interface PropsRootMain extends HTMLAttributes<HTMLElement> {
@@ -7,11 +7,13 @@ export interface PropsRootMain extends HTMLAttributes<HTMLElement> {
 }
 
 const RootMain: React.FC<PropsRootMain> = ({ className, withoutMargin, children, ...props }) => {
-	const mainClass: string = !withoutMargin ? sass.main : trimSass(sass, ['main', 'without-margin'])
+	const mainClass: string = !withoutMargin ? scss.main : trimSass(scss, ['main', 'without-margin'])
 	const togetherClasses: string = `${mainClass} ${className}`.trim()
 
 	return (
-		<main className={togetherClasses} {...props}>
+		<main
+			className={togetherClasses}
+			{...props}>
 			{children}
 		</main>
 	)
