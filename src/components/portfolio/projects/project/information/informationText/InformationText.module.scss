@@ -1,0 +1,7 @@
+@use '@sass/main' as *;
+
+.text {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}

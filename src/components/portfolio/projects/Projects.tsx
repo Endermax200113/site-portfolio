@@ -1,5 +1,5 @@
 import React, { HTMLAttributes } from 'react'
-import sass from './Projects.module.sass'
+import scss from './Projects.module.scss'
 import { AllProjects } from '@helper/portfolio'
 import Project from './project/Project'
 
@@ -9,9 +9,12 @@ interface PropsProjects extends HTMLAttributes<HTMLDivElement> {
 
 const Projects: React.FC<PropsProjects> = ({ projects }) => {
 	return (
-		<div className={sass.projects}>
+		<div className={scss.projects}>
 			{projects.map((project, i) => (
-				<Project project={project} key={`project-main-${i}`} />
+				<Project
+					project={project}
+					key={`project-main-${i}`}
+				/>
 			))}
 		</div>
 	)

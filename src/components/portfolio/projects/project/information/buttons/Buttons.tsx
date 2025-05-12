@@ -1,5 +1,5 @@
 import React, { HTMLAttributes } from 'react'
-import sass from './Buttons.module.sass'
+import scss from './Buttons.module.scss'
 import { NavigateFunction, useNavigate } from 'react-router-dom'
 import ButtonProject from '@ui/button/buttonProject/ButtonProject'
 
@@ -11,19 +11,21 @@ interface PropsButtons extends HTMLAttributes<HTMLDivElement> {
 const Buttons: React.FC<PropsButtons> = ({ idProject, site, ...props }) => {
 	const navigate: NavigateFunction = useNavigate()
 
-	const onClickSite = (): void => {
+	const handleToSiteClick = (): void => {
 		if (!site) return
 
 		window.open(site, '_blank')
 	}
 
-	const onClickMore = (): void => navigate(`/projects/${idProject}`)
+	const handleMoreClick = (): void => navigate(`/projects/${idProject}`)
 
 	return (
-		<div className={sass.buttons} {...props}>
-			{site && <ButtonProject onClick={onClickSite}>К сайту</ButtonProject>}
+		<div
+			className={scss.buttons}
+			{...props}>
+			{site && <ButtonProject onClick={handleToSiteClick}>К сайту</ButtonProject>}
 
-			<ButtonProject onClick={onClickMore}>Подробнее</ButtonProject>
+			<ButtonProject onClick={handleMoreClick}>Подробнее</ButtonProject>
 		</div>
 	)
 }

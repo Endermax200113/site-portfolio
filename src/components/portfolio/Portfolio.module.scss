@@ -1,0 +1,23 @@
+@use '@sass/main' as *;
+
+.portfolio {
+	width: 100%;
+	background-color: $color-light-black;
+}
+
+.more {
+	width: 100%;
+	height: 70px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.link {
+	font-weight: 600 !important;
+	font-size: 20px !important;
+
+	&:hover {
+		text-decoration: underline;
+	}
+}
