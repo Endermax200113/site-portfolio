@@ -1,5 +1,5 @@
 import React, { HTMLAttributes, RefObject, useRef, useState } from 'react'
-import sass from './Header.module.sass'
+import scss from './Header.module.scss'
 import { useScrolling } from '@hooks/useScrolling'
 import Navbar from '@components/navbar/Navbar'
 import { spotClass } from '@utils/headerControl'
@@ -28,7 +28,7 @@ const Header: React.FC<PropsHeader> = () => {
 
 	const [isMain, setIsMain] = useState<boolean>(inMainLinks(pathname))
 
-	const headerClass: string = spotClass(sass, 'header', isMain, headerFixed)
+	const headerClass: string = spotClass(scss, 'header', isMain, headerFixed)
 
 	useRenderEffect(() => {
 		setIsMain(inMainLinks(pathname))
@@ -68,8 +68,13 @@ const Header: React.FC<PropsHeader> = () => {
 	useScrolling(onScrolling, headerFixed, isMain)
 
 	return (
-		<header className={headerClass} ref={thisHeader}>
-			<Navbar isMain={isMain} headerFixed={headerFixed} />
+		<header
+			className={headerClass}
+			ref={thisHeader}>
+			<Navbar
+				isMain={isMain}
+				headerFixed={headerFixed}
+			/>
 		</header>
 	)
 }

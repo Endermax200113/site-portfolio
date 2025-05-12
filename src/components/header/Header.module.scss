@@ -1,0 +1,19 @@
+@use '@sass/main' as *;
+
+.header {
+	position: fixed;
+	flex: $flex-rest;
+	width: 100%;
+	height: $header-height;
+	z-index: 9999;
+	transition: height $transition-animation, background-color $transition-animation;
+
+	&.fixed {
+		background-color: $color-header-black;
+		height: $header-height-fixed;
+
+		&.rest {
+			transition: none;
+		}
+	}
+}
