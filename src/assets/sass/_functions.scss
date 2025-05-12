@@ -1,57 +1,57 @@
 $screen-width-px: 1920;
 
-@media only screen and (width >=3840px) {
-	$screen-width-px: 3840
+@media only screen and (width >= 3840px) {
+	$screen-width-px: 3840;
 }
 
-@media only screen and (3840px > width >=2560px) {
+@media only screen and (3840px > width >= 2560px) {
 	$screen-width-px: 2560;
 }
 
-@media only screen and (2560px > width >=1920px) {
+@media only screen and (2560px > width >= 1920px) {
 	$screen-width-px: 1920;
 }
 
-@media only screen and (1920px > width >=1600px) {
+@media only screen and (1920px > width >= 1600px) {
 	$screen-width-px: 1600;
 }
 
-@media screen and (1600px > width >=1366px) {
+@media only screen and (1600px > width >= 1366px) {
 	$screen-width-px: 1366;
 }
 
-@media screen and (1366px > width >=1280px) {
+@media only screen and (1366px > width >= 1280px) {
 	$screen-width-px: 1280;
 }
 
-@media screen and (1280px > width >=1080px) {
+@media only screen and (1280px > width >= 1080px) {
 	$screen-width-px: 1080;
 }
 
-@media screen and (1080px > width >=768px) {
+@media only screen and (1080px > width >= 768px) {
 	$screen-width-px: 768;
 }
 
-@media screen and (768px > width >=576px) {
+@media only screen and (768px > width >= 576px) {
 	$screen-width-px: 576;
 }
 
-@media screen and (576px > width >=480px) {
+@media only screen and (576px > width >= 480px) {
 	$screen-width-px: 480;
 }
 
-@media screen and (480px > width >=320px) {
+@media only screen and (480px > width >= 320px) {
 	$screen-width-px: 320;
 }
 
-@function headerHeight() {
-	@if $screen-width-px ==1920 {
-		@return 180px
+@function header-height() {
+	@if $screen-width-px == 1920 {
+		@return 180px;
 	}
 }
 
-@function headerHeightFixed() {
-	@if $screen-width-px ==1920 {
-		@return 65px
+@function header-height-fixed() {
+	@if $screen-width-px == 1920 {
+		@return 65px;
 	}
 }

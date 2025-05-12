@@ -14,9 +14,7 @@
 	@each $weight-name, $weight-value in $list-weight {
 		@if $there-italic {
 			@include font($name, $type-italic, $weight-value, '#{$path-font}/#{$name}#{$font-space}#{$weight-name}#{$name-italic}.woff2');
-		}
-
-		@else {
+		} @else {
 			@include font($name, normal, $weight-value, '#{$path-font}/#{$name}#{$font-space}#{$weight-name}.woff2');
 		}
 	}
