@@ -1,12 +1,15 @@
 import React from 'react'
-import sass from './LabelSkill.module.sass'
+import scss from './LabelSkill.module.scss'
 import Label, { PropsLabel } from '../Label'
 
 interface PropsLabelSkill extends PropsLabel {}
 
 const LabelSkill: React.FC<PropsLabelSkill> = ({ children, ...props }) => {
 	return (
-		<Label className={sass.label} mergeClass {...props}>
+		<Label
+			className={scss.label}
+			mergeClass
+			{...props}>
 			{children}
 		</Label>
 	)

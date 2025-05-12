@@ -1,5 +1,5 @@
 import React, { createElement, HTMLAttributes } from 'react'
-import sass from './Label.module.sass'
+import scss from './Label.module.scss'
 import { mergeAllClasses } from '@utils/sassControl'
 
 export interface PropsLabel extends HTMLAttributes<HTMLDivElement> {
@@ -8,7 +8,7 @@ export interface PropsLabel extends HTMLAttributes<HTMLDivElement> {
 }
 
 const Label: React.FC<PropsLabel> = ({ type, mergeClass, className, children, ...props }) => {
-	const classLabel: string = mergeAllClasses([mergeClass || !className ? sass.label : ''], className)
+	const classLabel: string = mergeAllClasses([mergeClass || !className ? scss.label : ''], className)
 
 	return createElement(!type ? 'div' : type, { className: classLabel, ...props }, children)
 }
