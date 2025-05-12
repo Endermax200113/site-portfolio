@@ -1,5 +1,5 @@
 import React, { HTMLAttributes } from 'react'
-import sass from './Buttons.module.sass'
+import scss from './Buttons.module.scss'
 import ButtonResume from '@ui/button/buttonResume/ButtonResume'
 
 const pdfResume: string = (await import('@assets/download/resume.pdf')).default
@@ -7,11 +7,11 @@ const pdfResume: string = (await import('@assets/download/resume.pdf')).default
 interface PropsButtons extends HTMLAttributes<HTMLDivElement> {}
 
 const Buttons: React.FC<PropsButtons> = ({ ...props }) => {
-	const showResume = (): void => {
+	const handleShowClick = (): void => {
 		window.open(pdfResume)
 	}
 
-	const downloadResume = (): void => {
+	const handleDownloadClick = (): void => {
 		const helper: HTMLAnchorElement = document.createElement('a')
 
 		helper.href = pdfResume
@@ -22,10 +22,10 @@ const Buttons: React.FC<PropsButtons> = ({ ...props }) => {
 
 	return (
 		<div
-			className={sass.buttons}
+			className={scss.buttons}
 			{...props}>
-			<ButtonResume onClick={showResume}>Посмотреть</ButtonResume>
-			<ButtonResume onClick={downloadResume}>Скачать файл</ButtonResume>
+			<ButtonResume onClick={handleShowClick}>Посмотреть</ButtonResume>
+			<ButtonResume onClick={handleDownloadClick}>Скачать файл</ButtonResume>
 		</div>
 	)
 }
