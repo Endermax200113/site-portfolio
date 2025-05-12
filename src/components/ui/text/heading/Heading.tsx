@@ -1,5 +1,5 @@
 import React, { createElement, HTMLAttributes } from 'react'
-import sass from './Heading.module.sass'
+import scss from './Heading.module.scss'
 import { mergeAllClasses } from '@utils/sassControl'
 
 export interface PropsHeading extends HTMLAttributes<HTMLHeadingElement> {
@@ -8,7 +8,7 @@ export interface PropsHeading extends HTMLAttributes<HTMLHeadingElement> {
 }
 
 const Heading: React.FC<PropsHeading> = ({ mergeClass, children, level, className, ...props }) => {
-	const classHeading: string = mergeAllClasses([mergeClass || !className ? sass.heading : ''], className)
+	const classHeading: string = mergeAllClasses([mergeClass || !className ? scss.heading : ''], className)
 
 	return createElement(!level ? 'h1' : `h${level}`, { ...props, className: classHeading || null }, children)
 }

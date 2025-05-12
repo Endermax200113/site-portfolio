@@ -1,12 +1,15 @@
 import React from 'react'
-import sass from './HeadingAboutActivity.module.sass'
+import scss from './HeadingAboutActivity.module.scss'
 import Heading, { PropsHeading } from '../Heading'
 
 interface PropsHeadingAboutActivity extends PropsHeading {}
 
 const HeadingAboutActivity: React.FC<PropsHeadingAboutActivity> = ({ children, ...props }) => {
 	return (
-		<Heading className={sass.heading} level='2' {...props}>
+		<Heading
+			className={scss.heading}
+			level='2'
+			{...props}>
 			{children}
 		</Heading>
 	)

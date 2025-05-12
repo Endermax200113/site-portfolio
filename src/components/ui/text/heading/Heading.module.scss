@@ -1,0 +1,16 @@
+@use '@sass/main' as *;
+
+.heading {
+	padding: 30px 90px;
+	border: 8px solid $color-full-black;
+	font-family: $font-montserrat;
+	font-weight: 700;
+	font-size: 30px;
+	line-height: 128%;
+	letter-spacing: 0.36em;
+	text-transform: uppercase;
+	text-align: center;
+	color: $color-full-black;
+	display: grid;
+	place-content: center;
+}
