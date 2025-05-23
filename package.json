@@ -1,6 +1,6 @@
 {
 	"name": "my-site-portfolio",
-	"version": "0.4.9",
+	"version": "0.4.10",
 	"private": true,
 	"readme": "README.md",
 	"type": "module",
@@ -10,8 +10,7 @@
 	"scripts": {
 		"dev": "vite",
 		"preview": "vite preview",
-		"build": "vite build",
-		"ci": "rm -rf node_modules && yarn install --frozen-lockfile"
+		"build": "vite build"
 	},
 	"browserslist": {
 		"production": [

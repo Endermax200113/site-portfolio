@@ -1,3 +1,5 @@
+@use 'sass:string';
+
 $screen-width-px: 1920;
 
 @media only screen and (width >= 3840px) {
@@ -44,14 +46,23 @@ $screen-width-px: 1920;
 	$screen-width-px: 320;
 }
 
-@function header-height() {
-	@if $screen-width-px == 1920 {
-		@return 180px;
-	}
+@function px-to-rem($px) {
+	@return calc(($px / 16) * 1rem);
 }
 
-@function header-height-fixed() {
-	@if $screen-width-px == 1920 {
-		@return 65px;
-	}
+@function px-to-vw($viewport, $px) {
+	@return calc(($px * 100 / $viewport) * 1vw);
+}
+
+@function relative-size($from-width, $from-size, $to-width, $to-size) {
+	$resize: calc($from-size - $to-size);
+	$difference: calc($from-width - $to-width);
+	$equation: calc($resize / $difference);
+
+	$to-size-rem: px-to-rem($to-size);
+	$resize-rem: px-to-rem($resize);
+	$from-width-rem: px-to-rem($from-width);
+	$from-size-rem: px-to-rem($from-size);
+	
+	@return string.unquote("clamp(#{$to-size-rem}, #{$to-size-rem} + clamp(0rem, #{$resize-rem} - (#{$from-width-rem} - 100vw) * #{$equation}, #{$resize-rem}), #{$from-size-rem})");
 }

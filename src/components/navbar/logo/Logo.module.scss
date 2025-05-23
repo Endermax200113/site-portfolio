@@ -1,7 +1,7 @@
 @use '@sass/main' as *;
 
 .logo {
-	width: 50px;
+	width: px-to-rem(50);
 	aspect-ratio: 1 / 1;
 	margin-right: auto;
 
@@ -18,7 +18,8 @@
 		object-fit: cover;
 		transition: -webkit-filter $transition-animation;
 		transition: filter $transition-animation;
-		transition: filter $transition-animation, -webkit-filter $transition-animation;
+		transition: filter $transition-animation, 
+					-webkit-filter $transition-animation;
 
 		&.fixed {
 			-webkit-filter: invert(100%);

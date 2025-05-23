@@ -14,7 +14,7 @@ const Menu: React.FC<PropsMenu> = () => {
 					<MenuItem
 						link={link}
 						text={text}
-						key={`nav-menu-item-${i}`}
+						key={`nav-menu-item-${new Date().getTime()}-${i}`}
 					/>
 				)
 			})}

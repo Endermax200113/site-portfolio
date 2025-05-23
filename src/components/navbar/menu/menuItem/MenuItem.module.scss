@@ -3,7 +3,7 @@
 .menu {
 	&-item {
 		height: 100%;
-		margin-inline: 50px;
+		margin-inline: px-to-rem(50);
 		display: grid;
 		place-content: center;
 
@@ -19,13 +19,25 @@
 	&-link {
 		font-family: $font-montserrat;
 		font-weight: 700;
-		font-size: 17px;
+		font-size: px-to-rem(17);
 		text-align: center;
 		color: $color-full-white;
 		text-decoration: none;
 
 		&:hover {
 			text-decoration: underline;
+		}
+	}
+}
+
+@media only screen and (px-to-rem(1920) > width >= px-to-rem(1600)) {
+	.menu {
+		&-item {
+			margin-inline: relative-size(1920, 50, 1600, 40);
+		}
+
+		&-link {
+			font-size: relative-size(1920, 17, 1600, 16);
 		}
 	}
 }

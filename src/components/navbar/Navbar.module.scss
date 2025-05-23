@@ -1,20 +1,44 @@
 @use '@sass/main' as *;
+@use 'sass:string';
 
 .navbar {
-	padding: 65px 270px;
-	width: 100%;
+	$width-nav: px-to-rem(1380);
+
+	padding-block: px-to-rem(65);
+	margin-inline: calc(50% - ($width-nav / 2));
+	width: $width-nav;
 	height: 100%;
 	list-style: none;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	transition: padding $transition-animation;
+	transition: margin $transition-animation, 
+				padding $transition-animation, 
+				width $transition-animation, 
+				max-width $transition-animation;
 
 	&.fixed {
-		padding-inline: 65px;
+		$width-nav: px-to-rem(1790);
+
+		padding-block: px-to-rem(7.5);
+		margin-inline: calc(50% - ($width-nav / 2));
+		width: $width-nav;
 
 		&.rest {
 			transition: none;
+		}
+	}
+}
+
+@media only screen and (px-to-rem(1920) > width >= px-to-rem(1600)) {
+	.navbar {
+		padding-block: relative-size(1920, 65, 1600, 35);
+
+		&.fixed {
+			$margin-inline-nav: px-to-rem(65);
+
+			width: calc(100% - ($margin-inline-nav * 2));
+			margin-inline: $margin-inline-nav;
 		}
 	}
 }

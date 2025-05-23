@@ -1,11 +1,12 @@
 @use '@sass/main' as *;
 
 .main {
-	margin-top: $header-height-fixed;
+	margin-top: px-to-rem(65);
 	flex: $flex-main;
 	align-self: center;
-	display: grid;
-	place-content: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 
 	&.without-margin {
 		margin-top: 0;

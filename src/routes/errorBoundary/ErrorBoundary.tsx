@@ -5,6 +5,7 @@ import RootMain, { PropsRootMain } from '@components/main/Main'
 import Section from '@components/section/Section'
 import Heading from '@ui/text/heading/Heading'
 import Description from '@ui/text/description/Description'
+import { ErrorsClient } from '@helper/http'
 
 interface PropsErrorBoundary extends PropsRootMain {}
 
@@ -19,7 +20,7 @@ const ErrorBoundary: React.FC<PropsErrorBoundary> = ({ ...props }) => {
 			<Section className={scss.info}>
 				<Heading
 					className={scss.code}
-					children={err.status ?? '400'}
+					children={err.status ?? ErrorsClient.BAD_REQUEST}
 				/>
 				<Description
 					className={scss.reason}
