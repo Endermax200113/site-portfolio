@@ -66,3 +66,40 @@ $screen-width-px: 1920;
 	
 	@return string.unquote("clamp(#{$to-size-rem}, #{$to-size-rem} + clamp(0rem, #{$resize-rem} - (#{$from-width-rem} - 100vw) * #{$equation}, #{$resize-rem}), #{$from-size-rem})");
 }
+
+@function get-percent-by-value($first-value, $second-value, $first-percent: 100) {
+	@if $first-value == 0 {
+		@error "First parameter $first-value is zero!";
+	} @else {
+		@return calc($second-value * $first-percent / $first-value);
+	}
+}
+
+@function get-value-by-percent($first-value, $second-percent, $first-percent: 100) {
+	@if $first-percent == 0 {
+		@error "Third parameter $first-percent is zero!";
+	} @else {
+		@return calc($first-value * $second-percent / $first-percent);
+	}
+}
+
+@function get-value-by-width($from-width, $from-size, $to-width) {
+	@if $from-width == 0 {
+		@error "First parameter $from-width is zero!";
+	} @else {
+		$to-width-percent: get-percent-by-value($from-width, $to-width);
+		$to-size: get-value-by-percent($from-size, $to-width-percent);
+
+		@return $to-size;
+	}
+}
+
+@function auto-rubber-size($from-width, $from-size, $to-width) {
+	@if $from-width == 0 {
+		@error "First parameter $from-width is zero!";
+	} @else {
+		$to-size: get-value-by-width($from-width, $from-size, $to-width);
+
+		@return rubber-size($from-width, $from-size, $to-width, $to-size);
+	}
+}

@@ -6,3 +6,12 @@
 	margin-top: px-to-rem(120);
 	margin-left: calc(50% - ($width-demo / 2));
 }
+
+@media only screen and (px-to-rem(1600) > width >= px-to-rem(1366)) {
+	.information {
+		$width-demo: rubber-size(1600, 1380, 1366, 1220);
+
+		margin-top: auto-rubber-size(1600, 120, 1366);
+		margin-left: calc(50% - ($width-demo / 2));
+	}
+}

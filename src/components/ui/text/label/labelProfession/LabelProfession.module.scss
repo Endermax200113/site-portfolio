@@ -4,6 +4,12 @@
 	@extend %welcome;
 
 	font-weight: 800;
-	font-size: 25px;
+	font-size: px-to-rem(25);
 	color: $color-gray;
+}
+
+@media only screen and (px-to-rem(1600) > width >= px-to-rem(1366)) {
+	.label {
+		font-size: rubber-size(1600, 25, 1366, 20);
+	}
 }

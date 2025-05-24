@@ -3,6 +3,12 @@
 .label {
 	@extend %welcome;
 
-	margin-bottom: 10px;
-	font-size: 60px;
+	margin-bottom: px-to-rem(10);
+	font-size: px-to-rem(60);
+}
+
+@media only screen and (px-to-rem(1600) > width >= px-to-rem(1366)) {
+	.label {
+		font-size: rubber-size(1600, 60, 1366, 50);
+	}
 }
