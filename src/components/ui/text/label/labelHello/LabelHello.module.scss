@@ -3,6 +3,6 @@
 .label {
 	@extend %welcome;
 	
-	margin-bottom: 70px;
-	font-size: 40px;
+	margin-bottom: px-to-rem(70);
+	font-size: px-to-rem(40);
 }

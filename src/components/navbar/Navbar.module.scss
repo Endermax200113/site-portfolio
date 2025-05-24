@@ -32,7 +32,7 @@
 
 @media only screen and (px-to-rem(1920) > width >= px-to-rem(1600)) {
 	.navbar {
-		padding-block: relative-size(1920, 65, 1600, 35);
+		padding-block: rubber-size(1920, 65, 1600, 35);
 
 		&.fixed {
 			$margin-inline-nav: px-to-rem(65);

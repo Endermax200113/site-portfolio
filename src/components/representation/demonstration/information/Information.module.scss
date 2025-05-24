@@ -1,5 +1,8 @@
 @use '@sass/main' as *;
 
 .information {
-	margin-top: 120px;
+	$width-demo: px-to-rem(1380);
+
+	margin-top: px-to-rem(120);
+	margin-left: calc(50% - ($width-demo / 2));
 }

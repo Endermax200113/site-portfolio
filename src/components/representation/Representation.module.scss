@@ -3,6 +3,12 @@
 .representation {
 	position: relative;
 	width: 100%;
-	height: 1022px;
+	height: px-to-rem(1022);
 	background-color: $color-light-gray;
+}
+
+@media only screen and (px-to-rem(1920) > width >= px-to-rem(1600)) {
+	.representation {
+		height: rubber-size(1920, 1022, 1600, 900);
+	}
 }

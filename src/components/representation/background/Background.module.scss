@@ -1,4 +1,5 @@
 @use '@sass/main' as *;
+@use 'sass:string';
 
 .background {
 	position: absolute;
@@ -9,10 +10,12 @@
 }
 
 .detail {
+	$width-detail: string.unquote("calc(50vw + #{px-to-rem(192)})");
+	
 	position: absolute;
-	top: -133px;
-	right: -100px;
-	width: 60vw;
+	top: px-to-rem(-133);
+	right: px-to-rem(-100);
+	width: $width-detail;
 	height: 130%;
 	background-color: $color-full-black;
 	transform: rotate(9.67deg);
@@ -21,7 +24,7 @@
 		position: absolute;
 		bottom: 0;
 		width: 100%;
-		height: 75px;
+		height: px-to-rem(75);
 		background: linear-gradient(transparent, $color-light-gray);
 	}
 }

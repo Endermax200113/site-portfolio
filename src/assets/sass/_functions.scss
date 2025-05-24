@@ -54,7 +54,7 @@ $screen-width-px: 1920;
 	@return calc(($px * 100 / $viewport) * 1vw);
 }
 
-@function relative-size($from-width, $from-size, $to-width, $to-size) {
+@function rubber-size($from-width, $from-size, $to-width, $to-size) {
 	$resize: calc($from-size - $to-size);
 	$difference: calc($from-width - $to-width);
 	$equation: calc($resize / $difference);
