@@ -33,3 +33,10 @@
 		margin-right: rubber-size(1600, 15, 1366, 10);
 	}
 }
+
+@media only screen and (px-to-rem(1366) > width >= px-to-rem(1280)) {
+	.images {
+		width: rubber-size(1366, 765, 1280, 730);
+		margin-right: px-to-rem(10);
+	}
+}

@@ -60,6 +60,23 @@
 	}
 }
 
+@media only screen and (px-to-rem(1366) > width >= px-to-rem(1280)) {
+	.navbar {
+		$margin-inline-rem: px-to-rem(73);
+
+		width: calc(100% - ($margin-inline-rem * 2));
+		margin-inline: $margin-inline-rem;
+		padding-block: px-to-rem(25);
+
+		&.fixed {
+			$margin-inline-nav: px-to-rem(35);
+
+			width: calc(100% - ($margin-inline-nav * 2));
+			margin-inline: $margin-inline-nav;
+		}
+	}
+}
+
 .menu {
 	width: 100%;
 	height: 100%;
