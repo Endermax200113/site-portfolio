@@ -22,35 +22,35 @@
 
 @media only screen and (px-to-rem(1920) > width >= px-to-rem(1600)) {
 	.images {
-		width: rubber-size(1920, 1040, 1600, 880);
+		width: rubber-size(1920, 1040, 1600, 870);
 		margin-right: rubber-size(1920, 10, 1600, 15);
 	}
 }
 
 @media only screen and (px-to-rem(1600) > width >= px-to-rem(1366)) {
 	.images {
-		width: rubber-size(1600, 880, 1366, 765);
+		width: rubber-size(1600, 870, 1366, 740);
 		margin-right: rubber-size(1600, 15, 1366, 10);
 	}
 }
 
 @media only screen and (px-to-rem(1366) > width >= px-to-rem(1280)) {
 	.images {
-		width: rubber-size(1366, 765, 1280, 730);
+		width: rubber-size(1366, 740, 1280, 700);
 		margin-right: px-to-rem(10);
 	}
 }
 
 @media only screen and (px-to-rem(1280) > width >= px-to-rem(1080)) {
 	.images {
-		width: rubber-size(1280, 730, 1080, 630);
+		width: rubber-size(1280, 700, 1080, 590);
 		margin-right: px-to-rem(10);
 	}
 }
 
 @media only screen and (px-to-rem(1080) > width >= px-to-rem(900)) {
 	.images {
-		width: rubber-size(1080, 630, 900, 540);
+		width: rubber-size(1080, 590, 900, 490);
 		margin-right: px-to-rem(10);
 	}
 }
