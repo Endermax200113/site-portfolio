@@ -24,3 +24,9 @@
 		height: px-to-rem(750);
 	}
 }
+
+@media only screen and (px-to-rem(1280) > width >= px-to-rem(1080)) {
+	.representation {
+		height: rubber-size(1280, 750, 1080, 650);
+	}
+}

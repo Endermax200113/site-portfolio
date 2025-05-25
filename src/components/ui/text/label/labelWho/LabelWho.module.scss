@@ -18,3 +18,10 @@
 		font-size: rubber-size(1366, 50, 1280, 45);
 	}
 }
+
+
+@media only screen and (px-to-rem(1280) > width >= px-to-rem(1080)) {
+	.label {
+		font-size: rubber-size(1280, 45, 1080, 38);
+	}
+}

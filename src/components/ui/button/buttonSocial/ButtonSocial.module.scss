@@ -59,3 +59,15 @@
 		width: rubber-size(1366, 32, 1280, 30);
 	}
 }
+
+@media only screen and (px-to-rem(1280) > width >= px-to-rem(1080)) {
+	.button {
+		width: rubber-size(1280, 53, 1080, 48);
+		height: rubber-size(1280, 48, 1080, 43);
+		margin-right: rubber-size(1280, 20, 1080, 15);
+	}
+
+	.wrap {
+		width: rubber-size(1280, 30, 1080, 27);
+	}
+}

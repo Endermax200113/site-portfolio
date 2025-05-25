@@ -40,3 +40,10 @@
 		margin-right: px-to-rem(10);
 	}
 }
+
+@media only screen and (px-to-rem(1280) > width >= px-to-rem(1080)) {
+	.images {
+		width: rubber-size(1280, 730, 1080, 630);
+		margin-right: px-to-rem(10);
+	}
+}

@@ -22,3 +22,10 @@
 		margin-bottom: rubber-size(1366, $margin-bottom-auto, 1280, 45);
 	}
 }
+
+@media only screen and (px-to-rem(1280) > width >= px-to-rem(1080)) {
+	.label {
+		font-size: rubber-size(1280, 30, 1080, 25);
+		margin-bottom: px-to-rem(45);
+	}
+}

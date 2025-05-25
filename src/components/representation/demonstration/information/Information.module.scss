@@ -18,10 +18,18 @@
 
 @media only screen and (px-to-rem(1366) > width >= px-to-rem(1280)) {
 	.information {
-		$width-demo: px-to-rem(1220);
 		$margin-top-auto: get-value-by-width(1600, 120, 1366);
 
 		margin-top: rubber-size(1366, $margin-top-auto, 1280, 70);
-		margin-left: px-to-rem(73)
+		margin-left: px-to-rem(73);
+	}
+}
+
+@media only screen and (px-to-rem(1280) > width >= px-to-rem(1080)) {
+	.information {
+		$width-demo: rubber-size(1280, 1134, 1080, 970);
+
+		margin-top: px-to-rem(70);
+		margin-left: calc(50% - ($width-demo / 2));
 	}
 }

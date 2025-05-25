@@ -17,3 +17,12 @@
 		margin-bottom: px-to-rem(get-value-by-width(1600, 137, 1366));
 	}
 }
+
+
+@media only screen and (px-to-rem(1280) > width >= px-to-rem(1080)) {
+	.info-text {
+		$margin-bottom-auto: get-value-by-width(1600, 137, 1366);
+
+		margin-bottom: rubber-size(1280, $margin-bottom-auto, 1080, 90);
+	}
+}
