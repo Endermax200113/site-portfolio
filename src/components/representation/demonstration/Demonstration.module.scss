@@ -50,7 +50,7 @@
 
 @media only screen and (px-to-rem(1080) > width >= px-to-rem(900)) {
 	.images {
-		width: px-to-rem(630);
+		width: rubber-size(1080, 630, 900, 540);
 		margin-right: px-to-rem(10);
 	}
 }
