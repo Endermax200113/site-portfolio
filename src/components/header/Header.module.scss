@@ -15,3 +15,9 @@
 		}
 	}
 }
+
+@media only screen and (px-to-rem(900) > width >= px-to-rem(768)) {
+	.header {
+		background-color: $color-header-black;
+	}
+}

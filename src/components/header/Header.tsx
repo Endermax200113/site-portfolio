@@ -5,6 +5,7 @@ import Navbar from '@components/navbar/Navbar'
 import { spotClass } from '@utils/headerControl'
 import { useLocation } from 'react-router-dom'
 import { useRenderEffect } from '@hooks/useRenderEffect'
+import { useEventListener } from '@hooks/useEventListener'
 
 interface PropsHeader extends HTMLAttributes<HTMLElement> {}
 
@@ -38,11 +39,37 @@ const Header: React.FC<PropsHeader> = () => {
 		})
 	}, [pathname])
 
+	const getRemByPx = (px: number): number => px / 16
+
+	const getWidthScreen = (): number => {
+		const rootFontSizeStr: string = window.getComputedStyle(document.documentElement).fontSize
+		const rootFontSizeNum: string = rootFontSizeStr.replace('px', '')
+		const oneRem: number = Number.parseInt(rootFontSizeNum)
+
+		const widthScreen: number = window.screen.width
+
+		return widthScreen / oneRem
+	}
+
+	const [allowFixHeader, setAllowFixHeader] = useState<boolean>(getWidthScreen() >= getRemByPx(900))
+
+	const onResizeWidthScreen = (): void => {
+		if (getWidthScreen() >= getRemByPx(900) && !allowFixHeader) {
+			setAllowFixHeader(true)
+		} else if (getRemByPx(900) > getWidthScreen() && allowFixHeader) {
+			setAllowFixHeader(false)
+		}
+	}
+
+	useEventListener('resize', onResizeWidthScreen, true)
+
 	const [prevIsMain, setPrevIsMain] = useState<boolean>(isMain)
 	const [prevScrollY, setPrevScrollY] = useState<number>(window.scrollY)
-	if (prevIsMain !== isMain || prevScrollY !== window.scrollY) {
+	// const [prevAllowFixHeader, setPrevAllowFixHeader] = useState<boolean>(allowFixHeader)
+	if ((prevIsMain !== isMain || prevScrollY !== window.scrollY) && allowFixHeader) {
 		setPrevIsMain(isMain)
 		setPrevScrollY(window.scrollY)
+		// setPrevAllowFixHeader(allowFixHeader)
 
 		if (isMain && window.scrollY === 0) {
 			if (headerFixed) {
@@ -53,14 +80,18 @@ const Header: React.FC<PropsHeader> = () => {
 
 	const onScrolling = (): void => {
 		if (isMain) {
-			if (window.scrollY === 0) {
-				if (headerFixed) {
-					setHeaderFixed(false)
+			if (allowFixHeader) {
+				if (window.scrollY === 0) {
+					if (headerFixed) {
+						setHeaderFixed(false)
+					}
+				} else {
+					if (!headerFixed) {
+						setHeaderFixed(true)
+					}
 				}
 			} else {
-				if (!headerFixed) {
-					setHeaderFixed(true)
-				}
+				if (allowFixHeader) setAllowFixHeader(false)
 			}
 		}
 	}

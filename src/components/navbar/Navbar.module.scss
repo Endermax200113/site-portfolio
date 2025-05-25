@@ -111,6 +111,16 @@
 	}
 }
 
+@media only screen and (px-to-rem(900) > width >= px-to-rem(768)) {
+	.navbar {
+		$margin-inline-rem: px-to-rem(30);
+
+		width: calc(100% - ($margin-inline-rem * 2));
+		margin-inline: $margin-inline-rem;
+		padding-block: px-to-rem(11);
+	}
+}
+
 .menu {
 	width: 100%;
 	height: 100%;
