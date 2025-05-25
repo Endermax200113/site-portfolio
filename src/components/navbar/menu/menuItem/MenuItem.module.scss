@@ -69,7 +69,7 @@
 @media only screen and (px-to-rem(1280) > width >= px-to-rem(1080)) {
 	.menu {
 		&-item {
-			margin-inline: rubber-size(1280, 35, 1080, 30);
+			margin-inline: rubber-size(1280, 35, 1080, 25);
 		}
 
 		&-link {
@@ -81,11 +81,11 @@
 @media only screen and (px-to-rem(1080) > width >= px-to-rem(900)) {
 	.menu {
 		&-item {
-			margin-inline: rubber-size(1080, 30, 900, 25);
+			margin-inline: rubber-size(1080, 25, 900, 22);
 		}
 
 		&-link {
-			font-size: px-to-rem(14);
+			font-size: rubber-size(1080, 14, 900, 12);
 		}
 	}
 }
