@@ -29,3 +29,10 @@
 		margin-bottom: px-to-rem(45);
 	}
 }
+
+@media only screen and (px-to-rem(1080) > width >= px-to-rem(900)) {
+	.label {
+		font-size: px-to-rem(25);
+		margin-bottom: px-to-rem(45);
+	}
+}

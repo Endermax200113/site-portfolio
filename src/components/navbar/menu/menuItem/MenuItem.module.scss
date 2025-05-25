@@ -77,3 +77,15 @@
 		}
 	}
 }
+
+@media only screen and (px-to-rem(1080) > width >= px-to-rem(900)) {
+	.menu {
+		&-item {
+			margin-inline: rubber-size(1080, 30, 900, 25);
+		}
+
+		&-link {
+			font-size: px-to-rem(14);
+		}
+	}
+}

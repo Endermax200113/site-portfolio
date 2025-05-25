@@ -71,3 +71,15 @@
 		width: rubber-size(1280, 30, 1080, 27);
 	}
 }
+
+@media only screen and (px-to-rem(1080) > width >= px-to-rem(900)) {
+	.button {
+		width: px-to-rem(48);
+		height: px-to-rem(43);
+		margin-right: px-to-rem(15);
+	}
+
+	.wrap {
+		width: px-to-rem(27);
+	}
+}

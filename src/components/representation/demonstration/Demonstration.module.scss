@@ -47,3 +47,10 @@
 		margin-right: px-to-rem(10);
 	}
 }
+
+@media only screen and (px-to-rem(1080) > width >= px-to-rem(900)) {
+	.images {
+		width: px-to-rem(630);
+		margin-right: px-to-rem(10);
+	}
+}

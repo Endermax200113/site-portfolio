@@ -33,3 +33,12 @@
 		margin-left: calc(50% - ($width-demo / 2));
 	}
 }
+
+@media only screen and (px-to-rem(1080) > width >= px-to-rem(900)) {
+	.information {
+		$width-demo: px-to-rem(970);
+
+		margin-top: px-to-rem(70);
+		margin-left: calc(50% - ($width-demo / 2));
+	}
+}
