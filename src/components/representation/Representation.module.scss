@@ -33,6 +33,6 @@
 
 @media only screen and (px-to-rem(1080) > width >= px-to-rem(900)) {
 	.representation {
-		height: px-to-rem(650);
+		height: rubber-size(1080, 650, 900, 550);
 	}
 }

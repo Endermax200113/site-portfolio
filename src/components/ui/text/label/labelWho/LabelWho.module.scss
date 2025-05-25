@@ -9,25 +9,25 @@
 
 @media only screen and (px-to-rem(1600) > width >= px-to-rem(1366)) {
 	.label {
-		font-size: rubber-size(1600, 60, 1366, 50);
+		font-size: rubber-size(1600, 60, 1366, 55);
 	}
 }
 
 @media only screen and (px-to-rem(1366) > width >= px-to-rem(1280)) {
 	.label {
-		font-size: rubber-size(1366, 50, 1280, 45);
+		font-size: rubber-size(1366, 55, 1280, 50);
 	}
 }
 
 @media only screen and (px-to-rem(1280) > width >= px-to-rem(1080)) {
 	.label {
-		font-size: rubber-size(1280, 45, 1080, 40);
+		font-size: rubber-size(1280, 50, 1080, 43);
 	}
 }
 
 @media only screen and (px-to-rem(1080) > width >= px-to-rem(900)) {
 	.label {
-		font-size: rubber-size(1080, 40, 900, 32);
+		font-size: rubber-size(1080, 43, 900, 37);
 		margin-bottom: rubber-size(1080, 10, 900, 5);
 	}
 }
