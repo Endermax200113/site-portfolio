@@ -7,9 +7,10 @@ import Menu from './menu/Menu'
 interface PropsNavbar extends HTMLAttributes<HTMLElement> {
 	isMain: boolean
 	headerFixed: boolean
+	isOpenMenu: boolean
 }
 
-const Navbar: React.FC<PropsNavbar> = ({ isMain, headerFixed }) => {
+const Navbar: React.FC<PropsNavbar> = ({ isOpenMenu, isMain, headerFixed }) => {
 	const navbarClass: string = spotClass(scss, 'navbar', isMain, headerFixed)
 
 	return (
@@ -19,7 +20,7 @@ const Navbar: React.FC<PropsNavbar> = ({ isMain, headerFixed }) => {
 					isMain={isMain}
 					headerFixed={headerFixed}
 				/>
-				<Menu />
+				<Menu isOpen={isOpenMenu} />
 			</ul>
 		</nav>
 	)

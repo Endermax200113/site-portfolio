@@ -37,7 +37,7 @@
 	}
 }
 
-@media only screen and (px-to-rem(900) > width >= px-to-rem(768)) {
+@media only screen and (px-to-rem(900) > width) {
 	.representation {
 		height: px-to-rem(760);
 	}

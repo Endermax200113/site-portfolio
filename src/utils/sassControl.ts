@@ -28,7 +28,10 @@ export const transformTestClass: PropsElementTest = (sass, arr, isTest): string 
 	arr.forEach(str => {
 		array.push(sass[str])
 	})
-	isTest && array.push(sass['test'])
+
+	if (isTest) {
+		array.push(sass['test'])
+	}
 
 	const res: string = array.join(' ').trimEnd()
 
@@ -36,7 +39,7 @@ export const transformTestClass: PropsElementTest = (sass, arr, isTest): string 
 }
 
 interface PropsAllClasses {
-	(arr: string[], classes?: string): string
+	(arr: string[], classes?: string | null): string
 }
 
 export const mergeAllClasses: PropsAllClasses = (arr, classes): string => {

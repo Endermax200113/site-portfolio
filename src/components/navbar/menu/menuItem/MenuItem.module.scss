@@ -7,7 +7,7 @@
 		display: grid;
 		place-content: center;
 
-		&:nth-child(2) {
+		&:first-child {
 			margin-left: 0;
 		}
 
@@ -90,7 +90,7 @@
 	}
 }
 
-@media only screen and (px-to-rem(900) > width >= px-to-rem(768)) {
+@media only screen and (px-to-rem(900) > width) {
 	.menu {
 		&-item {
 			margin-inline: px-to-rem(22);
@@ -98,6 +98,14 @@
 
 		&-link {
 			font-size: px-to-rem(12);
+		}
+	}
+}
+
+@media only screen and (px-to-rem(768) > width) {
+	.menu {
+		&-item {
+			margin-inline: 0;
 		}
 	}
 }

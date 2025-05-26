@@ -7,6 +7,7 @@ import { useLocation } from 'react-router-dom'
 import { useRenderEffect } from '@hooks/useRenderEffect'
 import { useEventListener } from '@hooks/useEventListener'
 import { getRemByPx, getWidthScreen } from '@utils/screenControl'
+import ButtonMenu from '@ui/button/button-menu/ButtonMenu'
 
 interface PropsHeader extends HTMLAttributes<HTMLElement> {}
 
@@ -15,6 +16,8 @@ const Header: React.FC<PropsHeader> = () => {
 	const { pathname } = useLocation()
 
 	const [headerFixed, setHeaderFixed] = useState<boolean>(false)
+	const stateIsOpenMenu = useState<boolean>(false)
+	const [isOpenMenu, setIsOpenMenu] = stateIsOpenMenu
 
 	const mainLinks: string[] = ['/', '/about', '/skills', '/portfolio', '/cv']
 	const inMainLinks = (pathname: string): boolean => {
@@ -47,6 +50,11 @@ const Header: React.FC<PropsHeader> = () => {
 			setAllowFixHeader(true)
 		} else if (getRemByPx(900) > getWidthScreen() && allowFixHeader) {
 			setAllowFixHeader(false)
+			setHeaderFixed(false)
+		}
+
+		if (getWidthScreen() >= getRemByPx(768)) {
+			if (isOpenMenu) setIsOpenMenu(false)
 		}
 	}
 
@@ -54,11 +62,9 @@ const Header: React.FC<PropsHeader> = () => {
 
 	const [prevIsMain, setPrevIsMain] = useState<boolean>(isMain)
 	const [prevScrollY, setPrevScrollY] = useState<number>(window.scrollY)
-	// const [prevAllowFixHeader, setPrevAllowFixHeader] = useState<boolean>(allowFixHeader)
 	if ((prevIsMain !== isMain || prevScrollY !== window.scrollY) && allowFixHeader) {
 		setPrevIsMain(isMain)
 		setPrevScrollY(window.scrollY)
-		// setPrevAllowFixHeader(allowFixHeader)
 
 		if (isMain && window.scrollY === 0) {
 			if (headerFixed) {
@@ -94,7 +100,10 @@ const Header: React.FC<PropsHeader> = () => {
 			<Navbar
 				isMain={isMain}
 				headerFixed={headerFixed}
+				isOpenMenu={isOpenMenu}
 			/>
+
+			{!allowFixHeader && <ButtonMenu stateIsOpen={stateIsOpenMenu} />}
 		</header>
 	)
 }

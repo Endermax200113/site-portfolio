@@ -32,7 +32,7 @@
 	}
 }
 
-@media only screen and (px-to-rem(900) > width >= px-to-rem(768)) {
+@media only screen and (px-to-rem(900) > width) {
 	.info-text {
 		margin-bottom: px-to-rem(25);
 	}
