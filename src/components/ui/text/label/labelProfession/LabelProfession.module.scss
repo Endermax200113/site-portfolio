@@ -36,8 +36,14 @@
 	.label {
 		font-family: $font-montserrat;
 		font-weight: 600;
-		font-size: 32px;
+		font-size: px-to-rem(32);
 		text-align: center;
 		color: $color-full-white;
+	}
+}
+
+@media only screen and (px-to-rem(480) > width) {
+	.label {
+		font-size: rubber-size(480, 32, 320, 25);
 	}
 }

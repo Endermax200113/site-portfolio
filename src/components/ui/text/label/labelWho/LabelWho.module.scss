@@ -37,8 +37,14 @@
 		margin-bottom: px-to-rem(5);
 		font-family: $font-adventpro;
 		font-weight: 400;
-		font-size: 25px;
+		font-size: px-to-rem(25);
 		text-align: center;
 		color: $color-full-white;
+	}
+}
+
+@media only screen and (px-to-rem(480) > width) {
+	.label {
+		font-size: rubber-size(480, 25, 320, 21);
 	}
 }
