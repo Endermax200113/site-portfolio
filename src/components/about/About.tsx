@@ -5,7 +5,7 @@ import Heading from '@ui/text/heading/Heading'
 import Separator from '@ui/separator/Separator'
 import Activity from './activity/Activity'
 import { dataAbout } from '@/data/about'
-import DescriptionAbout from '@ui/text/description/descriptionAbout/DescriptionAbout'
+import DescriptionAbout from '@ui/text/description/description-about/DescriptionAbout'
 
 interface PropsAbout extends RefAttributes<HTMLElement> {}
 

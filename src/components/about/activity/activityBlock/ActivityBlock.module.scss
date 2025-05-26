@@ -2,19 +2,57 @@
 
 .block {
 	position: relative;
-	width: 450px;
-	height: 180px;
-	padding-left: 25px;
+	width: px-to-rem(450);
+	height: px-to-rem(180);
+	padding-left: px-to-rem(25);
 }
 
 .wrap {
 	position: absolute;
-	top: 5px;
+	top: px-to-rem(5);
 	left: 0;
-	width: 70px;
-	height: 70px;
+	width: px-to-rem(70);
+	aspect-ratio: 1 / 1;
 }
 
 .icon {
 	opacity: .15;
+}
+
+@media only screen and (px-to-rem(1600) > width) {
+	.wrap {
+		width: rubber-size(1600, 70, 1366, 60);
+	}
+
+	.block {
+		width: rubber-size(1600, 450, 1366, 418);
+	}
+}
+
+@media only screen and (px-to-rem(1366) > width) {
+	;
+}
+
+@media only screen and (px-to-rem(1280) > width) {
+	;
+}
+
+@media only screen and (px-to-rem(1080) > width) {
+	;
+}
+
+@media only screen and (px-to-rem(900) > width) {
+	;
+}
+
+@media only screen and (px-to-rem(768) > width) {
+	;
+}
+
+@media only screen and (px-to-rem(576) > width) {
+	;
+}
+
+@media only screen and (px-to-rem(480) > width) {
+	;
 }

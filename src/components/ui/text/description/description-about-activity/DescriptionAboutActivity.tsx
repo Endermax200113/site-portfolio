@@ -1,6 +1,6 @@
 import React from 'react'
 import scss from './DescriptionAboutActivity.module.scss'
-import Description, { PropsDescription } from './../Description'
+import Description, { PropsDescription } from '../Description'
 
 interface PropsDescriptionAboutActivity extends PropsDescription {}
 

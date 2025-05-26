@@ -1,31 +1,18 @@
 @use '@sass/main' as *;
 
-.about {
-	padding-top: px-to-rem(75);
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: flex-start;
-}
-
-.quote {
-	width: px-to-rem(765);
-	margin-top: px-to-rem(70);
-}
-
-.separator-wrap {
-	margin-top: px-to-rem(65);
-}
-
-.activity {
-	margin-top: px-to-rem(65);
+.heading {
+	margin-top: px-to-rem(30);
+	font-family: $font-montserrat;
+	font-weight: 700;
+	font-size: px-to-rem(22);
+	letter-spacing: 0.19em;
+	text-transform: uppercase;
+	color: $color-full-black;
 }
 
 @media only screen and (px-to-rem(1600) > width) {
-	.quote {
-		$width-quote: rubber-size(1600, 765, 1366, 718);
-
-		width: $width-quote;
+	.heading {
+		font-size: rubber-size(1600, 22, 1366, 20);
 	}
 }
 

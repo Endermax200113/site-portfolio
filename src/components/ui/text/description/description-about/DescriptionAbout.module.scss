@@ -1,31 +1,16 @@
 @use '@sass/main' as *;
 
-.about {
-	padding-top: px-to-rem(75);
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: flex-start;
-}
+.description {
+	margin-bottom: 40px;
 
-.quote {
-	width: px-to-rem(765);
-	margin-top: px-to-rem(70);
-}
-
-.separator-wrap {
-	margin-top: px-to-rem(65);
-}
-
-.activity {
-	margin-top: px-to-rem(65);
+	&:last-child {
+		margin-bottom: 0;
+	}
 }
 
 @media only screen and (px-to-rem(1600) > width) {
-	.quote {
-		$width-quote: rubber-size(1600, 765, 1366, 718);
-
-		width: $width-quote;
+	.description {
+		font-size: rubber-size(1600, 15, 1366, 14);
 	}
 }
 

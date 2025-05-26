@@ -1,58 +1,55 @@
 @use '@sass/main' as *;
 
-.about {
-	padding-top: px-to-rem(75);
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: flex-start;
-}
-
-.quote {
-	width: px-to-rem(765);
-	margin-top: px-to-rem(70);
-}
-
-.separator-wrap {
-	margin-top: px-to-rem(65);
-}
-
-.activity {
-	margin-top: px-to-rem(65);
+.description {
+	margin-top: px-to-rem(25);
+	font-weight: 300;
+	font-size: px-to-rem(14) !important;
 }
 
 @media only screen and (px-to-rem(1600) > width) {
-	.quote {
-		$width-quote: rubber-size(1600, 765, 1366, 718);
-
-		width: $width-quote;
+	.description {
+		font-size: rubber-size(1600, 14, 1366, 13) !important;
 	}
 }
 
 @media only screen and (px-to-rem(1366) > width) {
-	;
+	.description {
+		;
+	}
 }
 
 @media only screen and (px-to-rem(1280) > width) {
-	;
+	.description {
+		;
+	}
 }
 
 @media only screen and (px-to-rem(1080) > width) {
-	;
+	.description {
+		;
+	}
 }
 
 @media only screen and (px-to-rem(900) > width) {
-	;
+	.description {
+		;
+	}
 }
 
 @media only screen and (px-to-rem(768) > width) {
-	;
+	.description {
+		;
+	}
 }
 
 @media only screen and (px-to-rem(576) > width) {
-	;
+	.description {
+		;
+	}
 }
 
 @media only screen and (px-to-rem(480) > width) {
-	;
+	.description {
+		;
+	}
 }

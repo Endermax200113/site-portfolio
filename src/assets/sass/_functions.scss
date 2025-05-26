@@ -103,3 +103,19 @@ $screen-width-px: 1920;
 		@return rubber-size($from-width, $from-size, $to-width, $to-size);
 	}
 }
+
+@function auto-width-size($at-width-screen, $at-width-object) {
+	@if $at-width-screen <= $at-width-object {
+		@error "First parameter $at-width-screen less or equals than second parameter $at-width-object"
+	}
+
+	$different: calc($at-width-screen - $at-width-object);
+	$margins-percent: calc($different * 100 / $at-width-screen);
+	$result: calc(100 - $margins-percent);
+	
+	@return $result;
+}
+
+@function str($str) {
+	@return string.unquote($str);
+}

@@ -1,9 +1,9 @@
 @use '@sass/main' as *;
 
 .activity {
-	width: 1065px;
+	width: px-to-rem(1065);
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
-	gap: 15px 65px;
+	gap: px-to-rem(15) px-to-rem(65);
 }
