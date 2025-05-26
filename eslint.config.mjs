@@ -44,7 +44,7 @@ export default tseslint.config(
 			'react/jsx-curly-brace-presence': ['warn', { props: 'never', children: 'never' }],
 			'react/function-component-definition': ['warn', { namedComponents: 'arrow-function' }],
 			'react/self-closing-comp': ['error', { component: true, html: true }],
-			'prettier/prettier': ['error', { endOfLine: 'auto' }],
+			'prettier/prettier': ['warn', { endOfLine: 'auto' }],
 			'@typescript-eslint/no-unused-vars': 'warn',
 			'@typescript-eslint/no-empty-object-type': 'off',
 			'react/jsx-key': 'warn'

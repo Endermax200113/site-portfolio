@@ -31,3 +31,13 @@
 		font-size: rubber-size(1080, 18, 900, 15);
 	}
 }
+
+@media only screen and (px-to-rem(900) > width >= px-to-rem(768)) {
+	.label {
+		font-family: $font-montserrat;
+		font-weight: 600;
+		font-size: 32px;
+		text-align: center;
+		color: $color-full-white;
+	}
+}

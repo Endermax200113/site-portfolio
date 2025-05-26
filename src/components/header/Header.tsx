@@ -6,6 +6,7 @@ import { spotClass } from '@utils/headerControl'
 import { useLocation } from 'react-router-dom'
 import { useRenderEffect } from '@hooks/useRenderEffect'
 import { useEventListener } from '@hooks/useEventListener'
+import { getRemByPx, getWidthScreen } from '@utils/screenControl'
 
 interface PropsHeader extends HTMLAttributes<HTMLElement> {}
 
@@ -38,18 +39,6 @@ const Header: React.FC<PropsHeader> = () => {
 			top: 0,
 		})
 	}, [pathname])
-
-	const getRemByPx = (px: number): number => px / 16
-
-	const getWidthScreen = (): number => {
-		const rootFontSizeStr: string = window.getComputedStyle(document.documentElement).fontSize
-		const rootFontSizeNum: string = rootFontSizeStr.replace('px', '')
-		const oneRem: number = Number.parseInt(rootFontSizeNum)
-
-		const widthScreen: number = window.screen.width
-
-		return widthScreen / oneRem
-	}
 
 	const [allowFixHeader, setAllowFixHeader] = useState<boolean>(getWidthScreen() >= getRemByPx(900))
 

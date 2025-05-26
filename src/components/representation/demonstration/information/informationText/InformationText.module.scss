@@ -28,8 +28,12 @@
 
 @media only screen and (px-to-rem(1080) > width >= px-to-rem(900)) {
 	.info-text {
-		$margin-bottom-auto: get-value-by-width(1600, 137, 1366);
-
 		margin-bottom: px-to-rem(90);
+	}
+}
+
+@media only screen and (px-to-rem(900) > width >= px-to-rem(768)) {
+	.info-text {
+		margin-bottom: px-to-rem(25);
 	}
 }

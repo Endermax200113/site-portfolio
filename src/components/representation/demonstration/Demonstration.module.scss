@@ -54,3 +54,13 @@
 		margin-right: px-to-rem(10);
 	}
 }
+
+@media only screen and (px-to-rem(900) > width >= px-to-rem(768)) {
+	.images {
+		display: none;
+	}
+
+	.demonstration {
+		justify-content: center;
+	}
+}

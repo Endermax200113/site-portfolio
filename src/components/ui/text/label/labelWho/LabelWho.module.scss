@@ -31,3 +31,14 @@
 		margin-bottom: rubber-size(1080, 10, 900, 5);
 	}
 }
+
+@media only screen and (px-to-rem(900) > width >= px-to-rem(768)) {
+	.label {
+		margin-bottom: px-to-rem(5);
+		font-family: $font-adventpro;
+		font-weight: 400;
+		font-size: 25px;
+		text-align: center;
+		color: $color-full-white;
+	}
+}
