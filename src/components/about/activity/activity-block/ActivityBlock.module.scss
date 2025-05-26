@@ -29,16 +29,16 @@
 	}
 }
 
-@media only screen and (px-to-rem(1366) > width) {
-	;
-}
-
-@media only screen and (px-to-rem(1280) > width) {
-	;
-}
-
 @media only screen and (px-to-rem(1080) > width) {
-	;
+	.wrap {
+		width: rubber-size(1080, 60, 900, 55);
+	}
+
+	.block {
+		width: rubber-size(1080, 418, 900, 382);
+		height: rubber-size(1080, 180, 900, 150);
+		padding-left: rubber-size(1080, 25, 900, 20);
+	}
 }
 
 @media only screen and (px-to-rem(900) > width) {

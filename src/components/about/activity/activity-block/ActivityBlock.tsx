@@ -1,7 +1,7 @@
 import React, { HTMLAttributes } from 'react'
 import scss from './ActivityBlock.module.scss'
 import Image from '@ui/image/Image'
-import ActivityText from './activityText/ActivityText'
+import ActivityText from './activity-text/ActivityText'
 
 interface PropsActivityBlock extends HTMLAttributes<HTMLDivElement> {
 	urlImage: string

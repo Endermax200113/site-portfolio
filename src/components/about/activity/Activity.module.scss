@@ -7,3 +7,34 @@
 	justify-content: center;
 	gap: px-to-rem(15) px-to-rem(65);
 }
+
+@media only screen and (px-to-rem(1080) > width) {
+	.activity {
+		width: rubber-size(1080, 1065, 900, 860);
+		gap: px-to-rem(15) rubber-size(1080, 65, 900, 40);
+	}
+}
+
+@media only screen and (px-to-rem(900) > width) {
+	.activity {
+		;
+	}
+}
+
+@media only screen and (px-to-rem(768) > width) {
+	.activity {
+		;
+	}
+}
+
+@media only screen and (px-to-rem(576) > width) {
+	.activity {
+		;
+	}
+}
+
+@media only screen and (px-to-rem(480) > width) {
+	.activity {
+		;
+	}
+}

@@ -1,7 +1,7 @@
 @use '@sass/main' as *;
 
 .description {
-	margin-bottom: 40px;
+	margin-bottom: px-to-rem(40);
 
 	&:last-child {
 		margin-bottom: 0;
@@ -14,16 +14,11 @@
 	}
 }
 
-@media only screen and (px-to-rem(1366) > width) {
-	;
-}
-
-@media only screen and (px-to-rem(1280) > width) {
-	;
-}
-
 @media only screen and (px-to-rem(1080) > width) {
-	;
+	.description {
+		margin-bottom: rubber-size(1080, 40, 900, 30);
+		font-size: rubber-size(1080, 14, 900, 13);
+	}
 }
 
 @media only screen and (px-to-rem(900) > width) {

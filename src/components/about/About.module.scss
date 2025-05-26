@@ -23,36 +23,50 @@
 
 @media only screen and (px-to-rem(1600) > width) {
 	.quote {
-		$width-quote: rubber-size(1600, 765, 1366, 718);
-
-		width: $width-quote;
+		width: rubber-size(1600, 765, 1366, 718);
 	}
 }
 
-@media only screen and (px-to-rem(1366) > width) {
-	;
-}
-
-@media only screen and (px-to-rem(1280) > width) {
-	;
-}
-
 @media only screen and (px-to-rem(1080) > width) {
-	;
+	.about {
+		padding-top: rubber-size(1080, 75, 900, 60);
+	}
+
+	.quote {
+		margin-top: rubber-size(1080, 70, 900, 60);
+		width: rubber-size(1080, 718, 900, 664);
+	}
+
+	.separator-wrap {
+		margin-top: rubber-size(1080, 65, 900, 50);
+	}
+
+	.activity {
+		margin-top: rubber-size(1080, 65, 900, 50);
+	}
 }
 
 @media only screen and (px-to-rem(900) > width) {
-	;
+	.about {
+		;
+	}
 }
 
 @media only screen and (px-to-rem(768) > width) {
-	;
+	.about {
+		;
+	}
 }
 
 @media only screen and (px-to-rem(576) > width) {
-	;
+	.about {
+		;
+	}
 }
 
 @media only screen and (px-to-rem(480) > width) {
-	;
+	.about {
+		;
+	}
 }
+

@@ -1,6 +1,6 @@
 import React, { HTMLAttributes } from 'react'
 import scss from './Activity.module.scss'
-import ActivityBlock from './activityBlock/ActivityBlock'
+import ActivityBlock from './activity-block/ActivityBlock'
 import { dataActivity } from '@/data/activity'
 import { mergeAllClasses } from '@utils/sassControl'
 
