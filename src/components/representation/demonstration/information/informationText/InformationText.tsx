@@ -1,8 +1,8 @@
 import React, { HTMLAttributes } from 'react'
 import scss from './InformationText.module.scss'
-import LabelHello from '@ui/text/label/labelHello/LabelHello'
-import LabelWho from '@ui/text/label/labelWho/LabelWho'
-import LabelProfession from '@ui/text/label/labelProfession/LabelProfession'
+import LabelHello from '@ui/text/label/label-hello/LabelHello'
+import LabelWho from '@ui/text/label/label-who/LabelWho'
+import LabelProfession from '@ui/text/label/label-profession/LabelProfession'
 import { useAdaptiveSize } from '@hooks/useAdaptiveSize'
 
 interface PropsInformationText extends HTMLAttributes<HTMLDivElement> {}

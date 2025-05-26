@@ -19,6 +19,12 @@
 	scroll-behavior: smooth;
 }
 
+@media only screen and (px-to-rem(1080) > width) {
+	.html {
+		scroll-padding-top: px-to-rem(57);
+	}
+}
+
 .body {
 	min-height: 100dvh;
 	background-color: $color-light-gray;
@@ -50,9 +56,9 @@
 }
 
 // .container {
-// 	width: 100%;width
-// 	height: 100%;height
-// 	padding: 0 50px;padding
-// 	display: flex;display
-// 	justify-content: space-between;justify-content
+// 	width: 100%;widthwidth
+// 	height: 100%;heightheight
+// 	padding: 0 50px;paddingpadding
+// 	display: flex;displaydisplay
+// 	justify-content: space-between;justify-contentjustify-content
 // }
