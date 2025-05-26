@@ -5,7 +5,7 @@ export const getWidthScreen = (): number => {
 	const rootFontSizeNum: string = rootFontSizeStr.replace('px', '')
 	const oneRem: number = Number.parseInt(rootFontSizeNum)
 
-	const widthScreen: number = window.screen.width
+	const widthScreen: number = window.innerWidth
 
 	return widthScreen / oneRem
 }

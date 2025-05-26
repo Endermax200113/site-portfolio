@@ -55,3 +55,22 @@
 		}
 	}
 }
+
+@media only screen and (px-to-rem(576) > width) {
+	.menu {
+		&-list {
+			height: px-to-rem(228);
+			flex-direction: column;
+		}
+
+		&-item {
+			&.active {
+				height: px-to-rem(228);
+
+				& .menu-list::before {
+					top: px-to-rem(226);
+				}
+			}
+		}
+	}
+}

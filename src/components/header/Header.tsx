@@ -100,7 +100,7 @@ const Header: React.FC<PropsHeader> = () => {
 			<Navbar
 				isMain={isMain}
 				headerFixed={headerFixed}
-				isOpenMenu={isOpenMenu}
+				stateOpenMenu={stateIsOpenMenu}
 			/>
 
 			{!allowFixHeader && <ButtonMenu stateIsOpen={stateIsOpenMenu} />}

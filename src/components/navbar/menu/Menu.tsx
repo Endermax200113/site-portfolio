@@ -1,14 +1,18 @@
-import React, { LiHTMLAttributes } from 'react'
+import React, { Dispatch, LiHTMLAttributes, SetStateAction } from 'react'
 import scss from './Menu.module.scss'
 import { dataMenu, DataMenu } from '@/data/menu'
 import MenuItem from './menuItem/MenuItem'
 import { mergeAllClasses } from '@utils/sassControl'
 
+type State = [boolean, Dispatch<SetStateAction<boolean>>]
+
 interface PropsMenu extends LiHTMLAttributes<HTMLLIElement> {
-	isOpen: boolean
+	stateIsOpen: State
 }
 
-const Menu: React.FC<PropsMenu> = ({ isOpen, ...props }) => {
+const Menu: React.FC<PropsMenu> = ({ stateIsOpen, ...props }) => {
+	const [isOpen] = stateIsOpen
+
 	const arrMenu: DataMenu[] = dataMenu
 	const classMenuItem: string = mergeAllClasses([scss['menu-item']], isOpen ? scss.active : null)
 
@@ -22,6 +26,7 @@ const Menu: React.FC<PropsMenu> = ({ isOpen, ...props }) => {
 						<MenuItem
 							link={link}
 							text={text}
+							stateIsOpen={stateIsOpen}
 							key={`nav-menu-item-${new Date().getTime()}-${i}`}
 						/>
 					)
