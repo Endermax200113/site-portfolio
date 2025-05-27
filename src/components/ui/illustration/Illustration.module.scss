@@ -55,7 +55,8 @@
 
 @media only screen and (px-to-rem(576) > width) {
 	.text {
-		;
+		font-size: px-to-rem(15);
+		margin-top: px-to-rem(10);
 	}
 }
 

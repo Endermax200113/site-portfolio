@@ -28,7 +28,7 @@
 
 @media only screen and (px-to-rem(576) > width) {
 	.block {
-		;
+		margin-top: px-to-rem(40);
 	}
 }
 

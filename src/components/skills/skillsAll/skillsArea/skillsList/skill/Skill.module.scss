@@ -26,13 +26,13 @@
 
 @media only screen and (px-to-rem(768) > width) {
 	.image {
-		height: px-to-rem(65);
+		height: rubber-size(768, 90, 576, 65);
 	}
 }
 
 @media only screen and (px-to-rem(576) > width) {
 	.image {
-		;
+		height: px-to-rem(80);
 	}
 }
 
