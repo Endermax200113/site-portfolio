@@ -57,6 +57,11 @@ $screen-width-px: 1920;
 @function rubber-size($from-width, $from-size, $to-width, $to-size) {
 	$resize: calc($from-size - $to-size);
 	$difference: calc($from-width - $to-width);
+	
+	@if $difference == 0 {
+		@error "Parameters $from-width and $to-width is equals!";
+	}
+
 	$equation: calc($resize / $difference);
 
 	$to-size-rem: px-to-rem($to-size);

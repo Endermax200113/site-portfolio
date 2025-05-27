@@ -30,10 +30,9 @@
 	}
 }
 
-@media only screen and (px-to-rem(576) > width) {
-	;
-}
-
 @media only screen and (px-to-rem(480) > width) {
-	;
+	.heading {
+		font-size: rubber-size(480, 17, 320, 14);
+		letter-spacing: rubber-size(480, 2.66, 320, 2);
+	}
 }

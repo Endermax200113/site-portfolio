@@ -39,6 +39,7 @@
 
 @media only screen and (px-to-rem(900) > width) {
 	.representation {
-		height: px-to-rem(760);
+		height: calc(100dvh - 57px);
+		margin-top: 57px;
 	}
 }

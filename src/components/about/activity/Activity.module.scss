@@ -36,6 +36,6 @@
 
 @media only screen and (px-to-rem(480) > width) {
 	.activity {
-		;
+		width: rubber-size(480, 450, 320, 260);
 	}
 }

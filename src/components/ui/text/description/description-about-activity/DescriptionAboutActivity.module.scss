@@ -25,14 +25,8 @@
 	}
 }
 
-@media only screen and (px-to-rem(576) > width) {
-	.description {
-		;
-	}
-}
-
 @media only screen and (px-to-rem(480) > width) {
 	.description {
-		;
+		margin-top: rubber-size(480, 20, 320, 10);
 	}
 }

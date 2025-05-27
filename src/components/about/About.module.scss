@@ -96,7 +96,24 @@
 
 @media only screen and (px-to-rem(480) > width) {
 	.about {
-		;
+		padding-top: rubber-size(480, 40, 320, 30);
+	}
+
+	.quote {
+		$width: calc((576 - 425) / 2);
+		$margin-size: get-value-by-width(576, $width, 480);
+		$size: rubber-size(480, $margin-size, 320, 30);
+
+		width: calc(100% - ($size * 2));
+		margin-inline: $size;
+		margin-top: rubber-size(480, 40, 320, 30);
+	}
+
+	.separator-wrap {
+		margin-top: rubber-size(480, 35, 320, 30);
+	}
+
+	.activity {
+		width: rubber-size(480, 35, 320, 30);
 	}
 }
-

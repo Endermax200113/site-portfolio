@@ -59,14 +59,13 @@
 	}
 }
 
-@media only screen and (px-to-rem(576) > width) {
-	.heading {
-		;
-	}
-}
-
 @media only screen and (px-to-rem(480) > width) {
 	.heading {
-		;
+		$ratio: rubber-size(480, 17, 320, 14);
+		$border-size: rubber-size(480, 4, 320, 3);
+
+		padding: $ratio calc($ratio * 2);
+		border: $border-size solid $color-full-black;
+		font-size: $ratio;
 	}
 }
