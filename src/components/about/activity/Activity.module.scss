@@ -17,13 +17,14 @@
 
 @media only screen and (px-to-rem(900) > width) {
 	.activity {
-		;
+		width: px-to-rem(700);
+		gap: px-to-rem(15) rubber-size(1080, 65, 900, 40);
 	}
 }
 
 @media only screen and (px-to-rem(768) > width) {
 	.activity {
-		;
+		width: px-to-rem(550);
 	}
 }
 

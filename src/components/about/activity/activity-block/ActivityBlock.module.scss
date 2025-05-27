@@ -42,7 +42,9 @@
 }
 
 @media only screen and (px-to-rem(900) > width) {
-	;
+	.block {
+		height: rubber-size(900, 150, 768, 130);
+	}
 }
 
 @media only screen and (px-to-rem(768) > width) {

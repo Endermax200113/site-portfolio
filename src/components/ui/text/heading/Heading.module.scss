@@ -24,7 +24,7 @@
 
 		padding: $ratio calc($ratio * 2);
 		border: $border-size solid $color-full-black;
-		font-size: rubber-size(1600, 30, 1366, 25);
+		font-size: $ratio;
 	}
 }
 
@@ -35,13 +35,18 @@
 
 		padding: $ratio calc($ratio * 2);
 		border: $border-size solid $color-full-black;
-		font-size: rubber-size(1080, 25, 900, 23);
+		font-size: $ratio;
 	}
 }
 
 @media only screen and (px-to-rem(900) > width) {
 	.heading {
-		;
+		$ratio: rubber-size(900, 23, 768, 20);
+		$border-size: rubber-size(900, 5, 768, 4);
+
+		padding: $ratio calc($ratio * 2);
+		border: $border-size solid $color-full-black;
+		font-size: $ratio;
 	}
 }
 

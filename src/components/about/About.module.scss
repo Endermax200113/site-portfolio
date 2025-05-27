@@ -48,7 +48,20 @@
 
 @media only screen and (px-to-rem(900) > width) {
 	.about {
-		;
+		padding-top: rubber-size(900, 60, 768, 50);
+	}
+
+	.quote {
+		margin-top: rubber-size(900, 60, 768, 50);
+		width: rubber-size(900, 664, 768, 575);
+	}
+	
+	.separator-wrap {
+		margin-top: rubber-size(900, 50, 768, 40);
+	}
+
+	.activity {
+		margin-top: rubber-size(900, 50, 768, 40);
 	}
 }
 

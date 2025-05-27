@@ -22,7 +22,9 @@
 }
 
 @media only screen and (px-to-rem(900) > width) {
-	;
+	.description {
+		margin-bottom: rubber-size(900, 30, 768, 20);
+	}
 }
 
 @media only screen and (px-to-rem(768) > width) {
