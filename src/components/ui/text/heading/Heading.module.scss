@@ -52,7 +52,10 @@
 
 @media only screen and (px-to-rem(768) > width) {
 	.heading {
-		;
+		$ratio: rubber-size(768, 20, 576, 17);
+
+		padding: $ratio calc($ratio * 2);
+		font-size: $ratio;
 	}
 }
 

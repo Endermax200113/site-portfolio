@@ -23,12 +23,11 @@
 	}
 }
 
-@media only screen and (px-to-rem(900) > width) {
-	;
-}
-
 @media only screen and (px-to-rem(768) > width) {
-	;
+	.heading {
+		margin-top: rubber-size(768, 25, 576, 23);
+		font-size: rubber-size(768, 18, 576, 17);
+	}
 }
 
 @media only screen and (px-to-rem(576) > width) {

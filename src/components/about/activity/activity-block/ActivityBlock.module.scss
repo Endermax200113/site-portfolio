@@ -48,7 +48,13 @@
 }
 
 @media only screen and (px-to-rem(768) > width) {
-	;
+	.block {
+		width: rubber-size(768, 382, 576, 350);
+	}
+
+	.wrap {
+		width: rubber-size(768, 55, 576, 50);
+	}
 }
 
 @media only screen and (px-to-rem(576) > width) {
