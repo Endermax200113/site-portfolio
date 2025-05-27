@@ -1,8 +1,8 @@
 @use '@sass/main' as *;
 
 .label {
-	height: 50px;
-	margin-top: 20px;
+	height: px-to-rem(50);
+	margin-top: px-to-rem(20);
 	text-transform: uppercase;
 	text-align: center;
 	display: flex;

@@ -1,8 +1,74 @@
 @use '@sass/main' as *;
 
 .skills {
-	margin-top: 95px;
+	margin-top: px-to-rem(95);
 	display: grid;
-	grid-template-columns: 100px 150px 150px 100px;
-	gap: 65px 120px;
+	grid-template-columns: px-to-rem(100) px-to-rem(150) px-to-rem(150) px-to-rem(100);
+	gap: px-to-rem(65) px-to-rem(120);
+}
+
+@media only screen and (px-to-rem(1920) > width) {
+	.skills {
+		$edge: rubber-size(1600, 100, 1366, 95);
+		$center: rubber-size(1600, 150, 1366, 140);
+		$row: rubber-size(1600, 65, 1366, 50);
+		$column: rubber-size(1600, 120, 1366, 100);
+		
+		--edge: #{$edge};
+		--center: #{$center};
+		--row: #{$row};
+		--column: #{$column};
+
+		margin-top: rubber-size(1600, 95, 1366, 80);
+		grid-template-columns: var(--edge) var(--center) var(--center) var(--edge);
+		gap: var(--row) var(--column);
+	}
+}
+
+@media only screen and (px-to-rem(1600) > width) {
+	.skills {
+		;
+	}
+}
+
+@media only screen and (px-to-rem(1366) > width) {
+	.skills {
+		;
+	}
+}
+
+@media only screen and (px-to-rem(1280) > width) {
+	.skills {
+		;
+	}
+}
+
+@media only screen and (px-to-rem(1080) > width) {
+	.skills {
+		;
+	}
+}
+
+@media only screen and (px-to-rem(900) > width) {
+	.skills {
+		;
+	}
+}
+
+@media only screen and (px-to-rem(768) > width) {
+	.skills {
+		;
+	}
+}
+
+@media only screen and (px-to-rem(576) > width) {
+	.skills {
+		;
+	}
+}
+
+@media only screen and (px-to-rem(480) > width) {
+	.skills {
+		;
+	}
 }

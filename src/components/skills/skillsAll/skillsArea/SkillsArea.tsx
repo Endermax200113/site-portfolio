@@ -1,7 +1,7 @@
 import React, { HTMLAttributes } from 'react'
 import scss from './SkillsArea.module.scss'
 import { AllSkills } from '@helper/skills'
-import HeadingSkills from '@ui/text/heading/headingSkills/HeadingSkills'
+import HeadingSkills from '@ui/text/heading/heading-skills/HeadingSkills'
 import SkillsList from './skillsList/SkillsList'
 
 interface PropsSkillsArea extends HTMLAttributes<HTMLDivElement> {

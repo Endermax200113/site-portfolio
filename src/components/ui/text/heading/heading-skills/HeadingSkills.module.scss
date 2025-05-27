@@ -1,57 +1,58 @@
 @use '@sass/main' as *;
 
-.block {
-	margin-top: px-to-rem(100);
-
-	&:first-child {
-		margin-top: 0;
-	}
+.heading {
+	font-family: $font-montserrat;
+	font-weight: 700;
+	font-size: px-to-rem(30);
+	letter-spacing: 0.19em;
+	text-transform: uppercase;
+	color: $color-full-black;
 }
 
 @media only screen and (px-to-rem(1600) > width) {
-	.block {
-		margin-top: rubber-size(1600, 100, 1366, 80)
+	.heading {
+		font-size: rubber-size(1600, 30, 1366, 27);
 	}
 }
 
 @media only screen and (px-to-rem(1366) > width) {
-	.block {
+	.heading {
 		;
 	}
 }
 
 @media only screen and (px-to-rem(1280) > width) {
-	.block {
+	.heading {
 		;
 	}
 }
 
 @media only screen and (px-to-rem(1080) > width) {
-	.block {
+	.heading {
 		;
 	}
 }
 
 @media only screen and (px-to-rem(900) > width) {
-	.block {
+	.heading {
 		;
 	}
 }
 
 @media only screen and (px-to-rem(768) > width) {
-	.block {
+	.heading {
 		;
 	}
 }
 
 @media only screen and (px-to-rem(576) > width) {
-	.block {
+	.heading {
 		;
 	}
 }
 
 @media only screen and (px-to-rem(480) > width) {
-	.block {
+	.heading {
 		;
 	}
 }

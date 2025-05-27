@@ -82,7 +82,7 @@ const Main: React.FC<PropsMain> = ({ ...props }) => {
 
 			<div className={scss.gradient}>
 				<About ref={links.about} />
-				{/* <Skills ref={links.skills} /> */}
+				<Skills ref={links.skills} />
 			</div>
 
 			{/* <Portfolio ref={links.portfolio} />

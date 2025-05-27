@@ -7,15 +7,64 @@
 }
 
 .text {
-	height: 50px;
-	margin-top: 20px;
+	height: px-to-rem(50);
+	margin-top: px-to-rem(20);
 	font-family: $font-montserrat;
 	font-weight: 400;
-	font-size: 24px;
+	font-size: px-to-rem(24);
 	letter-spacing: 0.14em;
 	text-transform: uppercase;
 	text-align: center;
 	color: $color-full-black;
 	display: grid;
 	place-content: center;
+}
+
+@media only screen and (px-to-rem(1600) > width) {
+	.text {
+		margin-top: rubber-size(1600, 20, 1366, 15);
+		font-size: rubber-size(1600, 24, 1366, 20);
+	}
+}
+
+@media only screen and (px-to-rem(1366) > width) {
+	.text {
+		;
+	}
+}
+
+@media only screen and (px-to-rem(1280) > width) {
+	.text {
+		;
+	}
+}
+
+@media only screen and (px-to-rem(1080) > width) {
+	.text {
+		;
+	}
+}
+
+@media only screen and (px-to-rem(900) > width) {
+	.text {
+		;
+	}
+}
+
+@media only screen and (px-to-rem(768) > width) {
+	.text {
+		;
+	}
+}
+
+@media only screen and (px-to-rem(576) > width) {
+	.text {
+		;
+	}
+}
+
+@media only screen and (px-to-rem(480) > width) {
+	.text {
+		;
+	}
 }

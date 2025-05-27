@@ -2,5 +2,53 @@
 
 .image {
 	width: 100%;
-	height: 100px;
+	height: px-to-rem(100);
+}
+
+@media only screen and (px-to-rem(1600) > width) {
+	.image {
+		height: rubber-size(1600, 100, 1366, 90);
+	}
+}
+
+@media only screen and (px-to-rem(1366) > width) {
+	.image {
+		;
+	}
+}
+
+@media only screen and (px-to-rem(1280) > width) {
+	.image {
+		;
+	}
+}
+
+@media only screen and (px-to-rem(1080) > width) {
+	.image {
+		;
+	}
+}
+
+@media only screen and (px-to-rem(900) > width) {
+	.image {
+		;
+	}
+}
+
+@media only screen and (px-to-rem(768) > width) {
+	.image {
+		;
+	}
+}
+
+@media only screen and (px-to-rem(576) > width) {
+	.image {
+		;
+	}
+}
+
+@media only screen and (px-to-rem(480) > width) {
+	.image {
+		;
+	}
 }

@@ -1,7 +1,7 @@
 @use '@sass/main' as *;
 
 .skills {
-	padding-top: 75px;
+	padding-top: px-to-rem(75);
 	display: flex;
 	flex-direction: column;
 	align-items: center;

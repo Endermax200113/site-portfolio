@@ -1,7 +1,55 @@
 @use '@sass/main' as *;
 
 .blocks {
-	margin-top: 95px;
-	margin-bottom: 160px;
-	width: 860px;
+	margin-top: px-to-rem(95);
+	margin-bottom: px-to-rem(160);
+}
+
+@media only screen and (px-to-rem(1600) > width) {
+	.blocks {
+		margin-top: rubber-size(1600, 95, 1366, 80);
+		margin-bottom: rubber-size(1600, 160, 1366, 120);
+	}
+}
+
+@media only screen and (px-to-rem(1366) > width) {
+	.blocks {
+		;
+	}
+}
+
+@media only screen and (px-to-rem(1280) > width) {
+	.blocks {
+		;
+	}
+}
+
+@media only screen and (px-to-rem(1080) > width) {
+	.blocks {
+		;
+	}
+}
+
+@media only screen and (px-to-rem(900) > width) {
+	.blocks {
+		;
+	}
+}
+
+@media only screen and (px-to-rem(768) > width) {
+	.blocks {
+		;
+	}
+}
+
+@media only screen and (px-to-rem(576) > width) {
+	.blocks {
+		;
+	}
+}
+
+@media only screen and (px-to-rem(480) > width) {
+	.blocks {
+		;
+	}
 }
