@@ -33,14 +33,9 @@
 	}
 }
 
-@media only screen and (px-to-rem(576) > width) {
-	.blocks {
-		;
-	}
-}
-
 @media only screen and (px-to-rem(480) > width) {
 	.blocks {
-		;
+		margin-top: rubber-size(480, 40, 320, 30);
+		margin-bottom: rubber-size(480, 50, 320, 35);
 	}
 }

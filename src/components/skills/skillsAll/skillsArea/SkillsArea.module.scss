@@ -34,6 +34,6 @@
 
 @media only screen and (px-to-rem(480) > width) {
 	.block {
-		;
+		margin-top: rubber-size(480, 40, 320, 30);
 	}
 }

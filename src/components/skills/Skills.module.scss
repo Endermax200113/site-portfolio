@@ -26,14 +26,8 @@
 	}
 }
 
-@media only screen and (px-to-rem(576) > width) {
-	.skills {
-		;
-	}
-}
-
 @media only screen and (px-to-rem(480) > width) {
 	.skills {
-		;
+		padding-top: rubber-size(480, 40, 320, 30);
 	}
 }

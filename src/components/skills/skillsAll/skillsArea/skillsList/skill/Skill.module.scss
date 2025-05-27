@@ -38,6 +38,6 @@
 
 @media only screen and (px-to-rem(480) > width) {
 	.image {
-		;
+		height: rubber-size(480, 80, 320, 65);
 	}
 }
