@@ -12,15 +12,10 @@
 	}
 }
 
-@media only screen and (px-to-rem(1366) > width) {
-	.blocks {
-		;
-	}
-}
-
 @media only screen and (px-to-rem(1280) > width) {
 	.blocks {
-		;
+		margin-top: rubber-size(1200, 80, 1080, 70);
+		margin-bottom: rubber-size(1200, 120, 1080, 100);
 	}
 }
 

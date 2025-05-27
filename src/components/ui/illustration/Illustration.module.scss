@@ -27,15 +27,10 @@
 	}
 }
 
-@media only screen and (px-to-rem(1366) > width) {
-	.text {
-		;
-	}
-}
-
 @media only screen and (px-to-rem(1280) > width) {
 	.text {
-		;
+		font-size: rubber-size(1280, 20, 1080, 18);
+		height: rubber-size(1280, 50, 1080, 40);
 	}
 }
 

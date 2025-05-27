@@ -11,15 +11,9 @@
 	}
 }
 
-@media only screen and (px-to-rem(1366) > width) {
-	.image {
-		;
-	}
-}
-
 @media only screen and (px-to-rem(1280) > width) {
 	.image {
-		;
+		height: rubber-size(1280, 90, 1080, 80);
 	}
 }
 
