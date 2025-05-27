@@ -36,13 +36,13 @@
 
 @media only screen and (px-to-rem(1080) > width) {
 	.text {
-		;
+		font-size: px-to-rem(20);
 	}
 }
 
 @media only screen and (px-to-rem(900) > width) {
 	.text {
-		;
+		font-size: rubber-size(900, 20, 768, 17);
 	}
 }
 

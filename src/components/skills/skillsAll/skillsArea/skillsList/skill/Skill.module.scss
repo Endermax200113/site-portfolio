@@ -19,15 +19,10 @@
 
 @media only screen and (px-to-rem(1080) > width) {
 	.image {
-		;
+		height: px-to-rem(90);
 	}
 }
 
-@media only screen and (px-to-rem(900) > width) {
-	.image {
-		;
-	}
-}
 
 @media only screen and (px-to-rem(768) > width) {
 	.image {

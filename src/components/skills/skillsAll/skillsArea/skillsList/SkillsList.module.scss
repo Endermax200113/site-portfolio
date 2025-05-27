@@ -33,10 +33,10 @@
 
 @media only screen and (px-to-rem(1080) > width) {
 	.skills {
-		--edge: #{px-to-rem(100)};
-		--center: #{px-to-rem(150)};
-		--row: #{px-to-rem(65)};
-		--column: #{px-to-rem(120)};
+		--edge: #{px-to-rem(92)};
+		--center: #{px-to-rem(140)};
+		--row: #{px-to-rem(50)};
+		--column: #{px-to-rem(100)};
 
 		grid-template-columns: var(--edge) var(--center) var(--edge)
 	}
@@ -44,7 +44,12 @@
 
 @media only screen and (px-to-rem(900) > width) {
 	.skills {
-		;
+		--edge: #{rubber-size(900, 92, 768, 90)};
+		--center: #{rubber-size(900, 140, 768, 135)};
+		--row: #{rubber-size(900, 50, 768, 45)};
+		--column: #{rubber-size(900, 100, 768, 90)};
+
+		margin-top: rubber-size(900, 70, 768, 60);
 	}
 }
 

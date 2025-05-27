@@ -21,15 +21,9 @@
 	}
 }
 
-@media only screen and (px-to-rem(1080) > width) {
-	.heading {
-		;
-	}
-}
-
 @media only screen and (px-to-rem(900) > width) {
 	.heading {
-		;
+		font-size: rubber-size(900, 25, 768, 22);
 	}
 }
 
