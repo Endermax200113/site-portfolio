@@ -33,7 +33,12 @@
 
 @media only screen and (px-to-rem(1080) > width) {
 	.skills {
-		;
+		--edge: #{px-to-rem(100)};
+		--center: #{px-to-rem(150)};
+		--row: #{px-to-rem(65)};
+		--column: #{px-to-rem(120)};
+
+		grid-template-columns: var(--edge) var(--center) var(--edge)
 	}
 }
 
