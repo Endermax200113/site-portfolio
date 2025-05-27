@@ -30,7 +30,7 @@
 
 @media only screen and (px-to-rem(576) > width) {
 	.activity {
-		;
+		width: px-to-rem(450);
 	}
 }
 
