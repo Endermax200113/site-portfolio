@@ -28,7 +28,8 @@
 
 @media only screen and (px-to-rem(768) > width) {
 	.blocks {
-		;
+		margin-top: rubber-size(768, 60, 576, 40);
+		margin-bottom: rubber-size(768, 80, 576, 50);
 	}
 }
 

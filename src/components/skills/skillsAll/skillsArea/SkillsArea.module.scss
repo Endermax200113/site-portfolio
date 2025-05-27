@@ -20,21 +20,9 @@
 	}
 }
 
-@media only screen and (px-to-rem(1080) > width) {
-	.block {
-		;
-	}
-}
-
-@media only screen and (px-to-rem(900) > width) {
-	.block {
-		;
-	}
-}
-
 @media only screen and (px-to-rem(768) > width) {
 	.block {
-		;
+		margin-top: rubber-size(768, 70, 576, 50);
 	}
 }
 

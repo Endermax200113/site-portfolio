@@ -48,7 +48,8 @@
 
 @media only screen and (px-to-rem(768) > width) {
 	.text {
-		;
+		height: rubber-size(768, 40, 576, 35);
+		font-size: rubber-size(768, 17, 576, 13);
 	}
 }
 

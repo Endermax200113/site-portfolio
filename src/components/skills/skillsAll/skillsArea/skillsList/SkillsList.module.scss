@@ -55,7 +55,12 @@
 
 @media only screen and (px-to-rem(768) > width) {
 	.skills {
-		;
+		--edge: #{rubber-size(768, 90, 576, 65)};
+		--center: #{rubber-size(768, 135, 576, 105)};
+		--row: #{rubber-size(768, 45, 576, 30)};
+		--column: #{rubber-size(768, 90, 576, 75)};
+
+		margin-top: rubber-size(768, 60, 576, 40);
 	}
 }
 
