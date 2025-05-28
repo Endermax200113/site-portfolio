@@ -1,11 +1,66 @@
 @use '@sass/main' as *;
 
 .description {
-	margin-top: 25px;
+	margin-top: px-to-rem(25);
 	font-family: $font-montserrat;
 	font-weight: 500;
-	font-size: 12px;
+	font-size: px-to-rem(12);
 	letter-spacing: -0.01em;
 	text-align: center;
 	color: $color-full-white;
+}
+
+@media only screen and (px-to-rem(1920) > width) {
+	.description {
+		margin-top: rubber-size(1920, 25, 1600, 20);
+		font-size: rubber-size(1920, 12, 1600, 11);
+	}
+}
+
+@media only screen and (px-to-rem(1600) > width) {
+	.description {
+		;
+	}
+}
+
+@media only screen and (px-to-rem(1366) > width) {
+	.description {
+		;
+	}
+}
+
+@media only screen and (px-to-rem(1280) > width) {
+	.description {
+		;
+	}
+}
+
+@media only screen and (px-to-rem(1080) > width) {
+	.description {
+		;
+	}
+}
+
+@media only screen and (px-to-rem(900) > width) {
+	.description {
+		;
+	}
+}
+
+@media only screen and (px-to-rem(768) > width) {
+	.description {
+		;
+	}
+}
+
+@media only screen and (px-to-rem(576) > width) {
+	.description {
+		;
+	}
+}
+
+@media only screen and (px-to-rem(480) > width) {
+	.description {
+		;
+	}
 }

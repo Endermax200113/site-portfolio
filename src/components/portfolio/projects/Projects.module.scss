@@ -23,3 +23,9 @@
 		grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
 	}
 }
+
+@media only screen and (width >= px-to-rem(3840)) {
+	.projects {
+		max-width: px-to-rem(3840);
+	}
+}

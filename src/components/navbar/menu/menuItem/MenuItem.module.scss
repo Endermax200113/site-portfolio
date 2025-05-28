@@ -23,12 +23,12 @@
 		text-align: center;
 		color: $color-full-white;
 		text-decoration: none;
+	}
+}
 
-		@media only screen and (hover :hover) {
-			.menu-link:hover {
-				text-decoration: underline;
-			}
-		}
+@media only screen and (hover: hover) {
+	.menu-link:hover {
+		text-decoration: underline;
 	}
 }
 

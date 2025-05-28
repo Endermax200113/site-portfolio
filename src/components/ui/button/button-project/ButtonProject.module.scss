@@ -3,7 +3,7 @@
 .button {
 	@extend %btn-small;
 
-	margin-left: 15px;
+	margin-left: px-to-rem(15);
 
 	&:first-child {
 		margin-left: 0

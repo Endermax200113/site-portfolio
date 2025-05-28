@@ -3,12 +3,14 @@
 .link {
 	font-family: $font-montserrat;
 	font-weight: 600;
-	font-size: 20px;
+	font-size: px-to-rem(20);
 	text-align: center;
 	color: $color-full-white;
 	text-decoration: none;
+}
 
-	&:hover {
+@media only screen and (hover: hover) {
+	.link:hover {
 		text-decoration: underline;
 	}
 }
