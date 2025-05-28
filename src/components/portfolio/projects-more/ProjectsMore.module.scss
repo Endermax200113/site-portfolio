@@ -6,3 +6,51 @@
 	display: grid;
 	place-content: center;
 }
+
+@media only screen and (px-to-rem(1600) > width) {
+	.more {
+		height: rubber-size(1600, 70, 1366, 60);
+	}
+}
+
+@media only screen and (px-to-rem(1366) > width) {
+	.more {
+		;
+	}
+}
+
+@media only screen and (px-to-rem(1280) > width) {
+	.more {
+		;
+	}
+}
+
+@media only screen and (px-to-rem(1080) > width) {
+	.more {
+		;
+	}
+}
+
+@media only screen and (px-to-rem(900) > width) {
+	.more {
+		;
+	}
+}
+
+@media only screen and (px-to-rem(768) > width) {
+	.more {
+		;
+	}
+}
+
+@media only screen and (px-to-rem(576) > width) {
+	.more {
+		;
+	}
+}
+
+@media only screen and (px-to-rem(480) > width) {
+	.more {
+		;
+	}
+}

@@ -13,7 +13,7 @@
 
 @media only screen and (px-to-rem(1600) > width) {
 	.buttons {
-		;
+		margin-top: rubber-size(1600, 20, 1366, 15);
 	}
 }
 

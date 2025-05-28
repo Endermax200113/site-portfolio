@@ -29,15 +29,9 @@
 	z-index: 2;
 }
 
-@media only screen and (px-to-rem(1920) > width) {
-	.background {
-		;
-	}
-}
-
 @media only screen and (px-to-rem(1600) > width) {
 	.background {
-		;
+		padding-block: rubber-size(1600, 100, 1366, 75);
 	}
 }
 
