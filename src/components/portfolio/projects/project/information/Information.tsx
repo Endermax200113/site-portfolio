@@ -1,6 +1,6 @@
 import React, { HTMLAttributes } from 'react'
 import scss from './Information.module.scss'
-import InformationText from './informationText/InformationText'
+import InformationText from './information-text/InformationText'
 import { PreviewProject } from '@helper/portfolio'
 import Buttons from './buttons/Buttons'
 import { mergeAllClasses } from '@utils/sassControl'

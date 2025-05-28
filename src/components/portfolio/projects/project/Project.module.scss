@@ -1,39 +1,5 @@
 @use '@sass/main' as *;
 
-.title {
-	width: auto !important;
-	height: auto !important;
-	border: none !important;
-	font-size: 25px !important;
-	letter-spacing: 0.21em !important;
-	color: $color-full-white !important;
-}
-
-.description {
-	margin-top: 25px;
-	font-family: $font-montserrat;
-	font-weight: 500;
-	font-size: 10px;
-	letter-spacing: -0.01em;
-	text-align: center;
-	color: $color-full-white;
-}
-
-.buttons {
-	margin-top: 25px;
-	display: flex;
-}
-
-.button {
-	@extend %btn-small;
-
-	margin-left: 15px;
-
-	&:first-child {
-		margin-left: 0;
-	}
-}
-
 .image {
 	-o-object-fit: cover !important;
 	object-fit: cover !important;
@@ -51,7 +17,7 @@
 
 .project {
 	position: relative;
-	height: 400px;
+	aspect-ratio: 8 / 5;
 
 	&:hover .image {
 		opacity: .2;

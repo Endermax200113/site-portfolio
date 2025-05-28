@@ -5,3 +5,21 @@
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 }
+
+@media only screen and (width >= px-to-rem(2300)) {
+	.projects {
+		grid-template-columns: 1fr 1fr 1fr 1fr;
+	}
+}
+
+@media only screen and (width >= px-to-rem(3000)) {
+	.projects {
+		grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	}
+}
+
+@media only screen and (width >= px-to-rem(3500)) {
+	.projects {
+		grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+	}
+}

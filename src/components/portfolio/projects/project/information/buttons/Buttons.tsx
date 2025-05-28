@@ -1,7 +1,7 @@
 import React, { HTMLAttributes } from 'react'
 import scss from './Buttons.module.scss'
 import { NavigateFunction, useNavigate } from 'react-router-dom'
-import ButtonProject from '@ui/button/buttonProject/ButtonProject'
+import ButtonProject from '@ui/button/button-project/ButtonProject'
 
 interface PropsButtons extends HTMLAttributes<HTMLDivElement> {
 	idProject: number

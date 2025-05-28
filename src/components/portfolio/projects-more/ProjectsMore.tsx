@@ -1,6 +1,6 @@
 import React, { HTMLAttributes } from 'react'
 import scss from './ProjectsMore.module.scss'
-import LinkPortfolio from '@ui/link/linkPortfolio/LinkPortfolio'
+import LinkPortfolio from '@ui/link/link-portfolio/LinkPortfolio'
 
 interface PropsProjectsMore extends HTMLAttributes<HTMLDivElement> {}
 
