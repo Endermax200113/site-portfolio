@@ -35,21 +35,9 @@
 	}
 }
 
-@media only screen and (px-to-rem(1366) > width) {
-	.background {
-		;
-	}
-}
-
-@media only screen and (px-to-rem(1280) > width) {
-	.background {
-		;
-	}
-}
-
 @media only screen and (px-to-rem(1080) > width) {
 	.background {
-		;
+		padding-block: rubber-size(1080, 75, 900, 60);
 	}
 }
 

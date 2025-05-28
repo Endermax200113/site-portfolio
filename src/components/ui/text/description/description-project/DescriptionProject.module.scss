@@ -24,21 +24,9 @@
 	}
 }
 
-@media only screen and (px-to-rem(1366) > width) {
-	.description {
-		;
-	}
-}
-
-@media only screen and (px-to-rem(1280) > width) {
-	.description {
-		;
-	}
-}
-
 @media only screen and (px-to-rem(1080) > width) {
 	.description {
-		;
+		font-size: rubber-size(1080, 11, 900, 10);
 	}
 }
 
