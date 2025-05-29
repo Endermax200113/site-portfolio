@@ -36,26 +36,8 @@
 	}
 }
 
-@media only screen and (px-to-rem(900) > width) {
-	.projects {
-		;
-	}
-}
-
-@media only screen and (px-to-rem(768) > width) {
-	.projects {
-		;
-	}
-}
-
 @media only screen and (px-to-rem(576) > width) {
 	.projects {
-		;
-	}
-}
-
-@media only screen and (px-to-rem(480) > width) {
-	.projects {
-		;
+		grid-template-columns: 1fr;
 	}
 }

@@ -55,7 +55,7 @@
 
 @media only screen and (px-to-rem(576) > width) {
 	.heading {
-		;
+		font-size: rubber-size(576, 22, 480, 20);
 	}
 }
 
