@@ -1,6 +1,6 @@
 import React, { HTMLAttributes } from 'react'
 import scss from './Buttons.module.scss'
-import ButtonResume from '@ui/button/buttonResume/ButtonResume'
+import ButtonResume from '@ui/button/button-resume/ButtonResume'
 
 const pdfResume: string = (await import('@assets/download/resume.pdf')).default
 

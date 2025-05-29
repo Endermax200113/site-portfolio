@@ -8,16 +8,9 @@
 	}
 }
 
-@media only screen and (px-to-rem(1600) > width) {
-	.description {
-		font-size: rubber-size(1600, 15, 1366, 14);
-	}
-}
-
 @media only screen and (px-to-rem(1080) > width) {
 	.description {
 		margin-bottom: rubber-size(1080, 40, 900, 30);
-		font-size: rubber-size(1080, 14, 900, 13);
 	}
 }
 
@@ -30,7 +23,6 @@
 @media only screen and (px-to-rem(768) > width) {
 	.description {
 		margin-bottom: rubber-size(768, 20, 576, 15);
-		font-size: rubber-size(768, 13, 576, 12);
 	}
 }
 
@@ -43,6 +35,5 @@
 @media only screen and (px-to-rem(480) > width) {
 	.description {
 		margin-bottom: rubber-size(480, 20, 320, 15);
-		font-size: rubber-size(480, 12, 320, 11);
 	}
 }

@@ -86,7 +86,7 @@ const Main: React.FC<PropsMain> = ({ ...props }) => {
 			</div>
 
 			<Portfolio ref={links.portfolio} />
-			{/* <Resume ref={links.cv} /> */}
+			<Resume ref={links.cv} />
 		</RootMain>
 	)
 }

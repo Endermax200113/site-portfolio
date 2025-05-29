@@ -3,7 +3,7 @@ import scss from './Resume.module.scss'
 import Heading from '@ui/text/heading/Heading'
 import Separator from '@ui/separator/Separator'
 import Image from '@ui/image/Image'
-import DescriptionResume from '@ui/text/description/descriptionResume/DescriptionResume'
+import DescriptionResume from '@ui/text/description/description-resume/DescriptionResume'
 import Buttons from './buttons/Buttons'
 
 const imgPreview: string = (await import('@img/resume/preview.png')).default

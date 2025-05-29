@@ -3,7 +3,7 @@
 .description {
 	font-family: $font-opensans;
 	font-weight: 400;
-	font-size: 15px;
+	font-size: px-to-rem(15);
 	line-height: 139%;
 	-webkit-hyphens: auto;
 	-ms-hyphens: auto;
@@ -13,4 +13,28 @@
 	-moz-text-align-last: center;
 	text-align-last: center;
 	color: $color-full-black;
+}
+
+@media only screen and (px-to-rem(1600) > width) {
+	.description {
+		font-size: rubber-size(1600, 15, 1366, 14);
+	}
+}
+
+@media only screen and (px-to-rem(1080) > width) {
+	.description {
+		font-size: rubber-size(1080, 14, 900, 13);
+	}
+}
+
+@media only screen and (px-to-rem(768) > width) {
+	.description {
+		font-size: rubber-size(768, 13, 576, 12);
+	}
+}
+
+@media only screen and (px-to-rem(480) > width) {
+	.description {
+		font-size: rubber-size(480, 12, 320, 11);
+	}
 }
