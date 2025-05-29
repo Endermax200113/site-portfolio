@@ -8,9 +8,11 @@ interface PropsProject extends HTMLAttributes<HTMLDivElement> {
 	project: PreviewProject
 }
 
-const Project: React.FC<PropsProject> = ({ project }) => {
+const Project: React.FC<PropsProject> = ({ project, ...props }) => {
 	return (
-		<div className={scss.project}>
+		<div
+			className={scss.project}
+			{...props}>
 			<Image
 				url={project.urlImage}
 				alt={project.name}

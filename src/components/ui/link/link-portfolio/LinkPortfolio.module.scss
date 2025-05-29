@@ -27,15 +27,9 @@
 	}
 }
 
-@media only screen and (px-to-rem(1080) > width) {
-	.link {
-		;
-	}
-}
-
 @media only screen and (px-to-rem(900) > width) {
 	.link {
-		;
+		font-size: rubber-size(900, 15, 768, 13);
 	}
 }
 

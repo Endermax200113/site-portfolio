@@ -14,6 +14,7 @@ const Projects: React.FC<PropsProjects> = ({ projects }) => {
 				<Project
 					project={project}
 					key={`project-main-${i}`}
+					tabIndex={i + 1}
 				/>
 			))}
 		</div>

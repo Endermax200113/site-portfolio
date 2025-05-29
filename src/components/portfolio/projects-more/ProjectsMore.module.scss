@@ -19,15 +19,9 @@
 	}
 }
 
-@media only screen and (px-to-rem(1080) > width) {
-	.more {
-		;
-	}
-}
-
 @media only screen and (px-to-rem(900) > width) {
 	.more {
-		;
+		height: rubber-size(900, 55, 768, 50);
 	}
 }
 
