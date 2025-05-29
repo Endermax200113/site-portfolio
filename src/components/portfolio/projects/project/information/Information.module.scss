@@ -58,12 +58,12 @@
 
 @media only screen and (px-to-rem(576) > width) {
 	.information {
-		padding-inline: rubber-size(1080, 60, 900, 50);
+		padding-inline: rubber-size(576, 60, 480, 50);
 	}
 }
 
 @media only screen and (px-to-rem(480) > width) {
 	.information {
-		;
+		padding-inline: rubber-size(480, 50, 320, 30);
 	}
 }
