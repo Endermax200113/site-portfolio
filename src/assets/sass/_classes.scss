@@ -70,40 +70,24 @@
 }
 
 @media only screen and (px-to-rem(1366) > width) {
-	%btn-small {
-		;
-	}
-
 	%btn-big {
 		;
 	}
 }
 
 @media only screen and (px-to-rem(1280) > width) {
-	%btn-small {
-		;
-	}
-
 	%btn-big {
 		;
 	}
 }
 
 @media only screen and (px-to-rem(1080) > width) {
-	%btn-small {
-		;
-	}
-
 	%btn-big {
 		;
 	}
 }
 
 @media only screen and (px-to-rem(900) > width) {
-	%btn-small {
-		;
-	}
-
 	%btn-big {
 		;
 	}
@@ -111,7 +95,7 @@
 
 @media only screen and (px-to-rem(768) > width) {
 	%btn-small {
-		;
+		font-size: rubber-size(768, 10, 576, 9);
 	}
 
 	%btn-big {

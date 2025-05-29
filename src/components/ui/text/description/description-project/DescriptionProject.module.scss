@@ -38,7 +38,8 @@
 
 @media only screen and (px-to-rem(768) > width) {
 	.description {
-		;
+		margin-top: rubber-size(768, 12, 576, 10);
+		font-size: rubber-size(768, 10, 576, 9);
 	}
 }
 

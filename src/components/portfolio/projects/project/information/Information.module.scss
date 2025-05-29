@@ -52,7 +52,7 @@
 
 @media only screen and (px-to-rem(768) > width) {
 	.information {
-		;
+		padding-inline: rubber-size(768, 35, 576, 20);
 	}
 }
 

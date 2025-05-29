@@ -49,7 +49,7 @@
 
 @media only screen and (px-to-rem(768) > width) {
 	.background {
-		;
+		padding-block: rubber-size(768, 50, 576, 40);
 	}
 }
 
