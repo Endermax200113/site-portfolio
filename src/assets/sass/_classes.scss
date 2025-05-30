@@ -70,19 +70,14 @@
 	}
 }
 
-@media only screen and (px-to-rem(900) > width) {
-	%btn-big {
-		;
-	}
-}
-
 @media only screen and (px-to-rem(768) > width) {
 	%btn-small {
 		font-size: rubber-size(768, 10, 576, 9);
 	}
 
 	%btn-big {
-		;
+		font-size: rubber-size(768, 13, 576, 11);
+		border-inline: rubber-size(768, 3, 576, 2) solid $color-full-black;
 	}
 }
 
