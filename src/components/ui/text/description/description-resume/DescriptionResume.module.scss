@@ -34,7 +34,11 @@
 
 @media only screen and (px-to-rem(576) > width) {
 	.description {
-		;
+		$width: calc((576 - 425) / 2);
+		$margin-size: auto-rubber-size(576, $width, 480);
+
+		width: calc(100% - ($margin-size * 2));
+		margin-inline: $margin-size;
 	}
 }
 
