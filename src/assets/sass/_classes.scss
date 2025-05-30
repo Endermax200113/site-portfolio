@@ -35,9 +35,8 @@
 %btn-big {
 	@extend %button;
 
-	width: px-to-rem(200);
-	height: px-to-rem(45);
-	border-inline: #{px-to-rem(3)} solid $color-full-black;
+	border-inline: px-to-rem(3) solid $color-full-black;
+	padding: 0.8em 2.4em;
 	font-weight: 700;
 	font-size: px-to-rem(16);
 	color: $color-full-black;
@@ -53,10 +52,6 @@
 	%btn-small {
 		font-size: rubber-size(1920, 12, 1600, 11);
 	}
-
-	%btn-big {
-		;
-	}
 }
 
 @media only screen and (px-to-rem(1600) > width) {
@@ -65,7 +60,7 @@
 	}
 
 	%btn-big {
-		;
+		font-size: rubber-size(1600, 16, 1366, 15);
 	}
 }
 

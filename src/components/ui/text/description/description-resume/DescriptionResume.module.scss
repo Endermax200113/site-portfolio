@@ -1,6 +1,54 @@
 @use '@sass/main' as *;
 
 .description {
-	margin-top: 60px;
-	width: 765px;
+	margin-top: px-to-rem(60);
+	width: px-to-rem(765);
+}
+
+@media only screen and (px-to-rem(1600) > width) {
+	.description {
+		width: rubber-size(1600, 765, 1366, 710);
+	}
+}
+
+@media only screen and (px-to-rem(1366) > width) {
+	.description {
+		;
+	}
+}
+
+@media only screen and (px-to-rem(1280) > width) {
+	.description {
+		;
+	}
+}
+
+@media only screen and (px-to-rem(1080) > width) {
+	.description {
+		;
+	}
+}
+
+@media only screen and (px-to-rem(900) > width) {
+	.description {
+		;
+	}
+}
+
+@media only screen and (px-to-rem(768) > width) {
+	.description {
+		;
+	}
+}
+
+@media only screen and (px-to-rem(576) > width) {
+	.description {
+		;
+	}
+}
+
+@media only screen and (px-to-rem(480) > width) {
+	.description {
+		;
+	}
 }

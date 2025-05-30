@@ -13,22 +13,169 @@
 }
 
 .title {
-	margin-top: 75px;
+	margin-top: px-to-rem(75);
 }
 
 .separator {
-	margin-top: 25px;
+	margin-top: px-to-rem(25);
 }
 
+$height-resume: px-to-rem(500);
+
 .wrap {
-	width: 610px;
-	height: 500px;
-	margin-top: 75px;
+	width: px-to-rem(610);
+	height: $height-resume;
+	margin-top: px-to-rem(75);
 	overflow: hidden;
 }
 
 .image {
+	$mask:	linear-gradient(to bottom, rgba($color-light-gray, 1) 0, 
+			rgba($color-light-gray, 0) $height-resume);
+
 	height: auto !important;
-	-webkit-mask: linear-gradient(to bottom, rgba($color-light-gray, 1) 200px, rgba($color-light-gray, 0) 500px);
-	mask: linear-gradient(to bottom, rgba($color-light-gray, 1) 200px, rgba($color-light-gray, 0) 500px);
+	-webkit-mask: $mask;
+	mask: $mask;
+}
+
+@media only screen and (px-to-rem(1600) > width) {
+	$height-rubber: rubber-size(1600, 500, 1366, 450);
+	$mask:	linear-gradient(to bottom, rgba($color-light-gray, 1) 0, 
+			rgba($color-light-gray, 0) $height-rubber);
+
+	.wrap {
+		width: rubber-size(1600, 610, 1366, 550);
+		height: $height-rubber;
+	}
+
+	.image {
+		-webkit-mask: $mask;
+		mask: $mask;
+	}
+}
+
+@media only screen and (px-to-rem(1366) > width) {
+	.title {
+		;
+	}
+
+	.separator {
+		;
+	}
+
+	.wrap {
+		;
+	}
+
+	.image {
+		;
+	}
+}
+
+@media only screen and (px-to-rem(1280) > width) {
+	.title {
+		;
+	}
+
+	.separator {
+		;
+	}
+
+	.wrap {
+		;
+	}
+
+	.image {
+		;
+	}
+}
+
+@media only screen and (px-to-rem(1080) > width) {
+	.title {
+		;
+	}
+
+	.separator {
+		;
+	}
+
+	.wrap {
+		;
+	}
+
+	.image {
+		;
+	}
+}
+
+@media only screen and (px-to-rem(900) > width) {
+	.title {
+		;
+	}
+
+	.separator {
+		;
+	}
+
+	.wrap {
+		;
+	}
+
+	.image {
+		;
+	}
+}
+
+@media only screen and (px-to-rem(768) > width) {
+	.title {
+		;
+	}
+
+	.separator {
+		;
+	}
+
+	.wrap {
+		;
+	}
+
+	.image {
+		;
+	}
+}
+
+@media only screen and (px-to-rem(576) > width) {
+	.title {
+		;
+	}
+
+	.separator {
+		;
+	}
+
+	.wrap {
+		;
+	}
+
+	.image {
+		;
+	}
+}
+
+@media only screen and (px-to-rem(480) > width) {
+	.title {
+		;
+	}
+
+	.separator {
+		;
+	}
+
+	.wrap {
+		;
+	}
+
+	.image {
+		;
+	}
 }

@@ -1,5 +1,55 @@
 @use '@sass/main' as *;
 
 .buttons {
-	margin: 60px 0 70px
+	margin-top: px-to-rem(60);
+	margin-bottom: px-to-rem(70);
+}
+
+@media only screen and (px-to-rem(1600) > width) {
+	.buttons {
+		margin-top: rubber-size(1600, 60, 1366, 50);
+		margin-bottom: rubber-size(1600, 70, 1366, 55);
+	}
+}
+
+@media only screen and (px-to-rem(1366) > width) {
+	.buttons {
+		;
+	}
+}
+
+@media only screen and (px-to-rem(1280) > width) {
+	.buttons {
+		;
+	}
+}
+
+@media only screen and (px-to-rem(1080) > width) {
+	.buttons {
+		;
+	}
+}
+
+@media only screen and (px-to-rem(900) > width) {
+	.buttons {
+		;
+	}
+}
+
+@media only screen and (px-to-rem(768) > width) {
+	.buttons {
+		;
+	}
+}
+
+@media only screen and (px-to-rem(576) > width) {
+	.buttons {
+		;
+	}
+}
+
+@media only screen and (px-to-rem(480) > width) {
+	.buttons {
+		;
+	}
 }
