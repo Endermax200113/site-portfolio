@@ -18,15 +18,9 @@
 	}
 }
 
-@media only screen and (px-to-rem(1366) > width) {
-	.button {
-		;
-	}
-}
-
 @media only screen and (px-to-rem(1280) > width) {
 	.button {
-		;
+		margin-right: rubber-size(1280, 27, 1080, 25);
 	}
 }
 

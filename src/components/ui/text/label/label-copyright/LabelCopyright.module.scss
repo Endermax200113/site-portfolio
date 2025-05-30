@@ -20,15 +20,10 @@
 	}
 }
 
-@media only screen and (px-to-rem(1366) > width) {
-	.label {
-		;
-	}
-}
-
 @media only screen and (px-to-rem(1280) > width) {
 	.label {
-		;
+		margin-top: rubber-size(1280, 40, 1080, 38);
+		font-size: rubber-size(1280, 18, 1080, 17);
 	}
 }
 
