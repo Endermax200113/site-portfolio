@@ -3,7 +3,7 @@
 .footer {
 	flex: $flex-rest;
 	width: 100%;
-	height: 325px;
+	height: px-to-rem(325);
 	background-color: $color-light-black;
 	display: flex;
 	flex-direction: column;
@@ -12,8 +12,8 @@
 }
 
 .copyright {
-	margin-top: 45px;
-	font-size: 18px !important;
+	margin-top: px-to-rem(45);
+	font-size: px-to-rem(18) !important;
 	letter-spacing: normal !important;
 	color: $color-full-white !important;
 
@@ -25,5 +25,81 @@
 	&-normal {
 		font-family: $font-roboto;
 		font-weight: 400;
+	}
+}
+
+@media only screen and (px-to-rem(1600) > width) {
+	.footer { 
+		height: rubber-size(1600, 325, 1366, 275);
+	}
+}
+
+@media only screen and (px-to-rem(1366) > width) {
+	.footer {
+		;
+	}
+	
+	.copyright {
+		;
+	}
+}
+
+@media only screen and (px-to-rem(1280) > width) {
+	.footer {
+		;
+	}
+	
+	.copyright {
+		;
+	}
+}
+
+@media only screen and (px-to-rem(1080) > width) {
+	.footer {
+		;
+	}
+	
+	.copyright {
+		;
+	}
+}
+
+@media only screen and (px-to-rem(900) > width) {
+	.footer {
+		;
+	}
+	
+	.copyright {
+		;
+	}
+}
+
+@media only screen and (px-to-rem(768) > width) {
+	.footer {
+		;
+	}
+	
+	.copyright {
+		;
+	}
+}
+
+@media only screen and (px-to-rem(576) > width) {
+	.footer {
+		;
+	}
+	
+	.copyright {
+		;
+	}
+}
+
+@media only screen and (px-to-rem(480) > width) {
+	.footer {
+		;
+	}
+	
+	.copyright {
+		;
 	}
 }

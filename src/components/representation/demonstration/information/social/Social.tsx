@@ -1,7 +1,7 @@
 import React, { HTMLAttributes } from 'react'
 import scss from './Social.module.scss'
 import { dataHeaderSocialImage, DataHeaderSocialImage } from '@/data/headerSocial'
-import ButtonSocial from '@ui/button/buttonSocial/ButtonSocial'
+import ButtonSocial from '@ui/button/button-social/ButtonSocial'
 
 interface PropsSocial extends HTMLAttributes<HTMLDivElement> {}
 

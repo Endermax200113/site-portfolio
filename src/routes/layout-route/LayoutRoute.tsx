@@ -34,7 +34,7 @@ const LayoutRoute: React.FC<PropsLayoutRoute> = () => {
 		<>
 			<Header />
 			<Outlet />
-			{/* <Footer /> */}
+			<Footer />
 		</>
 	)
 }

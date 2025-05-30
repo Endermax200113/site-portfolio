@@ -4,7 +4,7 @@
 	@extend %button;
 
 	font-weight: 700;
-	font-size: 15px;
+	font-size: px-to-rem(15);
 	color: $color-full-white;
 	display: flex;
 	flex-direction: column;
@@ -12,9 +12,9 @@
 }
 
 .wrap {
-	width: 15px;
+	width: px-to-rem(15);
 	aspect-ratio: 1 / 1;
-	margin-bottom: 10px;
+	margin-bottom: px-to-rem(10);
 }
 
 .label {
