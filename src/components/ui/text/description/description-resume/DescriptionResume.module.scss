@@ -20,7 +20,8 @@
 
 @media only screen and (px-to-rem(900) > width) {
 	.description {
-		;
+		margin-top: rubber-size(900, 50, 768, 35);
+		width: rubber-size(900, 660, 768, 575);
 	}
 }
 

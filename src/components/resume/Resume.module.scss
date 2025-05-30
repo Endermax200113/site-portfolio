@@ -83,15 +83,11 @@ $height-resume: px-to-rem(500);
 
 @media only screen and (px-to-rem(900) > width) {
 	.title {
-		;
-	}
-
-	.separator {
-		;
+		margin-top: rubber-size(900, 60, 768, 50);
 	}
 
 	.wrap {
-		;
+		margin-top: rubber-size(900, 60, 768, 50);
 	}
 
 	.image {
