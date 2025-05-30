@@ -11,21 +11,10 @@
 	}
 }
 
-@media only screen and (px-to-rem(1366) > width) {
-	.description {
-		;
-	}
-}
-
-@media only screen and (px-to-rem(1280) > width) {
-	.description {
-		;
-	}
-}
-
 @media only screen and (px-to-rem(1080) > width) {
 	.description {
-		;
+		margin-top: rubber-size(1080, 60, 900, 50);
+		width: rubber-size(1080, 710, 900, 660);
 	}
 }
 

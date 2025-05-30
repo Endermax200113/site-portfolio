@@ -61,20 +61,23 @@ $height-resume: px-to-rem(500);
 }
 
 @media only screen and (px-to-rem(1080) > width) {
+	$height-rubber: rubber-size(1080, 450, 900, 400);
+	$mask:	linear-gradient(to bottom, rgba($color-light-gray, 1) 0, 
+			rgba($color-light-gray, 0) $height-rubber);
+	
 	.title {
-		;
-	}
-
-	.separator {
-		;
+		margin-top: rubber-size(1080, 75, 900, 60);
 	}
 
 	.wrap {
-		;
+		width: rubber-size(1080, 550, 900, 475);
+		height: $height-rubber;
+		margin-top: rubber-size(1080, 70, 900, 60);
 	}
 
 	.image {
-		;
+		-webkit-mask: $mask;
+		mask: $mask;
 	}
 }
 
