@@ -54,39 +54,9 @@ $height-resume: px-to-rem(500);
 	}
 }
 
-@media only screen and (px-to-rem(1366) > width) {
-	.title {
-		;
-	}
-
-	.separator {
-		;
-	}
-
-	.wrap {
-		;
-	}
-
-	.image {
-		;
-	}
-}
-
 @media only screen and (px-to-rem(1280) > width) {
-	.title {
-		;
-	}
-
-	.separator {
-		;
-	}
-
 	.wrap {
-		;
-	}
-
-	.image {
-		;
+		margin-top: rubber-size(1280, 75, 1080, 70);
 	}
 }
 
