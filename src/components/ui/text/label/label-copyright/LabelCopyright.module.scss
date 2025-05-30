@@ -29,7 +29,8 @@
 
 @media only screen and (px-to-rem(1080) > width) {
 	.label {
-		;
+		margin-top: rubber-size(1080, 38, 900, 35);
+		font-size: rubber-size(1080, 17, 900, 15);
 	}
 }
 

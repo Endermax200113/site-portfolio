@@ -25,7 +25,7 @@
 
 @media only screen and (px-to-rem(1080) > width) {
 	.footer {
-		;
+		height: rubber-size(1080, 250, 900, 225);
 	}
 }
 

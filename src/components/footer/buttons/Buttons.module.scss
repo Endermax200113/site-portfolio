@@ -26,7 +26,7 @@
 
 @media only screen and (px-to-rem(1080) > width) {
 	.buttons {
-		;
+		margin-top: rubber-size(1080, 35, 900, 30);
 	}
 }
 
