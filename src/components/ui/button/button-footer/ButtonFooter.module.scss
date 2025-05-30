@@ -39,11 +39,11 @@
 
 @media only screen and (px-to-rem(900) > width) {
 	.button {
-		;
+		font-size: rubber-size(768, 12, 576, 11);
 	}
 
 	.wrap {
-		;
+		width: rubber-size(768, 15, 576, 13);
 	}
 }
 

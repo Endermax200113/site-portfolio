@@ -30,15 +30,9 @@
 	}
 }
 
-@media only screen and (px-to-rem(900) > width) {
-	.buttons {
-		;
-	}
-}
-
 @media only screen and (px-to-rem(768) > width) {
 	.buttons {
-		;
+		margin-top: rubber-size(768, 30, 576, 25);
 	}
 }
 

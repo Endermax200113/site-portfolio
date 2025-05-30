@@ -34,15 +34,10 @@
 	}
 }
 
-@media only screen and (px-to-rem(900) > width) {
-	.label {
-		;
-	}
-}
-
 @media only screen and (px-to-rem(768) > width) {
 	.label {
-		;
+		margin-top: rubber-size(768, 35, 576, 30);
+		font-size: rubber-size(768, 15, 576, 13);
 	}
 }
 
