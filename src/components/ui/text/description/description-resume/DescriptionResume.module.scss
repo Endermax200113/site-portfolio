@@ -44,6 +44,12 @@
 
 @media only screen and (px-to-rem(480) > width) {
 	.description {
-		;
+		$width: calc((576 - 425) / 2);
+		$margin-size: get-value-by-width(576, $width, 480);
+		$size: rubber-size(480, $margin-size, 320, 30);
+
+		width: calc(100% - ($size * 2));
+		margin-top: rubber-size(480, 30, 320, 25);
+		margin-inline: $size;
 	}
 }

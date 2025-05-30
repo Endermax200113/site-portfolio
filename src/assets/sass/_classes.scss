@@ -86,9 +86,3 @@
 		font-size: rubber-size(576, 11, 480, 10);
 	}
 }
-
-@media only screen and (px-to-rem(480) > width) {
-	%btn-big {
-		;
-	}
-}

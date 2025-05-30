@@ -133,19 +133,22 @@ $height-resume: px-to-rem(500);
 }
 
 @media only screen and (px-to-rem(480) > width) {
-	.title {
-		;
-	}
+	$height-rubber: rubber-size(480, 265, 320, 200);
+	$mask:	linear-gradient(to bottom, rgba($color-light-gray, 1) 0, 
+			rgba($color-light-gray, 0) $height-rubber);
 
-	.separator {
-		;
+	.title {
+		margin-top: rubber-size(480, 40, 320, 30);
 	}
 
 	.wrap {
-		;
+		margin-top: rubber-size(480, 40, 320, 30);
+		width: rubber-size(480, 325, 320, 250);
+		height: $height-rubber;
 	}
 
 	.image {
-		;
+		-webkit-mask: $mask;
+		mask: $mask;
 	}
 }
