@@ -165,7 +165,7 @@
 
 	.description {
 		margin-top: rubber-size(900, 10, 768, 5);
-		margin-right: rubber-size(900, 20, 768, 15)
+		margin-right: rubber-size(900, 20, 768, 15);
 	}
 
 	.no-projects {
@@ -176,32 +176,17 @@
 }
 
 @media only screen and (px-to-rem(768) > width) {
-	.projects {
-		;
-	}
-
 	.project {
-		;
+		height: unset;
+		flex-direction: column;
 	}
 
-	.info {
-		;
-	}
-
-	.details {
-		;
+	.buttons {
+		margin-block: px-to-rem(15);
 	}
 
 	.button {
-		;
-	}
-
-	%title {
-		;
-	}
-
-	.description {
-		;
+		margin-top: rubber-size(768, 15, 576, 10);
 	}
 
 	.no-projects {
