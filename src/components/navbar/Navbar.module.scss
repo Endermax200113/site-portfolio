@@ -23,10 +23,10 @@
 		padding-block: px-to-rem(7.5);
 		margin-inline: calc(50% - ($width-nav / 2));
 		width: $width-nav;
+	}
 
-		&.rest {
-			transition: none;
-		}
+	&.rest {
+		transition: none;
 	}
 }
 

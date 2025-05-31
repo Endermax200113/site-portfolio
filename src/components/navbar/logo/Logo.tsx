@@ -3,6 +3,7 @@ import scss from './Logo.module.scss'
 import { Link } from 'react-router-dom'
 import Image from '@ui/image/Image'
 import { spotClass } from '@utils/headerControl'
+import { useAdaptiveSize } from '@hooks/useAdaptiveSize'
 
 const imgLogo = (await import('@img/logo.png')).default
 
@@ -12,7 +13,8 @@ interface PropsLogo extends LiHTMLAttributes<HTMLLIElement> {
 }
 
 const Logo: React.FC<PropsLogo> = ({ isMain, headerFixed }) => {
-	const logoClass: string = spotClass(scss, 'logo-img', isMain, headerFixed)
+	const isDesktop: boolean = useAdaptiveSize()
+	const logoClass: string = spotClass(scss, 'logo-img', isMain, headerFixed, isDesktop)
 
 	const handleItemClick = (): void => {
 		setTimeout(() => {

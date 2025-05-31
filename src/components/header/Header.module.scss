@@ -9,10 +9,10 @@
 
 	&.fixed {
 		background-color: $color-header-black;
+	}
 
-		&.rest {
-			transition: none;
-		}
+	&.rest {
+		transition: none;
 	}
 }
 

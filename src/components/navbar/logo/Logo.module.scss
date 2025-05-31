@@ -24,10 +24,10 @@
 		&.fixed {
 			-webkit-filter: invert(100%);
 			filter: invert(100%);
+		}
 
-			&.rest {
-				transition: none;
-			}
+		&.rest {
+			transition: none;
 		}
 	}
 }

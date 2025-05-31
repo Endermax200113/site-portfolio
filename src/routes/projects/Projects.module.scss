@@ -123,47 +123,12 @@
 
 	.button {
 		font-size: rubber-size(1280, 14, 1080, 13);
+		margin-top: rubber-size(1280, 25, 1080, 20);
 	}
 
 	.description {
 		margin-top: rubber-size(1280, 15, 1080, 10);
 		margin-right: rubber-size(1280, 25, 1080, 20);
-	}
-
-	.no-projects {
-		&.title {
-			;
-		}
-	}
-}
-
-@media only screen and (px-to-rem(1080) > width) {
-	.projects {
-		;
-	}
-
-	.project {
-		;
-	}
-
-	.info {
-		;
-	}
-
-	.details {
-		;
-	}
-
-	.button {
-		;
-	}
-
-	%title {
-		;
-	}
-
-	.description {
-		;
 	}
 
 	.no-projects {

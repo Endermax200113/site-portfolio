@@ -18,6 +18,7 @@ const Header: React.FC<PropsHeader> = () => {
 	const [headerFixed, setHeaderFixed] = useState<boolean>(false)
 	const stateIsOpenMenu = useState<boolean>(false)
 	const [isOpenMenu, setIsOpenMenu] = stateIsOpenMenu
+	const [allowFixHeader, setAllowFixHeader] = useState<boolean>(getWidthScreen() >= getRemByPx(900))
 
 	const mainLinks: string[] = ['/', '/about', '/skills', '/portfolio', '/cv']
 	const inMainLinks = (pathname: string): boolean => {
@@ -33,7 +34,7 @@ const Header: React.FC<PropsHeader> = () => {
 
 	const [isMain, setIsMain] = useState<boolean>(inMainLinks(pathname))
 
-	const headerClass: string = spotClass(scss, 'header', isMain, headerFixed)
+	const headerClass: string = spotClass(scss, 'header', isMain, headerFixed, allowFixHeader)
 
 	useRenderEffect(() => {
 		setIsMain(inMainLinks(pathname))
@@ -42,8 +43,6 @@ const Header: React.FC<PropsHeader> = () => {
 			top: 0,
 		})
 	}, [pathname])
-
-	const [allowFixHeader, setAllowFixHeader] = useState<boolean>(getWidthScreen() >= getRemByPx(900))
 
 	const onResizeWidthScreen = (): void => {
 		if (getWidthScreen() >= getRemByPx(900) && !allowFixHeader) {
