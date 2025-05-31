@@ -208,6 +208,10 @@
 		flex-direction: row;
 	}
 
+	.description {
+		margin-right: 0;
+	}
+
 	.button {
 		margin-top: 0;
 		margin-left: px-to-rem(10);
@@ -225,32 +229,8 @@
 }
 
 @media only screen and (px-to-rem(480) > width) {
-	.projects {
-		;
-	}
-
-	.project {
-		;
-	}
-
-	.info {
-		;
-	}
-
-	.details {
-		;
-	}
-
 	.button {
-		;
-	}
-
-	%title {
-		;
-	}
-
-	.description {
-		;
+		font-size: rubber-size(480, 12, 320, 10);
 	}
 
 	.no-projects {
