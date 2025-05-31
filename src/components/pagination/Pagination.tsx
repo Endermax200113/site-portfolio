@@ -1,8 +1,10 @@
-import React, { MouseEvent, ReactNode } from 'react'
+import React, { MouseEvent, ReactNode, useState } from 'react'
 import scss from './Pagination.module.scss'
 import Button from '@ui/button/Button'
 import Label from '@ui/text/label/Label'
 import { trimSass } from '@utils/sassControl'
+import { getRemByPx, getWidthScreen } from '@utils/screenControl'
+import { useEventListener } from '@hooks/useEventListener'
 
 interface PropsPagination {
 	pages: number
@@ -11,9 +13,25 @@ interface PropsPagination {
 }
 
 const Pagination: React.FC<PropsPagination> = ({ pages, page, setPage }) => {
+	const [needLess, setNeedLess] = useState<boolean>(getWidthScreen() < getRemByPx(576))
+
 	const handleToPrevClick = (e?: MouseEvent): void => setPage(page - 1, e)
 	const handleToPageClick = (page: number, e?: MouseEvent): void => setPage(page, e)
 	const handleToNextClick = (e?: MouseEvent): void => setPage(page + 1, e)
+
+	const onResizeScreen = (): void => {
+		if (getWidthScreen() >= getRemByPx(576)) {
+			if (needLess) {
+				setNeedLess(false)
+			}
+		} else {
+			if (!needLess) {
+				setNeedLess(true)
+			}
+		}
+	}
+
+	useEventListener('resize', onResizeScreen, true)
 
 	const renderPageNumbers = (): ReactNode[] => {
 		const pageNumbers: ReactNode[] = []
@@ -43,7 +61,7 @@ const Pagination: React.FC<PropsPagination> = ({ pages, page, setPage }) => {
 				pageNumbers.push(
 					<Button
 						className={scss.page}
-						key={1}
+						key='page-1'
 						onClick={e => handleToPageClick(1, e)}>
 						1
 					</Button>
@@ -67,7 +85,7 @@ const Pagination: React.FC<PropsPagination> = ({ pages, page, setPage }) => {
 					className={clazz}
 					key={i}
 					onClick={e => handleToPageClick(i, e)}>
-					{i}
+					{needLess ? (i === page - 1 ? '<' : i === page + 1 ? '>' : i) : i}
 				</Button>
 			)
 
@@ -92,19 +110,25 @@ const Pagination: React.FC<PropsPagination> = ({ pages, page, setPage }) => {
 
 	return (
 		<div className={scss.pages}>
-			<Button
-				className={scss.page}
-				onClick={e => handleToPrevClick(e)}
-				hidden={page === 1}>
-				&lt;
-			</Button>
+			{!needLess && (
+				<Button
+					className={scss.page}
+					onClick={e => handleToPrevClick(e)}
+					hidden={page === 1}>
+					&lt;
+				</Button>
+			)}
+
 			{renderPageNumbers()}
-			<Button
-				className={scss.page}
-				onClick={e => handleToNextClick(e)}
-				hidden={page === pages}>
-				&gt;
-			</Button>
+
+			{!needLess && (
+				<Button
+					className={scss.page}
+					onClick={e => handleToNextClick(e)}
+					hidden={page === pages}>
+					&gt;
+				</Button>
+			)}
 		</div>
 	)
 }

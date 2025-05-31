@@ -1,18 +1,18 @@
 @use '@sass/main' as *;
 
 .pages {
-	margin-bottom: 50px;
+	margin-bottom: px-to-rem(50);
 	display: flex;
 }
 
 .page {
 	@extend %button;
 
-	width: 45px;
+	width: px-to-rem(45);
 	aspect-ratio: 1 / 1;
-	border: 3px solid $color-light-black;
-	margin-inline: 10px;
-	font-size: 16px;
+	border: px-to-rem(3) solid $color-light-black;
+	margin-inline: px-to-rem(10);
+	font-size: px-to-rem(16);
 	font-weight: 600;
 	display: grid;
 	place-content: center;
@@ -26,12 +26,41 @@
 	}
 
 	&.here {
-		border: 3px solid $color-gray;
+		border: px-to-rem(3) solid $color-gray;
 		color: $color-gray;
 		pointer-events: none;
 	}
 
 	&[hidden] {
 		display: none;
+	}
+}
+
+@media only screen and (px-to-rem(768) > width) {
+	.page {
+		width: rubber-size(768, 45, 576, 40);
+		margin-inline: rubber-size(768, 10, 576, 7);
+		font-size: rubber-size(768, 16, 576, 14);
+	}
+}
+
+@media only screen and (px-to-rem(576) > width) {
+	.page {
+		width: rubber-size(576, 40, 480, 35);
+		margin-inline: rubber-size(576, 7, 480, 5);
+		font-size: rubber-size(576, 14, 480, 12);
+	}
+}
+
+@media only screen and (px-to-rem(480) > width) {
+	.page {
+		width: rubber-size(480, 35, 320, 30);
+		border: rubber-size(480, 3, 320, 2) solid $color-full-black;
+		margin-inline: rubber-size(480, 5, 320, 3);
+		font-size: rubber-size(480, 12, 320, 10);
+
+		&.here {
+			border: rubber-size(480, 3, 320, 2) solid $color-gray;
+		}
 	}
 }

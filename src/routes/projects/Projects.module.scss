@@ -101,8 +101,6 @@
 	}
 }
 
-/* // TODO Не забыть адаптировать для класса .no-projects */
-
 @media only screen and (px-to-rem(1280) > width) {
 	.projects {
 		width: rubber-size(1280, 1000, 1080, 900);
@@ -131,13 +129,15 @@
 	}
 
 	.no-projects {
-		&.title {
-			;
-		}
+		height: rubber-size(1280, 200, 1080, 175);
 	}
 }
 
 @media only screen and (px-to-rem(900) > width) {
+	.main {
+		width: 100%;
+	}
+
 	.projects {
 		width: 100%;
 	}
@@ -169,8 +169,10 @@
 	}
 
 	.no-projects {
+		height: rubber-size(900, 175, 768, 150);
+		
 		&.title {
-			;
+			font-size: rubber-size(900, 20, 768, 18) !important;
 		}
 	}
 }
@@ -191,7 +193,7 @@
 
 	.no-projects {
 		&.title {
-			;
+			font-size: rubber-size(768, 18, 576, 16) !important;
 		}
 	}
 }
@@ -220,22 +222,10 @@
 			margin-left: 0;
 		}
 	}
-
-	.no-projects {
-		&.title {
-			;
-		}
-	}
 }
 
 @media only screen and (px-to-rem(480) > width) {
 	.button {
 		font-size: rubber-size(480, 12, 320, 10);
-	}
-
-	.no-projects {
-		&.title {
-			;
-		}
 	}
 }

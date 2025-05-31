@@ -3,7 +3,25 @@
 .label {
 	font-family: $font-montserrat;
 	font-weight: 400;
-	font-size: 24px;
+	font-size: px-to-rem(24);
 	letter-spacing: 0.14em;
 	color: $color-full-black;
+}
+
+@media only screen and (px-to-rem(768) > width) {
+	.label {
+		font-size: rubber-size(768, 24, 576, 22);
+	}
+}
+
+@media only screen and (px-to-rem(576) > width) {
+	.label {
+		font-size: rubber-size(576, 22, 480, 19);
+	}
+}
+
+@media only screen and (px-to-rem(480) > width) {
+	.label {
+		font-size: rubber-size(480, 19, 320, 17);
+	}
 }
