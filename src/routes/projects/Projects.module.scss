@@ -52,7 +52,6 @@
 .button {
 	@extend %btn-small;
 
-	height: px-to-rem(40);
 	margin-top: px-to-rem(25);
 	border-block: px-to-rem(2) solid $color-full-white;
 	font-size: px-to-rem(14);
@@ -140,31 +139,33 @@
 
 @media only screen and (px-to-rem(900) > width) {
 	.projects {
-		;
+		width: 100%;
 	}
 
 	.project {
-		;
+		height: rubber-size(900, 175, 768, 150);
 	}
 
 	.info {
-		;
+		margin-inline: rubber-size(900, 20, 768, 15);
 	}
 
 	.details {
-		;
+		margin-block: rubber-size(900, 16, 768, 10);
 	}
 
 	.button {
-		;
+		margin-top: rubber-size(900, 20, 768, 15);
+		font-size: rubber-size(900, 13, 768, 12);
 	}
 
 	%title {
-		;
+		font-size: rubber-size(900, 15, 768, 14) !important;
 	}
 
 	.description {
-		;
+		margin-top: rubber-size(900, 10, 768, 5);
+		margin-right: rubber-size(900, 20, 768, 15)
 	}
 
 	.no-projects {
