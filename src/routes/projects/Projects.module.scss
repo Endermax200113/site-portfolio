@@ -197,32 +197,24 @@
 }
 
 @media only screen and (px-to-rem(576) > width) {
-	.projects {
-		;
-	}
-
-	.project {
-		;
-	}
-
 	.info {
-		;
+		flex-direction: column;
+		justify-content: unset;
 	}
 
-	.details {
-		;
+	.buttons {
+		margin-block: 0;
+		margin-bottom: px-to-rem(15);
+		flex-direction: row;
 	}
 
 	.button {
-		;
-	}
+		margin-top: 0;
+		margin-left: px-to-rem(10);
 
-	%title {
-		;
-	}
-
-	.description {
-		;
+		&:first-child {
+			margin-left: 0;
+		}
 	}
 
 	.no-projects {
