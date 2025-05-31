@@ -34,15 +34,3 @@
 		height: rubber-size(768, 225, 576, 200);
 	}
 }
-
-@media only screen and (px-to-rem(576) > width) {
-	.footer {
-		;
-	}
-}
-
-@media only screen and (px-to-rem(480) > width) {
-	.footer {
-		;
-	}
-}

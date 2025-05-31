@@ -40,15 +40,3 @@
 		font-size: rubber-size(768, 15, 576, 13);
 	}
 }
-
-@media only screen and (px-to-rem(576) > width) {
-	.label {
-		;
-	}
-}
-
-@media only screen and (px-to-rem(480) > width) {
-	.label {
-		;
-	}
-}

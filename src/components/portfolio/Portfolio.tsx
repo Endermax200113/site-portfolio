@@ -25,9 +25,8 @@ const Portfolio: React.FC<PropsPortfolio> = forwardRef<HTMLElement>(({ ...props 
 		return 6
 	}
 
-	// TODO Не забыть убрать true!
 	const [countForChecking, setCountForChecking] = useState<number>(checkCount())
-	const [showMore, setShowMore] = useState<boolean>(/* dataPortfolio.length > countForChecking */ true)
+	const [showMore, setShowMore] = useState<boolean>(dataPortfolio.length > countForChecking)
 
 	const arrProjects: AllProjects = useArray(() => {
 		const arr: AllProjects = []
@@ -53,12 +52,9 @@ const Portfolio: React.FC<PropsPortfolio> = forwardRef<HTMLElement>(({ ...props 
 
 	useEventListener('resize', onResizeWidth, true)
 
-	useRenderEffect(
-		() => setShowMore(/* dataPortfolio.length > countForChecking */ true),
-		[
-			/* dataPortfolio.length, countForChecking */
-		]
-	)
+	useRenderEffect(() => {
+		setShowMore(dataPortfolio.length > countForChecking)
+	}, [dataPortfolio.length, countForChecking])
 
 	return (
 		<section

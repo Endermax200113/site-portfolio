@@ -46,33 +46,3 @@
 		width: rubber-size(768, 15, 576, 13);
 	}
 }
-
-@media only screen and (px-to-rem(768) > width) {
-	.button {
-		;
-	}
-
-	.wrap {
-		;
-	}
-}
-
-@media only screen and (px-to-rem(576) > width) {
-	.button {
-		;
-	}
-
-	.wrap {
-		;
-	}
-}
-
-@media only screen and (px-to-rem(480) > width) {
-	.button {
-		;
-	}
-
-	.wrap {
-		;
-	}
-}

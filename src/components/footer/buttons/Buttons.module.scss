@@ -35,15 +35,3 @@
 		margin-top: rubber-size(768, 30, 576, 25);
 	}
 }
-
-@media only screen and (px-to-rem(576) > width) {
-	.buttons {
-		;
-	}
-}
-
-@media only screen and (px-to-rem(480) > width) {
-	.buttons {
-		;
-	}
-}
