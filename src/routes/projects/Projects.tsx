@@ -119,15 +119,13 @@ const Projects: React.FC<PropsProjects> = ({ ...props }) => {
 				)}
 			</section>
 
-			{
-				/* arrPagesData.length > 1 */ true && (
-					<Pagination
-						pages={/* arrPagesData.length */ 15}
-						page={/* page */ 7}
-						setPage={setCurrentPage}
-					/>
-				)
-			}
+			{arrPagesData.length > 1 && (
+				<Pagination
+					pages={arrPagesData.length}
+					page={page}
+					setPage={setCurrentPage}
+				/>
+			)}
 		</RootMain>
 	)
 }

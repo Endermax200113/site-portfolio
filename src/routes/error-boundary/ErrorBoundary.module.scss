@@ -1,0 +1,82 @@
+@use '@sass/main' as *;
+
+.error {
+	width: px-to-rem(750);
+}
+
+.info {
+	width: 100%;
+}
+
+.code {
+	font-size: px-to-rem(100);
+}
+
+.reason {
+	margin-top: px-to-rem(20);
+	font-size: px-to-rem(20);
+}
+
+@media only screen and (px-to-rem(1366) > width) {
+	.code {
+		font-size: rubber-size(1366, 100, 1280, 90);
+	}
+
+	.reason {
+		margin-top: rubber-size(1366, 20, 1280, 15);
+		font-size: rubber-size(1366, 20, 1280, 17);
+	}
+}
+
+@media only screen and (px-to-rem(900) > width) {
+	.error {
+		width: rubber-size(900, 750, 768, 710);
+	}
+
+	.code {
+		font-size: rubber-size(900, 90, 768, 75);
+	}
+
+	.reason {
+		margin-top: rubber-size(900, 15, 768, 10);
+		font-size: rubber-size(900, 17, 768, 15);
+	}
+}
+
+@media only screen and (px-to-rem(768) > width) {
+	.error {
+		width: 100%;
+	}
+
+	.info {
+		$difference-from: 768 - 710;
+		$difference-to: 576 - 516;
+		$margin-size-from: calc($difference-from / 2);
+		$margin-size-to: calc($difference-to / 2);
+
+		width: calc(100% - rubber-size(768, $difference-from, 576, $difference-to));
+		margin-inline: rubber-size(768, $margin-size-from, 576, $margin-size-to);
+	}
+}
+
+@media only screen and (px-to-rem(576) > width) {
+	.code {
+		font-size: rubber-size(576, 75, 480, 60);
+	}
+
+	.reason {
+		margin-top: rubber-size(576, 10, 480, 7);
+		font-size: rubber-size(576, 15, 480, 13);
+	}
+}
+
+@media only screen and (px-to-rem(480) > width) {
+	.code {
+		font-size: rubber-size(480, 60, 320, 45);
+	}
+
+	.reason {
+		margin-top: rubber-size(480, 7, 320, 5);
+		font-size: rubber-size(480, 13, 320, 11);
+	}
+}

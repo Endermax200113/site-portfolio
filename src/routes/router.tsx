@@ -1,7 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom'
 import Main from './main/Main'
 import Project from './project/Project'
-import ErrorBoundary from './errorBoundary/ErrorBoundary'
+import ErrorBoundary from './error-boundary/ErrorBoundary'
 import { loadProject } from './project/ProjectLoader'
 import LayoutRoute from './layout-route/LayoutRoute'
 import { loadMain } from './main/MainLoader'
