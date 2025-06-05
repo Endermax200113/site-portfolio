@@ -14,42 +14,42 @@
 }
 
 .details {
-	width: 1000px !important;
-	margin-top: 50px;
+	width: px-to-rem(1000) !important;
+	margin-top: px-to-rem(50);
 	display: flex;
 	flex-direction: column;
 	align-items: unset !important;
 }
 
 .img {
+	aspect-ratio: 16 / 9;
 	-o-object-fit: cover !important;
 	object-fit: cover !important;
 
 	&-wrap {
 		width: 100%;
-		height: 500px;
-		margin-top: 50px;
+		margin-top: px-to-rem(50);
 	}
 }
 
 .description {
-	margin-top: 25px;
+	margin-top: px-to-rem(25);
 }
 
 .button {
 	@extend %btn-big;
 
-	margin-top: 25px;
+	margin-top: px-to-rem(25);
 	align-self: center;
 }
 
 .separator {
-	margin: 50px auto 0;
+	margin: px-to-rem(50) auto 0;
 }
 
 .info {
-	width: 1000px !important;
-	margin-top: 75px;
+	width: px-to-rem(1000) !important;
+	margin-top: px-to-rem(75);
 	display: flex;
 	flex-direction: column;
 
@@ -58,19 +58,19 @@
 	}
 
 	&:last-of-type {
-		margin-bottom: 75px;
+		margin-bottom: px-to-rem(75);
 	}
 }
 
 .resources {
 	&-list {
 		width: 100%;
-		margin-top: 75px;
+		margin-top: px-to-rem(75);
 		list-style: none;
 		display: grid;
-		grid-template-columns: 300px 300px 300px;
+		grid-template-columns: repeat(3, px-to-rem(300));
 		justify-content: space-between;
-		row-gap: 20px;
+		row-gap: px-to-rem(20);
 	}
 }
 
@@ -78,42 +78,98 @@
 	&-link {
 		@extend %button;
 
-		width: 300px;
+		width: px-to-rem(300);
 		background-color: $color-lighter-gray;
-		box-shadow: 0 4px 4px 0 rgb(0 0 0 / 25%);
-		padding: 5px 15px;
+		box-shadow: 0 px-to-rem(4) px-to-rem(4) 0 rgb(0 0 0 / 25%);
+		padding: px-to-rem(5) px-to-rem(15);
 		color: $color-full-black !important;
 		display: flex;
 		align-items: center;
 	}
 
 	&-image {
-		width: 40px;
+		width: px-to-rem(40);
 		aspect-ratio: 1 / 1;
 	}
 
 	&-text {
-		margin-left: 15px;
+		margin-left: px-to-rem(15);
 	}
 }
 
 .stack {
-	margin-top: 75px;
-	grid-template-columns: 150px 150px 150px 150px;
-	-moz-column-gap: calc(400px / 3);
-	column-gap: calc(400px / 3);
+	margin-top: px-to-rem(75);
+	grid-template-columns: repeat(4, px-to-rem(150));
+	-moz-column-gap: calc(px-to-rem(400) / 3);
+	column-gap: calc(px-to-rem(400) / 3);
 }
 
-$width-image: 315px;
-$gap-image: calc((1000px - ($width-image * 3)) / 2);
+$width-image: px-to-rem(315);
+$gap-image: calc((px-to-rem(1000) - ($width-image * 3)) / 2);
 
 .gallery {
-	margin-top: 75px;
+	margin-top: px-to-rem(75);
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 	gap: $gap-image;
 
 	&-image {
 		width: $width-image !important;
+	}
+}
+
+@media only screen and (px-to-rem(1600) > width) {
+	.details {
+		margin-top: rubber-size(1600, 50, 1366, 40);
+	}
+
+	.img-wrap {
+		margin-top: rubber-size(1600, 50, 1366, 40);
+	}
+
+	.description {
+		margin-top: rubber-size(1600, 25, 1366, 20);
+	}
+}
+
+@media only screen and (px-to-rem(1366) > width) {
+	.project {
+		;
+	}
+}
+
+@media only screen and (px-to-rem(1280) > width) {
+	.project {
+		;
+	}
+}
+
+@media only screen and (px-to-rem(1080) > width) {
+	.project {
+		;
+	}
+}
+
+@media only screen and (px-to-rem(900) > width) {
+	.project {
+		;
+	}
+}
+
+@media only screen and (px-to-rem(768) > width) {
+	.project {
+		;
+	}
+}
+
+@media only screen and (px-to-rem(576) > width) {
+	.project {
+		;
+	}
+}
+
+@media only screen and (px-to-rem(480) > width) {
+	.project {
+		;
 	}
 }

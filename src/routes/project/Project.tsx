@@ -80,7 +80,7 @@ const Project: React.FC<PropsProject> = ({ ...props }) => {
 				{site && <Button className={scss.button}>К сайту</Button>}
 			</Section>
 
-			{gallery && (
+			{/* {gallery && (
 				<Section className={scss.info}>
 					<Heading
 						children='Галерея'
@@ -110,9 +110,9 @@ const Project: React.FC<PropsProject> = ({ ...props }) => {
 						</Button>
 					)}
 				</Section>
-			)}
+			)} */}
 
-			<Section className={scss.info}>
+			{/* <Section className={scss.info}>
 				<Heading
 					children='Стек'
 					className={scss['info-title']}
@@ -123,9 +123,9 @@ const Project: React.FC<PropsProject> = ({ ...props }) => {
 					className={scss.stack}
 					mergeClass
 				/>
-			</Section>
+			</Section> */}
 
-			{resources && resources.length > 0 && (
+			{/* {resources && resources.length > 0 && (
 				<Section className={scss.info}>
 					<Heading
 						children='Ссылки'
@@ -154,14 +154,14 @@ const Project: React.FC<PropsProject> = ({ ...props }) => {
 						})}
 					</ul>
 				</Section>
-			)}
+			)} */}
 
-			{gallery && (
+			{/* {gallery && (
 				<DialogGallery
 					gallery={gallery}
 					state={dialogGalleryState}
 				/>
-			)}
+			)} */}
 		</RootMain>
 	)
 }
