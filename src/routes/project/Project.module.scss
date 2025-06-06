@@ -132,15 +132,11 @@ $gap-image: calc((px-to-rem(1000) - ($width-image * 3)) / 2);
 	}
 }
 
-@media only screen and (px-to-rem(1366) > width) {
-	.project {
-		;
-	}
-}
+/* 1366px */
 
 @media only screen and (px-to-rem(1280) > width) {
-	.project {
-		;
+	.details {
+		width: rubber-size(1280, 1000, 1080, 875) !important;
 	}
 }
 
