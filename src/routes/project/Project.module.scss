@@ -16,8 +16,6 @@
 .details {
 	width: px-to-rem(1000) !important;
 	margin-top: px-to-rem(50);
-	display: flex;
-	flex-direction: column;
 	align-items: unset !important;
 }
 
@@ -136,13 +134,23 @@ $gap-image: calc((px-to-rem(1000) - ($width-image * 3)) / 2);
 
 @media only screen and (px-to-rem(1280) > width) {
 	.details {
-		width: rubber-size(1280, 1000, 1080, 875) !important;
+		width: rubber-size(1280, 1000, 1080, 900) !important;
 	}
 }
 
 @media only screen and (px-to-rem(1080) > width) {
-	.project {
-		;
+	.details {
+		margin-top: rubber-size(1080, 40, 900, 35);
+		align-items: center !important
+	}
+
+	.img-wrap {
+		margin-top: rubber-size(1080, 40, 900, 35);
+	}
+
+	.description {
+		margin-top: rubber-size(1080, 20, 900, 17);
+		width: rubber-size(1080, 900, 900, 825);
 	}
 }
 
