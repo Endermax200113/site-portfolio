@@ -172,8 +172,17 @@ $gap-image: calc((px-to-rem(1000) - ($width-image * 3)) / 2);
 }
 
 @media only screen and (px-to-rem(768) > width) {
-	.project {
-		;
+	.details {
+		margin-top: rubber-size(768, 30, 576, 25);
+	}
+
+	.img-wrap {
+		margin-top: rubber-size(768, 30, 576, 25);
+	}
+
+	.description {
+		margin-top: rubber-size(768, 15, 576, 12);
+		margin-inline: rubber-size(768, 55, 576, 30);
 	}
 }
 
