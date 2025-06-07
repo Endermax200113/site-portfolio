@@ -1,5 +1,9 @@
 @use 'sass:string';
 
+@function str($str) {
+	@return string.unquote($str);
+}
+
 @function px-to-rem($px) {
 	@return calc(($px / 16) * 1rem);
 }
@@ -8,11 +12,15 @@
 	@return calc(($px * 100 / $viewport) * 1vw);
 }
 
-@function rubber-size($from-width, $from-size, $to-width, $to-size) {
+@function rubber-size($from-width, $from-size, $to-width, $to-size, $unit: "rem", $dependent: null) {
 	@if $from-width == $to-width {
 		@error "Parameters $from-width and $to-width is equals!";
 	} @else if $from-size == $to-size {
 		@error "You not need the 'rubber-size' function!"; 
+	} @else if $dependent {
+		@if $dependent <= 0 {
+			@error "The dependent unit is less than or equal to zero!";
+		}
 	}
 
 	$resize: calc($from-size - $to-size);
@@ -21,18 +29,34 @@
 		$resize: calc($to-size - $from-size);
 	}
 
-	$difference: calc($from-width - $to-width);	
-	$equation: calc($resize / $difference);		
+	$for-coefficient: $resize;
 
-	$to-size-rem: px-to-rem($to-size);
-	$resize-rem: px-to-rem($resize);
-	$from-width-rem: px-to-rem($from-width);
-	$from-size-rem: px-to-rem($from-size);
+	@if $dependent {
+		$for-coefficient: calc(($from-size - $to-size) * $dependent);
+
+		@if $from-size < $to-size {
+			$for-coefficient: calc(($to-size - $from-size) * $dependent); 
+		}
+	}
+
+	$difference: calc($from-width - $to-width);	
+	$equation: calc($for-coefficient / $difference);
+
+	$to-size-unit: str("#{$to-size}#{$unit}");
+	$resize-unit: str("#{$resize}#{$unit}");
+	$from-width-unit: px-to-rem($from-width);
+	$from-size-unit: str("#{$from-size}#{$unit}");
+
+	@if $unit == "rem" {
+		$to-size-unit: px-to-rem($to-size);
+		$resize-unit: px-to-rem($resize);
+		$from-size-unit: px-to-rem($from-size);
+	}
 	
 	@if $from-size > $to-size {
-		@return string.unquote("clamp(#{$to-size-rem}, #{$to-size-rem} + clamp(0rem, #{$resize-rem} - (#{$from-width-rem} - 100vw) * #{$equation}, #{$resize-rem}), #{$from-size-rem})");
+		@return string.unquote("clamp(#{$to-size-unit}, #{$to-size-unit} + clamp(0#{$unit}, #{$resize-unit} - (#{$from-width-unit} - 100vw) * #{$equation}, #{$resize-unit}), #{$from-size-unit})");
 	} @else {
-		@return string.unquote("clamp(#{$from-size-rem}, #{$to-size-rem} - clamp(0rem, #{$resize-rem} - (#{$from-width-rem} - 100vw) * #{$equation}, #{$resize-rem}), #{$to-size-rem})");
+		@return string.unquote("clamp(#{$from-size-unit}, #{$to-size-unit} - clamp(0#{$unit}, #{$resize-unit} - (#{$from-width-unit} - 100vw) * #{$equation}, #{$resize-unit}), #{$to-size-unit})");
 	}
 }
 
@@ -83,8 +107,4 @@
 	$result: calc(100 - $margins-percent);
 	
 	@return $result;
-}
-
-@function str($str) {
-	@return string.unquote($str);
 }
