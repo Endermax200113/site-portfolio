@@ -1,51 +1,5 @@
 @use 'sass:string';
 
-$screen-width-px: 1920;
-
-@media only screen and (width >= 3840px) {
-	$screen-width-px: 3840;
-}
-
-@media only screen and (3840px > width >= 2560px) {
-	$screen-width-px: 2560;
-}
-
-@media only screen and (2560px > width >= 1920px) {
-	$screen-width-px: 1920;
-}
-
-@media only screen and (1920px > width >= 1600px) {
-	$screen-width-px: 1600;
-}
-
-@media only screen and (1600px > width >= 1366px) {
-	$screen-width-px: 1366;
-}
-
-@media only screen and (1366px > width >= 1280px) {
-	$screen-width-px: 1280;
-}
-
-@media only screen and (1280px > width >= 1080px) {
-	$screen-width-px: 1080;
-}
-
-@media only screen and (1080px > width >= 768px) {
-	$screen-width-px: 768;
-}
-
-@media only screen and (768px > width >= 576px) {
-	$screen-width-px: 576;
-}
-
-@media only screen and (576px > width >= 480px) {
-	$screen-width-px: 480;
-}
-
-@media only screen and (480px > width >= 320px) {
-	$screen-width-px: 320;
-}
-
 @function px-to-rem($px) {
 	@return calc(($px / 16) * 1rem);
 }
@@ -55,21 +9,31 @@ $screen-width-px: 1920;
 }
 
 @function rubber-size($from-width, $from-size, $to-width, $to-size) {
-	$resize: calc($from-size - $to-size);
-	$difference: calc($from-width - $to-width);
-	
-	@if $difference == 0 {
+	@if $from-width == $to-width {
 		@error "Parameters $from-width and $to-width is equals!";
+	} @else if $from-size == $to-size {
+		@error "You not need the 'rubber-size' function!"; 
 	}
 
-	$equation: calc($resize / $difference);
+	$resize: calc($from-size - $to-size);
+
+	@if $from-size < $to-size {
+		$resize: calc($to-size - $from-size);
+	}
+
+	$difference: calc($from-width - $to-width);	
+	$equation: calc($resize / $difference);		
 
 	$to-size-rem: px-to-rem($to-size);
 	$resize-rem: px-to-rem($resize);
 	$from-width-rem: px-to-rem($from-width);
 	$from-size-rem: px-to-rem($from-size);
 	
-	@return string.unquote("clamp(#{$to-size-rem}, #{$to-size-rem} + clamp(0rem, #{$resize-rem} - (#{$from-width-rem} - 100vw) * #{$equation}, #{$resize-rem}), #{$from-size-rem})");
+	@if $from-size > $to-size {
+		@return string.unquote("clamp(#{$to-size-rem}, #{$to-size-rem} + clamp(0rem, #{$resize-rem} - (#{$from-width-rem} - 100vw) * #{$equation}, #{$resize-rem}), #{$from-size-rem})");
+	} @else {
+		@return string.unquote("clamp(#{$from-size-rem}, #{$to-size-rem} - clamp(0rem, #{$resize-rem} - (#{$from-width-rem} - 100vw) * #{$equation}, #{$resize-rem}), #{$to-size-rem})");
+	}
 }
 
 @function get-percent-by-value($first-value, $second-value, $first-percent: 100) {

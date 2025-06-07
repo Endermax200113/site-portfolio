@@ -116,6 +116,8 @@ $gap-image: calc((px-to-rem(1000) - ($width-image * 3)) / 2);
 	}
 }
 
+/* 1920px */
+
 @media only screen and (px-to-rem(1600) > width) {
 	.details {
 		margin-top: rubber-size(1600, 50, 1366, 40);
@@ -150,13 +152,22 @@ $gap-image: calc((px-to-rem(1000) - ($width-image * 3)) / 2);
 
 	.description {
 		margin-top: rubber-size(1080, 20, 900, 17);
-		width: rubber-size(1080, 900, 900, 825);
+		margin-inline: rubber-size(1080, 0, 900, 55);
 	}
 }
 
 @media only screen and (px-to-rem(900) > width) {
-	.project {
-		;
+	.details {
+		width: 100% !important;
+		margin-top: rubber-size(900, 35, 768, 30);
+	}
+
+	.img-wrap {
+		margin-top: rubber-size(900, 35, 768, 30);
+	}
+
+	.description {
+		margin-top: rubber-size(900, 17, 768, 15);
 	}
 }
 
