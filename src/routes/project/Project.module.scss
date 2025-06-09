@@ -167,6 +167,10 @@ $gap-image: calc((px-to-rem(1000) - ($width-image * 3)) / 2);
 		margin-top: rubber-size(1080, 20, 900, 17);
 		margin-inline: rubber-size(1080, 0, 900, 55);
 	}
+
+	.info, .gallery {
+		margin-top: rubber-size(1080, 75, 900, 60);
+	}
 }
 
 @media only screen and (px-to-rem(900) > width) {
