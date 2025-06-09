@@ -88,13 +88,18 @@
 
 @media only screen and (px-to-rem(1080) > width) {
 	.gallery {
-		;
+		padding-inline: rubber-size(1080, 25, 900, 20);
 	}
 }
 
 @media only screen and (px-to-rem(900) > width) {
 	.gallery {
-		;
+		padding-inline: rubber-size(900, 20, 768, 17);
+	}
+
+	.name {
+		margin-bottom: rubber-size(900, 12, 768, 10);
+		font-size: rubber-size(900, 14, 768, 12);
 	}
 }
 

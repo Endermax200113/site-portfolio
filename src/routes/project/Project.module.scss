@@ -120,11 +120,7 @@ $gap-image: calc((px-to-rem(1000) - ($width-image * 3)) / 2);
 /* 1920px */
 
 @media only screen and (px-to-rem(1600) > width) {
-	.details {
-		margin-top: rubber-size(1600, 50, 1366, 40);
-	}
-
-	.img-wrap {
+	.details, .img-wrap {
 		margin-top: rubber-size(1600, 50, 1366, 40);
 	}
 
@@ -136,11 +132,7 @@ $gap-image: calc((px-to-rem(1000) - ($width-image * 3)) / 2);
 /* 1366px */
 
 @media only screen and (px-to-rem(1280) > width) {
-	.details {
-		width: rubber-size(1280, 1000, 1080, 900) !important;
-	}
-
-	.info {
+	.details, .info {
 		width: rubber-size(1280, 1000, 1080, 900) !important;
 	}
 
@@ -154,13 +146,12 @@ $gap-image: calc((px-to-rem(1000) - ($width-image * 3)) / 2);
 }
 
 @media only screen and (px-to-rem(1080) > width) {
-	.details {
+	.details, .img-wrap {
 		margin-top: rubber-size(1080, 40, 900, 35);
-		align-items: center !important
 	}
 
-	.img-wrap {
-		margin-top: rubber-size(1080, 40, 900, 35);
+	.details {
+		align-items: center !important
 	}
 
 	.description {
@@ -170,6 +161,10 @@ $gap-image: calc((px-to-rem(1000) - ($width-image * 3)) / 2);
 
 	.info, .gallery {
 		margin-top: rubber-size(1080, 75, 900, 60);
+	}
+
+	.info:last-of-type {
+		margin-bottom: rubber-size(1080, 75, 900, 60);
 	}
 }
 
@@ -186,14 +181,34 @@ $gap-image: calc((px-to-rem(1000) - ($width-image * 3)) / 2);
 	.description {
 		margin-top: rubber-size(900, 17, 768, 15);
 	}
+
+	.info, .gallery {
+		margin-top: rubber-size(900, 60, 768, 50);
+	}
+
+	.gallery {
+		$width-image: rubber-size(900, 286, 768, 253);
+		$gap-image: calc((100vw - ($width-image * 3)) / 2);
+
+		grid-template-columns: repeat(3, $width-image);
+		gap: $gap-image;
+	}
+
+	.info {
+		width: 100% !important;
+
+		&:last-of-type {
+			margin-bottom: rubber-size(900, 60, 768, 50);
+		}
+	}
+
+	.button {
+		margin-top: rubber-size(900, 25, 768, 20);
+	}
 }
 
 @media only screen and (px-to-rem(768) > width) {
-	.details {
-		margin-top: rubber-size(768, 30, 576, 25);
-	}
-
-	.img-wrap {
+	.details, .img-wrap {
 		margin-top: rubber-size(768, 30, 576, 25);
 	}
 
