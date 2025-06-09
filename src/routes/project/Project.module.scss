@@ -247,7 +247,17 @@ $gap-image: calc((px-to-rem(1000) - ($width-image * 3)) / 2);
 }
 
 @media only screen and (px-to-rem(480) > width) {
-	.project {
-		;
+	.gallery, .info {
+		margin-top: rubber-size(480, 40, 320, 30);
+	}
+
+	.info:last-of-type {
+		margin-bottom: rubber-size(480, 40, 320, 30);
+	}
+	
+	.gallery {
+		width: rubber-size(480, 320, 320, 260);
+		grid-template-columns: 100%;
+		gap: rubber-size(480, 15, 320, 10);
 	}
 }
