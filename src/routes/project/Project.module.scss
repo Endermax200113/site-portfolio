@@ -106,13 +106,14 @@ $width-image: px-to-rem(315);
 $gap-image: calc((px-to-rem(1000) - ($width-image * 3)) / 2);
 
 .gallery {
+	width: 100%;
 	margin-top: px-to-rem(75);
 	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-columns: repeat(3, $width-image);
 	gap: $gap-image;
 
 	&-image {
-		width: $width-image !important;
+		width: 100% !important;
 	}
 }
 
@@ -137,6 +138,18 @@ $gap-image: calc((px-to-rem(1000) - ($width-image * 3)) / 2);
 @media only screen and (px-to-rem(1280) > width) {
 	.details {
 		width: rubber-size(1280, 1000, 1080, 900) !important;
+	}
+
+	.info {
+		width: rubber-size(1280, 1000, 1080, 900) !important;
+	}
+
+	.gallery {
+		$width-image: rubber-size(1280, 315, 1080, 286);
+		$gap-image: calc((rubber-size(1280, 1000, 1080, 900) - ($width-image * 3)) / 2);
+
+		grid-template-columns: repeat(3, $width-image);
+		gap: $gap-image;
 	}
 }
 

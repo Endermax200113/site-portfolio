@@ -80,7 +80,7 @@ const Project: React.FC<PropsProject> = ({ ...props }) => {
 				{site && <Button className={scss.button}>К сайту</Button>}
 			</Section>
 
-			{/* {gallery && (
+			{gallery && (
 				<Section className={scss.info}>
 					<Heading
 						children='Галерея'
@@ -96,7 +96,8 @@ const Project: React.FC<PropsProject> = ({ ...props }) => {
 									urlImage={image.urlImage}
 									className={scss['gallery-image']}
 									clickButton={() => handleOpenClick(image.id)}
-									key={i}
+									tabIndex={i + 1}
+									key={`project-gallery-${i}`}
 								/>
 							)
 						})}
@@ -110,7 +111,7 @@ const Project: React.FC<PropsProject> = ({ ...props }) => {
 						</Button>
 					)}
 				</Section>
-			)} */}
+			)}
 
 			{/* <Section className={scss.info}>
 				<Heading

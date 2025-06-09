@@ -26,9 +26,10 @@
 .name {
 	padding: 0;
 	border: unset;
-	margin-bottom: 15px;
+	margin-bottom: px-to-rem(15);
 	opacity: 0;
-	font-size: 16px;
+	font-size: px-to-rem(16);
+	letter-spacing: 0.25em;
 	text-align: center !important;
 	color: $color-full-white;
 	z-index: 2;
@@ -37,22 +38,80 @@
 
 .gallery {
 	position: relative;
-	width: 300px;
+	width: 100%;
 	aspect-ratio: 1 / 1;
+	padding-inline: px-to-rem(25);
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
+}
 
-	&:hover .img {
-		opacity: .5;
+@media only screen and (hover: hover) {
+	.gallery:hover {
+		& .img {
+			opacity: .5;
+		}
+
+		& .show, & .name {
+			opacity: 1;
+		}
 	}
+}
 
-	&:hover .show {
-		opacity: 1;
+@media only screen and (hover: none) {
+	.gallery {
+		& .img, & .show, & .name {
+			pointer-events: none;
+		}
+
+		&:focus-within {
+			& .img {
+				opacity: .5;
+				pointer-events: all;
+			}
+
+			& .show, & .name {
+				opacity: 1;
+				pointer-events: all;
+			}
+		}
 	}
+}
 
-	&:hover .name {
-		opacity: 1;
+@media only screen and (px-to-rem(1280) > width) {
+	.name {
+		margin-bottom: rubber-size(1280, 15, 1080, 12);
+		font-size: rubber-size(1280, 16, 1080, 14);
+	}
+}
+
+@media only screen and (px-to-rem(1080) > width) {
+	.gallery {
+		;
+	}
+}
+
+@media only screen and (px-to-rem(900) > width) {
+	.gallery {
+		;
+	}
+}
+
+@media only screen and (px-to-rem(768) > width) {
+	.gallery {
+		;
+	}
+}
+
+@media only screen and (px-to-rem(576) > width) {
+	.gallery {
+		;
+	}
+}
+
+@media only screen and (px-to-rem(480) > width) {
+	.gallery {
+		;
 	}
 }
