@@ -105,7 +105,12 @@
 
 @media only screen and (px-to-rem(768) > width) {
 	.gallery {
-		;
+		padding-inline: px-to-rem(20);
+	}
+
+	.name {
+		margin-bottom: px-to-rem(12);
+		font-size: px-to-rem(14);
 	}
 }
 

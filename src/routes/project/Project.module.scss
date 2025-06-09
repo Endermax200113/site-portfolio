@@ -216,6 +216,23 @@ $gap-image: calc((px-to-rem(1000) - ($width-image * 3)) / 2);
 		margin-top: rubber-size(768, 15, 576, 12);
 		margin-inline: rubber-size(768, 55, 576, 30);
 	}
+
+	.info, .gallery {
+		margin-top: rubber-size(768, 50, 576, 40);
+	}
+
+	.info:last-of-type {
+		margin-bottom: rubber-size(768, 50, 576, 40);
+	}
+
+	.gallery {
+		$width-img: px-to-rem(280);
+		$width: px-to-rem(576);
+
+		width: $width;
+		grid-template-columns: repeat(2, $width-img);
+		gap: calc($width - $width-img * 2);
+	}
 }
 
 @media only screen and (px-to-rem(576) > width) {
