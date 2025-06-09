@@ -116,7 +116,12 @@
 
 @media only screen and (px-to-rem(576) > width) {
 	.gallery {
-		;
+		padding-inline: rubber-size(576, 20, 480, 15);
+	}
+
+	.name {
+		margin-bottom: rubber-size(576, 12, 480, 10);
+		font-size: rubber-size(576, 14, 480, 12);
 	}
 }
 

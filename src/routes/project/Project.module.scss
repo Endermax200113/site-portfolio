@@ -226,18 +226,23 @@ $gap-image: calc((px-to-rem(1000) - ($width-image * 3)) / 2);
 	}
 
 	.gallery {
-		$width-img: px-to-rem(280);
+		$width-image: px-to-rem(280);
 		$width: px-to-rem(576);
 
 		width: $width;
-		grid-template-columns: repeat(2, $width-img);
-		gap: calc($width - $width-img * 2);
+		grid-template-columns: repeat(2, $width-image);
+		gap: calc($width - $width-image * 2);
 	}
 }
 
 @media only screen and (px-to-rem(576) > width) {
-	.project {
-		;
+	.gallery {
+		$width-image: rubber-size(576, 280, 480, 237);
+		$gap-image: calc(100vw - $width-image * 2);
+
+		width: 100%;
+		grid-template-columns: repeat(2, $width-image);
+		gap: $gap-image;
 	}
 }
 
