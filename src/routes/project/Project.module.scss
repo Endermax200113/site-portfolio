@@ -92,6 +92,7 @@
 
 	&-text {
 		margin-left: px-to-rem(15);
+		font-size: px-to-rem(13);
 	}
 }
 
@@ -160,6 +161,24 @@ $gap-image: calc((px-to-rem(1000) - ($width-image * 3)) / 2);
 
 	.info:last-of-type {
 		margin-bottom: rubber-size(1080, 75, 900, 60);
+	}
+
+	.resources-list {
+		width: rubber-size(1080, 900, 900, 775);
+		margin-top: rubber-size(1080, 75, 900, 60);
+		grid-template-columns: repeat(3, rubber-size(1080, 285, 900, 245));
+		row-gap: rubber-size(1080, 20, 900, 15);
+	}
+
+	.resource {
+		&-image {
+			width: rubber-size(1080, 40, 900, 35);
+		}
+
+		&-text {
+			margin-left: rubber-size(1080, 15, 900, 12);
+			font-size: rubber-size(1080, 13, 900, 12);
+		}
 	}
 }
 
