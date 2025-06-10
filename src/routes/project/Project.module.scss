@@ -222,6 +222,7 @@ $gap-image: calc((px-to-rem(1000) - ($width-image * 3)) / 2);
 
 	.resources-list {
 		width: px-to-rem(525);
+		margin-top: rubber-size(900, 60, 768, 50);
 		grid-template-columns: repeat(2, px-to-rem(245));
 	}
 }
@@ -251,6 +252,23 @@ $gap-image: calc((px-to-rem(1000) - ($width-image * 3)) / 2);
 		width: $width;
 		grid-template-columns: repeat(2, $width-image);
 		gap: calc($width - $width-image * 2);
+	}
+
+	.resources-list {
+		width: rubber-size(768, 525, 576, 470);
+		margin-top: rubber-size(768, 50, 576, 40);
+		grid-template-columns: repeat(2, rubber-size(768, 245, 576, 225));
+	}
+
+	.resource {
+		&-image {
+			width: rubber-size(768, 35, 576, 32);
+		}
+
+		&-text {
+			margin-left: rubber-size(768, 12, 576, 10);
+			font-size: rubber-size(768, 12, 576, 11);
+		}
 	}
 }
 
