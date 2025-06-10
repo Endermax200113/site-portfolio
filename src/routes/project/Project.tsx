@@ -113,18 +113,14 @@ const Project: React.FC<PropsProject> = ({ ...props }) => {
 				</Section>
 			)}
 
-			{/* <Section className={scss.info}>
+			<Section className={scss.info}>
 				<Heading
 					children='Стек'
 					className={scss['info-title']}
 					mergeClass
 				/>
-				<SkillsList
-					skills={stack}
-					className={scss.stack}
-					mergeClass
-				/>
-			</Section> */}
+				<SkillsList skills={stack} />
+			</Section>
 
 			{/* {resources && resources.length > 0 && (
 				<Section className={scss.info}>

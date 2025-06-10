@@ -95,13 +95,6 @@
 	}
 }
 
-.stack {
-	margin-top: px-to-rem(75);
-	grid-template-columns: repeat(4, px-to-rem(150));
-	-moz-column-gap: calc(px-to-rem(400) / 3);
-	column-gap: calc(px-to-rem(400) / 3);
-}
-
 $width-image: px-to-rem(315);
 $gap-image: calc((px-to-rem(1000) - ($width-image * 3)) / 2);
 
