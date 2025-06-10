@@ -219,6 +219,11 @@ $gap-image: calc((px-to-rem(1000) - ($width-image * 3)) / 2);
 	.button {
 		margin-top: rubber-size(900, 25, 768, 20);
 	}
+
+	.resources-list {
+		width: px-to-rem(525);
+		grid-template-columns: repeat(2, px-to-rem(245));
+	}
 }
 
 @media only screen and (px-to-rem(768) > width) {
