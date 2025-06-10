@@ -76,7 +76,7 @@
 	&-link {
 		@extend %button;
 
-		width: px-to-rem(300);
+		width: 100%;
 		background-color: $color-lighter-gray;
 		box-shadow: 0 px-to-rem(4) px-to-rem(4) 0 rgb(0 0 0 / 25%);
 		padding: px-to-rem(5) px-to-rem(15);
@@ -122,8 +122,6 @@ $gap-image: calc((px-to-rem(1000) - ($width-image * 3)) / 2);
 	}
 }
 
-/* 1366px */
-
 @media only screen and (px-to-rem(1280) > width) {
 	.details, .info {
 		width: rubber-size(1280, 1000, 1080, 900) !important;
@@ -135,6 +133,10 @@ $gap-image: calc((px-to-rem(1000) - ($width-image * 3)) / 2);
 
 		grid-template-columns: repeat(3, $width-image);
 		gap: $gap-image;
+	}
+
+	.resources-list {
+		grid-template-columns: repeat(3, rubber-size(1280, 300, 1080, 285));
 	}
 }
 

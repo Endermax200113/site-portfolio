@@ -122,7 +122,7 @@ const Project: React.FC<PropsProject> = ({ ...props }) => {
 				<SkillsList skills={stack} />
 			</Section>
 
-			{/* {resources && resources.length > 0 && (
+			{resources && resources.length > 0 && (
 				<Section className={scss.info}>
 					<Heading
 						children='Ссылки'
@@ -130,8 +130,29 @@ const Project: React.FC<PropsProject> = ({ ...props }) => {
 						mergeClass
 					/>
 
-					<ul className={scss['resources-list']}>
+					{/* <ul className={scss['resources-list']}>
 						{resources.map(({ image, text, url }, i) => {
+							return (
+								<li
+									className={scss['resource-item']}
+									key={i}>
+									<Button
+										onClick={() => handleOpenLinkClick(url)}
+										className={scss['resource-link']}>
+										<Image
+											src={image}
+											alt='Иконка'
+											className={scss['resource-image']}
+										/>
+										<span className={scss['resource-text']}>{text}</span>
+									</Button>
+								</li>
+							)
+						})}
+					</ul> */}
+
+					<ul className={scss['resources-list']}>
+						{new Array(10).fill(resources[0]).map(({ image, text, url }, i) => {
 							return (
 								<li
 									className={scss['resource-item']}
@@ -151,7 +172,7 @@ const Project: React.FC<PropsProject> = ({ ...props }) => {
 						})}
 					</ul>
 				</Section>
-			)} */}
+			)}
 
 			{/* {gallery && (
 				<DialogGallery
