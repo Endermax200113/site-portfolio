@@ -318,4 +318,27 @@ $gap-image: calc((px-to-rem(1000) - ($width-image * 3)) / 2);
 		grid-template-columns: 100%;
 		gap: rubber-size(480, 15, 320, 10);
 	}
+
+	.resources-list {
+		width: rubber-size(480, 320, 320, 260);
+		margin-top: rubber-size(480, 40, 320, 30);
+		grid-template-columns: 100%;
+	}
+
+	.resource {
+		&-link {
+			$ratio: px-to-rem(5);
+
+			padding: $ratio calc($ratio * 3);
+		}
+
+		&-image {
+			width: rubber-size(480, 35, 320, 30);
+		}
+
+		&-text {
+			margin-left: rubber-size(480, 12, 320, 10);
+			font-size: rubber-size(480, 12, 320, 11);
+		}
+	}
 }
