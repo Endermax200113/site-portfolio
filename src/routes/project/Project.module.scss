@@ -281,6 +281,27 @@ $gap-image: calc((px-to-rem(1000) - ($width-image * 3)) / 2);
 		grid-template-columns: repeat(2, $width-image);
 		gap: $gap-image;
 	}
+
+	.resources-list {
+		width: rubber-size(576, 470, 480, 415);
+		grid-template-columns: repeat(2, rubber-size(576, 225, 480, 200));
+	}
+
+	.resource {
+		&-link {
+			$ratio: rubber-size(576, 5, 480, 4);
+
+			padding: $ratio calc($ratio * 3);
+		}
+
+		&-image {
+			width: rubber-size(576, 32, 480, 30);
+		}
+
+		&-text {
+			font-size: rubber-size(576, 11, 480, 10);
+		}
+	}
 }
 
 @media only screen and (px-to-rem(480) > width) {
