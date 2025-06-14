@@ -130,29 +130,8 @@ const Project: React.FC<PropsProject> = ({ ...props }) => {
 						mergeClass
 					/>
 
-					{/* <ul className={scss['resources-list']}>
-						{resources.map(({ image, text, url }, i) => {
-							return (
-								<li
-									className={scss['resource-item']}
-									key={i}>
-									<Button
-										onClick={() => handleOpenLinkClick(url)}
-										className={scss['resource-link']}>
-										<Image
-											src={image}
-											alt='Иконка'
-											className={scss['resource-image']}
-										/>
-										<span className={scss['resource-text']}>{text}</span>
-									</Button>
-								</li>
-							)
-						})}
-					</ul> */}
-
 					<ul className={scss['resources-list']}>
-						{new Array(10).fill(resources[0]).map(({ image, text, url }, i) => {
+						{resources.map(({ image, text, url }, i) => {
 							return (
 								<li
 									className={scss['resource-item']}
@@ -174,12 +153,12 @@ const Project: React.FC<PropsProject> = ({ ...props }) => {
 				</Section>
 			)}
 
-			{/* {gallery && (
+			{gallery && (
 				<DialogGallery
 					gallery={gallery}
 					state={dialogGalleryState}
 				/>
-			)} */}
+			)}
 		</RootMain>
 	)
 }

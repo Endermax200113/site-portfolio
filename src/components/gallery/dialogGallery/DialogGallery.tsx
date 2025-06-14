@@ -1,4 +1,4 @@
-import React, { DialogHTMLAttributes, Dispatch, MouseEvent, SetStateAction, useCallback, useLayoutEffect, useState } from 'react'
+import React, { DialogHTMLAttributes, Dispatch, SetStateAction, useCallback, useLayoutEffect, useState } from 'react'
 import scss from './DialogGallery.module.scss'
 import Button from '@ui/button/Button'
 import ImageComp from '@ui/image/Image'
@@ -50,7 +50,6 @@ interface PropsDialogGallery extends DialogHTMLAttributes<HTMLDialogElement> {
 const DialogGallery: React.FC<PropsDialogGallery> = ({ gallery, state, ...props }) => {
 	//#region states
 	const [dialogGalleryData, setDialogGalleryData] = state
-
 	const [isMovingImage, setIsMovingImage] = useState<boolean>(false)
 	const [isHiddenUIElements, setIsHiddenUIElements] = useState<string>('')
 	const [startPlaceCursorX, setStartPlaceCursorX] = useState<number>(0)
@@ -71,6 +70,8 @@ const DialogGallery: React.FC<PropsDialogGallery> = ({ gallery, state, ...props 
 		startY: 0,
 		endY: 0,
 	})
+	const [scaleImage, setScaleImage] = useState<number>(1)
+	const [initialDistanceMobile, setInitialDistanceMobile] = useState<number>(0)
 	//#endregion
 
 	const testImage = false
@@ -107,80 +108,182 @@ const DialogGallery: React.FC<PropsDialogGallery> = ({ gallery, state, ...props 
 
 	useEventListener('keydown', handleToLeftOrRightKeydown, dialogGalleryData.isOpened)
 
-	const handleImageMove = (e: MouseEvent): void => {
+	const onMoveImage = (e: MouseEvent | TouchEvent): void => {
 		if (isMovingImage) {
-			const widthImage = placeImage.endX - placeImage.startX
-			const heightImage = placeImage.endY - placeImage.startY
+			let clientX: number = 0
+			let clientY: number = 0
 
-			const nowX: number = e.clientX
-			const nowY: number = e.clientY
-			const resX: number = nowX - startPlaceCursorX
-			const resY: number = nowY - startPlaceCursorY
-
-			const allowStartX: boolean = placeImage.startX + resX <= sizeWrapWidth
-			const allowEndX: boolean = placeImage.endX + resX >= 0
-			const allowStartY: boolean = placeImage.startY + resY <= sizeWrapHeight
-			const allowEndY: boolean = placeImage.endY + resY >= 0
-
-			let resStartX: number = 0
-			let resEndX: number = 0
-			let resWrapX: number = 0
-			let resStartY: number = 0
-			let resEndY: number = 0
-			let resWrapY: number = 0
-
-			if (allowStartX && allowEndX) {
-				resStartX = placeImage.startX + resX
-				resEndX = placeImage.endX + resX
-				resWrapX = placeWrapX + resX
-			} else if (!allowStartX) {
-				resStartX = sizeWrapWidth
-				resEndX = sizeWrapWidth + widthImage
-				resWrapX = sizeWrapWidth - (sizeWrapWidth - widthImage) / 2
-			} else if (!allowEndX) {
-				resStartX = -widthImage
-				resEndX = 0
-				resWrapX = (sizeWrapWidth - widthImage) / 2 - sizeWrapWidth
+			if (e instanceof MouseEvent) {
+				clientX = e.clientX
+				clientY = e.clientY
+			} else if (e instanceof TouchEvent) {
+				clientX = e.touches[0].clientX
+				clientY = e.touches[0].clientY
 			}
 
-			if (allowStartY && allowEndY) {
-				resStartY = placeImage.startY + resY
-				resEndY = placeImage.endY + resY
-				resWrapY = placeWrapY + resY
-			} else if (!allowStartY) {
-				resStartY = sizeWrapHeight
-				resEndY = sizeWrapHeight + heightImage
-				resWrapY = sizeWrapHeight - (sizeWrapHeight - heightImage) / 2
-			} else if (!allowEndY) {
-				resStartY = -heightImage
-				resEndY = 0
-				resWrapY = (sizeWrapHeight - heightImage) / 2 - sizeWrapHeight
+			if (e instanceof MouseEvent || e.touches.length === 1) {
+				const widthImage = placeImage.endX - placeImage.startX
+				const heightImage = placeImage.endY - placeImage.startY
+	
+				const nowX: number = clientX
+				const nowY: number = clientY
+				const resX: number = nowX - startPlaceCursorX
+				const resY: number = nowY - startPlaceCursorY
+	
+				const allowStartX: boolean = placeImage.startX + resX <= sizeWrapWidth
+				const allowEndX: boolean = placeImage.endX + resX >= 0
+				const allowStartY: boolean = placeImage.startY + resY <= sizeWrapHeight
+				const allowEndY: boolean = placeImage.endY + resY >= 0
+	
+				let resStartX: number = 0
+				let resEndX: number = 0
+				let resWrapX: number = 0
+				let resStartY: number = 0
+				let resEndY: number = 0
+				let resWrapY: number = 0
+	
+				if (allowStartX && allowEndX) {
+					resStartX = placeImage.startX + resX
+					resEndX = placeImage.endX + resX
+					resWrapX = placeWrapX + resX
+				} else if (!allowStartX) {
+					resStartX = sizeWrapWidth
+					resEndX = sizeWrapWidth + widthImage
+					resWrapX = sizeWrapWidth - (sizeWrapWidth - widthImage) / 2
+				} else if (!allowEndX) {
+					resStartX = -widthImage
+					resEndX = 0
+					resWrapX = (sizeWrapWidth - widthImage) / 2 - sizeWrapWidth
+				}
+	
+				if (allowStartY && allowEndY) {
+					resStartY = placeImage.startY + resY
+					resEndY = placeImage.endY + resY
+					resWrapY = placeWrapY + resY
+				} else if (!allowStartY) {
+					resStartY = sizeWrapHeight
+					resEndY = sizeWrapHeight + heightImage
+					resWrapY = sizeWrapHeight - (sizeWrapHeight - heightImage) / 2
+				} else if (!allowEndY) {
+					resStartY = -heightImage
+					resEndY = 0
+					resWrapY = (sizeWrapHeight - heightImage) / 2 - sizeWrapHeight
+				}
+	
+				setPlaceWrapX(resWrapX)
+				setPlaceWrapY(resWrapY)
+				setPlaceImage({
+					startX: resStartX,
+					endX: resEndX,
+					startY: resStartY,
+					endY: resEndY,
+				})
+				setStartPlaceCursorX(nowX)
+				setStartPlaceCursorY(nowY)
 			}
-
-			setPlaceWrapX(resWrapX)
-			setPlaceWrapY(resWrapY)
-			setPlaceImage({
-				startX: resStartX,
-				endX: resEndX,
-				startY: resStartY,
-				endY: resEndY,
-			})
-			setStartPlaceCursorX(nowX)
-			setStartPlaceCursorY(nowY)
 		}
 	}
 
-	const handleImageMoveDown = (e: MouseEvent): void => {
+	const handleImageMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+		onMoveImage(e.nativeEvent)
+	}
+
+	const handleImageTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+		onMoveImage(e.nativeEvent)
+	}
+
+	const onDownImage = (e: MouseEvent | TouchEvent): void => {
+		let clientX: number = 0
+		let clientY: number = 0
+
+		if (e instanceof MouseEvent) {
+			clientX = e.clientX
+			clientY = e.clientY
+		} else if (e instanceof TouchEvent) {
+			clientX = e.touches[0].clientX
+			clientY = e.touches[0].clientY
+		}
+
 		setIsHiddenUIElements('hidden')
 		setIsMovingImage(true)
-		setStartPlaceCursorX(e.clientX)
-		setStartPlaceCursorY(e.clientY)
+		setStartPlaceCursorX(clientX)
+		setStartPlaceCursorY(clientY)
+	}
+
+	const handleImageMouseDown = (e: React.MouseEvent<HTMLDivElement>): void => {
+		onDownImage(e.nativeEvent)
+	}
+
+	const handleImageTouchDown = (e: React.TouchEvent<HTMLDivElement>): void => {
+		onDownImage(e.nativeEvent)
 	}
 
 	const handleImageMoveUp = (): void => {
 		setIsHiddenUIElements('')
 		setIsMovingImage(false)
 	}
+
+	const handleToScaleImage = (event: Event): void => {
+		if (event instanceof WheelEvent) {
+			const scaleStep = 0.1
+			let scaleLevel = scaleImage
+
+			if (event.deltaY < 0) {
+				scaleLevel += scaleStep
+			} else {
+				scaleLevel -= scaleStep
+			}
+
+			scaleLevel = Math.min(Math.max(scaleLevel, 0.5), 3)
+
+			setScaleImage(scaleLevel)
+		}
+	}
+
+	useEventListener('wheel', handleToScaleImage, dialogGalleryData.isOpened)
+
+	const image = document.querySelector(`.${scss['image-container']}`) as HTMLDivElement
+	
+
+	const handleImageTouchStart = (e: Event): void => {
+		if (e instanceof TouchEvent) {
+			if (e.touches.length === 2) {
+				const touch1 = e.touches[0]
+				const touch2 = e.touches[1]
+				const init = Math.hypot(touch2.clientX - touch1.clientX, touch2.clientY - touch1.clientY)
+				
+				setInitialDistanceMobile(init) 
+			}
+		}
+	}
+
+	useEventListener('touchstart', handleImageTouchStart, dialogGalleryData.isOpened, image, false)
+
+	const onImageTouchMove = (e: Event): void => {
+		if (e instanceof TouchEvent) {
+			if (e.touches.length === 2 && initialDistanceMobile !== 0) {
+				const touch1 = e.touches[0]
+				const touch2 = e.touches[1]
+				const currentDistance: number = Math.hypot(touch2.clientX - touch1.clientX, touch2.clientY - touch1.clientY)
+				const scale = currentDistance / initialDistanceMobile
+				const newScale = Math.min(Math.max(scaleImage * scale, 0.75), 3)
+
+				setScaleImage(newScale)
+			}
+		}
+	}
+
+	useEventListener('touchmove', onImageTouchMove, dialogGalleryData.isOpened, image, false)
+
+	const handleImageTouchEnd = (e: Event): void => {
+		if (e instanceof TouchEvent) {
+			if (e.touches.length < 2) {
+				setInitialDistanceMobile(0)
+			}
+		}
+	}
+
+	useEventListener('touchend', handleImageTouchEnd, dialogGalleryData.isOpened, image, false)
 
 	// $ Используется useCallback для работы с хуком useLayoutEffect
 	const computePlaceImage = useCallback((): void => {
@@ -324,6 +427,7 @@ const DialogGallery: React.FC<PropsDialogGallery> = ({ gallery, state, ...props 
 			setOriginalSizeImageHeight(images.tempImage.height)
 			setSizeWrapWidth(window.outerWidth)
 			setSizeWrapHeight(images.img.height)
+			setScaleImage(1)
 			computePlaceImage()
 		}
 	}, [dialogGalleryData.id, dialogGalleryData.isOpened])
@@ -343,8 +447,11 @@ const DialogGallery: React.FC<PropsDialogGallery> = ({ gallery, state, ...props 
 			<div
 				className={scss['image-container']}
 				onMouseUp={handleImageMoveUp}
-				onMouseMove={handleImageMove}
-				onMouseDown={handleImageMoveDown}>
+				onMouseMove={handleImageMouseMove}
+				onMouseDown={handleImageMouseDown}
+				onTouchStart={handleImageTouchDown}
+				onTouchMove={handleImageTouchMove}
+				onTouchEnd={handleImageMoveUp}>
 				<ImageGallery
 					url={gallery[dialogGalleryData.id].urlImage}
 					alt={gallery[dialogGalleryData.id].title}
@@ -354,6 +461,7 @@ const DialogGallery: React.FC<PropsDialogGallery> = ({ gallery, state, ...props 
 						right: -placeWrapX,
 						top: placeWrapY,
 						bottom: -placeWrapY,
+						transform: `scale(${scaleImage})`,
 					}}
 				/>
 			</div>
