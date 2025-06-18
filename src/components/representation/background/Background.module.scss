@@ -32,7 +32,7 @@
 @media only screen and (px-to-rem(1920) > width >= px-to-rem(1600)) {
 	.detail {
 		$width-rubber: rubber-size(1920, 220, 1600, 202);
-		$width-detail: string.unquote("calc(50vw + #{$width-rubber})");
+		$width-detail: str("calc(50vw + #{$width-rubber})");
 
 		width: $width-detail;
 	}
@@ -41,7 +41,7 @@
 @media only screen and (px-to-rem(1600) > width >= px-to-rem(1366)) {
 	.detail {
 		$width-rubber: rubber-size(1600, 202, 1366, 181);
-		$width-detail: string.unquote("calc(50vw + #{$width-rubber})");
+		$width-detail: str("calc(50vw + #{$width-rubber})");
 
 		width: $width-detail;
 	}
@@ -50,7 +50,7 @@
 @media only screen and (px-to-rem(1366) > width >= px-to-rem(1280)) {
 	.detail {
 		$width-rubber: px-to-rem(181);
-		$width-detail: string.unquote("calc(50vw + #{$width-rubber})");
+		$width-detail: str("calc(50vw + #{$width-rubber})");
 
 		width: $width-detail;
 	}
@@ -59,7 +59,7 @@
 @media only screen and (px-to-rem(1280) > width >= px-to-rem(1080)) {
 	.detail {
 		$width-rubber: rubber-size(1280, 181, 1080, 167);
-		$width-detail: string.unquote("calc(50vw + #{$width-rubber})");
+		$width-detail: str("calc(50vw + #{$width-rubber})");
 
 		width: $width-detail;
 	}
@@ -68,7 +68,7 @@
 @media only screen and (px-to-rem(1080) > width >= px-to-rem(900)) {
 	.detail {
 		$width-rubber: rubber-size(1080, 167, 900, 153);
-		$width-detail: string.unquote("calc(50vw + #{$width-rubber})");
+		$width-detail: str("calc(50vw + #{$width-rubber})");
 
 		width: $width-detail;
 	}

@@ -39,7 +39,8 @@
 
 @media only screen and (px-to-rem(900) > width) {
 	.representation {
-		height: calc(100dvh - 57px);
-		margin-top: 57px;
+		height: calc(100dvh - px-to-rem(57));
+		margin-top: px-to-rem(57);
+		transition: height $transition-animation;
 	}
 }

@@ -15,25 +15,23 @@
 	&:last-child {
 		margin-right: 0;
 	}
+}
 
-	&:hover {
-		background-color: $color-dark-gray;
-	}
-
-	&:active {
-		background-color: $color-gray;
+@media only screen and (hover: hover) {
+	.button {
+		&:hover {
+			background-color: $color-dark-gray;
+		}
+	
+		&:active {
+			background-color: $color-gray;
+		}
 	}
 }
 
 .wrap {
 	width: px-to-rem(35);
 	aspect-ratio: 1 / 1;
-}
-
-@media only screen and (hover: none) {
-	.button:hover {
-		background-color: $color-lighter-gray;
-	}
 }
 
 @media only screen and (px-to-rem(1600) > width >= px-to-rem(1366)) {

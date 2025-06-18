@@ -30,6 +30,9 @@
 	font-size: px-to-rem(12);
 	letter-spacing: 0.1em;
 	color: $color-full-white;
+	transition: background-color $transition-animation,
+				color $transition-animation,
+				border-inline-color $transition-animation;
 }
 
 %btn-big {
@@ -40,6 +43,35 @@
 	font-weight: 700;
 	font-size: px-to-rem(16);
 	color: $color-full-black;
+	transition: background-color $transition-animation,
+				color $transition-animation,
+				border-inline-color $transition-animation;
+}
+
+@media only screen and (hover: hover) {
+	%btn-small {
+		&:hover {
+			background-color: $color-full-white;
+			color: $color-full-black;
+		}
+
+		&:active {
+			background-color: $color-lighter-gray;
+			border-inline-color: $color-lighter-gray;
+		}
+	}
+
+	%btn-big {
+		&:hover {
+			background-color: $color-full-black;
+			color: $color-full-white;
+		}
+
+		&:active {
+			background-color: $color-medium-black;
+			border-inline-color: $color-medium-black;
+		}
+	}
 }
 
 %welcome {
