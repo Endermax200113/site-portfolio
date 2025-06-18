@@ -1,6 +1,164 @@
 @use '@sass/main' as *;
 
 .preload {
+	height: 100dvh;
+	background-color: $color-light-gray;
 	display: grid;
 	place-content: center;
+	transition: background-color $transition-animation;
+}
+
+.load {
+	position: relative;
+	width: px-to-rem(50);
+	aspect-ratio: 1 / 1;
+}
+
+%load {
+	--deg: 90deg;
+
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	padding: px-to-rem(5);
+	border-radius: 50%;
+	background-color: $color-full-black;
+	mask:
+		linear-gradient($color-transparent 0 0) content-box intersect,
+		conic-gradient($color-full-black var(--deg), $color-transparent 0);
+}
+
+.first {
+	@extend %load;
+
+	transform: rotate(0deg);
+	animation: linear 8s infinite first-load;
+}
+
+.second {
+	@extend %load;
+
+	transform: rotate(90deg);
+	animation: linear 8s infinite second-load;
+}
+
+.third {
+	@extend %load;
+
+	transform: rotate(180deg);
+	animation: linear 8s infinite third-load;
+}
+
+@keyframes first-load {
+	0% {
+		transform: rotate(0deg);
+	}
+
+	12.5% {
+		transform: rotate(315deg);
+	}
+
+	25% {
+		transform: rotate(450deg);
+	}
+
+	37.5% {
+		transform: rotate(765deg);
+	}
+
+	50% {
+		transform: rotate(900deg);
+	}
+
+	62.5% {
+		transform: rotate(1215deg);
+	}
+
+	75% {
+		transform: rotate(1350deg);
+	}
+
+	87.5% {
+		transform: rotate(1665deg);
+	}
+
+	100% {
+		transform: rotate(1800deg);
+	}
+}
+
+@keyframes second-load {
+	0% {
+		transform: rotate(90deg);
+	}
+
+	12.5% {
+		transform: rotate(315deg);
+	}
+
+	25% {
+		transform: rotate(540deg);
+	}
+
+	37.5% {
+		transform: rotate(765deg);
+	}
+
+	50% {
+		transform: rotate(990deg);
+	}
+
+	62.5% {
+		transform: rotate(1215deg);
+	}
+
+	75% {
+		transform: rotate(1440deg);
+	}
+
+	87.5% {
+		transform: rotate(1665deg);
+	}
+
+	100% {
+		transform: rotate(1890deg);
+	}
+}
+
+@keyframes third-load {
+	0% {
+		transform: rotate(180deg);
+	}
+
+	12.5% {
+		transform: rotate(315deg);
+	}
+
+	25% {
+		transform: rotate(630deg);
+	}
+
+	37.5% {
+		transform: rotate(765deg);
+	}
+
+	50% {
+		transform: rotate(1080deg);
+	}
+
+	62.5% {
+		transform: rotate(1215deg);
+	}
+
+	75% {
+		transform: rotate(1530deg);
+	}
+
+	87.5% {
+		transform: rotate(1665deg);
+	}
+
+	100% {
+		transform: rotate(1980deg);
+	}
 }

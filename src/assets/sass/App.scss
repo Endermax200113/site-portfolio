@@ -43,22 +43,4 @@
 	min-height: 100dvh;
 	display: flex;
 	flex-direction: column;
-
-	// ? Рассматривается об удалении
-	&.app-loading::after {
-		content: '';
-		position: fixed;
-		width: 100%;
-		height: 100%;
-		background-color: red;
-		z-index: 10000;
-	}
 }
-
-// .container {
-// 	width: 100%;widthwidth
-// 	height: 100%;heightheight
-// 	padding: 0 50px;paddingpadding
-// 	display: flex;displaydisplay
-// 	justify-content: space-between;justify-contentjustify-content
-// }
