@@ -21,6 +21,12 @@ const Logo: React.FC<PropsLogo> = ({ isMain, headerFixed }) => {
 			window.scrollTo({
 				top: 0,
 			})
+
+			const body: HTMLBodyElement = document.querySelector('.body') as HTMLBodyElement
+
+			if (body.classList.contains('no-scroll')) {
+				body.classList.remove('no-scroll')
+			}
 		}, 100)
 	}
 

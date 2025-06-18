@@ -1,6 +1,6 @@
 {
 	"name": "my-site-portfolio",
-	"version": "0.4.10",
+	"version": "0.5.0",
 	"private": true,
 	"readme": "README.md",
 	"type": "module",

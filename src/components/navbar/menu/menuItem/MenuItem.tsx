@@ -15,6 +15,12 @@ const MenuItem: React.FC<PropsMenuItem> = ({ stateIsOpen, text, link }) => {
 
 	const handleItemClick = (): void => {
 		setIsOpen(false)
+
+		const body: HTMLBodyElement = document.querySelector('.body') as HTMLBodyElement
+
+		if (body.classList.contains('no-scroll')) {
+			body.classList.remove('no-scroll')
+		}
 	}
 
 	return (
