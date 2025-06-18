@@ -3,7 +3,7 @@
 .link {
 	font-family: $font-montserrat;
 	font-weight: 700;
-	font-size: 17px;
+	font-size: px-to-rem(17);
 	text-align: center;
 	color: $color-full-white;
 	text-decoration: none;

@@ -8,12 +8,15 @@ import Description from '@ui/text/description/Description'
 import { useEventListener } from '@hooks/useEventListener'
 import { useRenderEffect } from '@hooks/useRenderEffect'
 import { useClassList } from '@hooks/useClassList'
-import ImageGallery from '@ui/image/imageGallery/ImageGallery'
+import ImageGallery from '@ui/image/image-gallery/ImageGallery'
 
+// #region imports
 const imgCross: string = (await import('@svg/cross.svg')).default
 const imgArrowLeft: string = (await import('@svg/arrow-left.svg')).default
 const imgArrowRight: string = (await import('@svg/arrow-right.svg')).default
+// #endregion
 
+// #region todos
 //
 // DONE Решить проблемы с компонентом:
 //
@@ -22,7 +25,9 @@ const imgArrowRight: string = (await import('@svg/arrow-right.svg')).default
 // [x] Убрать useEffect с компонента
 // [x] При необходимости исправить дизайн
 //
+// #endregion
 
+// #region types
 type FullPlace = {
 	startX: number
 	endX: number
@@ -41,6 +46,7 @@ type StateDialogGallery = {
 }
 
 type ShortState = [data: StateDialogGallery, setData: Dispatch<SetStateAction<StateDialogGallery>>]
+// #endregion
 
 interface PropsDialogGallery extends DialogHTMLAttributes<HTMLDialogElement> {
 	gallery: Gallery[]
@@ -76,6 +82,7 @@ const DialogGallery: React.FC<PropsDialogGallery> = ({ gallery, state, ...props 
 
 	const testImage = false
 
+	//#region LeftOrRight
 	const handlerToLeftClick = (): void => {
 		if (dialogGalleryData.id + 1 === 1) return
 
@@ -107,7 +114,9 @@ const DialogGallery: React.FC<PropsDialogGallery> = ({ gallery, state, ...props 
 	}
 
 	useEventListener('keydown', handleToLeftOrRightKeydown, dialogGalleryData.isOpened)
+	//#endregion
 
+	//#region MoveImage
 	const onMoveImage = (e: MouseEvent | TouchEvent): void => {
 		if (isMovingImage) {
 			let clientX: number = 0
@@ -124,24 +133,24 @@ const DialogGallery: React.FC<PropsDialogGallery> = ({ gallery, state, ...props 
 			if (e instanceof MouseEvent || e.touches.length === 1) {
 				const widthImage = placeImage.endX - placeImage.startX
 				const heightImage = placeImage.endY - placeImage.startY
-	
+
 				const nowX: number = clientX
 				const nowY: number = clientY
 				const resX: number = nowX - startPlaceCursorX
 				const resY: number = nowY - startPlaceCursorY
-	
+
 				const allowStartX: boolean = placeImage.startX + resX <= sizeWrapWidth
 				const allowEndX: boolean = placeImage.endX + resX >= 0
 				const allowStartY: boolean = placeImage.startY + resY <= sizeWrapHeight
 				const allowEndY: boolean = placeImage.endY + resY >= 0
-	
+
 				let resStartX: number = 0
 				let resEndX: number = 0
 				let resWrapX: number = 0
 				let resStartY: number = 0
 				let resEndY: number = 0
 				let resWrapY: number = 0
-	
+
 				if (allowStartX && allowEndX) {
 					resStartX = placeImage.startX + resX
 					resEndX = placeImage.endX + resX
@@ -155,7 +164,7 @@ const DialogGallery: React.FC<PropsDialogGallery> = ({ gallery, state, ...props 
 					resEndX = 0
 					resWrapX = (sizeWrapWidth - widthImage) / 2 - sizeWrapWidth
 				}
-	
+
 				if (allowStartY && allowEndY) {
 					resStartY = placeImage.startY + resY
 					resEndY = placeImage.endY + resY
@@ -169,7 +178,7 @@ const DialogGallery: React.FC<PropsDialogGallery> = ({ gallery, state, ...props 
 					resEndY = 0
 					resWrapY = (sizeWrapHeight - heightImage) / 2 - sizeWrapHeight
 				}
-	
+
 				setPlaceWrapX(resWrapX)
 				setPlaceWrapY(resWrapY)
 				setPlaceImage({
@@ -222,7 +231,9 @@ const DialogGallery: React.FC<PropsDialogGallery> = ({ gallery, state, ...props 
 		setIsHiddenUIElements('')
 		setIsMovingImage(false)
 	}
+	//#endregion
 
+	//#region ZoomImage
 	const handleToScaleImage = (event: Event): void => {
 		if (event instanceof WheelEvent) {
 			const scaleStep = 0.1
@@ -243,7 +254,6 @@ const DialogGallery: React.FC<PropsDialogGallery> = ({ gallery, state, ...props 
 	useEventListener('wheel', handleToScaleImage, dialogGalleryData.isOpened)
 
 	const image = document.querySelector(`.${scss['image-container']}`) as HTMLDivElement
-	
 
 	const handleImageTouchStart = (e: Event): void => {
 		if (e instanceof TouchEvent) {
@@ -251,8 +261,8 @@ const DialogGallery: React.FC<PropsDialogGallery> = ({ gallery, state, ...props 
 				const touch1 = e.touches[0]
 				const touch2 = e.touches[1]
 				const init = Math.hypot(touch2.clientX - touch1.clientX, touch2.clientY - touch1.clientY)
-				
-				setInitialDistanceMobile(init) 
+
+				setInitialDistanceMobile(init)
 			}
 		}
 	}
@@ -284,6 +294,7 @@ const DialogGallery: React.FC<PropsDialogGallery> = ({ gallery, state, ...props 
 	}
 
 	useEventListener('touchend', handleImageTouchEnd, dialogGalleryData.isOpened, image, false)
+	//#endregion
 
 	// $ Используется useCallback для работы с хуком useLayoutEffect
 	const computePlaceImage = useCallback((): void => {

@@ -13,7 +13,7 @@
 .gallery {
 	position: fixed;
 	width: 100%;
-	height: calc(100% - 65px);
+	height: calc(100% - px-to-rem(65));
 	border: none;
 	outline: none;
 	background-color: rgba($color-full-black, 50%);
@@ -21,7 +21,7 @@
 	visibility: hidden;
 	transition: opacity $transition-animation, .3s visibility;
 	display: block;
-	z-index: 10000;
+	z-index: 9998;
 }
 
 .gallery[open] {
@@ -33,9 +33,9 @@
 	@extend %button;
 
 	position: absolute;
-	top: 20px;
-	right: 20px;
-	width: 30px;
+	top: px-to-rem(20);
+	right: px-to-rem(20);
+	width: px-to-rem(30);
 	aspect-ratio: 1 / 1;
 	transition: opacity $transition-animation, .3s visibility;
 	z-index: 10;
@@ -84,7 +84,7 @@
 	position: absolute;
 	bottom: 0;
 	width: 100%;
-	height: 200px;
+	height: px-to-rem(200);
 	background-image: linear-gradient(transparent, rgba($color-full-black, .75));
 	transition: opacity $transition-animation, .3s visibility;
 	z-index: 2;
@@ -105,7 +105,7 @@
 
 	&-buttons {
 		position: absolute;
-		bottom: 30px;
+		bottom: px-to-rem(30);
 		transition: opacity $transition-animation, .3s visibility;
 		display: flex;
 		justify-content: center;
@@ -119,7 +119,7 @@
 		@extend %button;
 
 		position: absolute;
-		width: 40px;
+		width: px-to-rem(40);
 		aspect-ratio: 1 / 1;
 		transform: translateY(-25%);
 		-webkit-user-select: none;
@@ -129,16 +129,16 @@
 		z-index: 10;
 
 		&.left {
-			left: -50px;
+			left: px-to-rem(-50);
 		}
 
 		&.right {
-			right: -50px;
+			right: px-to-rem(-50);
 		}
 	}
 
 	&-count {
-		-webkit-text-stroke: 0.1px $color-full-black;
+		-webkit-text-stroke: px-to-rem(0.1) $color-full-black;
 		color: $color-full-white;
 		display: grid;
 		place-content: center;
@@ -152,9 +152,9 @@
 
 	&-description {
 		position: absolute;
-		bottom: 75px;
-		max-width: 1000px;
-		padding: 20px;
+		bottom: px-to-rem(75);
+		max-width: px-to-rem(1000);
+		padding: px-to-rem(20);
 		background-color: rgba($color-full-black, .5);
 		transition: opacity $transition-animation, .3s visibility;
 		color: $color-full-white;
@@ -182,7 +182,7 @@
 		position: absolute;
 		left: 0;
 		height: 100%;
-		width: 1px;
+		width: px-to-rem(1);
 		background-color: #f08;
 	}
 
@@ -190,7 +190,7 @@
 		position: absolute;
 		left: 0;
 		height: 100%;
-		width: 1px;
+		width: px-to-rem(1);
 		background-color: #08f
 	}
 
@@ -198,7 +198,7 @@
 		position: absolute;
 		top: 0;
 		width: 100%;
-		height: 1px;
+		height: px-to-rem(1);
 		background-color: #8f8;
 	}
 
@@ -206,7 +206,25 @@
 		position: absolute;
 		top: 0;
 		width: 100%;
-		height: 1px;
+		height: px-to-rem(1);
 		background-color: #f80;
+	}
+}
+
+@media only screen and (px-to-rem(1366) > width) {
+	.gallery {
+		height: calc(100% - rubber-size(1366, 65, 1280, 60));
+	}
+}
+
+@media only screen and (px-to-rem(1280) > width) {
+	.gallery {
+		height: calc(100% - rubber-size(1280, 60, 1080, 55));
+	}
+}
+
+@media only screen and (px-to-rem(576) > width) {
+	.management-description {
+		padding: rubber-size(576, 20, 480, 15);
 	}
 }
