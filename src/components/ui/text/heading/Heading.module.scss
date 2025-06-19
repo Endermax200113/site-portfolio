@@ -13,8 +13,9 @@
 	text-transform: uppercase;
 	text-align: center;
 	color: $color-full-black;
-	display: grid;
-	place-content: center;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
 }
 
 @media only screen and (px-to-rem(1600) > width) {
