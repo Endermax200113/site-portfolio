@@ -1,8 +1,8 @@
-import { json, Params } from 'react-router-dom'
+import { Params } from 'react-router-dom'
 
 type LinksOnMain = (string | null)[]
 
-const loadMain = (params: Params): Response => {
+const loadMain = (params: Params) => {
 	const links: LinksOnMain = [null, 'about', 'skills', 'portfolio', 'cv']
 
 	const isUndefined = <T>(anything: T | undefined): T | null => (!anything ? null : anything)
@@ -13,7 +13,7 @@ const loadMain = (params: Params): Response => {
 		if (isUndefined(params.block) !== link) {
 			continue
 		} else {
-			return json('OK', { status: 200 })
+			return 'OK'
 		}
 	}
 

@@ -27,8 +27,11 @@ export default defineConfig(configEnv => {
 		build: {
 			commonjsOptions: {
 				transformMixedEsModules: true,
+				include: [/node_modules/],
+				exclude: [],
 			},
 			sourcemap: configEnv.mode === 'development',
+			minify: configEnv.mode === 'production',
 		},
 		server: {
 			port: 3000,

@@ -1,7 +1,7 @@
 import { dataPortfolio, DataPortfolio } from '@/data/portfolio'
-import { json, Params } from 'react-router-dom'
+import { Params } from 'react-router-dom'
 
-const loadProject = (params: Params): Response => {
+const loadProject = (params: Params) => {
 	if (!params.projectId) {
 		throw new Response('В URL проекта не введён идентификатор!', {
 			status: 404,
@@ -29,7 +29,8 @@ const loadProject = (params: Params): Response => {
 		})
 	}
 
-	return json(project, { status: 200 })
+	// return new Response(project, { status: 200 })
+	return project
 }
 
 export { loadProject }

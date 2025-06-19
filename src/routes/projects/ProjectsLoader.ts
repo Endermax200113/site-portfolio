@@ -1,7 +1,6 @@
 import { DataPortfolio, dataPortfolio } from '@/data/portfolio'
-import { json } from 'react-router-dom'
 
-const loadProjects = (request: Request): Response => {
+const loadProjects = (request: Request) => {
 	const searchParams: URLSearchParams = new URL(request.url).searchParams
 	const page: number = Number.parseInt(searchParams.get('page') || '1')
 
@@ -37,7 +36,7 @@ const loadProjects = (request: Request): Response => {
 		projects: arrPages,
 	}
 
-	return json(data, { status: 200 })
+	return data
 }
 
 export { loadProjects }
