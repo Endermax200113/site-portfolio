@@ -1,4 +1,4 @@
-import { createBrowserRouter } from 'react-router-dom'
+import { createHashRouter } from 'react-router-dom'
 import Main from './main/Main'
 import Project from './project/Project'
 import ErrorBoundary from './error-boundary/ErrorBoundary'
@@ -8,36 +8,29 @@ import { loadMain } from './main/MainLoader'
 import Projects from './projects/Projects'
 import { loadProjects } from './projects/ProjectsLoader'
 
-export const router = createBrowserRouter(
-	[
-		{
-			errorElement: <ErrorBoundary />,
-			element: <LayoutRoute />,
-			children: [
-				{
-					path: '/:block?',
-					element: <Main />,
-					errorElement: <ErrorBoundary />,
-					loader: ({ params }) => loadMain(params),
-				},
-				{
-					path: '/projects',
-					element: <Projects />,
-					errorElement: <ErrorBoundary />,
-					loader: ({ request }) => loadProjects(request),
-				},
-				{
-					path: '/projects/:projectId',
-					element: <Project />,
-					errorElement: <ErrorBoundary />,
-					loader: ({ params }) => loadProject(params),
-				},
-			],
-		},
-	],
+export const router = createHashRouter([
 	{
-		future: {
-			v7_relativeSplatPath: true,
-		},
-	}
-)
+		errorElement: <ErrorBoundary />,
+		element: <LayoutRoute />,
+		children: [
+			{
+				path: '/:block?',
+				element: <Main />,
+				errorElement: <ErrorBoundary />,
+				loader: ({ params }) => loadMain(params),
+			},
+			{
+				path: '/projects',
+				element: <Projects />,
+				errorElement: <ErrorBoundary />,
+				loader: ({ request }) => loadProjects(request),
+			},
+			{
+				path: '/projects/:projectId',
+				element: <Project />,
+				errorElement: <ErrorBoundary />,
+				loader: ({ params }) => loadProject(params),
+			},
+		],
+	},
+])

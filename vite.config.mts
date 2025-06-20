@@ -54,7 +54,7 @@ export default defineConfig(configEnv => {
 			esbuildOptions: {
 				target: 'es2022',
 				supported: {
-					'top-level-wait': true,
+					'top-level-wait': configEnv.mode === 'production',
 				},
 			},
 		},
