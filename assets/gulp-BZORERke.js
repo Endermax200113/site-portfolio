@@ -1,1 +1,2 @@
-const s="/assets/gulp-DUsw_uWi.svg";export{s as default};
+const s = './assets/gulp-DUsw_uWi.svg'
+export { s as default }
