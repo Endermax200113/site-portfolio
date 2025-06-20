@@ -1,13 +1,13 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import path from 'path'
-import commonjs from '@rollup/plugin-commonjs'
+import { chunkSplitPlugin } from 'vite-plugin-chunk-split'
 
 const getPath = (dir: string): string => path.resolve(__dirname, dir)
 
 export default defineConfig(configEnv => {
 	return {
-		plugins: [react(), commonjs()],
+		plugins: [react(), chunkSplitPlugin()],
 		resolve: {
 			alias: [
 				{ find: '@fonts', replacement: getPath('src/assets/fonts') },
@@ -32,12 +32,31 @@ export default defineConfig(configEnv => {
 			},
 			sourcemap: configEnv.mode === 'development',
 			minify: configEnv.mode === 'production',
+			rollupOptions: {
+				output: {
+					manualChunks: id => {
+						if (id.includes('node_modules')) {
+							return id.toString().split('node_modules')[1].split('/')[0].toString()
+						}
+					},
+				},
+			},
+			target: 'es2022',
 		},
 		server: {
 			port: 3000,
 		},
 		css: {
 			devSourcemap: configEnv.mode === 'development',
+		},
+		optimizeDeps: {
+			include: ['cookie'],
+			esbuildOptions: {
+				target: 'es2022',
+				supported: {
+					'top-level-wait': true,
+				},
+			},
 		},
 	}
 })
