@@ -8,6 +8,7 @@ const getPath = (dir: string): string => path.resolve(__dirname, dir)
 export default defineConfig(configEnv => {
 	return {
 		plugins: [react(), chunkSplitPlugin()],
+		base: '/site-portfolio/',
 		resolve: {
 			alias: [
 				{ find: '@fonts', replacement: getPath('src/assets/fonts') },
