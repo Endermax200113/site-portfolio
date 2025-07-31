@@ -5,7 +5,7 @@ import Label, { PropsLabel } from '../Label'
 interface PropsLabelHello extends PropsLabel {}
 
 const LabelHello: React.FC<PropsLabelHello> = () => {
-	return <Label className={scss.label}>Здравствуйте! Я</Label>
+	return <Label className={scss.label}>Привет! Я</Label>
 }
 
 export default LabelHello

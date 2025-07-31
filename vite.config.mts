@@ -54,9 +54,9 @@ export default defineConfig(configEnv => {
 			include: ['cookie'],
 			esbuildOptions: {
 				target: 'es2022',
-				supported: {
-					'top-level-wait': configEnv.mode === 'production',
-				},
+				// supported: {
+				// 	'top-level-wait': configEnv.mode === 'production',
+				// },
 			},
 		},
 	}
