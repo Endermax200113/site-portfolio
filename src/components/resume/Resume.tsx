@@ -18,12 +18,12 @@ const Resume: React.FC<PropsResume> = forwardRef<HTMLElement>(({ ...props }, for
 			ref={forwardedRef}>
 			<div className={scss.gradient}>
 				<Heading
-					children='CV-Резюме'
+					children='Скачать CV'
 					mergeClass
 					className={scss.title}
 				/>
 
-				<DescriptionResume>В этом CV-резюме составлены вся информация про меня, в котором входят все навыки, образования, контактные данные и личные данные. Вы можете посмотреть как с сайта, так и при необходимости скачать PDF-файл.</DescriptionResume>
+				<DescriptionResume>В этом CV составлены вся информация про меня, в котором входят все навыки, образования, контактные данные и личные данные. Вы можете посмотреть как с сайта, так и при необходимости скачать PDF-файл.</DescriptionResume>
 
 				<Separator classWrap={scss.separator} />
 
