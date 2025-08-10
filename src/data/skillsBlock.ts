@@ -7,7 +7,7 @@ export type DataSkillsBlock = {
 
 export const dataSkillsBlock: DataSkillsBlock = [
 	{
-		title: 'Использую:',
+		title: 'Имеются:',
 		skills: [
 			[(await import('@svg/skills/html.svg')).default, 'HTML5'],
 			[(await import('@svg/skills/pug.svg')).default, 'Pug'],
@@ -30,7 +30,7 @@ export const dataSkillsBlock: DataSkillsBlock = [
 		skills: [
 			[(await import('@svg/skills/vue.svg')).default, 'Vue'],
 			[(await import('@svg/skills/redux.svg')).default, 'Redux'],
-			[(await import('@svg/skills/webpack.svg')).default, 'Webpack'],
+			[(await import('@svg/skills/vite.svg')).default, 'Vite'],
 			[(await import('@svg/skills/english.svg')).default, 'Английский язык A1'],
 		],
 	},
